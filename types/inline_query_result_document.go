@@ -9,7 +9,7 @@ type InlineQueryResultDocument struct {
 	Description string `json:"description,omitempty"`
 	DocumentUrl string `json:"document_url"`
 	Id string `json:"id"`
-	InputMessageContent interface{} `json:"input_message_content"`
+	InputMessageContent interface{} `json:"input_message_content,omitempty"`
 	MimeType string `json:"mime_type"`
 	ParseMode string `json:"parse_mode,omitempty"`
 	ReplyMarkup *InlineKeyboardMarkup `json:"reply_markup,omitempty"`
@@ -31,7 +31,7 @@ func (entity InlineQueryResultDocument) MarshalJSON() ([]byte, error) {
 		MimeType string `json:"mime_type"`
 		Description string `json:"description,omitempty"`
 		ReplyMarkup *InlineKeyboardMarkup `json:"reply_markup,omitempty"`
-		InputMessageContent interface{} `json:"input_message_content"`
+		InputMessageContent interface{} `json:"input_message_content,omitempty"`
 		ThumbUrl string `json:"thumb_url,omitempty"`
 		ThumbWidth int64 `json:"thumb_width,omitempty"`
 		ThumbHeight int `json:"thumb_height,omitempty"`
