@@ -7,7 +7,7 @@ type InlineQueryResultArticle struct {
 	Description string `json:"description,omitempty"`
 	HideUrl bool `json:"hide_url,omitempty"`
 	Id string `json:"id"`
-	InputMessageContent InputMessageContent `json:"input_message_content"`
+	InputMessageContent interface{} `json:"input_message_content"`
 	ReplyMarkup *InlineKeyboardMarkup `json:"reply_markup,omitempty"`
 	ThumbHeight int `json:"thumb_height,omitempty"`
 	ThumbUrl string `json:"thumb_url,omitempty"`
@@ -21,7 +21,7 @@ func (entity InlineQueryResultArticle) MarshalJSON() ([]byte, error) {
 		Type string `json:"type"`
 		Id string `json:"id"`
 		Title string `json:"title"`
-		InputMessageContent InputMessageContent `json:"input_message_content"`
+		InputMessageContent interface{} `json:"input_message_content"`
 		ReplyMarkup *InlineKeyboardMarkup `json:"reply_markup,omitempty"`
 		Url string `json:"url,omitempty"`
 		HideUrl bool `json:"hide_url,omitempty"`

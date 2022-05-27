@@ -5,7 +5,7 @@ import "fmt"
 
 type InlineQueryResultCachedSticker struct {
 	Id string `json:"id"`
-	InputMessageContent *InputMessageContent `json:"input_message_content,omitempty"`
+	InputMessageContent interface{} `json:"input_message_content"`
 	ReplyMarkup *InlineKeyboardMarkup `json:"reply_markup,omitempty"`
 	StickerFileId string `json:"sticker_file_id"`
 }
@@ -16,7 +16,7 @@ func (entity InlineQueryResultCachedSticker) MarshalJSON() ([]byte, error) {
 		Id string `json:"id"`
 		StickerFileId string `json:"sticker_file_id"`
 		ReplyMarkup *InlineKeyboardMarkup `json:"reply_markup,omitempty"`
-		InputMessageContent *InputMessageContent `json:"input_message_content,omitempty"`
+		InputMessageContent interface{} `json:"input_message_content"`
 	} {
 		Type: "sticker",
 		Id: entity.Id,

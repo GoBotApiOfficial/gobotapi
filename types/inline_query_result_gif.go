@@ -11,7 +11,7 @@ type InlineQueryResultGif struct {
 	GifUrl string `json:"gif_url"`
 	GifWidth int64 `json:"gif_width,omitempty"`
 	Id string `json:"id"`
-	InputMessageContent *InputMessageContent `json:"input_message_content,omitempty"`
+	InputMessageContent interface{} `json:"input_message_content"`
 	ParseMode string `json:"parse_mode,omitempty"`
 	ReplyMarkup *InlineKeyboardMarkup `json:"reply_markup,omitempty"`
 	ThumbMimeType string `json:"thumb_mime_type,omitempty"`
@@ -34,7 +34,7 @@ func (entity InlineQueryResultGif) MarshalJSON() ([]byte, error) {
 		ParseMode string `json:"parse_mode,omitempty"`
 		CaptionEntities []MessageEntity `json:"caption_entities,omitempty"`
 		ReplyMarkup *InlineKeyboardMarkup `json:"reply_markup,omitempty"`
-		InputMessageContent *InputMessageContent `json:"input_message_content,omitempty"`
+		InputMessageContent interface{} `json:"input_message_content"`
 	} {
 		Type: "gif",
 		Id: entity.Id,

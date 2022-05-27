@@ -9,7 +9,7 @@ type InlineQueryResultCachedDocument struct {
 	Description string `json:"description,omitempty"`
 	DocumentFileId string `json:"document_file_id"`
 	Id string `json:"id"`
-	InputMessageContent *InputMessageContent `json:"input_message_content,omitempty"`
+	InputMessageContent interface{} `json:"input_message_content"`
 	ParseMode string `json:"parse_mode,omitempty"`
 	ReplyMarkup *InlineKeyboardMarkup `json:"reply_markup,omitempty"`
 	Title string `json:"title"`
@@ -26,7 +26,7 @@ func (entity InlineQueryResultCachedDocument) MarshalJSON() ([]byte, error) {
 		ParseMode string `json:"parse_mode,omitempty"`
 		CaptionEntities []MessageEntity `json:"caption_entities,omitempty"`
 		ReplyMarkup *InlineKeyboardMarkup `json:"reply_markup,omitempty"`
-		InputMessageContent *InputMessageContent `json:"input_message_content,omitempty"`
+		InputMessageContent interface{} `json:"input_message_content"`
 	} {
 		Type: "document",
 		Id: entity.Id,

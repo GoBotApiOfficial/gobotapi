@@ -7,7 +7,7 @@ type InlineQueryResultCachedMpeg4Gif struct {
 	Caption string `json:"caption,omitempty"`
 	CaptionEntities []MessageEntity `json:"caption_entities,omitempty"`
 	Id string `json:"id"`
-	InputMessageContent *InputMessageContent `json:"input_message_content,omitempty"`
+	InputMessageContent interface{} `json:"input_message_content"`
 	Mpeg4FileId string `json:"mpeg4_file_id"`
 	ParseMode string `json:"parse_mode,omitempty"`
 	ReplyMarkup *InlineKeyboardMarkup `json:"reply_markup,omitempty"`
@@ -24,7 +24,7 @@ func (entity InlineQueryResultCachedMpeg4Gif) MarshalJSON() ([]byte, error) {
 		ParseMode string `json:"parse_mode,omitempty"`
 		CaptionEntities []MessageEntity `json:"caption_entities,omitempty"`
 		ReplyMarkup *InlineKeyboardMarkup `json:"reply_markup,omitempty"`
-		InputMessageContent *InputMessageContent `json:"input_message_content,omitempty"`
+		InputMessageContent interface{} `json:"input_message_content"`
 	} {
 		Type: "mpeg4_gif",
 		Id: entity.Id,

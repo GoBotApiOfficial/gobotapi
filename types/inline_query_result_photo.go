@@ -8,7 +8,7 @@ type InlineQueryResultPhoto struct {
 	CaptionEntities []MessageEntity `json:"caption_entities,omitempty"`
 	Description string `json:"description,omitempty"`
 	Id string `json:"id"`
-	InputMessageContent *InputMessageContent `json:"input_message_content,omitempty"`
+	InputMessageContent interface{} `json:"input_message_content"`
 	ParseMode string `json:"parse_mode,omitempty"`
 	PhotoHeight int `json:"photo_height,omitempty"`
 	PhotoUrl string `json:"photo_url"`
@@ -32,7 +32,7 @@ func (entity InlineQueryResultPhoto) MarshalJSON() ([]byte, error) {
 		ParseMode string `json:"parse_mode,omitempty"`
 		CaptionEntities []MessageEntity `json:"caption_entities,omitempty"`
 		ReplyMarkup *InlineKeyboardMarkup `json:"reply_markup,omitempty"`
-		InputMessageContent *InputMessageContent `json:"input_message_content,omitempty"`
+		InputMessageContent interface{} `json:"input_message_content"`
 	} {
 		Type: "photo",
 		Id: entity.Id,

@@ -5,6 +5,6 @@ type ChatMemberUpdated struct {
 	Date int64 `json:"date"`
 	From User `json:"from"`
 	InviteLink *ChatInviteLink `json:"invite_link,omitempty"`
-	NewChatMember ChatMember `json:"new_chat_member"`
-	OldChatMember ChatMember `json:"old_chat_member"`
+	NewChatMember interface{} `json:"new_chat_member"`
+	OldChatMember interface{} `json:"old_chat_member"`
 }
