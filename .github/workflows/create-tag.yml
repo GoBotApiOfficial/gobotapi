@@ -1,0 +1,26 @@
+name: Create Tag
+on:
+  push:
+    branches: [ master ]
+    paths-ignore:
+      - '.gitignore'
+      - 'create-tag.yml'
+      - 'CODE_OF_CONDUCT.md'
+      - 'CONTRIBUTING.md'
+      - 'LICENSE.md'
+      - 'README.md'
+      - '.github/*'
+      - '*.svg'
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      - run: |
+          VER=$(cat VERSION)
+          echo "VERSION=$VER" >> $GITHUB_ENV
+      - uses: rickstaa/action-create-tag@v1
+        with:
+          tag: "v${{ env.VERSION }}"
+          GITHUB_TOKEN: "${{ secrets.GITHUB_TOKEN }}"
