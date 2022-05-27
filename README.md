@@ -86,11 +86,16 @@ Just run the binary file from [releases](https://github.com/Squirrel-Network/GoB
 and choose the binary file you want to use on your operating system.
 
 ## Credits
-Big thanks to [@Laky-64] for making this project possible, special thanks [@geiccobs] for his own package as
+Big thanks to [@Laky-64] for making this project possible, special thanks to [@geiccobs] for his own package as
 starting point for this project, also thanks to [@empijei] for help about the project design and to
 [@LucaTheHacker] for optimizations.
+
+Just because the thanks aren't enough...
+Really big thanks to [@MikiMleam] and to [@BluLupo] for helping to fix some stuff.
 
 [@Laky-64]: https://github.com/Laky-64
 [@geiccobs]: https://github.com/geiccobs
 [@empijei]: https://github.com/empijei
 [@LucaTheHacker]: https://github.com/LucaTheHacker
+[@BluLupo]: https://github.com/BluLupo
+[@MikiMleam]: https://t.me/MikiMleam
