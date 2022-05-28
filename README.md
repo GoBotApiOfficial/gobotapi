@@ -9,12 +9,17 @@
         Examples
     </a>
     •
+    <a href="https://pkg.go.dev/github.com/Squirrel-Network/gobotapi#section-documentation">
+        Documentation
+    </a>
+    •
     <a href="https://github.com/Squirrel-Network/gobotapi">
         Sources
     </a>
 </p>
 
 # GoBotAPI
+[![pkg.go.dev](https://img.shields.io/github/v/tag/Squirrel-Network/gobotapi?color=00b7e0&label=go.pkg.dev)](https://pkg.go.dev/github.com/Squirrel-Network/gobotapi)
 [![GO Version](https://img.shields.io/github/go-mod/go-version/Squirrel-Network/gobotapi)](https://go.dev/)
 [![GitHub](https://img.shields.io/github/license/Squirrel-Network/gobotapi)](https://github.com/Squirrel-Network/gobotapi/blob/master/LICENSE.md)
 ![OS](https://img.shields.io/badge/platform-Linux%20%7C%20Windows%20%7C%20macOS-lightgrey)
@@ -91,7 +96,7 @@ starting point for this project, also thanks to [@empijei] for help about the pr
 [@LucaTheHacker] for optimizations.
 
 Just because the thanks aren't enough...
-Really big thanks to [@MikiMleam] and to [@BluLupo] for helping to fix some stuff.
+Huge thanks to [@MikiMleam] for the cool logo and to [@BluLupo] for helping to fix some stuff.
 
 [@Laky-64]: https://github.com/Laky-64
 [@geiccobs]: https://github.com/geiccobs
