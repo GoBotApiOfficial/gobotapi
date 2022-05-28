@@ -17,7 +17,7 @@ func (ctx *Client) Invoke(method rawTypes.Method) (*rawTypes.Result, error) {
 	rawResult, err := ctx.executeRequest(
 		fmt.Sprintf(
 			"%sbot%s/%s",
-			ctx.apiUrl,
+			ctx.apiURL,
 			ctx.Token,
 			method.MethodName(),
 		),

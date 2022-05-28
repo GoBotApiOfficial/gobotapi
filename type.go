@@ -9,12 +9,12 @@ type Client struct {
 	PollingTimeout  time.Duration
 	BotApiConfig    Config
 	Token           string
-	apiUrl          string
+	apiURL          string
 	isStarted       bool
 	handlers        map[string][]interface{}
-	botId           int64
+	botID           int64
 	botUsername     string
-	lastUpdateId    int
+	lastUpdateID    int
 	waitStart       chan bool
 	requestsContext []rawTypes.CancelableContext
 }
