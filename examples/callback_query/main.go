@@ -11,7 +11,7 @@ func main() {
 	// Add listener to start command
 	client.OnCommand("start", nil, func(update types.Message) {
 		client.Invoke(&methods.SendMessage{
-			ChatId: update.Chat.Id,
+			ChatID: update.Chat.ID,
 			Text:   "Hello, I'm a bot!",
 			ReplyMarkup: &types.InlineKeyboardMarkup{
 				InlineKeyboard: [][]types.InlineKeyboardButton{
@@ -29,7 +29,7 @@ func main() {
 	client.OnCallbackQuery(func(update types.CallbackQuery) {
 		if update.Data == "test" {
 			client.Invoke(&methods.AnswerCallbackQuery{
-				CallbackQueryId: update.Id,
+				CallbackQueryID: update.ID,
 				Text:            "You found an Fox 🦊!",
 			})
 		}

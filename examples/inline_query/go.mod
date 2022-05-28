@@ -2,4 +2,4 @@ module main
 
 go 1.18
 
-require github.com/Squirrel-Network/gobotapi latest // indirect
+require github.com/Squirrel-Network/gobotapi v1.0.7

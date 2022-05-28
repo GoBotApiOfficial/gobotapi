@@ -12,7 +12,7 @@ func main() {
 	// Add listener to messages
 	client.OnMessage(func(update types.Message) {
 		_, err := client.Invoke(&methods.SendMessage{
-			ChatId: update.Chat.Id,
+			ChatID: update.Chat.ID,
 			Text:   "Hello, I'm a bot!",
 		})
 		// Check if there is an error

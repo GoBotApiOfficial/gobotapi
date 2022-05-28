@@ -12,7 +12,7 @@ func main() {
 	// Add listener to receive only start commands with alias "/", ";", "."
 	client.OnCommand("start", []string{"/", ";", "."}, func(update types.Message) {
 		_, err := client.Invoke(&methods.SendMessage{
-			ChatId: update.Chat.Id,
+			ChatID: update.Chat.ID,
 			Text:   "Hello, I'm a bot!",
 		})
 		// Check if there is an error
@@ -22,7 +22,7 @@ func main() {
 	})
 	// Add listener to receive only stop commands with the default alias
 	client.OnCommand("stop", nil, func(update types.Message) {
-		fmt.Println(fmt.Sprintf("Stop command received from %d", update.Chat.Id))
+		fmt.Println(fmt.Sprintf("Stop command received from %d", update.Chat.ID))
 	})
 	// Start and idle the bot
 	client.Run()

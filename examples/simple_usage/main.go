@@ -13,7 +13,7 @@ func main() {
 	client.Start()
 	// Invoke a SendMessage method
 	result, err := client.Invoke(&methods.SendMessage{
-		ChatId: 123456789,
+		ChatID: 123456789,
 		Text:   "Hello World!",
 	})
 	// Check if there is an error

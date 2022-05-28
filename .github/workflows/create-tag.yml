@@ -9,9 +9,8 @@ on:
       - 'CONTRIBUTING.md'
       - 'LICENSE.md'
       - 'README.md'
-      - '.github/*'
-      - '*.svg'
-      - 'examples/*'
+      - '.github/**'
+      - 'examples/**'
 
 jobs:
   build:
