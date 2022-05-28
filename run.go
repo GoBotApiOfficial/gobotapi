@@ -3,7 +3,6 @@
 package gobotapi
 
 import (
-	"fmt"
 	"github.com/Squirrel-Network/gobotapi/methods"
 	"github.com/Squirrel-Network/gobotapi/types"
 	"log"
