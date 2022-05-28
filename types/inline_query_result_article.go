@@ -3,6 +3,7 @@ package types
 import "encoding/json"
 import "fmt"
 
+// InlineQueryResultArticle Represents a link to an article or web page.
 type InlineQueryResultArticle struct {
 	Description string `json:"description,omitempty"`
 	HideUrl bool `json:"hide_url,omitempty"`

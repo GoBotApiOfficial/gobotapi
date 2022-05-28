@@ -4,6 +4,8 @@ import rawTypes "github.com/Squirrel-Network/gobotapi/types/raw"
 import "github.com/Squirrel-Network/gobotapi/types"
 import "encoding/json"
 
+// GetChatMember Use this method to get information about a member of a chat
+// Returns a ChatMember object on success.
 type GetChatMember struct {
 	ChatId int64 `json:"chat_id"`
 	UserId int64 `json:"user_id"`

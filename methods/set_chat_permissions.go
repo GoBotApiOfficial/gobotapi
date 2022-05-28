@@ -4,6 +4,9 @@ import "github.com/Squirrel-Network/gobotapi/types"
 import rawTypes "github.com/Squirrel-Network/gobotapi/types/raw"
 import "encoding/json"
 
+// SetChatPermissions Use this method to set default chat permissions for all members
+// The bot must be an administrator in the group or a supergroup for this to work and must have the can_restrict_members administrator rights
+// Returns True on success.
 type SetChatPermissions struct {
 	ChatId int64 `json:"chat_id"`
 	Permissions types.ChatPermissions `json:"permissions"`

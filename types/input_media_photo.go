@@ -4,6 +4,7 @@ import rawTypes "github.com/Squirrel-Network/gobotapi/types/raw"
 import "fmt"
 import "encoding/json"
 
+// InputMediaPhoto Represents a photo to be sent.
 type InputMediaPhoto struct {
 	Caption string `json:"caption,omitempty"`
 	CaptionEntities []MessageEntity `json:"caption_entities,omitempty"`

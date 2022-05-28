@@ -1,5 +1,6 @@
 package types
 
+// Location Represents a point on the map.
 type Location struct {
 	Heading int `json:"heading,omitempty"`
 	HorizontalAccuracy float64 `json:"horizontal_accuracy,omitempty"`

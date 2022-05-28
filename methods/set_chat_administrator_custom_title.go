@@ -4,6 +4,8 @@ import rawTypes "github.com/Squirrel-Network/gobotapi/types/raw"
 import "github.com/Squirrel-Network/gobotapi/types"
 import "encoding/json"
 
+// SetChatAdministratorCustomTitle Use this method to set a custom title for an administrator in a supergroup promoted by the bot
+// Returns True on success.
 type SetChatAdministratorCustomTitle struct {
 	ChatId int64 `json:"chat_id"`
 	CustomTitle string `json:"custom_title"`

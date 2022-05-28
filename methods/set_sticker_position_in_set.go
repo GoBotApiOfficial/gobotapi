@@ -4,6 +4,8 @@ import rawTypes "github.com/Squirrel-Network/gobotapi/types/raw"
 import "github.com/Squirrel-Network/gobotapi/types"
 import "encoding/json"
 
+// SetStickerPositionInSet Use this method to move a sticker in a set created by the bot to a specific position
+// Returns True on success.
 type SetStickerPositionInSet struct {
 	Position int `json:"position"`
 	Sticker string `json:"sticker"`

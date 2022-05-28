@@ -4,6 +4,9 @@ import "github.com/Squirrel-Network/gobotapi/types"
 import rawTypes "github.com/Squirrel-Network/gobotapi/types/raw"
 import "encoding/json"
 
+// GetMyCommands Use this method to get the current list of the bot's commands for the given scope and user language
+// Returns Array of BotCommand on success
+// If commands aren't set, an empty list is returned.
 type GetMyCommands struct {
 	LanguageCode string `json:"language_code,omitempty"`
 	Scope *types.BotCommandScope `json:"scope,omitempty"`

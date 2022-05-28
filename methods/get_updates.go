@@ -4,6 +4,8 @@ import rawTypes "github.com/Squirrel-Network/gobotapi/types/raw"
 import "github.com/Squirrel-Network/gobotapi/types"
 import "encoding/json"
 
+// GetUpdates Use this method to receive incoming updates using long polling (wiki)
+// An Array of Update objects is returned.
 type GetUpdates struct {
 	AllowedUpdates []string `json:"allowed_updates,omitempty"`
 	Limit int `json:"limit,omitempty"`

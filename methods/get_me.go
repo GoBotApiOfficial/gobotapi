@@ -4,6 +4,9 @@ import rawTypes "github.com/Squirrel-Network/gobotapi/types/raw"
 import "github.com/Squirrel-Network/gobotapi/types"
 import "encoding/json"
 
+// GetMe A simple method for testing your bot's authentication token
+// Requires no parameters
+// Returns basic information about the bot in form of a User object.
 type GetMe struct{}
 
 func (entity *GetMe) Files() map[string]rawTypes.InputFile {

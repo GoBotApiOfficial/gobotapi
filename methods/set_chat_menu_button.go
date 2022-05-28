@@ -4,6 +4,8 @@ import "github.com/Squirrel-Network/gobotapi/types"
 import rawTypes "github.com/Squirrel-Network/gobotapi/types/raw"
 import "encoding/json"
 
+// SetChatMenuButton Use this method to change the bot's menu button in a private chat, or the default menu button
+// Returns True on success.
 type SetChatMenuButton struct {
 	ChatId int64 `json:"chat_id,omitempty"`
 	MenuButton *types.MenuButton `json:"menu_button,omitempty"`

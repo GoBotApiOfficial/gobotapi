@@ -4,6 +4,8 @@ import "github.com/Squirrel-Network/gobotapi/types"
 import rawTypes "github.com/Squirrel-Network/gobotapi/types/raw"
 import "encoding/json"
 
+// EditMessageCaption Use this method to edit captions of messages
+// On success, if the edited message is not an inline message, the edited Message is returned, otherwise True is returned.
 type EditMessageCaption struct {
 	Caption string `json:"caption,omitempty"`
 	CaptionEntities []types.MessageEntity `json:"caption_entities,omitempty"`

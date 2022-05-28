@@ -4,6 +4,8 @@ import rawTypes "github.com/Squirrel-Network/gobotapi/types/raw"
 import "github.com/Squirrel-Network/gobotapi/types"
 import "encoding/json"
 
+// DeleteWebhook Use this method to remove webhook integration if you decide to switch back to getUpdates
+// Returns True on success.
 type DeleteWebhook struct {
 	DropPendingUpdates bool `json:"drop_pending_updates,omitempty"`
 }

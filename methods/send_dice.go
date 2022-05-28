@@ -5,6 +5,8 @@ import "encoding/json"
 import "fmt"
 import "github.com/Squirrel-Network/gobotapi/types"
 
+// SendDice Use this method to send an animated emoji that will display a random value
+// On success, the sent Message is returned.
 type SendDice struct {
 	AllowSendingWithoutReply bool `json:"allow_sending_without_reply,omitempty"`
 	ChatId int64 `json:"chat_id"`

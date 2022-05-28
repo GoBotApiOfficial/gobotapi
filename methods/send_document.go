@@ -5,6 +5,9 @@ import rawTypes "github.com/Squirrel-Network/gobotapi/types/raw"
 import "encoding/json"
 import "fmt"
 
+// SendDocument Use this method to send general files
+// On success, the sent Message is returned
+// Bots can currently send files of any type of up to 50 MB in size, this limit may be changed in the future.
 type SendDocument struct {
 	AllowSendingWithoutReply bool `json:"allow_sending_without_reply,omitempty"`
 	Caption string `json:"caption,omitempty"`

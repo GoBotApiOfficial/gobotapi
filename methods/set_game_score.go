@@ -4,6 +4,9 @@ import rawTypes "github.com/Squirrel-Network/gobotapi/types/raw"
 import "github.com/Squirrel-Network/gobotapi/types"
 import "encoding/json"
 
+// SetGameScore Use this method to set the score of the specified user in a game message
+// On success, if the message is not an inline message, the Message is returned, otherwise True is returned
+// Returns an error, if the new score is not greater than the user's current score in the chat and force is False.
 type SetGameScore struct {
 	ChatId int64 `json:"chat_id,omitempty"`
 	DisableEditMessage bool `json:"disable_edit_message,omitempty"`

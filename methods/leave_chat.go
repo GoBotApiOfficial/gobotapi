@@ -4,6 +4,8 @@ import rawTypes "github.com/Squirrel-Network/gobotapi/types/raw"
 import "github.com/Squirrel-Network/gobotapi/types"
 import "encoding/json"
 
+// LeaveChat Use this method for your bot to leave a group, supergroup or channel
+// Returns True on success.
 type LeaveChat struct {
 	ChatId int64 `json:"chat_id"`
 }

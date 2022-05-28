@@ -1,5 +1,6 @@
 package types
 
+// Update Represents an incoming update.At most one of the optional parameters can be present in any given update.
 type Update struct {
 	CallbackQuery *CallbackQuery `json:"callback_query,omitempty"`
 	ChannelPost *Message `json:"channel_post,omitempty"`

@@ -4,6 +4,8 @@ import "github.com/Squirrel-Network/gobotapi/types"
 import rawTypes "github.com/Squirrel-Network/gobotapi/types/raw"
 import "encoding/json"
 
+// AnswerInlineQuery Use this method to send answers to an inline query
+// On success, True is returned.No more than 50 results per query are allowed.
 type AnswerInlineQuery struct {
 	CacheTime int `json:"cache_time,omitempty"`
 	InlineQueryId string `json:"inline_query_id"`

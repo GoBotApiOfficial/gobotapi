@@ -5,6 +5,8 @@ import rawTypes "github.com/Squirrel-Network/gobotapi/types/raw"
 import "encoding/json"
 import "fmt"
 
+// SendPoll Use this method to send a native poll
+// On success, the sent Message is returned.
 type SendPoll struct {
 	AllowSendingWithoutReply bool `json:"allow_sending_without_reply,omitempty"`
 	AllowsMultipleAnswers bool `json:"allows_multiple_answers,omitempty"`

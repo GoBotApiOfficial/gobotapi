@@ -5,6 +5,8 @@ import "encoding/json"
 import "fmt"
 import "github.com/Squirrel-Network/gobotapi/types"
 
+// SendLocation Use this method to send point on the map
+// On success, the sent Message is returned.
 type SendLocation struct {
 	AllowSendingWithoutReply bool `json:"allow_sending_without_reply,omitempty"`
 	ChatId int64 `json:"chat_id"`

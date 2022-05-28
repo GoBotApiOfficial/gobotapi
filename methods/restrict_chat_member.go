@@ -4,6 +4,10 @@ import "github.com/Squirrel-Network/gobotapi/types"
 import rawTypes "github.com/Squirrel-Network/gobotapi/types/raw"
 import "encoding/json"
 
+// RestrictChatMember Use this method to restrict a user in a supergroup
+// The bot must be an administrator in the supergroup for this to work and must have the appropriate administrator rights
+// Pass True for all permissions to lift restrictions from a user
+// Returns True on success.
 type RestrictChatMember struct {
 	ChatId int64 `json:"chat_id"`
 	Permissions types.ChatPermissions `json:"permissions"`

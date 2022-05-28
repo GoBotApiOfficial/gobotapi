@@ -4,6 +4,12 @@ import "github.com/Squirrel-Network/gobotapi/types"
 import rawTypes "github.com/Squirrel-Network/gobotapi/types/raw"
 import "encoding/json"
 
+// AddStickerToSet Use this method to add a new sticker to a set created by the bot
+// You must use exactly one of the fields png_sticker, tgs_sticker, or webm_sticker
+// Animated stickers can be added to animated sticker sets and only to them
+// Animated sticker sets can have up to 50 stickers
+// Static sticker sets can have up to 120 stickers
+// Returns True on success.
 type AddStickerToSet struct {
 	Emojis string `json:"emojis"`
 	MaskPosition *types.MaskPosition `json:"mask_position,omitempty"`

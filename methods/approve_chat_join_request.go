@@ -4,6 +4,9 @@ import rawTypes "github.com/Squirrel-Network/gobotapi/types/raw"
 import "github.com/Squirrel-Network/gobotapi/types"
 import "encoding/json"
 
+// ApproveChatJoinRequest Use this method to approve a chat join request
+// The bot must be an administrator in the chat for this to work and must have the can_invite_users administrator right
+// Returns True on success.
 type ApproveChatJoinRequest struct {
 	ChatId int64 `json:"chat_id"`
 	UserId int64 `json:"user_id"`

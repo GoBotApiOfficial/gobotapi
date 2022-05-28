@@ -4,6 +4,10 @@ import rawTypes "github.com/Squirrel-Network/gobotapi/types/raw"
 import "github.com/Squirrel-Network/gobotapi/types"
 import "encoding/json"
 
+// GetWebhookInfo Use this method to get current webhook status
+// Requires no parameters
+// On success, returns a WebhookInfo object
+// If the bot is using getUpdates, will return an object with the url field empty.
 type GetWebhookInfo struct{}
 
 func (entity *GetWebhookInfo) Files() map[string]rawTypes.InputFile {

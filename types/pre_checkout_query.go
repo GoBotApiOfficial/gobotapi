@@ -1,5 +1,6 @@
 package types
 
+// PreCheckoutQuery This object contains information about an incoming pre-checkout query.
 type PreCheckoutQuery struct {
 	Currency string `json:"currency"`
 	From User `json:"from"`

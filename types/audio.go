@@ -1,5 +1,6 @@
 package types
 
+// Audio Represents an audio file to be treated as music by the Telegram clients.
 type Audio struct {
 	Duration int `json:"duration"`
 	FileId string `json:"file_id"`

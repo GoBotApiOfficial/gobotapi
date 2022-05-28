@@ -1,5 +1,6 @@
 package types
 
+// Invoice This object contains basic information about an invoice.
 type Invoice struct {
 	Currency string `json:"currency"`
 	Description string `json:"description"`

@@ -4,6 +4,9 @@ import rawTypes "github.com/Squirrel-Network/gobotapi/types/raw"
 import "github.com/Squirrel-Network/gobotapi/types"
 import "encoding/json"
 
+// UnpinAllChatMessages Use this method to clear the list of pinned messages in a chat
+// If the chat is not a private chat, the bot must be an administrator in the chat for this to work and must have the 'can_pin_messages' administrator right in a supergroup or 'can_edit_messages' administrator right in a channel
+// Returns True on success.
 type UnpinAllChatMessages struct {
 	ChatId int64 `json:"chat_id"`
 }

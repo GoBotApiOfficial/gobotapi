@@ -5,6 +5,9 @@ import "github.com/Squirrel-Network/gobotapi/types"
 import "encoding/json"
 import "fmt"
 
+// SendVideoNote As of v.4.0, Telegram clients support rounded square mp4 videos of up to 1 minute long
+// Use this method to send video messages
+// On success, the sent Message is returned.
 type SendVideoNote struct {
 	AllowSendingWithoutReply bool `json:"allow_sending_without_reply,omitempty"`
 	ChatId int64 `json:"chat_id"`

@@ -1,5 +1,6 @@
 package types
 
+// Document Represents a general file (as opposed to photos, voice messages and audio files).
 type Document struct {
 	FileId string `json:"file_id"`
 	FileName string `json:"file_name,omitempty"`

@@ -4,6 +4,8 @@ import rawTypes "github.com/Squirrel-Network/gobotapi/types/raw"
 import "github.com/Squirrel-Network/gobotapi/types"
 import "encoding/json"
 
+// DeleteStickerFromSet Use this method to delete a sticker from a set created by the bot
+// Returns True on success.
 type DeleteStickerFromSet struct {
 	Sticker string `json:"sticker"`
 }

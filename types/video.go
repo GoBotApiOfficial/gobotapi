@@ -1,5 +1,6 @@
 package types
 
+// Video Represents a video file.
 type Video struct {
 	Duration int `json:"duration"`
 	FileId string `json:"file_id"`

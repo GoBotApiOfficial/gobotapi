@@ -1,5 +1,6 @@
 package types
 
+// ChatAdministratorRights Represents the rights of an administrator in a chat.
 type ChatAdministratorRights struct {
 	CanChangeInfo bool `json:"can_change_info"`
 	CanDeleteMessages bool `json:"can_delete_messages"`

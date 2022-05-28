@@ -5,6 +5,9 @@ import "encoding/json"
 import "fmt"
 import "github.com/Squirrel-Network/gobotapi/types"
 
+// SendMediaGroup Use this method to send a group of photos, videos, documents or audios as an album
+// Documents and audio files can be only grouped in an album with messages of the same type
+// On success, an array of Messages that were sent is returned.
 type SendMediaGroup struct {
 	AllowSendingWithoutReply bool `json:"allow_sending_without_reply,omitempty"`
 	ChatId int64 `json:"chat_id"`

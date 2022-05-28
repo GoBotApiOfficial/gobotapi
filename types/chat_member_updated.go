@@ -1,5 +1,6 @@
 package types
 
+// ChatMemberUpdated Represents changes in the status of a chat member.
 type ChatMemberUpdated struct {
 	Chat Chat `json:"chat"`
 	Date int64 `json:"date"`

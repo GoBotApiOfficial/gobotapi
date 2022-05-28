@@ -4,6 +4,8 @@ import rawTypes "github.com/Squirrel-Network/gobotapi/types/raw"
 import "github.com/Squirrel-Network/gobotapi/types"
 import "encoding/json"
 
+// GetMyDefaultAdministratorRights Use this method to get the current default administrator rights of the bot
+// Returns ChatAdministratorRights on success.
 type GetMyDefaultAdministratorRights struct {
 	ForChannels bool `json:"for_channels,omitempty"`
 }

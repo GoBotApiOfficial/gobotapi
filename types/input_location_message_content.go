@@ -1,5 +1,6 @@
 package types
 
+// InputLocationMessageContent Represents the content of a location message to be sent as the result of an inline query.
 type InputLocationMessageContent struct {
 	Heading int `json:"heading,omitempty"`
 	HorizontalAccuracy float64 `json:"horizontal_accuracy,omitempty"`

@@ -4,6 +4,9 @@ import rawTypes "github.com/Squirrel-Network/gobotapi/types/raw"
 import "github.com/Squirrel-Network/gobotapi/types"
 import "encoding/json"
 
+// SetChatDescription Use this method to change the description of a group, a supergroup or a channel
+// The bot must be an administrator in the chat for this to work and must have the appropriate administrator rights
+// Returns True on success.
 type SetChatDescription struct {
 	ChatId int64 `json:"chat_id"`
 	Description string `json:"description,omitempty"`

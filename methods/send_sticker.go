@@ -5,6 +5,8 @@ import "github.com/Squirrel-Network/gobotapi/types"
 import "encoding/json"
 import "fmt"
 
+// SendSticker Use this method to send static .WEBP, animated .TGS, or video .WEBM stickers
+// On success, the sent Message is returned.
 type SendSticker struct {
 	AllowSendingWithoutReply bool `json:"allow_sending_without_reply,omitempty"`
 	ChatId int64 `json:"chat_id"`

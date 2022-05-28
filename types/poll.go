@@ -1,5 +1,6 @@
 package types
 
+// Poll This object contains information about a poll.
 type Poll struct {
 	AllowsMultipleAnswers bool `json:"allows_multiple_answers"`
 	CloseDate int64 `json:"close_date,omitempty"`

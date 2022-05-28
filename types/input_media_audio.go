@@ -4,6 +4,7 @@ import rawTypes "github.com/Squirrel-Network/gobotapi/types/raw"
 import "fmt"
 import "encoding/json"
 
+// InputMediaAudio Represents an audio file to be treated as music to be sent.
 type InputMediaAudio struct {
 	Caption string `json:"caption,omitempty"`
 	CaptionEntities []MessageEntity `json:"caption_entities,omitempty"`

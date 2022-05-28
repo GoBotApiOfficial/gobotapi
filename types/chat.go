@@ -1,5 +1,6 @@
 package types
 
+// Chat Represents a chat.
 type Chat struct {
 	Bio string `json:"bio,omitempty"`
 	CanSetStickerSet bool `json:"can_set_sticker_set,omitempty"`

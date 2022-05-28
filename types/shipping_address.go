@@ -1,5 +1,6 @@
 package types
 
+// ShippingAddress Represents a shipping address.
 type ShippingAddress struct {
 	City string `json:"city"`
 	CountryCode string `json:"country_code"`

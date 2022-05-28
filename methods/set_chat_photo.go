@@ -4,6 +4,10 @@ import rawTypes "github.com/Squirrel-Network/gobotapi/types/raw"
 import "github.com/Squirrel-Network/gobotapi/types"
 import "encoding/json"
 
+// SetChatPhoto Use this method to set a new profile photo for the chat
+// Photos can't be changed for private chats
+// The bot must be an administrator in the chat for this to work and must have the appropriate administrator rights
+// Returns True on success.
 type SetChatPhoto struct {
 	ChatId int64 `json:"chat_id"`
 	Photo rawTypes.InputFile `json:"photo,omitempty"`

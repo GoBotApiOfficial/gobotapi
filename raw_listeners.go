@@ -2,6 +2,7 @@ package gobotapi
 
 import "github.com/Squirrel-Network/gobotapi/types"
 
+
 func (ctx *Client) OnRawUpdate(handler func(update types.Update)) {
 	if ctx.handlers == nil {
 		ctx.handlers = make(map[string][]interface{})

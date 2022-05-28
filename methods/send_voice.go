@@ -5,6 +5,10 @@ import rawTypes "github.com/Squirrel-Network/gobotapi/types/raw"
 import "encoding/json"
 import "fmt"
 
+// SendVoice Use this method to send audio files, if you want Telegram clients to display the file as a playable voice message
+// For this to work, your audio must be in an .OGG file encoded with OPUS (other formats may be sent as Audio or Document)
+// On success, the sent Message is returned
+// Bots can currently send voice messages of up to 50 MB in size, this limit may be changed in the future.
 type SendVoice struct {
 	AllowSendingWithoutReply bool `json:"allow_sending_without_reply,omitempty"`
 	Caption string `json:"caption,omitempty"`

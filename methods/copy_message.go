@@ -5,6 +5,10 @@ import rawTypes "github.com/Squirrel-Network/gobotapi/types/raw"
 import "encoding/json"
 import "fmt"
 
+// CopyMessage Use this method to copy messages of any kind
+// Service messages and invoice messages can't be copied
+// The method is analogous to the method forwardMessage, but the copied message doesn't have a link to the original message
+// Returns the MessageId of the sent message on success.
 type CopyMessage struct {
 	AllowSendingWithoutReply bool `json:"allow_sending_without_reply,omitempty"`
 	Caption string `json:"caption,omitempty"`

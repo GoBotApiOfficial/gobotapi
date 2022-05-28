@@ -4,6 +4,7 @@ import rawTypes "github.com/Squirrel-Network/gobotapi/types/raw"
 import "fmt"
 import "encoding/json"
 
+// InputMediaAnimation Represents an animation file (GIF or H.264/MPEG-4 AVC video without sound) to be sent.
 type InputMediaAnimation struct {
 	Caption string `json:"caption,omitempty"`
 	CaptionEntities []MessageEntity `json:"caption_entities,omitempty"`

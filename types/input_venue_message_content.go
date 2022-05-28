@@ -1,5 +1,6 @@
 package types
 
+// InputVenueMessageContent Represents the content of a venue message to be sent as the result of an inline query.
 type InputVenueMessageContent struct {
 	Address string `json:"address"`
 	FoursquareId string `json:"foursquare_id,omitempty"`

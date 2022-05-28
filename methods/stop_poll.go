@@ -4,6 +4,8 @@ import "github.com/Squirrel-Network/gobotapi/types"
 import rawTypes "github.com/Squirrel-Network/gobotapi/types/raw"
 import "encoding/json"
 
+// StopPoll Use this method to stop a poll which was sent by the bot
+// On success, the stopped Poll is returned.
 type StopPoll struct {
 	ChatId int64 `json:"chat_id"`
 	MessageId int64 `json:"message_id"`

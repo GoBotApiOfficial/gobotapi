@@ -1,5 +1,6 @@
 package types
 
+// ChatInviteLink Represents an invite link for a chat.
 type ChatInviteLink struct {
 	CreatesJoinRequest bool `json:"creates_join_request"`
 	Creator User `json:"creator"`

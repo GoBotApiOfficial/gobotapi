@@ -4,6 +4,9 @@ import "github.com/Squirrel-Network/gobotapi/types"
 import rawTypes "github.com/Squirrel-Network/gobotapi/types/raw"
 import "encoding/json"
 
+// SetMyCommands Use this method to change the list of the bot's commands
+// See https://core.telegram.org/bots#commands for more details about bot commands
+// Returns True on success.
 type SetMyCommands struct {
 	Commands []types.BotCommand `json:"commands,omitempty"`
 	LanguageCode string `json:"language_code,omitempty"`

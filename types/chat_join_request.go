@@ -1,5 +1,6 @@
 package types
 
+// ChatJoinRequest Represents a join request sent to a chat.
 type ChatJoinRequest struct {
 	Bio string `json:"bio,omitempty"`
 	Chat Chat `json:"chat"`

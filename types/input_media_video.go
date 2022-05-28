@@ -4,6 +4,7 @@ import rawTypes "github.com/Squirrel-Network/gobotapi/types/raw"
 import "fmt"
 import "encoding/json"
 
+// InputMediaVideo Represents a video to be sent.
 type InputMediaVideo struct {
 	Caption string `json:"caption,omitempty"`
 	CaptionEntities []MessageEntity `json:"caption_entities,omitempty"`

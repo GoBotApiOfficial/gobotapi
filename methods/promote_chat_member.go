@@ -4,6 +4,10 @@ import rawTypes "github.com/Squirrel-Network/gobotapi/types/raw"
 import "github.com/Squirrel-Network/gobotapi/types"
 import "encoding/json"
 
+// PromoteChatMember Use this method to promote or demote a user in a supergroup or a channel
+// The bot must be an administrator in the chat for this to work and must have the appropriate administrator rights
+// Pass False for all boolean parameters to demote a user
+// Returns True on success.
 type PromoteChatMember struct {
 	CanChangeInfo bool `json:"can_change_info,omitempty"`
 	CanDeleteMessages bool `json:"can_delete_messages,omitempty"`

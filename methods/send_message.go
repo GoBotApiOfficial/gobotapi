@@ -5,6 +5,8 @@ import rawTypes "github.com/Squirrel-Network/gobotapi/types/raw"
 import "encoding/json"
 import "fmt"
 
+// SendMessage Use this method to send text messages
+// On success, the sent Message is returned.
 type SendMessage struct {
 	AllowSendingWithoutReply bool `json:"allow_sending_without_reply,omitempty"`
 	ChatId int64 `json:"chat_id"`

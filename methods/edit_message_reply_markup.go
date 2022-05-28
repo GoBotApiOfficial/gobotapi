@@ -4,6 +4,8 @@ import "github.com/Squirrel-Network/gobotapi/types"
 import rawTypes "github.com/Squirrel-Network/gobotapi/types/raw"
 import "encoding/json"
 
+// EditMessageReplyMarkup Use this method to edit only the reply markup of messages
+// On success, if the edited message is not an inline message, the edited Message is returned, otherwise True is returned.
 type EditMessageReplyMarkup struct {
 	ChatId int64 `json:"chat_id,omitempty"`
 	InlineMessageId string `json:"inline_message_id,omitempty"`

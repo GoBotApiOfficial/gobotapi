@@ -4,6 +4,8 @@ import "github.com/Squirrel-Network/gobotapi/types"
 import rawTypes "github.com/Squirrel-Network/gobotapi/types/raw"
 import "encoding/json"
 
+// AnswerWebAppQuery Use this method to set the result of an interaction with a Web App and send a corresponding message on behalf of the user to the chat from which the query originated
+// On success, a SentWebAppMessage object is returned.
 type AnswerWebAppQuery struct {
 	Result types.InlineQueryResult `json:"result"`
 	WebAppQueryId string `json:"web_app_query_id"`

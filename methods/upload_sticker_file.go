@@ -4,6 +4,8 @@ import rawTypes "github.com/Squirrel-Network/gobotapi/types/raw"
 import "github.com/Squirrel-Network/gobotapi/types"
 import "encoding/json"
 
+// UploadStickerFile Use this method to upload a .PNG file with a sticker for later use in createNewStickerSet and addStickerToSet methods (can be used multiple times)
+// Returns the uploaded File on success.
 type UploadStickerFile struct {
 	PngSticker rawTypes.InputFile `json:"png_sticker,omitempty"`
 	UserId int64 `json:"user_id"`

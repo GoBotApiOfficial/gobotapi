@@ -4,6 +4,8 @@ import rawTypes "github.com/Squirrel-Network/gobotapi/types/raw"
 import "github.com/Squirrel-Network/gobotapi/types"
 import "encoding/json"
 
+// GetChatMenuButton Use this method to get the current value of the bot's menu button in a private chat, or the default menu button
+// Returns MenuButton on success.
 type GetChatMenuButton struct {
 	ChatId int64 `json:"chat_id,omitempty"`
 }

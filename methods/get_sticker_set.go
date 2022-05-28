@@ -4,6 +4,8 @@ import rawTypes "github.com/Squirrel-Network/gobotapi/types/raw"
 import "github.com/Squirrel-Network/gobotapi/types"
 import "encoding/json"
 
+// GetStickerSet Use this method to get a sticker set
+// On success, a StickerSet object is returned.
 type GetStickerSet struct {
 	Name string `json:"name"`
 }

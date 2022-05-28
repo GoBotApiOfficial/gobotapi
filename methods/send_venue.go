@@ -5,6 +5,8 @@ import "encoding/json"
 import "fmt"
 import "github.com/Squirrel-Network/gobotapi/types"
 
+// SendVenue Use this method to send information about a venue
+// On success, the sent Message is returned.
 type SendVenue struct {
 	Address string `json:"address"`
 	AllowSendingWithoutReply bool `json:"allow_sending_without_reply,omitempty"`

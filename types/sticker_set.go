@@ -1,5 +1,6 @@
 package types
 
+// StickerSet Represents a sticker set.
 type StickerSet struct {
 	ContainsMasks bool `json:"contains_masks"`
 	IsAnimated bool `json:"is_animated"`

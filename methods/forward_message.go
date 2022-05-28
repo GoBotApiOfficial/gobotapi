@@ -4,6 +4,9 @@ import rawTypes "github.com/Squirrel-Network/gobotapi/types/raw"
 import "github.com/Squirrel-Network/gobotapi/types"
 import "encoding/json"
 
+// ForwardMessage Use this method to forward messages of any kind
+// Service messages can't be forwarded
+// On success, the sent Message is returned.
 type ForwardMessage struct {
 	ChatId int64 `json:"chat_id"`
 	DisableNotification bool `json:"disable_notification,omitempty"`

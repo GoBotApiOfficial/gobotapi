@@ -5,6 +5,8 @@ import rawTypes "github.com/Squirrel-Network/gobotapi/types/raw"
 import "encoding/json"
 import "fmt"
 
+// SendPhoto Use this method to send photos
+// On success, the sent Message is returned.
 type SendPhoto struct {
 	AllowSendingWithoutReply bool `json:"allow_sending_without_reply,omitempty"`
 	Caption string `json:"caption,omitempty"`

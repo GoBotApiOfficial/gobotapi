@@ -4,6 +4,10 @@ import "github.com/Squirrel-Network/gobotapi/types"
 import rawTypes "github.com/Squirrel-Network/gobotapi/types/raw"
 import "encoding/json"
 
+// CreateNewStickerSet Use this method to create a new sticker set owned by a user
+// The bot will be able to edit the sticker set thus created
+// You must use exactly one of the fields png_sticker, tgs_sticker, or webm_sticker
+// Returns True on success.
 type CreateNewStickerSet struct {
 	ContainsMasks bool `json:"contains_masks,omitempty"`
 	Emojis string `json:"emojis"`

@@ -1,5 +1,6 @@
 package types
 
+// SuccessfulPayment This object contains basic information about a successful payment.
 type SuccessfulPayment struct {
 	Currency string `json:"currency"`
 	InvoicePayload string `json:"invoice_payload"`

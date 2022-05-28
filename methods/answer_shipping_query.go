@@ -4,6 +4,9 @@ import "github.com/Squirrel-Network/gobotapi/types"
 import rawTypes "github.com/Squirrel-Network/gobotapi/types/raw"
 import "encoding/json"
 
+// AnswerShippingQuery If you sent an invoice requesting a shipping address and the parameter is_flexible was specified, the Bot API will send an Update with a shipping_query field to the bot
+// Use this method to reply to shipping queries
+// On success, True is returned.
 type AnswerShippingQuery struct {
 	ErrorMessage string `json:"error_message,omitempty"`
 	Ok bool `json:"ok"`

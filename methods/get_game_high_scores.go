@@ -4,6 +4,9 @@ import rawTypes "github.com/Squirrel-Network/gobotapi/types/raw"
 import "github.com/Squirrel-Network/gobotapi/types"
 import "encoding/json"
 
+// GetGameHighScores Use this method to get data for high score tables
+// Will return the score of the specified user and several of their neighbors in a game
+// On success, returns an Array of GameHighScore objects.
 type GetGameHighScores struct {
 	ChatId int64 `json:"chat_id,omitempty"`
 	InlineMessageId string `json:"inline_message_id,omitempty"`

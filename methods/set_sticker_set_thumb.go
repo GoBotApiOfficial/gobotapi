@@ -4,6 +4,10 @@ import rawTypes "github.com/Squirrel-Network/gobotapi/types/raw"
 import "github.com/Squirrel-Network/gobotapi/types"
 import "encoding/json"
 
+// SetStickerSetThumb Use this method to set the thumbnail of a sticker set
+// Animated thumbnails can be set for animated sticker sets only
+// Video thumbnails can be set only for video sticker sets only
+// Returns True on success.
 type SetStickerSetThumb struct {
 	Name string `json:"name"`
 	Thumb rawTypes.InputFile `json:"thumb,omitempty"`

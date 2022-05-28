@@ -4,6 +4,8 @@ import rawTypes "github.com/Squirrel-Network/gobotapi/types/raw"
 import "github.com/Squirrel-Network/gobotapi/types"
 import "encoding/json"
 
+// GetUserProfilePhotos Use this method to get a list of profile pictures for a user
+// Returns a UserProfilePhotos object.
 type GetUserProfilePhotos struct {
 	Limit int `json:"limit,omitempty"`
 	Offset int `json:"offset,omitempty"`

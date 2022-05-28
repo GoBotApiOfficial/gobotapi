@@ -4,6 +4,7 @@ import rawTypes "github.com/Squirrel-Network/gobotapi/types/raw"
 import "fmt"
 import "encoding/json"
 
+// InputMediaDocument Represents a general file to be sent.
 type InputMediaDocument struct {
 	Caption string `json:"caption,omitempty"`
 	CaptionEntities []MessageEntity `json:"caption_entities,omitempty"`

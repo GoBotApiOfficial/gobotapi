@@ -1,5 +1,7 @@
 package types
 
+// MessageEntity Represents one special entity in a text message
+// For example, hashtags, usernames, URLs, etc.
 type MessageEntity struct {
 	Language string `json:"language,omitempty"`
 	Length int `json:"length"`

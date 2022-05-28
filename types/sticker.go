@@ -1,5 +1,6 @@
 package types
 
+// Sticker Represents a sticker.
 type Sticker struct {
 	Emoji string `json:"emoji,omitempty"`
 	FileId string `json:"file_id"`

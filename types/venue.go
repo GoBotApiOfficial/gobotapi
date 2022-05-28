@@ -1,5 +1,6 @@
 package types
 
+// Venue Represents a venue.
 type Venue struct {
 	Address string `json:"address"`
 	FoursquareId string `json:"foursquare_id,omitempty"`

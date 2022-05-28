@@ -1,5 +1,6 @@
 package types
 
+// Voice Represents a voice note.
 type Voice struct {
 	Duration int `json:"duration"`
 	FileId string `json:"file_id"`

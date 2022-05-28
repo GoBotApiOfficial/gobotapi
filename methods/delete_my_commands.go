@@ -4,6 +4,9 @@ import "github.com/Squirrel-Network/gobotapi/types"
 import rawTypes "github.com/Squirrel-Network/gobotapi/types/raw"
 import "encoding/json"
 
+// DeleteMyCommands Use this method to delete the list of the bot's commands for the given scope and user language
+// After deletion, higher level commands will be shown to affected users
+// Returns True on success.
 type DeleteMyCommands struct {
 	LanguageCode string `json:"language_code,omitempty"`
 	Scope *types.BotCommandScope `json:"scope,omitempty"`

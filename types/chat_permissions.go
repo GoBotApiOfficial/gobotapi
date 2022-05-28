@@ -1,5 +1,6 @@
 package types
 
+// ChatPermissions Describes actions that a non-administrator user is allowed to take in a chat.
 type ChatPermissions struct {
 	CanAddWebPagePreviews bool `json:"can_add_web_page_previews,omitempty"`
 	CanChangeInfo bool `json:"can_change_info,omitempty"`

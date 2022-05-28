@@ -5,6 +5,9 @@ import "github.com/Squirrel-Network/gobotapi/types"
 import "encoding/json"
 import "fmt"
 
+// SendAnimation Use this method to send animation files (GIF or H.264/MPEG-4 AVC video without sound)
+// On success, the sent Message is returned
+// Bots can currently send animation files of up to 50 MB in size, this limit may be changed in the future.
 type SendAnimation struct {
 	AllowSendingWithoutReply bool `json:"allow_sending_without_reply,omitempty"`
 	Animation rawTypes.InputFile `json:"animation,omitempty"`

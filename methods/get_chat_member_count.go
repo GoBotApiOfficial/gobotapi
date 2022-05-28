@@ -4,6 +4,8 @@ import rawTypes "github.com/Squirrel-Network/gobotapi/types/raw"
 import "github.com/Squirrel-Network/gobotapi/types"
 import "encoding/json"
 
+// GetChatMemberCount Use this method to get the number of members in a chat
+// Returns Int on success.
 type GetChatMemberCount struct {
 	ChatId int64 `json:"chat_id"`
 }

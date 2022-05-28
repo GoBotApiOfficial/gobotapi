@@ -4,6 +4,9 @@ import "github.com/Squirrel-Network/gobotapi/types"
 import rawTypes "github.com/Squirrel-Network/gobotapi/types/raw"
 import "encoding/json"
 
+// EditMessageLiveLocation Use this method to edit live location messages
+// A location can be edited until its live_period expires or editing is explicitly disabled by a call to stopMessageLiveLocation
+// On success, if the edited message is not an inline message, the edited Message is returned, otherwise True is returned.
 type EditMessageLiveLocation struct {
 	ChatId int64 `json:"chat_id,omitempty"`
 	Heading int `json:"heading,omitempty"`

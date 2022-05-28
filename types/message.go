@@ -1,5 +1,6 @@
 package types
 
+// Message Represents a message.
 type Message struct {
 	Animation *Animation `json:"animation,omitempty"`
 	Audio *Audio `json:"audio,omitempty"`

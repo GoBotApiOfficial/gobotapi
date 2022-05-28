@@ -1,5 +1,6 @@
 package types
 
+// VideoNote Represents a video message (available in Telegram apps as of v.4.0).
 type VideoNote struct {
 	Duration int `json:"duration"`
 	FileId string `json:"file_id"`

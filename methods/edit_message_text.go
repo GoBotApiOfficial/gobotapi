@@ -4,6 +4,8 @@ import "github.com/Squirrel-Network/gobotapi/types"
 import rawTypes "github.com/Squirrel-Network/gobotapi/types/raw"
 import "encoding/json"
 
+// EditMessageText Use this method to edit text and game messages
+// On success, if the edited message is not an inline message, the edited Message is returned, otherwise True is returned.
 type EditMessageText struct {
 	ChatId int64 `json:"chat_id,omitempty"`
 	DisableWebPagePreview bool `json:"disable_web_page_preview,omitempty"`
