@@ -11,7 +11,6 @@ type Client struct {
 	BotApiConfig    Config
 	Token           string
 	NoUpdates       bool
-	DownloadPath    string
 	apiURL          string
 	isStarted       bool
 	client          *http.Client
