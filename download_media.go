@@ -2,10 +2,13 @@
 
 package gobotapi
 
-import "github.com/Squirrel-Network/gobotapi/types"
+import (
+	"errors"
+	"github.com/Squirrel-Network/gobotapi/types"
+)
 
 
-func (ctx *Client) DownloadMessage(message types.Message, filePath string) error {
+func (ctx *Client) DownloadMedia(message types.Message, filePath string) error {
 	if message.Animation != nil {
 		return ctx.DownloadFile(message.Animation.FileID, filePath)
 	}
@@ -14,6 +17,15 @@ func (ctx *Client) DownloadMessage(message types.Message, filePath string) error
 	}
 	if message.Document != nil {
 		return ctx.DownloadFile(message.Document.FileID, filePath)
+	}
+	if len(message.Photo) > 0 {
+		var bestQuality types.PhotoSize
+		for _, file := range message.Photo {
+			if file.Width > bestQuality.Width {
+				bestQuality = file
+			}
+		}
+		return ctx.DownloadFile(bestQuality.FileID, filePath)
 	}
 	if message.Sticker != nil {
 		return ctx.DownloadFile(message.Sticker.FileID, filePath)
@@ -27,5 +39,14 @@ func (ctx *Client) DownloadMessage(message types.Message, filePath string) error
 	if message.Voice != nil {
 		return ctx.DownloadFile(message.Voice.FileID, filePath)
 	}
-	return nil
+	if len(message.NewChatPhoto) > 0 {
+		var bestQuality types.PhotoSize
+		for _, file := range message.NewChatPhoto {
+			if file.Width > bestQuality.Width {
+				bestQuality = file
+			}
+		}
+		return ctx.DownloadFile(bestQuality.FileID, filePath)
+	}
+	return errors.New("no files found")
 }

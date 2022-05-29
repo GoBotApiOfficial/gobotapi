@@ -6,6 +6,7 @@ import (
 	"github.com/Squirrel-Network/gobotapi/methods"
 	"github.com/Squirrel-Network/gobotapi/types"
 	"log"
+	"net/http"
 	"time"
 )
 
@@ -14,6 +15,7 @@ func (ctx *Client) Run() {
 	if ctx.isStarted {
 		return
 	}
+	ctx.client = &http.Client{}
 	ctx.apiURL = ctx.BotApiConfig.link()
 	if ctx.PollingTimeout == 0 {
 		ctx.PollingTimeout = time.Second * 15

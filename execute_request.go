@@ -11,7 +11,6 @@ import (
 )
 
 func (ctx *Client) executeRequest(url, method string, data map[string]string, files map[string]rawTypes.InputFile) ([]byte, error) {
-	client := http.Client{}
 	var body io.Reader
 	var multiPartWriter *multipart.Writer
 	if len(data) > 0 || len(files) > 0 {
@@ -54,7 +53,7 @@ func (ctx *Client) executeRequest(url, method string, data map[string]string, fi
 	if multiPartWriter != nil {
 		req.Header.Set("Content-Type", multiPartWriter.FormDataContentType())
 	}
-	do, err := client.Do(req)
+	do, err := ctx.client.Do(req)
 	if err != nil {
 		return nil, err
 	}

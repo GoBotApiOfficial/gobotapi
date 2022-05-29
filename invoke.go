@@ -11,6 +11,7 @@ func (ctx *Client) Invoke(method rawTypes.Method) (*rawTypes.Result, error) {
 	if !ctx.isStarted {
 		return nil, errors.New("bot is not started")
 	}
+	files := method.Files()
 	form, err := utils.GetForm(method)
 	if err != nil {
 		return nil, err
@@ -24,7 +25,7 @@ func (ctx *Client) Invoke(method rawTypes.Method) (*rawTypes.Result, error) {
 		),
 		"POST",
 		form,
-		method.Files(),
+		files,
 	)
 	return utils.ParseResult(rawResult, err, method)
 }

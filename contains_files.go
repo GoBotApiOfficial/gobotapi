@@ -9,8 +9,10 @@ func ContainsFiles(message types.Message) bool {
 	return message.Animation != nil || 
 		message.Audio != nil || 
 		message.Document != nil || 
+		len(message.Photo) > 0 || 
 		message.Sticker != nil || 
 		message.Video != nil || 
 		message.VideoNote != nil || 
-		message.Voice != nil
+		message.Voice != nil || 
+		len(message.NewChatPhoto) > 0
 }
