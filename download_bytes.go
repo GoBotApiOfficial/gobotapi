@@ -13,7 +13,7 @@ func (ctx *Client) DownloadBytes(fileId string) ([]byte, error) {
 	})
 	if err != nil {
 		return nil, err
-	} else if ctx.BotApiConfig.HostName != "api.telegram.org" {
+	} else if len(ctx.BotApiConfig.HostName) > 0 && ctx.BotApiConfig.HostName != "api.telegram.org" {
 		return nil, errors.New("download is supported only on api.telegram.org")
 	}
 	return ctx.executeRequest(

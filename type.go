@@ -9,6 +9,7 @@ type Client struct {
 	PollingTimeout  time.Duration
 	BotApiConfig    Config
 	Token           string
+	NoUpdates       bool
 	apiURL          string
 	isStarted       bool
 	handlers        map[string][]interface{}

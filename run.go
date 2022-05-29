@@ -29,6 +29,9 @@ func (ctx *Client) Run() {
 	ctx.botID = res.Result.(types.User).ID
 	ctx.botUsername = res.Result.(types.User).Username
 	showNotice()
+	if ctx.NoUpdates {
+		return
+	}
 	for {
 		getUpdates := &methods.GetUpdates {
 			Timeout: int(ctx.PollingTimeout.Seconds()),
