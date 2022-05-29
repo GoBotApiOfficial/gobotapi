@@ -39,7 +39,7 @@ func (entity *SendAnimation) Files() map[string]rawTypes.InputFile {
 	switch entity.Thumb.(type) {
 		case types.InputFile:
 			files["thumb"] = entity.Thumb
-			entity.Thumb = types.InputURL("attach://thumb")
+			entity.Thumb = types.InputPath("attach://thumb")
 	}
 	return files
 }

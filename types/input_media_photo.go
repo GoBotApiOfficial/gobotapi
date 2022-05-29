@@ -26,7 +26,7 @@ func (entity *InputMediaPhoto) Files() map[string]rawTypes.InputFile {
 }
 
 func (entity *InputMediaPhoto) SetAttachment(attach string) {
-	entity.Media = InputURL(fmt.Sprintf("attach://%s", attach))
+	entity.Media = InputPath(fmt.Sprintf("attach://%s", attach))
 }
 
 func (entity *InputMediaPhoto) SetAttachmentThumb(_ string) {

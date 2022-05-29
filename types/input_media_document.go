@@ -32,11 +32,11 @@ func (entity *InputMediaDocument) Files() map[string]rawTypes.InputFile {
 }
 
 func (entity *InputMediaDocument) SetAttachment(attach string) {
-	entity.Media = InputURL(fmt.Sprintf("attach://%s", attach))
+	entity.Media = InputPath(fmt.Sprintf("attach://%s", attach))
 }
 
 func (entity *InputMediaDocument) SetAttachmentThumb(attach string) {
-	entity.Thumb = InputURL(fmt.Sprintf("attach://%s", attach))
+	entity.Thumb = InputPath(fmt.Sprintf("attach://%s", attach))
 }
 
 func (entity InputMediaDocument) MarshalJSON() ([]byte, error) {

@@ -34,11 +34,11 @@ func (entity *InputMediaAudio) Files() map[string]rawTypes.InputFile {
 }
 
 func (entity *InputMediaAudio) SetAttachment(attach string) {
-	entity.Media = InputURL(fmt.Sprintf("attach://%s", attach))
+	entity.Media = InputPath(fmt.Sprintf("attach://%s", attach))
 }
 
 func (entity *InputMediaAudio) SetAttachmentThumb(attach string) {
-	entity.Thumb = InputURL(fmt.Sprintf("attach://%s", attach))
+	entity.Thumb = InputPath(fmt.Sprintf("attach://%s", attach))
 }
 
 func (entity InputMediaAudio) MarshalJSON() ([]byte, error) {

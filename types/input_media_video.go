@@ -35,11 +35,11 @@ func (entity *InputMediaVideo) Files() map[string]rawTypes.InputFile {
 }
 
 func (entity *InputMediaVideo) SetAttachment(attach string) {
-	entity.Media = InputURL(fmt.Sprintf("attach://%s", attach))
+	entity.Media = InputPath(fmt.Sprintf("attach://%s", attach))
 }
 
 func (entity *InputMediaVideo) SetAttachmentThumb(attach string) {
-	entity.Thumb = InputURL(fmt.Sprintf("attach://%s", attach))
+	entity.Thumb = InputPath(fmt.Sprintf("attach://%s", attach))
 }
 
 func (entity InputMediaVideo) MarshalJSON() ([]byte, error) {
