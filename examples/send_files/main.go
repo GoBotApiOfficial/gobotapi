@@ -26,7 +26,17 @@ func main() {
 	// Send a file from a URL
 	client.Invoke(&methods.SendDocument{
 		ChatID:   -100123456789,
-		Document: types.InputURL("https://upload.wikimedia.org/wikipedia/commons/1/16/Fox_-_British_Wildlife_Centre_%2817429406401%29.jpg"),
+		Document: types.InputPath("https://upload.wikimedia.org/wikipedia/commons/1/16/Fox_-_British_Wildlife_Centre_%2817429406401%29.jpg"),
+	})
+	// Send a file from ID
+	client.Invoke(&methods.SendDocument{
+		ChatID:   -100123456789,
+		Document: types.InputPath("INPUT_FILE_ID"),
+	})
+	// Send a file from Local BotAPI File
+	client.Invoke(&methods.SendDocument{
+		ChatID:   -100123456789,
+		Document: types.InputPath("file://INPUT_FILE_PATH"),
 	})
 	// Send multiple files
 	client.Invoke(&methods.SendMediaGroup{
