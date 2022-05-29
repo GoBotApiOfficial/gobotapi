@@ -2,7 +2,7 @@ package utils
 
 import (
 	"encoding/json"
-	"fmt"
+	"errors"
 	rawTypes "github.com/Squirrel-Network/gobotapi/types/raw"
 )
 
@@ -16,7 +16,7 @@ func ParseResult(rawResult []byte, err error, method rawTypes.Method) (*rawTypes
 		if errMarshal != nil {
 			return nil, err
 		}
-		return nil, fmt.Errorf("%s", result.Description)
+		return nil, errors.New(result.Description)
 	}
 	methodResult, err := method.ParseResult(rawResult)
 	if err != nil {

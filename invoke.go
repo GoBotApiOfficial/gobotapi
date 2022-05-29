@@ -1,6 +1,7 @@
 package gobotapi
 
 import (
+    "errors"
 	"fmt"
 	rawTypes "github.com/Squirrel-Network/gobotapi/types/raw"
 	"github.com/Squirrel-Network/gobotapi/utils"
@@ -8,7 +9,7 @@ import (
 
 func (ctx *Client) Invoke(method rawTypes.Method) (*rawTypes.Result, error) {
 	if !ctx.isStarted {
-		return nil, fmt.Errorf("bot is not started")
+		return nil, errors.New("bot is not started")
 	}
 	form, err := utils.GetForm(method)
 	if err != nil {
