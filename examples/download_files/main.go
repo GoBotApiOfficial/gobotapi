@@ -28,7 +28,7 @@ func main() {
 		// Check if the message contains any types of file
 		if gobotapi.ContainsFiles(message) {
 			// Download the file
-			err := client.DownloadMessage(message, "PATH_TO_FILE")
+			err := client.DownloadMedia(message, "PATH_TO_FILE")
 			if err != nil {
 				// Handle error
 				panic(err)
