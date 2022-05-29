@@ -22,6 +22,7 @@ func (ctx *Client) Invoke(method rawTypes.Method) (*rawTypes.Result, error) {
 			ctx.Token,
 			method.MethodName(),
 		),
+		"POST",
 		form,
 		method.Files(),
 	)

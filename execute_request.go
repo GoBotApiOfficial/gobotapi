@@ -10,7 +10,7 @@ import (
 	"net/http"
 )
 
-func (ctx *Client) executeRequest(url string, data map[string]string, files map[string]rawTypes.InputFile) ([]byte, error) {
+func (ctx *Client) executeRequest(url, method string, data map[string]string, files map[string]rawTypes.InputFile) ([]byte, error) {
 	client := http.Client{}
 	var body io.Reader
 	var multiPartWriter *multipart.Writer
@@ -46,7 +46,7 @@ func (ctx *Client) executeRequest(url string, data map[string]string, files map[
 			}
 		}
 	}()
-	req, err := http.NewRequestWithContext(ctxConn, "POST", url, body)
+	req, err := http.NewRequestWithContext(ctxConn, method, url, body)
 	ctx.requestsContext = append(ctx.requestsContext, cancelableContext)
 	if err != nil {
 		return nil, err

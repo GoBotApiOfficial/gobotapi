@@ -23,6 +23,7 @@ func (ctx *Client) DownloadBytes(fileId string) ([]byte, error) {
 			ctx.Token,
 			invoke.Result.(types.File).FilePath,
 		),
+		"GET",
 		nil,
 		nil,
 	)
