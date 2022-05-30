@@ -23,7 +23,7 @@ func main() {
 			Bytes: dat,
 		},
 	})
-	// Send a file from a URL
+	// Send a file from an URL
 	client.Invoke(&methods.SendDocument{
 		ChatID:   -100123456789,
 		Document: types.InputPath("https://upload.wikimedia.org/wikipedia/commons/1/16/Fox_-_British_Wildlife_Centre_%2817429406401%29.jpg"),
