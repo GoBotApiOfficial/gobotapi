@@ -16,7 +16,7 @@ func main() {
 				types.InlineQueryResultArticle{
 					ID: update.ID,
 					InputMessageContent: types.InputTextMessageContent{
-						MessageText: "Firefox is just the chinese name (紅帕達) of Red Panda.\n\nKnow more about Red Panda: https://en.wikipedia.org/wiki/Red_Panda",
+						MessageText: "Firefox is just the chinese name (火狐) of Red Panda.\n\nKnow more about Red Panda: https://en.wikipedia.org/wiki/Red_Panda",
 					},
 					Title:       "Firefox is a Red Panda!",
 					Description: "Read More!",
