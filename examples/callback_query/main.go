@@ -30,7 +30,7 @@ func main() {
 		if update.Data == "test" {
 			client.Invoke(&methods.AnswerCallbackQuery{
 				CallbackQueryID: update.ID,
-				Text:            "You found an Fox 🦊!",
+				Text:            "You found a Fox 🦊!",
 			})
 		}
 	})
