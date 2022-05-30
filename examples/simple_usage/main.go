@@ -26,6 +26,6 @@ func main() {
 		// Print the message result
 		fmt.Println(message)
 	}
-	// Stop the bot for close all connections
+	// Stop the bot to close all the connections
 	client.Stop()
 }
