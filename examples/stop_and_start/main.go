@@ -11,7 +11,7 @@ func main() {
 	// Add listener to receive only stop commands with the default alias
 	client.OnCommand("stop", nil, func(update types.Message) {
 		fmt.Println(fmt.Sprintf("Stop command received from %d", update.Chat.ID))
-		// Stop the bot and close all connections
+		// Stop the bot and close all the connections
 		client.Stop()
 	})
 	// Start and idle the bot
