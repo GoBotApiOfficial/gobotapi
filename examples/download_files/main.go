@@ -24,7 +24,7 @@ func main() {
 	}
 	log.Println(bytes)
 	// Download a file from Message and save it to outputPath
-	client.OnMessage(func(message types.Message) {
+	client.OnMessage(func(client gobotapi.Client, message types.Message) {
 		// Check if the message contains any types of file
 		if gobotapi.ContainsFiles(message) {
 			// Download the file

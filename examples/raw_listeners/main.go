@@ -10,7 +10,7 @@ import (
 func main() {
 	client := gobotapi.NewClient("YOUR_TOKEN")
 	// Add listener to messages
-	client.OnMessage(func(update types.Message) {
+	client.OnMessage(func(client gobotapi.Client, update types.Message) {
 		_, err := client.Invoke(&methods.SendMessage{
 			ChatID: update.Chat.ID,
 			Text:   "Hello, I'm a bot!",
@@ -21,7 +21,7 @@ func main() {
 		}
 	})
 	// Add listener to receive all updates
-	client.OnRawUpdate(func(update types.Update) {
+	client.OnRawUpdate(func(client gobotapi.Client, update types.Update) {
 		// Print the update
 		fmt.Println(update)
 	})

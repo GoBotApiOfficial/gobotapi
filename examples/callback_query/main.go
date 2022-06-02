@@ -9,7 +9,7 @@ import (
 func main() {
 	client := gobotapi.NewClient("YOUR_TOKEN")
 	// Add listener to start command
-	client.OnCommand("start", nil, func(update types.Message) {
+	client.OnCommand("start", nil, func(client gobotapi.Client, update types.Message) {
 		client.Invoke(&methods.SendMessage{
 			ChatID: update.Chat.ID,
 			Text:   "Hello, I'm a bot!",
@@ -26,7 +26,7 @@ func main() {
 		})
 	})
 	// Add listener to receive callback query
-	client.OnCallbackQuery(func(update types.CallbackQuery) {
+	client.OnCallbackQuery(func(client gobotapi.Client, update types.CallbackQuery) {
 		if update.Data == "test" {
 			client.Invoke(&methods.AnswerCallbackQuery{
 				CallbackQueryID: update.ID,

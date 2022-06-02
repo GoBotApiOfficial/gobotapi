@@ -9,7 +9,7 @@ import (
 func main() {
 	client := gobotapi.NewClient("YOUR_TOKEN")
 	// Add listener when a user uses the bot inline
-	client.OnInlineQuery(func(update types.InlineQuery) {
+	client.OnInlineQuery(func(client gobotapi.Client, update types.InlineQuery) {
 		_, err := client.Invoke(&methods.AnswerInlineQuery{
 			InlineQueryID: update.ID,
 			Results: []types.InlineQueryResult{
