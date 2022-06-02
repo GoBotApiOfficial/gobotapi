@@ -52,76 +52,76 @@ func (ctx *Client) Run() {
 		for _, update := range updates {
 			ctx.lastUpdateID = int(update.UpdateID) + 1
 			for _, x0 := range ctx.handlers["raw"] {
-				go x0.(func(types.Update))(update)
+				go x0.(func(Client, types.Update))(*ctx, update)
 			}
 			if update.Message != nil {
 				for _, x0 := range ctx.handlers["message"] {
-					go x0.(func(types.Message))(*update.Message)
+					go x0.(func(Client, types.Message))(*ctx, *update.Message)
 				}
 			}
 			if update.EditedMessage != nil {
 				for _, x0 := range ctx.handlers["edited_message"] {
-					go x0.(func(types.Message))(*update.EditedMessage)
+					go x0.(func(Client, types.Message))(*ctx, *update.EditedMessage)
 				}
 			}
 			if update.ChannelPost != nil {
 				for _, x0 := range ctx.handlers["channel_post"] {
-					go x0.(func(types.Message))(*update.ChannelPost)
+					go x0.(func(Client, types.Message))(*ctx, *update.ChannelPost)
 				}
 			}
 			if update.EditedChannelPost != nil {
 				for _, x0 := range ctx.handlers["edited_channel_post"] {
-					go x0.(func(types.Message))(*update.EditedChannelPost)
+					go x0.(func(Client, types.Message))(*ctx, *update.EditedChannelPost)
 				}
 			}
 			if update.InlineQuery != nil {
 				for _, x0 := range ctx.handlers["inline_query"] {
-					go x0.(func(types.InlineQuery))(*update.InlineQuery)
+					go x0.(func(Client, types.InlineQuery))(*ctx, *update.InlineQuery)
 				}
 			}
 			if update.ChosenInlineResult != nil {
 				for _, x0 := range ctx.handlers["chosen_inline_result"] {
-					go x0.(func(types.ChosenInlineResult))(*update.ChosenInlineResult)
+					go x0.(func(Client, types.ChosenInlineResult))(*ctx, *update.ChosenInlineResult)
 				}
 			}
 			if update.CallbackQuery != nil {
 				for _, x0 := range ctx.handlers["callback_query"] {
-					go x0.(func(types.CallbackQuery))(*update.CallbackQuery)
+					go x0.(func(Client, types.CallbackQuery))(*ctx, *update.CallbackQuery)
 				}
 			}
 			if update.ShippingQuery != nil {
 				for _, x0 := range ctx.handlers["shipping_query"] {
-					go x0.(func(types.ShippingQuery))(*update.ShippingQuery)
+					go x0.(func(Client, types.ShippingQuery))(*ctx, *update.ShippingQuery)
 				}
 			}
 			if update.PreCheckoutQuery != nil {
 				for _, x0 := range ctx.handlers["pre_checkout_query"] {
-					go x0.(func(types.PreCheckoutQuery))(*update.PreCheckoutQuery)
+					go x0.(func(Client, types.PreCheckoutQuery))(*ctx, *update.PreCheckoutQuery)
 				}
 			}
 			if update.Poll != nil {
 				for _, x0 := range ctx.handlers["poll"] {
-					go x0.(func(types.Poll))(*update.Poll)
+					go x0.(func(Client, types.Poll))(*ctx, *update.Poll)
 				}
 			}
 			if update.PollAnswer != nil {
 				for _, x0 := range ctx.handlers["poll_answer"] {
-					go x0.(func(types.PollAnswer))(*update.PollAnswer)
+					go x0.(func(Client, types.PollAnswer))(*ctx, *update.PollAnswer)
 				}
 			}
 			if update.MyChatMember != nil {
 				for _, x0 := range ctx.handlers["my_chat_member"] {
-					go x0.(func(types.ChatMemberUpdated))(*update.MyChatMember)
+					go x0.(func(Client, types.ChatMemberUpdated))(*ctx, *update.MyChatMember)
 				}
 			}
 			if update.ChatMember != nil {
 				for _, x0 := range ctx.handlers["chat_member"] {
-					go x0.(func(types.ChatMemberUpdated))(*update.ChatMember)
+					go x0.(func(Client, types.ChatMemberUpdated))(*ctx, *update.ChatMember)
 				}
 			}
 			if update.ChatJoinRequest != nil {
 				for _, x0 := range ctx.handlers["chat_join_request"] {
-					go x0.(func(types.ChatJoinRequest))(*update.ChatJoinRequest)
+					go x0.(func(Client, types.ChatJoinRequest))(*ctx, *update.ChatJoinRequest)
 				}
 			}
 		}
