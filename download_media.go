@@ -7,7 +7,6 @@ import (
 	"github.com/Squirrel-Network/gobotapi/types"
 )
 
-
 func (ctx *Client) DownloadMedia(message types.Message, filePath string) error {
 	if message.Animation != nil {
 		return ctx.DownloadFile(message.Animation.FileID, filePath)

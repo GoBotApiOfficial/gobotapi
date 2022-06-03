@@ -12,7 +12,7 @@ import (
 // If the chat is not a private chat, the bot must be an administrator in the chat for this to work and must have the 'can_pin_messages' administrator right in a supergroup or 'can_edit_messages' administrator right in a channel
 // Returns True on success.
 type UnpinChatMessage struct {
-	ChatID int64 `json:"chat_id"`
+	ChatID    int64 `json:"chat_id"`
 	MessageID int64 `json:"message_id,omitempty"`
 }
 
@@ -32,8 +32,8 @@ func (UnpinChatMessage) ParseResult(response []byte) (*rawTypes.Result, error) {
 	if err != nil {
 		return nil, err
 	}
-	result := rawTypes.Result {
-		Kind: types.TypeBoolean,
+	result := rawTypes.Result{
+		Kind:   types.TypeBoolean,
 		Result: x1.Result,
 	}
 	return &result, nil

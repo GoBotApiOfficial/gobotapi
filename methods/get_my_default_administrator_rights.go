@@ -30,8 +30,8 @@ func (GetMyDefaultAdministratorRights) ParseResult(response []byte) (*rawTypes.R
 	if err != nil {
 		return nil, err
 	}
-	result := rawTypes.Result {
-		Kind: types.TypeChatAdministratorRights,
+	result := rawTypes.Result{
+		Kind:   types.TypeChatAdministratorRights,
 		Result: x1.Result,
 	}
 	return &result, nil

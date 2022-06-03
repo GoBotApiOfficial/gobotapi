@@ -13,8 +13,8 @@ import (
 // On success, True is returned
 // Note: The Bot API must receive an answer within 10 seconds after the pre-checkout query was sent.
 type AnswerPreCheckoutQuery struct {
-	ErrorMessage string `json:"error_message,omitempty"`
-	Ok bool `json:"ok"`
+	ErrorMessage       string `json:"error_message,omitempty"`
+	Ok                 bool   `json:"ok"`
 	PreCheckoutQueryID string `json:"pre_checkout_query_id"`
 }
 
@@ -34,8 +34,8 @@ func (AnswerPreCheckoutQuery) ParseResult(response []byte) (*rawTypes.Result, er
 	if err != nil {
 		return nil, err
 	}
-	result := rawTypes.Result {
-		Kind: types.TypeBoolean,
+	result := rawTypes.Result{
+		Kind:   types.TypeBoolean,
 		Result: x1.Result,
 	}
 	return &result, nil

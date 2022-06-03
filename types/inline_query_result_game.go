@@ -8,22 +8,22 @@ import "encoding/json"
 // Note: This will only work in Telegram versions released after October 1, 2016
 // Older clients will not display any inline results if a game result is among them.
 type InlineQueryResultGame struct {
-	GameShortName string `json:"game_short_name"`
-	ID string `json:"id"`
-	ReplyMarkup *InlineKeyboardMarkup `json:"reply_markup,omitempty"`
+	GameShortName string                `json:"game_short_name"`
+	ID            string                `json:"id"`
+	ReplyMarkup   *InlineKeyboardMarkup `json:"reply_markup,omitempty"`
 }
 
 func (entity InlineQueryResultGame) MarshalJSON() ([]byte, error) {
 	alias := struct {
-		Type string `json:"type"`
-		ID string `json:"id"`
-		GameShortName string `json:"game_short_name"`
-		ReplyMarkup *InlineKeyboardMarkup `json:"reply_markup,omitempty"`
-	} {
-		Type: "game",
-		ID: entity.ID,
+		Type          string                `json:"type"`
+		ID            string                `json:"id"`
+		GameShortName string                `json:"game_short_name"`
+		ReplyMarkup   *InlineKeyboardMarkup `json:"reply_markup,omitempty"`
+	}{
+		Type:          "game",
+		ID:            entity.ID,
 		GameShortName: entity.GameShortName,
-		ReplyMarkup: entity.ReplyMarkup,
+		ReplyMarkup:   entity.ReplyMarkup,
 	}
 	return json.Marshal(alias)
 }

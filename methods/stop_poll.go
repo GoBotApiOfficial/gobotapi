@@ -11,8 +11,8 @@ import (
 // StopPoll Use this method to stop a poll which was sent by the bot
 // On success, the stopped Poll is returned.
 type StopPoll struct {
-	ChatID int64 `json:"chat_id"`
-	MessageID int64 `json:"message_id"`
+	ChatID      int64                       `json:"chat_id"`
+	MessageID   int64                       `json:"message_id"`
 	ReplyMarkup *types.InlineKeyboardMarkup `json:"reply_markup,omitempty"`
 }
 
@@ -32,8 +32,8 @@ func (StopPoll) ParseResult(response []byte) (*rawTypes.Result, error) {
 	if err != nil {
 		return nil, err
 	}
-	result := rawTypes.Result {
-		Kind: types.TypePoll,
+	result := rawTypes.Result{
+		Kind:   types.TypePoll,
 		Result: x1.Result,
 	}
 	return &result, nil

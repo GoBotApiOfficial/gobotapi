@@ -12,15 +12,15 @@ import (
 // Returns the uploaded File on success.
 type UploadStickerFile struct {
 	PngSticker rawTypes.InputFile `json:"png_sticker,omitempty"`
-	UserID int64 `json:"user_id"`
+	UserID     int64              `json:"user_id"`
 }
 
 func (entity *UploadStickerFile) Files() map[string]rawTypes.InputFile {
 	files := make(map[string]rawTypes.InputFile)
 	switch entity.PngSticker.(type) {
-		case types.InputFile:
-			files["png_sticker"] = entity.PngSticker
-			entity.PngSticker = nil
+	case types.InputFile:
+		files["png_sticker"] = entity.PngSticker
+		entity.PngSticker = nil
 	}
 	return files
 }
@@ -37,8 +37,8 @@ func (UploadStickerFile) ParseResult(response []byte) (*rawTypes.Result, error) 
 	if err != nil {
 		return nil, err
 	}
-	result := rawTypes.Result {
-		Kind: types.TypeFile,
+	result := rawTypes.Result{
+		Kind:   types.TypeFile,
 		Result: x1.Result,
 	}
 	return &result, nil

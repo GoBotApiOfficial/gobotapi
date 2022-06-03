@@ -11,8 +11,8 @@ import (
 // SetStickerPositionInSet Use this method to move a sticker in a set created by the bot to a specific position
 // Returns True on success.
 type SetStickerPositionInSet struct {
-	Position int `json:"position"`
-	Sticker string `json:"sticker"`
+	Position int    `json:"position"`
+	Sticker  string `json:"sticker"`
 }
 
 func (entity *SetStickerPositionInSet) Files() map[string]rawTypes.InputFile {
@@ -31,8 +31,8 @@ func (SetStickerPositionInSet) ParseResult(response []byte) (*rawTypes.Result, e
 	if err != nil {
 		return nil, err
 	}
-	result := rawTypes.Result {
-		Kind: types.TypeBoolean,
+	result := rawTypes.Result{
+		Kind:   types.TypeBoolean,
 		Result: x1.Result,
 	}
 	return &result, nil

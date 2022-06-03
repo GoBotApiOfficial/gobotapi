@@ -11,9 +11,9 @@ import (
 // SetChatAdministratorCustomTitle Use this method to set a custom title for an administrator in a supergroup promoted by the bot
 // Returns True on success.
 type SetChatAdministratorCustomTitle struct {
-	ChatID int64 `json:"chat_id"`
+	ChatID      int64  `json:"chat_id"`
 	CustomTitle string `json:"custom_title"`
-	UserID int64 `json:"user_id"`
+	UserID      int64  `json:"user_id"`
 }
 
 func (entity *SetChatAdministratorCustomTitle) Files() map[string]rawTypes.InputFile {
@@ -32,8 +32,8 @@ func (SetChatAdministratorCustomTitle) ParseResult(response []byte) (*rawTypes.R
 	if err != nil {
 		return nil, err
 	}
-	result := rawTypes.Result {
-		Kind: types.TypeBoolean,
+	result := rawTypes.Result{
+		Kind:   types.TypeBoolean,
 		Result: x1.Result,
 	}
 	return &result, nil

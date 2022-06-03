@@ -13,41 +13,41 @@ import (
 // Note: This will only work in Telegram versions released after 9 April, 2016
 // Older clients will ignore them.
 type InlineQueryResultCachedAudio struct {
-	AudioFileID string `json:"audio_file_id"`
-	Caption string `json:"caption,omitempty"`
-	CaptionEntities []MessageEntity `json:"caption_entities,omitempty"`
-	ID string `json:"id"`
-	InputMessageContent interface{} `json:"input_message_content,omitempty"`
-	ParseMode string `json:"parse_mode,omitempty"`
-	ReplyMarkup *InlineKeyboardMarkup `json:"reply_markup,omitempty"`
+	AudioFileID         string                `json:"audio_file_id"`
+	Caption             string                `json:"caption,omitempty"`
+	CaptionEntities     []MessageEntity       `json:"caption_entities,omitempty"`
+	ID                  string                `json:"id"`
+	InputMessageContent interface{}           `json:"input_message_content,omitempty"`
+	ParseMode           string                `json:"parse_mode,omitempty"`
+	ReplyMarkup         *InlineKeyboardMarkup `json:"reply_markup,omitempty"`
 }
 
 func (entity InlineQueryResultCachedAudio) MarshalJSON() ([]byte, error) {
 	alias := struct {
-		Type string `json:"type"`
-		ID string `json:"id"`
-		AudioFileID string `json:"audio_file_id"`
-		Caption string `json:"caption,omitempty"`
-		ParseMode string `json:"parse_mode,omitempty"`
-		CaptionEntities []MessageEntity `json:"caption_entities,omitempty"`
-		ReplyMarkup *InlineKeyboardMarkup `json:"reply_markup,omitempty"`
-		InputMessageContent interface{} `json:"input_message_content,omitempty"`
-	} {
-		Type: "audio",
-		ID: entity.ID,
-		AudioFileID: entity.AudioFileID,
-		Caption: entity.Caption,
-		ParseMode: entity.ParseMode,
-		CaptionEntities: entity.CaptionEntities,
-		ReplyMarkup: entity.ReplyMarkup,
+		Type                string                `json:"type"`
+		ID                  string                `json:"id"`
+		AudioFileID         string                `json:"audio_file_id"`
+		Caption             string                `json:"caption,omitempty"`
+		ParseMode           string                `json:"parse_mode,omitempty"`
+		CaptionEntities     []MessageEntity       `json:"caption_entities,omitempty"`
+		ReplyMarkup         *InlineKeyboardMarkup `json:"reply_markup,omitempty"`
+		InputMessageContent interface{}           `json:"input_message_content,omitempty"`
+	}{
+		Type:                "audio",
+		ID:                  entity.ID,
+		AudioFileID:         entity.AudioFileID,
+		Caption:             entity.Caption,
+		ParseMode:           entity.ParseMode,
+		CaptionEntities:     entity.CaptionEntities,
+		ReplyMarkup:         entity.ReplyMarkup,
 		InputMessageContent: entity.InputMessageContent,
 	}
 	if entity.InputMessageContent != nil {
 		switch entity.InputMessageContent.(type) {
-			case InputTextMessageContent, InputLocationMessageContent, InputVenueMessageContent, InputContactMessageContent, InputInvoiceMessageContent:
-				break
-			default:
-				return nil, fmt.Errorf("input_message_content: unknown type: %T", entity.InputMessageContent)
+		case InputTextMessageContent, InputLocationMessageContent, InputVenueMessageContent, InputContactMessageContent, InputInvoiceMessageContent:
+			break
+		default:
+			return nil, fmt.Errorf("input_message_content: unknown type: %T", entity.InputMessageContent)
 		}
 	}
 	return json.Marshal(alias)

@@ -1,7 +1,7 @@
 package gobotapi
 
 import (
-    "errors"
+	"errors"
 	"fmt"
 	"github.com/Squirrel-Network/gobotapi/methods"
 	"github.com/Squirrel-Network/gobotapi/types"

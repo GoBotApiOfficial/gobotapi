@@ -30,8 +30,8 @@ func (GetStickerSet) ParseResult(response []byte) (*rawTypes.Result, error) {
 	if err != nil {
 		return nil, err
 	}
-	result := rawTypes.Result {
-		Kind: types.TypeStickerSet,
+	result := rawTypes.Result{
+		Kind:   types.TypeStickerSet,
 		Result: x1.Result,
 	}
 	return &result, nil

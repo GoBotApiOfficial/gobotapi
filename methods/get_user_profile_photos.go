@@ -11,8 +11,8 @@ import (
 // GetUserProfilePhotos Use this method to get a list of profile pictures for a user
 // Returns a UserProfilePhotos object.
 type GetUserProfilePhotos struct {
-	Limit int `json:"limit,omitempty"`
-	Offset int `json:"offset,omitempty"`
+	Limit  int   `json:"limit,omitempty"`
+	Offset int   `json:"offset,omitempty"`
 	UserID int64 `json:"user_id"`
 }
 
@@ -32,8 +32,8 @@ func (GetUserProfilePhotos) ParseResult(response []byte) (*rawTypes.Result, erro
 	if err != nil {
 		return nil, err
 	}
-	result := rawTypes.Result {
-		Kind: types.TypeUserProfilePhotos,
+	result := rawTypes.Result{
+		Kind:   types.TypeUserProfilePhotos,
 		Result: x1.Result,
 	}
 	return &result, nil

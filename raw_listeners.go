@@ -4,7 +4,6 @@ package gobotapi
 
 import "github.com/Squirrel-Network/gobotapi/types"
 
-
 func (ctx *Client) OnRawUpdate(handler func(client Client, update types.Update)) {
 	if ctx.handlers == nil {
 		ctx.handlers = make(map[string][]interface{})
@@ -109,4 +108,3 @@ func (ctx *Client) OnChatJoinRequest(handler func(client Client, update types.Ch
 	}
 	ctx.handlers["chat_join_request"] = append(ctx.handlers["chat_join_request"], handler)
 }
-

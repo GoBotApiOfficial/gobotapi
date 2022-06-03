@@ -13,17 +13,17 @@ import (
 // Video thumbnails can be set only for video sticker sets only
 // Returns True on success.
 type SetStickerSetThumb struct {
-	Name string `json:"name"`
-	Thumb rawTypes.InputFile `json:"thumb,omitempty"`
-	UserID int64 `json:"user_id"`
+	Name   string             `json:"name"`
+	Thumb  rawTypes.InputFile `json:"thumb,omitempty"`
+	UserID int64              `json:"user_id"`
 }
 
 func (entity *SetStickerSetThumb) Files() map[string]rawTypes.InputFile {
 	files := make(map[string]rawTypes.InputFile)
 	switch entity.Thumb.(type) {
-		case types.InputFile:
-			files["thumb"] = entity.Thumb
-			entity.Thumb = types.InputPath("attach://thumb")
+	case types.InputFile:
+		files["thumb"] = entity.Thumb
+		entity.Thumb = types.InputPath("attach://thumb")
 	}
 	return files
 }
@@ -40,8 +40,8 @@ func (SetStickerSetThumb) ParseResult(response []byte) (*rawTypes.Result, error)
 	if err != nil {
 		return nil, err
 	}
-	result := rawTypes.Result {
-		Kind: types.TypeBoolean,
+	result := rawTypes.Result{
+		Kind:   types.TypeBoolean,
 		Result: x1.Result,
 	}
 	return &result, nil

@@ -4,8 +4,8 @@ package types
 
 // ChatPhoto Represents a chat photo.
 type ChatPhoto struct {
-	BigFileID string `json:"big_file_id"`
-	BigFileUniqueID string `json:"big_file_unique_id"`
-	SmallFileID string `json:"small_file_id"`
+	BigFileID         string `json:"big_file_id"`
+	BigFileUniqueID   string `json:"big_file_unique_id"`
+	SmallFileID       string `json:"small_file_id"`
 	SmallFileUniqueID string `json:"small_file_unique_id"`
 }

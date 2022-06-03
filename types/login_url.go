@@ -7,8 +7,8 @@ package types
 // All the user needs to do is tap/click a button and confirm that they want to log in:
 // Telegram apps support these buttons as of version 5.7.
 type LoginUrl struct {
-	BotUsername string `json:"bot_username,omitempty"`
-	ForwardText string `json:"forward_text,omitempty"`
-	RequestWriteAccess bool `json:"request_write_access,omitempty"`
-	URL string `json:"url"`
+	BotUsername        string `json:"bot_username,omitempty"`
+	ForwardText        string `json:"forward_text,omitempty"`
+	RequestWriteAccess bool   `json:"request_write_access,omitempty"`
+	URL                string `json:"url"`
 }

@@ -7,8 +7,8 @@ package types
 // It is guaranteed that the link will be valid for at least 1 hour
 // When the link expires, a new one can be requested by calling getFile.
 type File struct {
-	FileID string `json:"file_id"`
-	FilePath string `json:"file_path,omitempty"`
-	FileSize int `json:"file_size,omitempty"`
+	FileID       string `json:"file_id"`
+	FilePath     string `json:"file_path,omitempty"`
+	FileSize     int    `json:"file_size,omitempty"`
 	FileUniqueID string `json:"file_unique_id"`
 }

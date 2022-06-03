@@ -13,11 +13,11 @@ import (
 // The link can be revoked using the method revokeChatInviteLink
 // Returns the new invite link as ChatInviteLink object.
 type CreateChatInviteLink struct {
-	ChatID int64 `json:"chat_id"`
-	CreatesJoinRequest bool `json:"creates_join_request,omitempty"`
-	ExpireDate int64 `json:"expire_date,omitempty"`
-	MemberLimit int `json:"member_limit,omitempty"`
-	Name string `json:"name,omitempty"`
+	ChatID             int64  `json:"chat_id"`
+	CreatesJoinRequest bool   `json:"creates_join_request,omitempty"`
+	ExpireDate         int64  `json:"expire_date,omitempty"`
+	MemberLimit        int    `json:"member_limit,omitempty"`
+	Name               string `json:"name,omitempty"`
 }
 
 func (entity *CreateChatInviteLink) Files() map[string]rawTypes.InputFile {
@@ -36,8 +36,8 @@ func (CreateChatInviteLink) ParseResult(response []byte) (*rawTypes.Result, erro
 	if err != nil {
 		return nil, err
 	}
-	result := rawTypes.Result {
-		Kind: types.TypeChatInviteLink,
+	result := rawTypes.Result{
+		Kind:   types.TypeChatInviteLink,
 		Result: x1.Result,
 	}
 	return &result, nil

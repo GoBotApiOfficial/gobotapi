@@ -12,9 +12,9 @@ import (
 // See https://core.telegram.org/bots#commands for more details about bot commands
 // Returns True on success.
 type SetMyCommands struct {
-	Commands []types.BotCommand `json:"commands,omitempty"`
-	LanguageCode string `json:"language_code,omitempty"`
-	Scope *types.BotCommandScope `json:"scope,omitempty"`
+	Commands     []types.BotCommand     `json:"commands,omitempty"`
+	LanguageCode string                 `json:"language_code,omitempty"`
+	Scope        *types.BotCommandScope `json:"scope,omitempty"`
 }
 
 func (entity *SetMyCommands) Files() map[string]rawTypes.InputFile {
@@ -33,8 +33,8 @@ func (SetMyCommands) ParseResult(response []byte) (*rawTypes.Result, error) {
 	if err != nil {
 		return nil, err
 	}
-	result := rawTypes.Result {
-		Kind: types.TypeBoolean,
+	result := rawTypes.Result{
+		Kind:   types.TypeBoolean,
 		Result: x1.Result,
 	}
 	return &result, nil

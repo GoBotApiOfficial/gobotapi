@@ -4,8 +4,8 @@ package types
 
 // ShippingQuery This object contains information about an incoming shipping query.
 type ShippingQuery struct {
-	From User `json:"from"`
-	ID string `json:"id"`
-	InvoicePayload string `json:"invoice_payload"`
+	From            User            `json:"from"`
+	ID              string          `json:"id"`
+	InvoicePayload  string          `json:"invoice_payload"`
 	ShippingAddress ShippingAddress `json:"shipping_address"`
 }

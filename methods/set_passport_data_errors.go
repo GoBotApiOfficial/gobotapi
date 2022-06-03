@@ -16,7 +16,7 @@ import (
 // Supply some details in the error message to make sure the user knows how to correct the issues.
 type SetPassportDataErrors struct {
 	Errors []types.PassportElementError `json:"errors,omitempty"`
-	UserID int64 `json:"user_id"`
+	UserID int64                        `json:"user_id"`
 }
 
 func (entity *SetPassportDataErrors) Files() map[string]rawTypes.InputFile {
@@ -35,8 +35,8 @@ func (SetPassportDataErrors) ParseResult(response []byte) (*rawTypes.Result, err
 	if err != nil {
 		return nil, err
 	}
-	result := rawTypes.Result {
-		Kind: types.TypeBoolean,
+	result := rawTypes.Result{
+		Kind:   types.TypeBoolean,
 		Result: x1.Result,
 	}
 	return &result, nil

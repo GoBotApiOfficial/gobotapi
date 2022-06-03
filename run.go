@@ -10,7 +10,6 @@ import (
 	"time"
 )
 
-
 func (ctx *Client) Run() {
 	if ctx.isStarted {
 		return
@@ -35,9 +34,9 @@ func (ctx *Client) Run() {
 		return
 	}
 	for {
-		getUpdates := &methods.GetUpdates {
+		getUpdates := &methods.GetUpdates{
 			Timeout: int(ctx.PollingTimeout.Seconds()),
-			Offset: ctx.lastUpdateID,
+			Offset:  ctx.lastUpdateID,
 		}
 		rawUpdates, err := ctx.Invoke(getUpdates)
 		if !ctx.isStarted {

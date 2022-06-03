@@ -12,24 +12,24 @@ import (
 // SendPhoto Use this method to send photos
 // On success, the sent Message is returned.
 type SendPhoto struct {
-	AllowSendingWithoutReply bool `json:"allow_sending_without_reply,omitempty"`
-	Caption string `json:"caption,omitempty"`
-	CaptionEntities []types.MessageEntity `json:"caption_entities,omitempty"`
-	ChatID int64 `json:"chat_id"`
-	DisableNotification bool `json:"disable_notification,omitempty"`
-	ParseMode string `json:"parse_mode,omitempty"`
-	Photo rawTypes.InputFile `json:"photo,omitempty"`
-	ProtectContent bool `json:"protect_content,omitempty"`
-	ReplyMarkup interface{} `json:"reply_markup,omitempty"`
-	ReplyToMessageID int64 `json:"reply_to_message_id,omitempty"`
+	AllowSendingWithoutReply bool                  `json:"allow_sending_without_reply,omitempty"`
+	Caption                  string                `json:"caption,omitempty"`
+	CaptionEntities          []types.MessageEntity `json:"caption_entities,omitempty"`
+	ChatID                   int64                 `json:"chat_id"`
+	DisableNotification      bool                  `json:"disable_notification,omitempty"`
+	ParseMode                string                `json:"parse_mode,omitempty"`
+	Photo                    rawTypes.InputFile    `json:"photo,omitempty"`
+	ProtectContent           bool                  `json:"protect_content,omitempty"`
+	ReplyMarkup              interface{}           `json:"reply_markup,omitempty"`
+	ReplyToMessageID         int64                 `json:"reply_to_message_id,omitempty"`
 }
 
 func (entity *SendPhoto) Files() map[string]rawTypes.InputFile {
 	files := make(map[string]rawTypes.InputFile)
 	switch entity.Photo.(type) {
-		case types.InputFile:
-			files["photo"] = entity.Photo
-			entity.Photo = nil
+	case types.InputFile:
+		files["photo"] = entity.Photo
+		entity.Photo = nil
 	}
 	return files
 }
@@ -37,10 +37,10 @@ func (entity *SendPhoto) Files() map[string]rawTypes.InputFile {
 func (entity SendPhoto) MarshalJSON() ([]byte, error) {
 	if entity.ReplyMarkup != nil {
 		switch entity.ReplyMarkup.(type) {
-			case *types.InlineKeyboardMarkup, *types.ReplyKeyboardMarkup, *types.ReplyKeyboardRemove, *types.ForceReply:
-				break
-			default:
-				return nil, fmt.Errorf("reply_markup: unknown type: %T", entity.ReplyMarkup)
+		case *types.InlineKeyboardMarkup, *types.ReplyKeyboardMarkup, *types.ReplyKeyboardRemove, *types.ForceReply:
+			break
+		default:
+			return nil, fmt.Errorf("reply_markup: unknown type: %T", entity.ReplyMarkup)
 		}
 	}
 	type x0 SendPhoto
@@ -59,8 +59,8 @@ func (SendPhoto) ParseResult(response []byte) (*rawTypes.Result, error) {
 	if err != nil {
 		return nil, err
 	}
-	result := rawTypes.Result {
-		Kind: types.TypeMessage,
+	result := rawTypes.Result{
+		Kind:   types.TypeMessage,
 		Result: x1.Result,
 	}
 	return &result, nil

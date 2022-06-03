@@ -12,11 +12,11 @@ import (
 // The answer will be displayed to the user as a notification at the top of the chat screen or as an alert
 // On success, True is returned.
 type AnswerCallbackQuery struct {
-	CacheTime int `json:"cache_time,omitempty"`
+	CacheTime       int    `json:"cache_time,omitempty"`
 	CallbackQueryID string `json:"callback_query_id"`
-	ShowAlert bool `json:"show_alert,omitempty"`
-	Text string `json:"text,omitempty"`
-	URL string `json:"url,omitempty"`
+	ShowAlert       bool   `json:"show_alert,omitempty"`
+	Text            string `json:"text,omitempty"`
+	URL             string `json:"url,omitempty"`
 }
 
 func (entity *AnswerCallbackQuery) Files() map[string]rawTypes.InputFile {
@@ -35,8 +35,8 @@ func (AnswerCallbackQuery) ParseResult(response []byte) (*rawTypes.Result, error
 	if err != nil {
 		return nil, err
 	}
-	result := rawTypes.Result {
-		Kind: types.TypeBoolean,
+	result := rawTypes.Result{
+		Kind:   types.TypeBoolean,
 		Result: x1.Result,
 	}
 	return &result, nil

@@ -12,8 +12,8 @@ import (
 // These rights will be suggested to users, but they are are free to modify the list before adding the bot
 // Returns True on success.
 type SetMyDefaultAdministratorRights struct {
-	ForChannels bool `json:"for_channels,omitempty"`
-	Rights *types.ChatAdministratorRights `json:"rights,omitempty"`
+	ForChannels bool                           `json:"for_channels,omitempty"`
+	Rights      *types.ChatAdministratorRights `json:"rights,omitempty"`
 }
 
 func (entity *SetMyDefaultAdministratorRights) Files() map[string]rawTypes.InputFile {
@@ -32,8 +32,8 @@ func (SetMyDefaultAdministratorRights) ParseResult(response []byte) (*rawTypes.R
 	if err != nil {
 		return nil, err
 	}
-	result := rawTypes.Result {
-		Kind: types.TypeBoolean,
+	result := rawTypes.Result{
+		Kind:   types.TypeBoolean,
 		Result: x1.Result,
 	}
 	return &result, nil

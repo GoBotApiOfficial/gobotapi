@@ -3,7 +3,7 @@ package gobotapi
 import (
 	"fmt"
 	"github.com/Squirrel-Network/gobotapi/types"
-    "regexp"
+	"regexp"
 	"strings"
 )
 
@@ -35,4 +35,3 @@ func (ctx *Client) OnCommand(command string, aliasList []string, handler func(cl
 	ctx.OnMessage(cmdHandler)
 	ctx.OnEditedMessage(cmdHandler)
 }
-

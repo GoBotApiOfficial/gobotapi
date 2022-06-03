@@ -6,7 +6,7 @@ package types
 // The error is considered resolved when the file with the front side of the document changes.
 type PassportElementErrorFrontSide struct {
 	FileHash string `json:"file_hash"`
-	Message string `json:"message"`
-	Source string `json:"source"`
-	Type string `json:"type"`
+	Message  string `json:"message"`
+	Source   string `json:"source"`
+	Type     string `json:"type"`
 }

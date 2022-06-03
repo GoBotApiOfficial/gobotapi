@@ -14,7 +14,7 @@ import (
 // We only recommend using this method when a response from the bot will take a noticeable amount of time to arrive.
 type SendChatAction struct {
 	Action string `json:"action"`
-	ChatID int64 `json:"chat_id"`
+	ChatID int64  `json:"chat_id"`
 }
 
 func (entity *SendChatAction) Files() map[string]rawTypes.InputFile {
@@ -33,8 +33,8 @@ func (SendChatAction) ParseResult(response []byte) (*rawTypes.Result, error) {
 	if err != nil {
 		return nil, err
 	}
-	result := rawTypes.Result {
-		Kind: types.TypeBoolean,
+	result := rawTypes.Result{
+		Kind:   types.TypeBoolean,
 		Result: x1.Result,
 	}
 	return &result, nil

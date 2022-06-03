@@ -10,9 +10,9 @@ package types
 // Older clients will display unsupported message.Note: web_app option will only work in Telegram versions released after 16 April, 2022
 // Older clients will display unsupported message.
 type KeyboardButton struct {
-	RequestContact bool `json:"request_contact,omitempty"`
-	RequestLocation bool `json:"request_location,omitempty"`
-	RequestPoll *KeyboardButtonPollType `json:"request_poll,omitempty"`
-	Text string `json:"text"`
-	WebApp *WebAppInfo `json:"web_app,omitempty"`
+	RequestContact  bool                    `json:"request_contact,omitempty"`
+	RequestLocation bool                    `json:"request_location,omitempty"`
+	RequestPoll     *KeyboardButtonPollType `json:"request_poll,omitempty"`
+	Text            string                  `json:"text"`
+	WebApp          *WebAppInfo             `json:"web_app,omitempty"`
 }

@@ -31,8 +31,8 @@ func (GetChatAdministrators) ParseResult(response []byte) (*rawTypes.Result, err
 	if err != nil {
 		return nil, err
 	}
-	result := rawTypes.Result {
-		Kind: types.TypeArrayOfChatMember,
+	result := rawTypes.Result{
+		Kind:   types.TypeArrayOfChatMember,
 		Result: x1.Result,
 	}
 	return &result, nil

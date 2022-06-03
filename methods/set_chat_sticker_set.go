@@ -13,7 +13,7 @@ import (
 // Use the field can_set_sticker_set optionally returned in getChat requests to check if the bot can use this method
 // Returns True on success.
 type SetChatStickerSet struct {
-	ChatID int64 `json:"chat_id"`
+	ChatID         int64  `json:"chat_id"`
 	StickerSetName string `json:"sticker_set_name"`
 }
 
@@ -33,8 +33,8 @@ func (SetChatStickerSet) ParseResult(response []byte) (*rawTypes.Result, error) 
 	if err != nil {
 		return nil, err
 	}
-	result := rawTypes.Result {
-		Kind: types.TypeBoolean,
+	result := rawTypes.Result{
+		Kind:   types.TypeBoolean,
 		Result: x1.Result,
 	}
 	return &result, nil

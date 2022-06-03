@@ -32,8 +32,8 @@ func (DeleteChatStickerSet) ParseResult(response []byte) (*rawTypes.Result, erro
 	if err != nil {
 		return nil, err
 	}
-	result := rawTypes.Result {
-		Kind: types.TypeBoolean,
+	result := rawTypes.Result{
+		Kind:   types.TypeBoolean,
 		Result: x1.Result,
 	}
 	return &result, nil

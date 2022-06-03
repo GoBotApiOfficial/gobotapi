@@ -12,8 +12,8 @@ import (
 // Returns Array of BotCommand on success
 // If commands aren't set, an empty list is returned.
 type GetMyCommands struct {
-	LanguageCode string `json:"language_code,omitempty"`
-	Scope *types.BotCommandScope `json:"scope,omitempty"`
+	LanguageCode string                 `json:"language_code,omitempty"`
+	Scope        *types.BotCommandScope `json:"scope,omitempty"`
 }
 
 func (entity *GetMyCommands) Files() map[string]rawTypes.InputFile {
@@ -32,8 +32,8 @@ func (GetMyCommands) ParseResult(response []byte) (*rawTypes.Result, error) {
 	if err != nil {
 		return nil, err
 	}
-	result := rawTypes.Result {
-		Kind: types.TypeArrayOfBotCommand,
+	result := rawTypes.Result{
+		Kind:   types.TypeArrayOfBotCommand,
 		Result: x1.Result,
 	}
 	return &result, nil

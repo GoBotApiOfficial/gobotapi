@@ -13,8 +13,8 @@ import (
 // The bot must be an administrator in the chat for this to work and must have the appropriate administrator rights
 // Returns True on success.
 type SetChatTitle struct {
-	ChatID int64 `json:"chat_id"`
-	Title string `json:"title"`
+	ChatID int64  `json:"chat_id"`
+	Title  string `json:"title"`
 }
 
 func (entity *SetChatTitle) Files() map[string]rawTypes.InputFile {
@@ -33,8 +33,8 @@ func (SetChatTitle) ParseResult(response []byte) (*rawTypes.Result, error) {
 	if err != nil {
 		return nil, err
 	}
-	result := rawTypes.Result {
-		Kind: types.TypeBoolean,
+	result := rawTypes.Result{
+		Kind:   types.TypeBoolean,
 		Result: x1.Result,
 	}
 	return &result, nil

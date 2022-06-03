@@ -13,7 +13,7 @@ import (
 // The bot must be an administrator in the supergroup or channel for this to work and must have the appropriate administrator rights
 // Returns True on success.
 type BanChatSenderChat struct {
-	ChatID int64 `json:"chat_id"`
+	ChatID       int64 `json:"chat_id"`
 	SenderChatID int64 `json:"sender_chat_id"`
 }
 
@@ -33,8 +33,8 @@ func (BanChatSenderChat) ParseResult(response []byte) (*rawTypes.Result, error) 
 	if err != nil {
 		return nil, err
 	}
-	result := rawTypes.Result {
-		Kind: types.TypeBoolean,
+	result := rawTypes.Result{
+		Kind:   types.TypeBoolean,
 		Result: x1.Result,
 	}
 	return &result, nil

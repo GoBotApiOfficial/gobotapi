@@ -13,16 +13,16 @@ import (
 // The bot must be an administrator in the chat for this to work and must have the appropriate administrator rights
 // Returns True on success.
 type SetChatPhoto struct {
-	ChatID int64 `json:"chat_id"`
-	Photo rawTypes.InputFile `json:"photo,omitempty"`
+	ChatID int64              `json:"chat_id"`
+	Photo  rawTypes.InputFile `json:"photo,omitempty"`
 }
 
 func (entity *SetChatPhoto) Files() map[string]rawTypes.InputFile {
 	files := make(map[string]rawTypes.InputFile)
 	switch entity.Photo.(type) {
-		case types.InputFile:
-			files["photo"] = entity.Photo
-			entity.Photo = nil
+	case types.InputFile:
+		files["photo"] = entity.Photo
+		entity.Photo = nil
 	}
 	return files
 }
@@ -39,8 +39,8 @@ func (SetChatPhoto) ParseResult(response []byte) (*rawTypes.Result, error) {
 	if err != nil {
 		return nil, err
 	}
-	result := rawTypes.Result {
-		Kind: types.TypeBoolean,
+	result := rawTypes.Result{
+		Kind:   types.TypeBoolean,
 		Result: x1.Result,
 	}
 	return &result, nil

@@ -11,7 +11,7 @@ import (
 // SetChatMenuButton Use this method to change the bot's menu button in a private chat, or the default menu button
 // Returns True on success.
 type SetChatMenuButton struct {
-	ChatID int64 `json:"chat_id,omitempty"`
+	ChatID     int64             `json:"chat_id,omitempty"`
 	MenuButton *types.MenuButton `json:"menu_button,omitempty"`
 }
 
@@ -31,8 +31,8 @@ func (SetChatMenuButton) ParseResult(response []byte) (*rawTypes.Result, error) 
 	if err != nil {
 		return nil, err
 	}
-	result := rawTypes.Result {
-		Kind: types.TypeBoolean,
+	result := rawTypes.Result{
+		Kind:   types.TypeBoolean,
 		Result: x1.Result,
 	}
 	return &result, nil

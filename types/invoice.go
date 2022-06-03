@@ -4,9 +4,9 @@ package types
 
 // Invoice This object contains basic information about an invoice.
 type Invoice struct {
-	Currency string `json:"currency"`
-	Description string `json:"description"`
+	Currency       string `json:"currency"`
+	Description    string `json:"description"`
 	StartParameter string `json:"start_parameter"`
-	Title string `json:"title"`
-	TotalAmount int `json:"total_amount"`
+	Title          string `json:"title"`
+	TotalAmount    int    `json:"total_amount"`
 }

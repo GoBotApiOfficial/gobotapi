@@ -12,9 +12,9 @@ import (
 // An Array of Update objects is returned.
 type GetUpdates struct {
 	AllowedUpdates []string `json:"allowed_updates,omitempty"`
-	Limit int `json:"limit,omitempty"`
-	Offset int `json:"offset,omitempty"`
-	Timeout int `json:"timeout,omitempty"`
+	Limit          int      `json:"limit,omitempty"`
+	Offset         int      `json:"offset,omitempty"`
+	Timeout        int      `json:"timeout,omitempty"`
 }
 
 func (entity *GetUpdates) Files() map[string]rawTypes.InputFile {
@@ -33,8 +33,8 @@ func (GetUpdates) ParseResult(response []byte) (*rawTypes.Result, error) {
 	if err != nil {
 		return nil, err
 	}
-	result := rawTypes.Result {
-		Kind: types.TypeArrayOfUpdate,
+	result := rawTypes.Result{
+		Kind:   types.TypeArrayOfUpdate,
 		Result: x1.Result,
 	}
 	return &result, nil

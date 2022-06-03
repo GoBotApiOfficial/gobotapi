@@ -13,11 +13,11 @@ import (
 // When an inline message is edited, a new file can't be uploaded; use a previously uploaded file via its file_id or specify a URL
 // On success, if the edited message is not an inline message, the edited Message is returned, otherwise True is returned.
 type EditMessageMedia struct {
-	ChatID int64 `json:"chat_id,omitempty"`
-	InlineMessageID string `json:"inline_message_id,omitempty"`
-	Media types.InputMedia `json:"media"`
-	MessageID int64 `json:"message_id,omitempty"`
-	ReplyMarkup *types.InlineKeyboardMarkup `json:"reply_markup,omitempty"`
+	ChatID          int64                       `json:"chat_id,omitempty"`
+	InlineMessageID string                      `json:"inline_message_id,omitempty"`
+	Media           types.InputMedia            `json:"media"`
+	MessageID       int64                       `json:"message_id,omitempty"`
+	ReplyMarkup     *types.InlineKeyboardMarkup `json:"reply_markup,omitempty"`
 }
 
 func (entity *EditMessageMedia) Files() map[string]rawTypes.InputFile {
@@ -38,8 +38,8 @@ func (EditMessageMedia) ParseResult(response []byte) (*rawTypes.Result, error) {
 	}
 	_ = json.Unmarshal(response, &x0)
 	if x0.Result {
-		result := rawTypes.Result {
-			Kind: types.TypeBoolean,
+		result := rawTypes.Result{
+			Kind:   types.TypeBoolean,
 			Result: true,
 		}
 		return &result, nil
@@ -51,8 +51,8 @@ func (EditMessageMedia) ParseResult(response []byte) (*rawTypes.Result, error) {
 		if err != nil {
 			return nil, err
 		}
-		result := rawTypes.Result {
-			Kind: types.TypeMessage,
+		result := rawTypes.Result{
+			Kind:   types.TypeMessage,
 			Result: x1.Result,
 		}
 		return &result, nil

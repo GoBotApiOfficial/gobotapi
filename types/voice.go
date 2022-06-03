@@ -4,9 +4,9 @@ package types
 
 // Voice Represents a voice note.
 type Voice struct {
-	Duration int `json:"duration"`
-	FileID string `json:"file_id"`
-	FileSize int `json:"file_size,omitempty"`
+	Duration     int    `json:"duration"`
+	FileID       string `json:"file_id"`
+	FileSize     int    `json:"file_size,omitempty"`
 	FileUniqueID string `json:"file_unique_id"`
-	MimeType string `json:"mime_type,omitempty"`
+	MimeType     string `json:"mime_type,omitempty"`
 }

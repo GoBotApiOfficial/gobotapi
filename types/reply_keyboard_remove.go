@@ -7,5 +7,5 @@ package types
 // An exception is made for one-time keyboards that are hidden immediately after the user presses a button (see ReplyKeyboardMarkup).
 type ReplyKeyboardRemove struct {
 	RemoveKeyboard bool `json:"remove_keyboard"`
-	Selective bool `json:"selective,omitempty"`
+	Selective      bool `json:"selective,omitempty"`
 }

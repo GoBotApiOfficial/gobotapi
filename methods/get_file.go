@@ -36,8 +36,8 @@ func (GetFile) ParseResult(response []byte) (*rawTypes.Result, error) {
 	if err != nil {
 		return nil, err
 	}
-	result := rawTypes.Result {
-		Kind: types.TypeFile,
+	result := rawTypes.Result{
+		Kind:   types.TypeFile,
 		Result: x1.Result,
 	}
 	return &result, nil

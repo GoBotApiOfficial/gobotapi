@@ -12,7 +12,7 @@ import (
 // The bot must be an administrator in the group or a supergroup for this to work and must have the can_restrict_members administrator rights
 // Returns True on success.
 type SetChatPermissions struct {
-	ChatID int64 `json:"chat_id"`
+	ChatID      int64                 `json:"chat_id"`
 	Permissions types.ChatPermissions `json:"permissions"`
 }
 
@@ -32,8 +32,8 @@ func (SetChatPermissions) ParseResult(response []byte) (*rawTypes.Result, error)
 	if err != nil {
 		return nil, err
 	}
-	result := rawTypes.Result {
-		Kind: types.TypeBoolean,
+	result := rawTypes.Result{
+		Kind:   types.TypeBoolean,
 		Result: x1.Result,
 	}
 	return &result, nil

@@ -11,8 +11,8 @@ import (
 // AnswerWebAppQuery Use this method to set the result of an interaction with a Web App and send a corresponding message on behalf of the user to the chat from which the query originated
 // On success, a SentWebAppMessage object is returned.
 type AnswerWebAppQuery struct {
-	Result types.InlineQueryResult `json:"result"`
-	WebAppQueryID string `json:"web_app_query_id"`
+	Result        types.InlineQueryResult `json:"result"`
+	WebAppQueryID string                  `json:"web_app_query_id"`
 }
 
 func (entity *AnswerWebAppQuery) Files() map[string]rawTypes.InputFile {
@@ -31,8 +31,8 @@ func (AnswerWebAppQuery) ParseResult(response []byte) (*rawTypes.Result, error) 
 	if err != nil {
 		return nil, err
 	}
-	result := rawTypes.Result {
-		Kind: types.TypeSentWebAppMessage,
+	result := rawTypes.Result{
+		Kind:   types.TypeSentWebAppMessage,
 		Result: x1.Result,
 	}
 	return &result, nil

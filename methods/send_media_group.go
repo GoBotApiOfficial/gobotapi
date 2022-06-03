@@ -13,12 +13,12 @@ import (
 // Documents and audio files can be only grouped in an album with messages of the same type
 // On success, an array of Messages that were sent is returned.
 type SendMediaGroup struct {
-	AllowSendingWithoutReply bool `json:"allow_sending_without_reply,omitempty"`
-	ChatID int64 `json:"chat_id"`
-	DisableNotification bool `json:"disable_notification,omitempty"`
-	Media []types.InputMedia `json:"media,omitempty"`
-	ProtectContent bool `json:"protect_content,omitempty"`
-	ReplyToMessageID int64 `json:"reply_to_message_id,omitempty"`
+	AllowSendingWithoutReply bool               `json:"allow_sending_without_reply,omitempty"`
+	ChatID                   int64              `json:"chat_id"`
+	DisableNotification      bool               `json:"disable_notification,omitempty"`
+	Media                    []types.InputMedia `json:"media,omitempty"`
+	ProtectContent           bool               `json:"protect_content,omitempty"`
+	ReplyToMessageID         int64              `json:"reply_to_message_id,omitempty"`
 }
 
 func (entity *SendMediaGroup) Files() map[string]rawTypes.InputFile {
@@ -43,10 +43,10 @@ func (entity *SendMediaGroup) Files() map[string]rawTypes.InputFile {
 func (entity SendMediaGroup) MarshalJSON() ([]byte, error) {
 	for _, x0 := range entity.Media {
 		switch x0.(type) {
-			case *types.InputMediaAudio, *types.InputMediaDocument, *types.InputMediaPhoto, *types.InputMediaVideo:
-				break
-			default:
-				return nil, fmt.Errorf("media: unknown type: %T", x0)
+		case *types.InputMediaAudio, *types.InputMediaDocument, *types.InputMediaPhoto, *types.InputMediaVideo:
+			break
+		default:
+			return nil, fmt.Errorf("media: unknown type: %T", x0)
 		}
 	}
 	type x0 SendMediaGroup
@@ -65,8 +65,8 @@ func (SendMediaGroup) ParseResult(response []byte) (*rawTypes.Result, error) {
 	if err != nil {
 		return nil, err
 	}
-	result := rawTypes.Result {
-		Kind: types.TypeArrayOfMessage,
+	result := rawTypes.Result{
+		Kind:   types.TypeArrayOfMessage,
 		Result: x1.Result,
 	}
 	return &result, nil

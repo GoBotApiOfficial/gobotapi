@@ -12,11 +12,11 @@ import (
 // Service messages can't be forwarded
 // On success, the sent Message is returned.
 type ForwardMessage struct {
-	ChatID int64 `json:"chat_id"`
-	DisableNotification bool `json:"disable_notification,omitempty"`
-	FromChatID int64 `json:"from_chat_id"`
-	MessageID int64 `json:"message_id"`
-	ProtectContent bool `json:"protect_content,omitempty"`
+	ChatID              int64 `json:"chat_id"`
+	DisableNotification bool  `json:"disable_notification,omitempty"`
+	FromChatID          int64 `json:"from_chat_id"`
+	MessageID           int64 `json:"message_id"`
+	ProtectContent      bool  `json:"protect_content,omitempty"`
 }
 
 func (entity *ForwardMessage) Files() map[string]rawTypes.InputFile {
@@ -35,8 +35,8 @@ func (ForwardMessage) ParseResult(response []byte) (*rawTypes.Result, error) {
 	if err != nil {
 		return nil, err
 	}
-	result := rawTypes.Result {
-		Kind: types.TypeMessage,
+	result := rawTypes.Result{
+		Kind:   types.TypeMessage,
 		Result: x1.Result,
 	}
 	return &result, nil

@@ -12,21 +12,21 @@ import (
 // SendSticker Use this method to send static .WEBP, animated .TGS, or video .WEBM stickers
 // On success, the sent Message is returned.
 type SendSticker struct {
-	AllowSendingWithoutReply bool `json:"allow_sending_without_reply,omitempty"`
-	ChatID int64 `json:"chat_id"`
-	DisableNotification bool `json:"disable_notification,omitempty"`
-	ProtectContent bool `json:"protect_content,omitempty"`
-	ReplyMarkup interface{} `json:"reply_markup,omitempty"`
-	ReplyToMessageID int64 `json:"reply_to_message_id,omitempty"`
-	Sticker rawTypes.InputFile `json:"sticker,omitempty"`
+	AllowSendingWithoutReply bool               `json:"allow_sending_without_reply,omitempty"`
+	ChatID                   int64              `json:"chat_id"`
+	DisableNotification      bool               `json:"disable_notification,omitempty"`
+	ProtectContent           bool               `json:"protect_content,omitempty"`
+	ReplyMarkup              interface{}        `json:"reply_markup,omitempty"`
+	ReplyToMessageID         int64              `json:"reply_to_message_id,omitempty"`
+	Sticker                  rawTypes.InputFile `json:"sticker,omitempty"`
 }
 
 func (entity *SendSticker) Files() map[string]rawTypes.InputFile {
 	files := make(map[string]rawTypes.InputFile)
 	switch entity.Sticker.(type) {
-		case types.InputFile:
-			files["sticker"] = entity.Sticker
-			entity.Sticker = nil
+	case types.InputFile:
+		files["sticker"] = entity.Sticker
+		entity.Sticker = nil
 	}
 	return files
 }
@@ -34,10 +34,10 @@ func (entity *SendSticker) Files() map[string]rawTypes.InputFile {
 func (entity SendSticker) MarshalJSON() ([]byte, error) {
 	if entity.ReplyMarkup != nil {
 		switch entity.ReplyMarkup.(type) {
-			case *types.InlineKeyboardMarkup, *types.ReplyKeyboardMarkup, *types.ReplyKeyboardRemove, *types.ForceReply:
-				break
-			default:
-				return nil, fmt.Errorf("reply_markup: unknown type: %T", entity.ReplyMarkup)
+		case *types.InlineKeyboardMarkup, *types.ReplyKeyboardMarkup, *types.ReplyKeyboardRemove, *types.ForceReply:
+			break
+		default:
+			return nil, fmt.Errorf("reply_markup: unknown type: %T", entity.ReplyMarkup)
 		}
 	}
 	type x0 SendSticker
@@ -56,8 +56,8 @@ func (SendSticker) ParseResult(response []byte) (*rawTypes.Result, error) {
 	if err != nil {
 		return nil, err
 	}
-	result := rawTypes.Result {
-		Kind: types.TypeMessage,
+	result := rawTypes.Result{
+		Kind:   types.TypeMessage,
 		Result: x1.Result,
 	}
 	return &result, nil

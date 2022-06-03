@@ -4,8 +4,8 @@ package types
 
 // OrderInfo Represents information about an order.
 type OrderInfo struct {
-	Email string `json:"email,omitempty"`
-	Name string `json:"name,omitempty"`
-	PhoneNumber string `json:"phone_number,omitempty"`
+	Email           string           `json:"email,omitempty"`
+	Name            string           `json:"name,omitempty"`
+	PhoneNumber     string           `json:"phone_number,omitempty"`
 	ShippingAddress *ShippingAddress `json:"shipping_address,omitempty"`
 }

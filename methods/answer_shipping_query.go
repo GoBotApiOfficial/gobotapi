@@ -12,10 +12,10 @@ import (
 // Use this method to reply to shipping queries
 // On success, True is returned.
 type AnswerShippingQuery struct {
-	ErrorMessage string `json:"error_message,omitempty"`
-	Ok bool `json:"ok"`
+	ErrorMessage    string                 `json:"error_message,omitempty"`
+	Ok              bool                   `json:"ok"`
 	ShippingOptions []types.ShippingOption `json:"shipping_options,omitempty"`
-	ShippingQueryID string `json:"shipping_query_id"`
+	ShippingQueryID string                 `json:"shipping_query_id"`
 }
 
 func (entity *AnswerShippingQuery) Files() map[string]rawTypes.InputFile {
@@ -34,8 +34,8 @@ func (AnswerShippingQuery) ParseResult(response []byte) (*rawTypes.Result, error
 	if err != nil {
 		return nil, err
 	}
-	result := rawTypes.Result {
-		Kind: types.TypeBoolean,
+	result := rawTypes.Result{
+		Kind:   types.TypeBoolean,
 		Result: x1.Result,
 	}
 	return &result, nil

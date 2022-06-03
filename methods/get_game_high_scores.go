@@ -12,10 +12,10 @@ import (
 // Will return the score of the specified user and several of their neighbors in a game
 // On success, returns an Array of GameHighScore objects.
 type GetGameHighScores struct {
-	ChatID int64 `json:"chat_id,omitempty"`
+	ChatID          int64  `json:"chat_id,omitempty"`
 	InlineMessageID string `json:"inline_message_id,omitempty"`
-	MessageID int64 `json:"message_id,omitempty"`
-	UserID int64 `json:"user_id"`
+	MessageID       int64  `json:"message_id,omitempty"`
+	UserID          int64  `json:"user_id"`
 }
 
 func (entity *GetGameHighScores) Files() map[string]rawTypes.InputFile {
@@ -34,8 +34,8 @@ func (GetGameHighScores) ParseResult(response []byte) (*rawTypes.Result, error) 
 	if err != nil {
 		return nil, err
 	}
-	result := rawTypes.Result {
-		Kind: types.TypeArrayOfGameHighScore,
+	result := rawTypes.Result{
+		Kind:   types.TypeArrayOfGameHighScore,
 		Result: x1.Result,
 	}
 	return &result, nil

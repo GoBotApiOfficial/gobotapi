@@ -11,56 +11,56 @@ import (
 // By default, this photo will be sent by the user with optional caption
 // Alternatively, you can use input_message_content to send a message with the specified content instead of the photo.
 type InlineQueryResultPhoto struct {
-	Caption string `json:"caption,omitempty"`
-	CaptionEntities []MessageEntity `json:"caption_entities,omitempty"`
-	Description string `json:"description,omitempty"`
-	ID string `json:"id"`
-	InputMessageContent interface{} `json:"input_message_content,omitempty"`
-	ParseMode string `json:"parse_mode,omitempty"`
-	PhotoHeight int `json:"photo_height,omitempty"`
-	PhotoURL string `json:"photo_url"`
-	PhotoWidth int64 `json:"photo_width,omitempty"`
-	ReplyMarkup *InlineKeyboardMarkup `json:"reply_markup,omitempty"`
-	ThumbURL string `json:"thumb_url"`
-	Title string `json:"title,omitempty"`
+	Caption             string                `json:"caption,omitempty"`
+	CaptionEntities     []MessageEntity       `json:"caption_entities,omitempty"`
+	Description         string                `json:"description,omitempty"`
+	ID                  string                `json:"id"`
+	InputMessageContent interface{}           `json:"input_message_content,omitempty"`
+	ParseMode           string                `json:"parse_mode,omitempty"`
+	PhotoHeight         int                   `json:"photo_height,omitempty"`
+	PhotoURL            string                `json:"photo_url"`
+	PhotoWidth          int64                 `json:"photo_width,omitempty"`
+	ReplyMarkup         *InlineKeyboardMarkup `json:"reply_markup,omitempty"`
+	ThumbURL            string                `json:"thumb_url"`
+	Title               string                `json:"title,omitempty"`
 }
 
 func (entity InlineQueryResultPhoto) MarshalJSON() ([]byte, error) {
 	alias := struct {
-		Type string `json:"type"`
-		ID string `json:"id"`
-		PhotoURL string `json:"photo_url"`
-		ThumbURL string `json:"thumb_url"`
-		PhotoWidth int64 `json:"photo_width,omitempty"`
-		PhotoHeight int `json:"photo_height,omitempty"`
-		Title string `json:"title,omitempty"`
-		Description string `json:"description,omitempty"`
-		Caption string `json:"caption,omitempty"`
-		ParseMode string `json:"parse_mode,omitempty"`
-		CaptionEntities []MessageEntity `json:"caption_entities,omitempty"`
-		ReplyMarkup *InlineKeyboardMarkup `json:"reply_markup,omitempty"`
-		InputMessageContent interface{} `json:"input_message_content,omitempty"`
-	} {
-		Type: "photo",
-		ID: entity.ID,
-		PhotoURL: entity.PhotoURL,
-		ThumbURL: entity.ThumbURL,
-		PhotoWidth: entity.PhotoWidth,
-		PhotoHeight: entity.PhotoHeight,
-		Title: entity.Title,
-		Description: entity.Description,
-		Caption: entity.Caption,
-		ParseMode: entity.ParseMode,
-		CaptionEntities: entity.CaptionEntities,
-		ReplyMarkup: entity.ReplyMarkup,
+		Type                string                `json:"type"`
+		ID                  string                `json:"id"`
+		PhotoURL            string                `json:"photo_url"`
+		ThumbURL            string                `json:"thumb_url"`
+		PhotoWidth          int64                 `json:"photo_width,omitempty"`
+		PhotoHeight         int                   `json:"photo_height,omitempty"`
+		Title               string                `json:"title,omitempty"`
+		Description         string                `json:"description,omitempty"`
+		Caption             string                `json:"caption,omitempty"`
+		ParseMode           string                `json:"parse_mode,omitempty"`
+		CaptionEntities     []MessageEntity       `json:"caption_entities,omitempty"`
+		ReplyMarkup         *InlineKeyboardMarkup `json:"reply_markup,omitempty"`
+		InputMessageContent interface{}           `json:"input_message_content,omitempty"`
+	}{
+		Type:                "photo",
+		ID:                  entity.ID,
+		PhotoURL:            entity.PhotoURL,
+		ThumbURL:            entity.ThumbURL,
+		PhotoWidth:          entity.PhotoWidth,
+		PhotoHeight:         entity.PhotoHeight,
+		Title:               entity.Title,
+		Description:         entity.Description,
+		Caption:             entity.Caption,
+		ParseMode:           entity.ParseMode,
+		CaptionEntities:     entity.CaptionEntities,
+		ReplyMarkup:         entity.ReplyMarkup,
 		InputMessageContent: entity.InputMessageContent,
 	}
 	if entity.InputMessageContent != nil {
 		switch entity.InputMessageContent.(type) {
-			case InputTextMessageContent, InputLocationMessageContent, InputVenueMessageContent, InputContactMessageContent, InputInvoiceMessageContent:
-				break
-			default:
-				return nil, fmt.Errorf("input_message_content: unknown type: %T", entity.InputMessageContent)
+		case InputTextMessageContent, InputLocationMessageContent, InputVenueMessageContent, InputContactMessageContent, InputInvoiceMessageContent:
+			break
+		default:
+			return nil, fmt.Errorf("input_message_content: unknown type: %T", entity.InputMessageContent)
 		}
 	}
 	return json.Marshal(alias)

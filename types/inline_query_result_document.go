@@ -14,59 +14,59 @@ import (
 // Note: This will only work in Telegram versions released after 9 April, 2016
 // Older clients will ignore them.
 type InlineQueryResultDocument struct {
-	Caption string `json:"caption,omitempty"`
-	CaptionEntities []MessageEntity `json:"caption_entities,omitempty"`
-	Description string `json:"description,omitempty"`
-	DocumentURL string `json:"document_url"`
-	ID string `json:"id"`
-	InputMessageContent interface{} `json:"input_message_content,omitempty"`
-	MimeType string `json:"mime_type"`
-	ParseMode string `json:"parse_mode,omitempty"`
-	ReplyMarkup *InlineKeyboardMarkup `json:"reply_markup,omitempty"`
-	ThumbHeight int `json:"thumb_height,omitempty"`
-	ThumbURL string `json:"thumb_url,omitempty"`
-	ThumbWidth int64 `json:"thumb_width,omitempty"`
-	Title string `json:"title"`
+	Caption             string                `json:"caption,omitempty"`
+	CaptionEntities     []MessageEntity       `json:"caption_entities,omitempty"`
+	Description         string                `json:"description,omitempty"`
+	DocumentURL         string                `json:"document_url"`
+	ID                  string                `json:"id"`
+	InputMessageContent interface{}           `json:"input_message_content,omitempty"`
+	MimeType            string                `json:"mime_type"`
+	ParseMode           string                `json:"parse_mode,omitempty"`
+	ReplyMarkup         *InlineKeyboardMarkup `json:"reply_markup,omitempty"`
+	ThumbHeight         int                   `json:"thumb_height,omitempty"`
+	ThumbURL            string                `json:"thumb_url,omitempty"`
+	ThumbWidth          int64                 `json:"thumb_width,omitempty"`
+	Title               string                `json:"title"`
 }
 
 func (entity InlineQueryResultDocument) MarshalJSON() ([]byte, error) {
 	alias := struct {
-		Type string `json:"type"`
-		ID string `json:"id"`
-		Title string `json:"title"`
-		Caption string `json:"caption,omitempty"`
-		ParseMode string `json:"parse_mode,omitempty"`
-		CaptionEntities []MessageEntity `json:"caption_entities,omitempty"`
-		DocumentURL string `json:"document_url"`
-		MimeType string `json:"mime_type"`
-		Description string `json:"description,omitempty"`
-		ReplyMarkup *InlineKeyboardMarkup `json:"reply_markup,omitempty"`
-		InputMessageContent interface{} `json:"input_message_content,omitempty"`
-		ThumbURL string `json:"thumb_url,omitempty"`
-		ThumbWidth int64 `json:"thumb_width,omitempty"`
-		ThumbHeight int `json:"thumb_height,omitempty"`
-	} {
-		Type: "document",
-		ID: entity.ID,
-		Title: entity.Title,
-		Caption: entity.Caption,
-		ParseMode: entity.ParseMode,
-		CaptionEntities: entity.CaptionEntities,
-		DocumentURL: entity.DocumentURL,
-		MimeType: entity.MimeType,
-		Description: entity.Description,
-		ReplyMarkup: entity.ReplyMarkup,
+		Type                string                `json:"type"`
+		ID                  string                `json:"id"`
+		Title               string                `json:"title"`
+		Caption             string                `json:"caption,omitempty"`
+		ParseMode           string                `json:"parse_mode,omitempty"`
+		CaptionEntities     []MessageEntity       `json:"caption_entities,omitempty"`
+		DocumentURL         string                `json:"document_url"`
+		MimeType            string                `json:"mime_type"`
+		Description         string                `json:"description,omitempty"`
+		ReplyMarkup         *InlineKeyboardMarkup `json:"reply_markup,omitempty"`
+		InputMessageContent interface{}           `json:"input_message_content,omitempty"`
+		ThumbURL            string                `json:"thumb_url,omitempty"`
+		ThumbWidth          int64                 `json:"thumb_width,omitempty"`
+		ThumbHeight         int                   `json:"thumb_height,omitempty"`
+	}{
+		Type:                "document",
+		ID:                  entity.ID,
+		Title:               entity.Title,
+		Caption:             entity.Caption,
+		ParseMode:           entity.ParseMode,
+		CaptionEntities:     entity.CaptionEntities,
+		DocumentURL:         entity.DocumentURL,
+		MimeType:            entity.MimeType,
+		Description:         entity.Description,
+		ReplyMarkup:         entity.ReplyMarkup,
 		InputMessageContent: entity.InputMessageContent,
-		ThumbURL: entity.ThumbURL,
-		ThumbWidth: entity.ThumbWidth,
-		ThumbHeight: entity.ThumbHeight,
+		ThumbURL:            entity.ThumbURL,
+		ThumbWidth:          entity.ThumbWidth,
+		ThumbHeight:         entity.ThumbHeight,
 	}
 	if entity.InputMessageContent != nil {
 		switch entity.InputMessageContent.(type) {
-			case InputTextMessageContent, InputLocationMessageContent, InputVenueMessageContent, InputContactMessageContent, InputInvoiceMessageContent:
-				break
-			default:
-				return nil, fmt.Errorf("input_message_content: unknown type: %T", entity.InputMessageContent)
+		case InputTextMessageContent, InputLocationMessageContent, InputVenueMessageContent, InputContactMessageContent, InputInvoiceMessageContent:
+			break
+		default:
+			return nil, fmt.Errorf("input_message_content: unknown type: %T", entity.InputMessageContent)
 		}
 	}
 	return json.Marshal(alias)

@@ -2,7 +2,6 @@
 
 package types
 
-
 // CHAT_MEMBER
 const (
 	TypeChatMemberOwner = iota

@@ -13,32 +13,32 @@ import (
 // Note: This will only work in Telegram versions released after 9 April, 2016 for static stickers and after 06 July, 2019 for animated stickers
 // Older clients will ignore them.
 type InlineQueryResultCachedSticker struct {
-	ID string `json:"id"`
-	InputMessageContent interface{} `json:"input_message_content,omitempty"`
-	ReplyMarkup *InlineKeyboardMarkup `json:"reply_markup,omitempty"`
-	StickerFileID string `json:"sticker_file_id"`
+	ID                  string                `json:"id"`
+	InputMessageContent interface{}           `json:"input_message_content,omitempty"`
+	ReplyMarkup         *InlineKeyboardMarkup `json:"reply_markup,omitempty"`
+	StickerFileID       string                `json:"sticker_file_id"`
 }
 
 func (entity InlineQueryResultCachedSticker) MarshalJSON() ([]byte, error) {
 	alias := struct {
-		Type string `json:"type"`
-		ID string `json:"id"`
-		StickerFileID string `json:"sticker_file_id"`
-		ReplyMarkup *InlineKeyboardMarkup `json:"reply_markup,omitempty"`
-		InputMessageContent interface{} `json:"input_message_content,omitempty"`
-	} {
-		Type: "sticker",
-		ID: entity.ID,
-		StickerFileID: entity.StickerFileID,
-		ReplyMarkup: entity.ReplyMarkup,
+		Type                string                `json:"type"`
+		ID                  string                `json:"id"`
+		StickerFileID       string                `json:"sticker_file_id"`
+		ReplyMarkup         *InlineKeyboardMarkup `json:"reply_markup,omitempty"`
+		InputMessageContent interface{}           `json:"input_message_content,omitempty"`
+	}{
+		Type:                "sticker",
+		ID:                  entity.ID,
+		StickerFileID:       entity.StickerFileID,
+		ReplyMarkup:         entity.ReplyMarkup,
 		InputMessageContent: entity.InputMessageContent,
 	}
 	if entity.InputMessageContent != nil {
 		switch entity.InputMessageContent.(type) {
-			case InputTextMessageContent, InputLocationMessageContent, InputVenueMessageContent, InputContactMessageContent, InputInvoiceMessageContent:
-				break
-			default:
-				return nil, fmt.Errorf("input_message_content: unknown type: %T", entity.InputMessageContent)
+		case InputTextMessageContent, InputLocationMessageContent, InputVenueMessageContent, InputContactMessageContent, InputInvoiceMessageContent:
+			break
+		default:
+			return nil, fmt.Errorf("input_message_content: unknown type: %T", entity.InputMessageContent)
 		}
 	}
 	return json.Marshal(alias)

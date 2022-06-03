@@ -16,20 +16,20 @@ import (
 // https://www.example.com/<token>
 // Since nobody else knows your bot's token, you can be pretty sure it's us.
 type SetWebhook struct {
-	AllowedUpdates []string `json:"allowed_updates,omitempty"`
-	Certificate rawTypes.InputFile `json:"certificate,omitempty"`
-	DropPendingUpdates bool `json:"drop_pending_updates,omitempty"`
-	IPAddress string `json:"ip_address,omitempty"`
-	MaxConnections int `json:"max_connections,omitempty"`
-	URL string `json:"url"`
+	AllowedUpdates     []string           `json:"allowed_updates,omitempty"`
+	Certificate        rawTypes.InputFile `json:"certificate,omitempty"`
+	DropPendingUpdates bool               `json:"drop_pending_updates,omitempty"`
+	IPAddress          string             `json:"ip_address,omitempty"`
+	MaxConnections     int                `json:"max_connections,omitempty"`
+	URL                string             `json:"url"`
 }
 
 func (entity *SetWebhook) Files() map[string]rawTypes.InputFile {
 	files := make(map[string]rawTypes.InputFile)
 	switch entity.Certificate.(type) {
-		case types.InputFile:
-			files["certificate"] = entity.Certificate
-			entity.Certificate = nil
+	case types.InputFile:
+		files["certificate"] = entity.Certificate
+		entity.Certificate = nil
 	}
 	return files
 }
@@ -46,8 +46,8 @@ func (SetWebhook) ParseResult(response []byte) (*rawTypes.Result, error) {
 	if err != nil {
 		return nil, err
 	}
-	result := rawTypes.Result {
-		Kind: types.TypeBoolean,
+	result := rawTypes.Result{
+		Kind:   types.TypeBoolean,
 		Result: x1.Result,
 	}
 	return &result, nil

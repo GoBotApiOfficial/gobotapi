@@ -11,14 +11,14 @@ import (
 // EditMessageText Use this method to edit text and game messages
 // On success, if the edited message is not an inline message, the edited Message is returned, otherwise True is returned.
 type EditMessageText struct {
-	ChatID int64 `json:"chat_id,omitempty"`
-	DisableWebPagePreview bool `json:"disable_web_page_preview,omitempty"`
-	Entities []types.MessageEntity `json:"entities,omitempty"`
-	InlineMessageID string `json:"inline_message_id,omitempty"`
-	MessageID int64 `json:"message_id,omitempty"`
-	ParseMode string `json:"parse_mode,omitempty"`
-	ReplyMarkup *types.InlineKeyboardMarkup `json:"reply_markup,omitempty"`
-	Text string `json:"text"`
+	ChatID                int64                       `json:"chat_id,omitempty"`
+	DisableWebPagePreview bool                        `json:"disable_web_page_preview,omitempty"`
+	Entities              []types.MessageEntity       `json:"entities,omitempty"`
+	InlineMessageID       string                      `json:"inline_message_id,omitempty"`
+	MessageID             int64                       `json:"message_id,omitempty"`
+	ParseMode             string                      `json:"parse_mode,omitempty"`
+	ReplyMarkup           *types.InlineKeyboardMarkup `json:"reply_markup,omitempty"`
+	Text                  string                      `json:"text"`
 }
 
 func (entity *EditMessageText) Files() map[string]rawTypes.InputFile {
@@ -35,8 +35,8 @@ func (EditMessageText) ParseResult(response []byte) (*rawTypes.Result, error) {
 	}
 	_ = json.Unmarshal(response, &x0)
 	if x0.Result {
-		result := rawTypes.Result {
-			Kind: types.TypeBoolean,
+		result := rawTypes.Result{
+			Kind:   types.TypeBoolean,
 			Result: true,
 		}
 		return &result, nil
@@ -48,8 +48,8 @@ func (EditMessageText) ParseResult(response []byte) (*rawTypes.Result, error) {
 		if err != nil {
 			return nil, err
 		}
-		result := rawTypes.Result {
-			Kind: types.TypeMessage,
+		result := rawTypes.Result{
+			Kind:   types.TypeMessage,
 			Result: x1.Result,
 		}
 		return &result, nil

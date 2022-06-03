@@ -11,13 +11,13 @@ import (
 // AnswerInlineQuery Use this method to send answers to an inline query
 // On success, True is returned.No more than 50 results per query are allowed.
 type AnswerInlineQuery struct {
-	CacheTime int `json:"cache_time,omitempty"`
-	InlineQueryID string `json:"inline_query_id"`
-	IsPersonal bool `json:"is_personal,omitempty"`
-	NextOffset string `json:"next_offset,omitempty"`
-	Results []types.InlineQueryResult `json:"results,omitempty"`
-	SwitchPmParameter string `json:"switch_pm_parameter,omitempty"`
-	SwitchPmText string `json:"switch_pm_text,omitempty"`
+	CacheTime         int                       `json:"cache_time,omitempty"`
+	InlineQueryID     string                    `json:"inline_query_id"`
+	IsPersonal        bool                      `json:"is_personal,omitempty"`
+	NextOffset        string                    `json:"next_offset,omitempty"`
+	Results           []types.InlineQueryResult `json:"results,omitempty"`
+	SwitchPmParameter string                    `json:"switch_pm_parameter,omitempty"`
+	SwitchPmText      string                    `json:"switch_pm_text,omitempty"`
 }
 
 func (entity *AnswerInlineQuery) Files() map[string]rawTypes.InputFile {
@@ -36,8 +36,8 @@ func (AnswerInlineQuery) ParseResult(response []byte) (*rawTypes.Result, error) 
 	if err != nil {
 		return nil, err
 	}
-	result := rawTypes.Result {
-		Kind: types.TypeBoolean,
+	result := rawTypes.Result{
+		Kind:   types.TypeBoolean,
 		Result: x1.Result,
 	}
 	return &result, nil

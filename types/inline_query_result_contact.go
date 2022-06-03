@@ -13,50 +13,50 @@ import (
 // Note: This will only work in Telegram versions released after 9 April, 2016
 // Older clients will ignore them.
 type InlineQueryResultContact struct {
-	FirstName string `json:"first_name"`
-	ID string `json:"id"`
-	InputMessageContent interface{} `json:"input_message_content,omitempty"`
-	LastName string `json:"last_name,omitempty"`
-	PhoneNumber string `json:"phone_number"`
-	ReplyMarkup *InlineKeyboardMarkup `json:"reply_markup,omitempty"`
-	ThumbHeight int `json:"thumb_height,omitempty"`
-	ThumbURL string `json:"thumb_url,omitempty"`
-	ThumbWidth int64 `json:"thumb_width,omitempty"`
-	Vcard string `json:"vcard,omitempty"`
+	FirstName           string                `json:"first_name"`
+	ID                  string                `json:"id"`
+	InputMessageContent interface{}           `json:"input_message_content,omitempty"`
+	LastName            string                `json:"last_name,omitempty"`
+	PhoneNumber         string                `json:"phone_number"`
+	ReplyMarkup         *InlineKeyboardMarkup `json:"reply_markup,omitempty"`
+	ThumbHeight         int                   `json:"thumb_height,omitempty"`
+	ThumbURL            string                `json:"thumb_url,omitempty"`
+	ThumbWidth          int64                 `json:"thumb_width,omitempty"`
+	Vcard               string                `json:"vcard,omitempty"`
 }
 
 func (entity InlineQueryResultContact) MarshalJSON() ([]byte, error) {
 	alias := struct {
-		Type string `json:"type"`
-		ID string `json:"id"`
-		PhoneNumber string `json:"phone_number"`
-		FirstName string `json:"first_name"`
-		LastName string `json:"last_name,omitempty"`
-		Vcard string `json:"vcard,omitempty"`
-		ReplyMarkup *InlineKeyboardMarkup `json:"reply_markup,omitempty"`
-		InputMessageContent interface{} `json:"input_message_content,omitempty"`
-		ThumbURL string `json:"thumb_url,omitempty"`
-		ThumbWidth int64 `json:"thumb_width,omitempty"`
-		ThumbHeight int `json:"thumb_height,omitempty"`
-	} {
-		Type: "contact",
-		ID: entity.ID,
-		PhoneNumber: entity.PhoneNumber,
-		FirstName: entity.FirstName,
-		LastName: entity.LastName,
-		Vcard: entity.Vcard,
-		ReplyMarkup: entity.ReplyMarkup,
+		Type                string                `json:"type"`
+		ID                  string                `json:"id"`
+		PhoneNumber         string                `json:"phone_number"`
+		FirstName           string                `json:"first_name"`
+		LastName            string                `json:"last_name,omitempty"`
+		Vcard               string                `json:"vcard,omitempty"`
+		ReplyMarkup         *InlineKeyboardMarkup `json:"reply_markup,omitempty"`
+		InputMessageContent interface{}           `json:"input_message_content,omitempty"`
+		ThumbURL            string                `json:"thumb_url,omitempty"`
+		ThumbWidth          int64                 `json:"thumb_width,omitempty"`
+		ThumbHeight         int                   `json:"thumb_height,omitempty"`
+	}{
+		Type:                "contact",
+		ID:                  entity.ID,
+		PhoneNumber:         entity.PhoneNumber,
+		FirstName:           entity.FirstName,
+		LastName:            entity.LastName,
+		Vcard:               entity.Vcard,
+		ReplyMarkup:         entity.ReplyMarkup,
 		InputMessageContent: entity.InputMessageContent,
-		ThumbURL: entity.ThumbURL,
-		ThumbWidth: entity.ThumbWidth,
-		ThumbHeight: entity.ThumbHeight,
+		ThumbURL:            entity.ThumbURL,
+		ThumbWidth:          entity.ThumbWidth,
+		ThumbHeight:         entity.ThumbHeight,
 	}
 	if entity.InputMessageContent != nil {
 		switch entity.InputMessageContent.(type) {
-			case InputTextMessageContent, InputLocationMessageContent, InputVenueMessageContent, InputContactMessageContent, InputInvoiceMessageContent:
-				break
-			default:
-				return nil, fmt.Errorf("input_message_content: unknown type: %T", entity.InputMessageContent)
+		case InputTextMessageContent, InputLocationMessageContent, InputVenueMessageContent, InputContactMessageContent, InputInvoiceMessageContent:
+			break
+		default:
+			return nil, fmt.Errorf("input_message_content: unknown type: %T", entity.InputMessageContent)
 		}
 	}
 	return json.Marshal(alias)

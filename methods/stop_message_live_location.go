@@ -11,10 +11,10 @@ import (
 // StopMessageLiveLocation Use this method to stop updating a live location message before live_period expires
 // On success, if the message is not an inline message, the edited Message is returned, otherwise True is returned.
 type StopMessageLiveLocation struct {
-	ChatID int64 `json:"chat_id,omitempty"`
-	InlineMessageID string `json:"inline_message_id,omitempty"`
-	MessageID int64 `json:"message_id,omitempty"`
-	ReplyMarkup *types.InlineKeyboardMarkup `json:"reply_markup,omitempty"`
+	ChatID          int64                       `json:"chat_id,omitempty"`
+	InlineMessageID string                      `json:"inline_message_id,omitempty"`
+	MessageID       int64                       `json:"message_id,omitempty"`
+	ReplyMarkup     *types.InlineKeyboardMarkup `json:"reply_markup,omitempty"`
 }
 
 func (entity *StopMessageLiveLocation) Files() map[string]rawTypes.InputFile {
@@ -31,8 +31,8 @@ func (StopMessageLiveLocation) ParseResult(response []byte) (*rawTypes.Result, e
 	}
 	_ = json.Unmarshal(response, &x0)
 	if x0.Result {
-		result := rawTypes.Result {
-			Kind: types.TypeBoolean,
+		result := rawTypes.Result{
+			Kind:   types.TypeBoolean,
 			Result: true,
 		}
 		return &result, nil
@@ -44,8 +44,8 @@ func (StopMessageLiveLocation) ParseResult(response []byte) (*rawTypes.Result, e
 		if err != nil {
 			return nil, err
 		}
-		result := rawTypes.Result {
-			Kind: types.TypeMessage,
+		result := rawTypes.Result{
+			Kind:   types.TypeMessage,
 			Result: x1.Result,
 		}
 		return &result, nil

@@ -4,7 +4,7 @@ package types
 
 // BotCommandScopeChatMember Represents the scope of bot commands, covering a specific member of a group or supergroup chat.
 type BotCommandScopeChatMember struct {
-	ChatID int64 `json:"chat_id"`
-	Type string `json:"type"`
-	UserID int64 `json:"user_id"`
+	ChatID int64  `json:"chat_id"`
+	Type   string `json:"type"`
+	UserID int64  `json:"user_id"`
 }

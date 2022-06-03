@@ -13,59 +13,59 @@ import (
 // Note: This will only work in Telegram versions released after 9 April, 2016
 // Older clients will ignore them.
 type InlineQueryResultLocation struct {
-	Heading int `json:"heading,omitempty"`
-	HorizontalAccuracy float64 `json:"horizontal_accuracy,omitempty"`
-	ID string `json:"id"`
-	InputMessageContent interface{} `json:"input_message_content,omitempty"`
-	Latitude float64 `json:"latitude"`
-	LivePeriod int `json:"live_period,omitempty"`
-	Longitude float64 `json:"longitude"`
-	ProximityAlertRadius int `json:"proximity_alert_radius,omitempty"`
-	ReplyMarkup *InlineKeyboardMarkup `json:"reply_markup,omitempty"`
-	ThumbHeight int `json:"thumb_height,omitempty"`
-	ThumbURL string `json:"thumb_url,omitempty"`
-	ThumbWidth int64 `json:"thumb_width,omitempty"`
-	Title string `json:"title"`
+	Heading              int                   `json:"heading,omitempty"`
+	HorizontalAccuracy   float64               `json:"horizontal_accuracy,omitempty"`
+	ID                   string                `json:"id"`
+	InputMessageContent  interface{}           `json:"input_message_content,omitempty"`
+	Latitude             float64               `json:"latitude"`
+	LivePeriod           int                   `json:"live_period,omitempty"`
+	Longitude            float64               `json:"longitude"`
+	ProximityAlertRadius int                   `json:"proximity_alert_radius,omitempty"`
+	ReplyMarkup          *InlineKeyboardMarkup `json:"reply_markup,omitempty"`
+	ThumbHeight          int                   `json:"thumb_height,omitempty"`
+	ThumbURL             string                `json:"thumb_url,omitempty"`
+	ThumbWidth           int64                 `json:"thumb_width,omitempty"`
+	Title                string                `json:"title"`
 }
 
 func (entity InlineQueryResultLocation) MarshalJSON() ([]byte, error) {
 	alias := struct {
-		Type string `json:"type"`
-		ID string `json:"id"`
-		Latitude float64 `json:"latitude"`
-		Longitude float64 `json:"longitude"`
-		Title string `json:"title"`
-		HorizontalAccuracy float64 `json:"horizontal_accuracy,omitempty"`
-		LivePeriod int `json:"live_period,omitempty"`
-		Heading int `json:"heading,omitempty"`
-		ProximityAlertRadius int `json:"proximity_alert_radius,omitempty"`
-		ReplyMarkup *InlineKeyboardMarkup `json:"reply_markup,omitempty"`
-		InputMessageContent interface{} `json:"input_message_content,omitempty"`
-		ThumbURL string `json:"thumb_url,omitempty"`
-		ThumbWidth int64 `json:"thumb_width,omitempty"`
-		ThumbHeight int `json:"thumb_height,omitempty"`
-	} {
-		Type: "location",
-		ID: entity.ID,
-		Latitude: entity.Latitude,
-		Longitude: entity.Longitude,
-		Title: entity.Title,
-		HorizontalAccuracy: entity.HorizontalAccuracy,
-		LivePeriod: entity.LivePeriod,
-		Heading: entity.Heading,
+		Type                 string                `json:"type"`
+		ID                   string                `json:"id"`
+		Latitude             float64               `json:"latitude"`
+		Longitude            float64               `json:"longitude"`
+		Title                string                `json:"title"`
+		HorizontalAccuracy   float64               `json:"horizontal_accuracy,omitempty"`
+		LivePeriod           int                   `json:"live_period,omitempty"`
+		Heading              int                   `json:"heading,omitempty"`
+		ProximityAlertRadius int                   `json:"proximity_alert_radius,omitempty"`
+		ReplyMarkup          *InlineKeyboardMarkup `json:"reply_markup,omitempty"`
+		InputMessageContent  interface{}           `json:"input_message_content,omitempty"`
+		ThumbURL             string                `json:"thumb_url,omitempty"`
+		ThumbWidth           int64                 `json:"thumb_width,omitempty"`
+		ThumbHeight          int                   `json:"thumb_height,omitempty"`
+	}{
+		Type:                 "location",
+		ID:                   entity.ID,
+		Latitude:             entity.Latitude,
+		Longitude:            entity.Longitude,
+		Title:                entity.Title,
+		HorizontalAccuracy:   entity.HorizontalAccuracy,
+		LivePeriod:           entity.LivePeriod,
+		Heading:              entity.Heading,
 		ProximityAlertRadius: entity.ProximityAlertRadius,
-		ReplyMarkup: entity.ReplyMarkup,
-		InputMessageContent: entity.InputMessageContent,
-		ThumbURL: entity.ThumbURL,
-		ThumbWidth: entity.ThumbWidth,
-		ThumbHeight: entity.ThumbHeight,
+		ReplyMarkup:          entity.ReplyMarkup,
+		InputMessageContent:  entity.InputMessageContent,
+		ThumbURL:             entity.ThumbURL,
+		ThumbWidth:           entity.ThumbWidth,
+		ThumbHeight:          entity.ThumbHeight,
 	}
 	if entity.InputMessageContent != nil {
 		switch entity.InputMessageContent.(type) {
-			case InputTextMessageContent, InputLocationMessageContent, InputVenueMessageContent, InputContactMessageContent, InputInvoiceMessageContent:
-				break
-			default:
-				return nil, fmt.Errorf("input_message_content: unknown type: %T", entity.InputMessageContent)
+		case InputTextMessageContent, InputLocationMessageContent, InputVenueMessageContent, InputContactMessageContent, InputInvoiceMessageContent:
+			break
+		default:
+			return nil, fmt.Errorf("input_message_content: unknown type: %T", entity.InputMessageContent)
 		}
 	}
 	return json.Marshal(alias)

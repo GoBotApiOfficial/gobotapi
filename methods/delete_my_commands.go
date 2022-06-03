@@ -12,8 +12,8 @@ import (
 // After deletion, higher level commands will be shown to affected users
 // Returns True on success.
 type DeleteMyCommands struct {
-	LanguageCode string `json:"language_code,omitempty"`
-	Scope *types.BotCommandScope `json:"scope,omitempty"`
+	LanguageCode string                 `json:"language_code,omitempty"`
+	Scope        *types.BotCommandScope `json:"scope,omitempty"`
 }
 
 func (entity *DeleteMyCommands) Files() map[string]rawTypes.InputFile {
@@ -32,8 +32,8 @@ func (DeleteMyCommands) ParseResult(response []byte) (*rawTypes.Result, error) {
 	if err != nil {
 		return nil, err
 	}
-	result := rawTypes.Result {
-		Kind: types.TypeBoolean,
+	result := rawTypes.Result{
+		Kind:   types.TypeBoolean,
 		Result: x1.Result,
 	}
 	return &result, nil

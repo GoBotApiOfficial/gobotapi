@@ -31,8 +31,8 @@ func (ExportChatInviteLink) ParseResult(response []byte) (*rawTypes.Result, erro
 	if err != nil {
 		return nil, err
 	}
-	result := rawTypes.Result {
-		Kind: types.TypeString,
+	result := rawTypes.Result{
+		Kind:   types.TypeString,
 		Result: x1.Result,
 	}
 	return &result, nil

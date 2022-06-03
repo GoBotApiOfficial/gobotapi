@@ -16,9 +16,9 @@ import (
 // If you don't want this, use the parameter only_if_banned
 // Returns True on success.
 type UnbanChatMember struct {
-	ChatID int64 `json:"chat_id"`
-	OnlyIfBanned bool `json:"only_if_banned,omitempty"`
-	UserID int64 `json:"user_id"`
+	ChatID       int64 `json:"chat_id"`
+	OnlyIfBanned bool  `json:"only_if_banned,omitempty"`
+	UserID       int64 `json:"user_id"`
 }
 
 func (entity *UnbanChatMember) Files() map[string]rawTypes.InputFile {
@@ -37,8 +37,8 @@ func (UnbanChatMember) ParseResult(response []byte) (*rawTypes.Result, error) {
 	if err != nil {
 		return nil, err
 	}
-	result := rawTypes.Result {
-		Kind: types.TypeBoolean,
+	result := rawTypes.Result{
+		Kind:   types.TypeBoolean,
 		Result: x1.Result,
 	}
 	return &result, nil

@@ -4,9 +4,9 @@ package types
 
 // Contact Represents a phone contact.
 type Contact struct {
-	FirstName string `json:"first_name"`
-	LastName string `json:"last_name,omitempty"`
+	FirstName   string `json:"first_name"`
+	LastName    string `json:"last_name,omitempty"`
 	PhoneNumber string `json:"phone_number"`
-	UserID int64 `json:"user_id,omitempty"`
-	Vcard string `json:"vcard,omitempty"`
+	UserID      int64  `json:"user_id,omitempty"`
+	Vcard       string `json:"vcard,omitempty"`
 }

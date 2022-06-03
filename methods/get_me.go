@@ -29,8 +29,8 @@ func (GetMe) ParseResult(response []byte) (*rawTypes.Result, error) {
 	if err != nil {
 		return nil, err
 	}
-	result := rawTypes.Result {
-		Kind: types.TypeUser,
+	result := rawTypes.Result{
+		Kind:   types.TypeUser,
 		Result: x1.Result,
 	}
 	return &result, nil

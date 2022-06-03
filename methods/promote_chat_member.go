@@ -13,19 +13,19 @@ import (
 // Pass False for all boolean parameters to demote a user
 // Returns True on success.
 type PromoteChatMember struct {
-	CanChangeInfo bool `json:"can_change_info,omitempty"`
-	CanDeleteMessages bool `json:"can_delete_messages,omitempty"`
-	CanEditMessages bool `json:"can_edit_messages,omitempty"`
-	CanInviteUsers bool `json:"can_invite_users,omitempty"`
-	CanManageChat bool `json:"can_manage_chat,omitempty"`
-	CanManageVideoChats bool `json:"can_manage_video_chats,omitempty"`
-	CanPinMessages bool `json:"can_pin_messages,omitempty"`
-	CanPostMessages bool `json:"can_post_messages,omitempty"`
-	CanPromoteMembers bool `json:"can_promote_members,omitempty"`
-	CanRestrictMembers bool `json:"can_restrict_members,omitempty"`
-	ChatID int64 `json:"chat_id"`
-	IsAnonymous bool `json:"is_anonymous,omitempty"`
-	UserID int64 `json:"user_id"`
+	CanChangeInfo       bool  `json:"can_change_info,omitempty"`
+	CanDeleteMessages   bool  `json:"can_delete_messages,omitempty"`
+	CanEditMessages     bool  `json:"can_edit_messages,omitempty"`
+	CanInviteUsers      bool  `json:"can_invite_users,omitempty"`
+	CanManageChat       bool  `json:"can_manage_chat,omitempty"`
+	CanManageVideoChats bool  `json:"can_manage_video_chats,omitempty"`
+	CanPinMessages      bool  `json:"can_pin_messages,omitempty"`
+	CanPostMessages     bool  `json:"can_post_messages,omitempty"`
+	CanPromoteMembers   bool  `json:"can_promote_members,omitempty"`
+	CanRestrictMembers  bool  `json:"can_restrict_members,omitempty"`
+	ChatID              int64 `json:"chat_id"`
+	IsAnonymous         bool  `json:"is_anonymous,omitempty"`
+	UserID              int64 `json:"user_id"`
 }
 
 func (entity *PromoteChatMember) Files() map[string]rawTypes.InputFile {
@@ -44,8 +44,8 @@ func (PromoteChatMember) ParseResult(response []byte) (*rawTypes.Result, error) 
 	if err != nil {
 		return nil, err
 	}
-	result := rawTypes.Result {
-		Kind: types.TypeBoolean,
+	result := rawTypes.Result{
+		Kind:   types.TypeBoolean,
 		Result: x1.Result,
 	}
 	return &result, nil

@@ -4,7 +4,7 @@ package types
 
 // ShippingOption Represents one shipping option.
 type ShippingOption struct {
-	ID string `json:"id"`
+	ID     string         `json:"id"`
 	Prices []LabeledPrice `json:"prices,omitempty"`
-	Title string `json:"title"`
+	Title  string         `json:"title"`
 }

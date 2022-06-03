@@ -13,10 +13,10 @@ import (
 // The bot must be an administrator in the chat for this to work and must have the appropriate administrator rights
 // Returns True on success.
 type BanChatMember struct {
-	ChatID int64 `json:"chat_id"`
-	RevokeMessages bool `json:"revoke_messages,omitempty"`
-	UntilDate int64 `json:"until_date,omitempty"`
-	UserID int64 `json:"user_id"`
+	ChatID         int64 `json:"chat_id"`
+	RevokeMessages bool  `json:"revoke_messages,omitempty"`
+	UntilDate      int64 `json:"until_date,omitempty"`
+	UserID         int64 `json:"user_id"`
 }
 
 func (entity *BanChatMember) Files() map[string]rawTypes.InputFile {
@@ -35,8 +35,8 @@ func (BanChatMember) ParseResult(response []byte) (*rawTypes.Result, error) {
 	if err != nil {
 		return nil, err
 	}
-	result := rawTypes.Result {
-		Kind: types.TypeBoolean,
+	result := rawTypes.Result{
+		Kind:   types.TypeBoolean,
 		Result: x1.Result,
 	}
 	return &result, nil

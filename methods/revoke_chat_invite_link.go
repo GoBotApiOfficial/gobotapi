@@ -13,7 +13,7 @@ import (
 // The bot must be an administrator in the chat for this to work and must have the appropriate administrator rights
 // Returns the revoked invite link as ChatInviteLink object.
 type RevokeChatInviteLink struct {
-	ChatID int64 `json:"chat_id"`
+	ChatID     int64  `json:"chat_id"`
 	InviteLink string `json:"invite_link"`
 }
 
@@ -33,8 +33,8 @@ func (RevokeChatInviteLink) ParseResult(response []byte) (*rawTypes.Result, erro
 	if err != nil {
 		return nil, err
 	}
-	result := rawTypes.Result {
-		Kind: types.TypeChatInviteLink,
+	result := rawTypes.Result{
+		Kind:   types.TypeChatInviteLink,
 		Result: x1.Result,
 	}
 	return &result, nil

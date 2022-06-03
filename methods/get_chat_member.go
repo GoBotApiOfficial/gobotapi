@@ -31,8 +31,8 @@ func (GetChatMember) ParseResult(response []byte) (*rawTypes.Result, error) {
 	if err != nil {
 		return nil, err
 	}
-	result := rawTypes.Result {
-		Kind: types.TypeChatMember,
+	result := rawTypes.Result{
+		Kind:   types.TypeChatMember,
 		Result: x1.Result,
 	}
 	return &result, nil
