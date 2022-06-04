@@ -11,8 +11,11 @@ func (ctx *Client) OnCommand(command string, aliasList []string, handler func(cl
 	if len(aliasList) == 0 {
 		aliasList = []string{"/"}
 	}
-	r, _ := regexp.Compile(fmt.Sprintf("(?i)(%s(?:@?%s)?)(?:\\s|$)", command, ctx.botUsername))
+	var withoutPrefixCompiler *regexp.Regexp
 	cmdHandler := func(client Client, message types.Message) {
+		if withoutPrefixCompiler == nil {
+			withoutPrefixCompiler, _ = regexp.Compile(fmt.Sprintf("(?i)(%s(?:@?%s)?)(?:\\s|$)", command, ctx.botUsername))
+		}
 		text := message.Text
 		if len(text) == 0 {
 			text = message.Caption
@@ -23,12 +26,14 @@ func (ctx *Client) OnCommand(command string, aliasList []string, handler func(cl
 					continue
 				}
 				withoutPrefix := strings.TrimPrefix(text, alias)
-				matches := r.FindAllStringSubmatch(withoutPrefix, -1)
+				matches := withoutPrefixCompiler.FindAllStringSubmatch(withoutPrefix, -1)
 				if len(matches) == 0 {
 					continue
 				}
-				handler(client, message)
-				break
+				if strings.HasPrefix(withoutPrefix, command) {
+					handler(client, message)
+					break
+				}
 			}
 		}
 	}
