@@ -3,6 +3,7 @@ package main
 import (
 	"github.com/Squirrel-Network/gobotapi"
 	"github.com/Squirrel-Network/gobotapi/types"
+	"github.com/Squirrel-Network/gobotapi/utils"
 	"log"
 )
 
@@ -26,7 +27,7 @@ func main() {
 	// Download a file from Message and save it to outputPath
 	client.OnMessage(func(client gobotapi.Client, message types.Message) {
 		// Check if the message contains any types of file
-		if gobotapi.ContainsFiles(message) {
+		if utils.ContainsFiles(message) {
 			// Download the file
 			err := client.DownloadMedia(message, "PATH_TO_FILE")
 			if err != nil {
