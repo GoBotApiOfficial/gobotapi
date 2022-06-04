@@ -38,9 +38,9 @@ func (ctx *Client) executeRequest(url, method string, data map[string]string, fi
 	}
 	cancelableContext.GenerateId()
 	defer func() {
-		for _, x := range ctx.requestsContext {
+		for i, x := range ctx.requestsContext {
 			if x.Id == cancelableContext.Id {
-				ctx.requestsContext = append(ctx.requestsContext[:0], ctx.requestsContext[1:]...)
+				ctx.requestsContext = append(ctx.requestsContext[:i], ctx.requestsContext[i+1:]...)
 				break
 			}
 		}
