@@ -20,7 +20,7 @@ func main() {
 		fmt.Println("Message Received from", message.Chat.ID, " with text ", message.Text)
 	}, filters.ChatID(-100123456789)))
 
-	// Logical Operators (only messages from chat with id = -100123456789 and is the user 123456789 an admin)
+	// Logical Operators (only messages from chat with id = -100123456789 and the user is 123456789)
 	// Supported operators: And(), Or(), Not()
 	client.OnMessage(filters.Filter(func(client gobotapi.Client, message types.Message) {
 		fmt.Println("Message Received from", message.Chat.ID, " with text ", message.Text)
