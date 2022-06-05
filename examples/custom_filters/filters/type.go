@@ -6,6 +6,6 @@ import (
 )
 
 type Wrapper struct {
-	client    gobotapi.Client
+	client    *gobotapi.Client
 	listUsers map[int64]map[int64]*types.ChatMember
 }

@@ -12,15 +12,15 @@ func (ctx *Wrapper) IsAdmin() filters.FilterOperand {
 		var chatID int64
 		var userID int64
 		for _, option := range options {
-			if chat, ok := option.(*types.Chat); ok {
+			if chat, ok := option.(*types.Chat); ok && chat != nil {
 				chatID = chat.ID
 			}
-			if user, ok := option.(*types.User); ok {
+			if user, ok := option.(*types.User); ok && user != nil {
 				userID = user.ID
 			}
 
 			// For callback queries (grab the chat id from the linked message)
-			if message, ok := option.(*types.Message); ok {
+			if message, ok := option.(*types.Message); ok && message != nil {
 				chatID = message.Chat.ID
 			}
 		}
@@ -37,6 +37,8 @@ func (ctx *Wrapper) IsAdmin() filters.FilterOperand {
 						}
 						ctx.listUsers[chatID][member.User.ID] = &member
 					}
+				} else {
+					return false
 				}
 			}
 			statusMember := ctx.listUsers[chatID][userID].Kind()

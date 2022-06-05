@@ -5,7 +5,7 @@ import (
 	"github.com/Squirrel-Network/gobotapi/types"
 )
 
-func FilterWrapper(client gobotapi.Client) *Wrapper {
+func FilterWrapper(client *gobotapi.Client) *Wrapper {
 	wrapper := &Wrapper{
 		client:    client,
 		listUsers: make(map[int64]map[int64]*types.ChatMember),
