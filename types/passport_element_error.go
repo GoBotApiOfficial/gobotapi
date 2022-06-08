@@ -13,4 +13,4 @@ package types
 //  - PassportElementErrorTranslationFile
 //  - PassportElementErrorTranslationFiles
 //  - PassportElementErrorUnspecified
-type PassportElementError interface{}
+type PassportElementError any

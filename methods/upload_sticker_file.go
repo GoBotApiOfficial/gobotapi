@@ -11,14 +11,19 @@ import (
 // UploadStickerFile Use this method to upload a .PNG file with a sticker for later use in createNewStickerSet and addStickerToSet methods (can be used multiple times)
 // Returns the uploaded File on success.
 type UploadStickerFile struct {
-	PngSticker rawTypes.InputFile `json:"png_sticker,omitempty"`
-	UserID     int64              `json:"user_id"`
+	PngSticker rawTypes.InputFile        `json:"png_sticker,omitempty"`
+	UserID     int64                     `json:"user_id"`
+	Progress   rawTypes.ProgressCallable `json:"-"`
+}
+
+func (entity *UploadStickerFile) ProgressCallable() rawTypes.ProgressCallable {
+	return entity.Progress
 }
 
 func (entity *UploadStickerFile) Files() map[string]rawTypes.InputFile {
 	files := make(map[string]rawTypes.InputFile)
 	switch entity.PngSticker.(type) {
-	case types.InputFile:
+	case types.InputBytes:
 		files["png_sticker"] = entity.PngSticker
 		entity.PngSticker = nil
 	}

@@ -15,29 +15,34 @@ import (
 // Static sticker sets can have up to 120 stickers
 // Returns True on success.
 type AddStickerToSet struct {
-	Emojis       string              `json:"emojis"`
-	MaskPosition *types.MaskPosition `json:"mask_position,omitempty"`
-	Name         string              `json:"name"`
-	PngSticker   rawTypes.InputFile  `json:"png_sticker,omitempty"`
-	TgsSticker   rawTypes.InputFile  `json:"tgs_sticker,omitempty"`
-	UserID       int64               `json:"user_id"`
-	WebmSticker  rawTypes.InputFile  `json:"webm_sticker,omitempty"`
+	Emojis       string                    `json:"emojis"`
+	MaskPosition *types.MaskPosition       `json:"mask_position,omitempty"`
+	Name         string                    `json:"name"`
+	PngSticker   rawTypes.InputFile        `json:"png_sticker,omitempty"`
+	TgsSticker   rawTypes.InputFile        `json:"tgs_sticker,omitempty"`
+	UserID       int64                     `json:"user_id"`
+	WebmSticker  rawTypes.InputFile        `json:"webm_sticker,omitempty"`
+	Progress     rawTypes.ProgressCallable `json:"-"`
+}
+
+func (entity *AddStickerToSet) ProgressCallable() rawTypes.ProgressCallable {
+	return entity.Progress
 }
 
 func (entity *AddStickerToSet) Files() map[string]rawTypes.InputFile {
 	files := make(map[string]rawTypes.InputFile)
 	switch entity.PngSticker.(type) {
-	case types.InputFile:
+	case types.InputBytes:
 		files["png_sticker"] = entity.PngSticker
 		entity.PngSticker = nil
 	}
 	switch entity.TgsSticker.(type) {
-	case types.InputFile:
+	case types.InputBytes:
 		files["tgs_sticker"] = entity.TgsSticker
 		entity.TgsSticker = nil
 	}
 	switch entity.WebmSticker.(type) {
-	case types.InputFile:
+	case types.InputBytes:
 		files["webm_sticker"] = entity.WebmSticker
 		entity.WebmSticker = nil
 	}

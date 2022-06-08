@@ -12,22 +12,27 @@ import (
 // SendPhoto Use this method to send photos
 // On success, the sent Message is returned.
 type SendPhoto struct {
-	AllowSendingWithoutReply bool                  `json:"allow_sending_without_reply,omitempty"`
-	Caption                  string                `json:"caption,omitempty"`
-	CaptionEntities          []types.MessageEntity `json:"caption_entities,omitempty"`
-	ChatID                   int64                 `json:"chat_id"`
-	DisableNotification      bool                  `json:"disable_notification,omitempty"`
-	ParseMode                string                `json:"parse_mode,omitempty"`
-	Photo                    rawTypes.InputFile    `json:"photo,omitempty"`
-	ProtectContent           bool                  `json:"protect_content,omitempty"`
-	ReplyMarkup              interface{}           `json:"reply_markup,omitempty"`
-	ReplyToMessageID         int64                 `json:"reply_to_message_id,omitempty"`
+	AllowSendingWithoutReply bool                      `json:"allow_sending_without_reply,omitempty"`
+	Caption                  string                    `json:"caption,omitempty"`
+	CaptionEntities          []types.MessageEntity     `json:"caption_entities,omitempty"`
+	ChatID                   int64                     `json:"chat_id"`
+	DisableNotification      bool                      `json:"disable_notification,omitempty"`
+	ParseMode                string                    `json:"parse_mode,omitempty"`
+	Photo                    rawTypes.InputFile        `json:"photo,omitempty"`
+	ProtectContent           bool                      `json:"protect_content,omitempty"`
+	ReplyMarkup              any                       `json:"reply_markup,omitempty"`
+	ReplyToMessageID         int64                     `json:"reply_to_message_id,omitempty"`
+	Progress                 rawTypes.ProgressCallable `json:"-"`
+}
+
+func (entity *SendPhoto) ProgressCallable() rawTypes.ProgressCallable {
+	return entity.Progress
 }
 
 func (entity *SendPhoto) Files() map[string]rawTypes.InputFile {
 	files := make(map[string]rawTypes.InputFile)
 	switch entity.Photo.(type) {
-	case types.InputFile:
+	case types.InputBytes:
 		files["photo"] = entity.Photo
 		entity.Photo = nil
 	}

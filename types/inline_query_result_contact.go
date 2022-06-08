@@ -15,7 +15,7 @@ import (
 type InlineQueryResultContact struct {
 	FirstName           string                `json:"first_name"`
 	ID                  string                `json:"id"`
-	InputMessageContent interface{}           `json:"input_message_content,omitempty"`
+	InputMessageContent any                   `json:"input_message_content,omitempty"`
 	LastName            string                `json:"last_name,omitempty"`
 	PhoneNumber         string                `json:"phone_number"`
 	ReplyMarkup         *InlineKeyboardMarkup `json:"reply_markup,omitempty"`
@@ -34,7 +34,7 @@ func (entity InlineQueryResultContact) MarshalJSON() ([]byte, error) {
 		LastName            string                `json:"last_name,omitempty"`
 		Vcard               string                `json:"vcard,omitempty"`
 		ReplyMarkup         *InlineKeyboardMarkup `json:"reply_markup,omitempty"`
-		InputMessageContent interface{}           `json:"input_message_content,omitempty"`
+		InputMessageContent any                   `json:"input_message_content,omitempty"`
 		ThumbURL            string                `json:"thumb_url,omitempty"`
 		ThumbWidth          int64                 `json:"thumb_width,omitempty"`
 		ThumbHeight         int                   `json:"thumb_height,omitempty"`

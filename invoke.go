@@ -8,7 +8,7 @@ import (
 )
 
 func (ctx *Client) Invoke(method rawTypes.Method) (*rawTypes.Result, error) {
-	if !ctx.isStarted {
+	if !ctx.isRunning {
 		return nil, errors.New("bot is not started")
 	}
 	files := method.Files()
@@ -26,6 +26,7 @@ func (ctx *Client) Invoke(method rawTypes.Method) (*rawTypes.Result, error) {
 		"POST",
 		form,
 		files,
+		method.ProgressCallable(),
 	)
 	return utils.ParseResult(rawResult, err, method)
 }

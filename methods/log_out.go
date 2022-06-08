@@ -15,6 +15,10 @@ import (
 // Requires no parameters.
 type LogOut struct{}
 
+func (entity *LogOut) ProgressCallable() rawTypes.ProgressCallable {
+	return nil
+}
+
 func (entity *LogOut) Files() map[string]rawTypes.InputFile {
 	return map[string]rawTypes.InputFile{}
 }

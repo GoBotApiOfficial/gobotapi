@@ -20,6 +20,10 @@ type GetFile struct {
 	FileID string `json:"file_id"`
 }
 
+func (entity *GetFile) ProgressCallable() rawTypes.ProgressCallable {
+	return nil
+}
+
 func (entity *GetFile) Files() map[string]rawTypes.InputFile {
 	return map[string]rawTypes.InputFile{}
 }

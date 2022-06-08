@@ -9,4 +9,4 @@ package types
 //  - InputVenueMessageContent
 //  - InputContactMessageContent
 //  - InputInvoiceMessageContent
-type InputMessageContent interface{}
+type InputMessageContent any

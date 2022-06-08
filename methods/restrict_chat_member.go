@@ -19,6 +19,10 @@ type RestrictChatMember struct {
 	UserID      int64                 `json:"user_id"`
 }
 
+func (entity *RestrictChatMember) ProgressCallable() rawTypes.ProgressCallable {
+	return nil
+}
+
 func (entity *RestrictChatMember) Files() map[string]rawTypes.InputFile {
 	return map[string]rawTypes.InputFile{}
 }

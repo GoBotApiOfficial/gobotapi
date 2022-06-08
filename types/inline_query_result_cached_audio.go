@@ -17,7 +17,7 @@ type InlineQueryResultCachedAudio struct {
 	Caption             string                `json:"caption,omitempty"`
 	CaptionEntities     []MessageEntity       `json:"caption_entities,omitempty"`
 	ID                  string                `json:"id"`
-	InputMessageContent interface{}           `json:"input_message_content,omitempty"`
+	InputMessageContent any                   `json:"input_message_content,omitempty"`
 	ParseMode           string                `json:"parse_mode,omitempty"`
 	ReplyMarkup         *InlineKeyboardMarkup `json:"reply_markup,omitempty"`
 }
@@ -31,7 +31,7 @@ func (entity InlineQueryResultCachedAudio) MarshalJSON() ([]byte, error) {
 		ParseMode           string                `json:"parse_mode,omitempty"`
 		CaptionEntities     []MessageEntity       `json:"caption_entities,omitempty"`
 		ReplyMarkup         *InlineKeyboardMarkup `json:"reply_markup,omitempty"`
-		InputMessageContent interface{}           `json:"input_message_content,omitempty"`
+		InputMessageContent any                   `json:"input_message_content,omitempty"`
 	}{
 		Type:                "audio",
 		ID:                  entity.ID,

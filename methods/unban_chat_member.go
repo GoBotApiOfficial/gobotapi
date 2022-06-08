@@ -21,6 +21,10 @@ type UnbanChatMember struct {
 	UserID       int64 `json:"user_id"`
 }
 
+func (entity *UnbanChatMember) ProgressCallable() rawTypes.ProgressCallable {
+	return nil
+}
+
 func (entity *UnbanChatMember) Files() map[string]rawTypes.InputFile {
 	return map[string]rawTypes.InputFile{}
 }

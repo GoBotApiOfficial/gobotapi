@@ -15,7 +15,7 @@ type InlineQueryResultVideo struct {
 	CaptionEntities     []MessageEntity       `json:"caption_entities,omitempty"`
 	Description         string                `json:"description,omitempty"`
 	ID                  string                `json:"id"`
-	InputMessageContent interface{}           `json:"input_message_content,omitempty"`
+	InputMessageContent any                   `json:"input_message_content,omitempty"`
 	MimeType            string                `json:"mime_type"`
 	ParseMode           string                `json:"parse_mode,omitempty"`
 	ReplyMarkup         *InlineKeyboardMarkup `json:"reply_markup,omitempty"`
@@ -43,7 +43,7 @@ func (entity InlineQueryResultVideo) MarshalJSON() ([]byte, error) {
 		VideoDuration       int64                 `json:"video_duration,omitempty"`
 		Description         string                `json:"description,omitempty"`
 		ReplyMarkup         *InlineKeyboardMarkup `json:"reply_markup,omitempty"`
-		InputMessageContent interface{}           `json:"input_message_content,omitempty"`
+		InputMessageContent any                   `json:"input_message_content,omitempty"`
 	}{
 		Type:                "video",
 		ID:                  entity.ID,

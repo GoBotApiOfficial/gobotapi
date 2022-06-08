@@ -16,6 +16,10 @@ type SetChatAdministratorCustomTitle struct {
 	UserID      int64  `json:"user_id"`
 }
 
+func (entity *SetChatAdministratorCustomTitle) ProgressCallable() rawTypes.ProgressCallable {
+	return nil
+}
+
 func (entity *SetChatAdministratorCustomTitle) Files() map[string]rawTypes.InputFile {
 	return map[string]rawTypes.InputFile{}
 }

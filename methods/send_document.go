@@ -13,31 +13,36 @@ import (
 // On success, the sent Message is returned
 // Bots can currently send files of any type of up to 50 MB in size, this limit may be changed in the future.
 type SendDocument struct {
-	AllowSendingWithoutReply    bool                  `json:"allow_sending_without_reply,omitempty"`
-	Caption                     string                `json:"caption,omitempty"`
-	CaptionEntities             []types.MessageEntity `json:"caption_entities,omitempty"`
-	ChatID                      int64                 `json:"chat_id"`
-	DisableContentTypeDetection bool                  `json:"disable_content_type_detection,omitempty"`
-	DisableNotification         bool                  `json:"disable_notification,omitempty"`
-	Document                    rawTypes.InputFile    `json:"document,omitempty"`
-	ParseMode                   string                `json:"parse_mode,omitempty"`
-	ProtectContent              bool                  `json:"protect_content,omitempty"`
-	ReplyMarkup                 interface{}           `json:"reply_markup,omitempty"`
-	ReplyToMessageID            int64                 `json:"reply_to_message_id,omitempty"`
-	Thumb                       rawTypes.InputFile    `json:"thumb,omitempty"`
+	AllowSendingWithoutReply    bool                      `json:"allow_sending_without_reply,omitempty"`
+	Caption                     string                    `json:"caption,omitempty"`
+	CaptionEntities             []types.MessageEntity     `json:"caption_entities,omitempty"`
+	ChatID                      int64                     `json:"chat_id"`
+	DisableContentTypeDetection bool                      `json:"disable_content_type_detection,omitempty"`
+	DisableNotification         bool                      `json:"disable_notification,omitempty"`
+	Document                    rawTypes.InputFile        `json:"document,omitempty"`
+	ParseMode                   string                    `json:"parse_mode,omitempty"`
+	ProtectContent              bool                      `json:"protect_content,omitempty"`
+	ReplyMarkup                 any                       `json:"reply_markup,omitempty"`
+	ReplyToMessageID            int64                     `json:"reply_to_message_id,omitempty"`
+	Thumb                       rawTypes.InputFile        `json:"thumb,omitempty"`
+	Progress                    rawTypes.ProgressCallable `json:"-"`
+}
+
+func (entity *SendDocument) ProgressCallable() rawTypes.ProgressCallable {
+	return entity.Progress
 }
 
 func (entity *SendDocument) Files() map[string]rawTypes.InputFile {
 	files := make(map[string]rawTypes.InputFile)
 	switch entity.Document.(type) {
-	case types.InputFile:
+	case types.InputBytes:
 		files["document"] = entity.Document
 		entity.Document = nil
 	}
 	switch entity.Thumb.(type) {
-	case types.InputFile:
+	case types.InputBytes:
 		files["thumb"] = entity.Thumb
-		entity.Thumb = types.InputPath("attach://thumb")
+		entity.Thumb = types.InputURL("attach://thumb")
 	}
 	return files
 }

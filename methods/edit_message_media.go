@@ -18,6 +18,11 @@ type EditMessageMedia struct {
 	Media           types.InputMedia            `json:"media"`
 	MessageID       int64                       `json:"message_id,omitempty"`
 	ReplyMarkup     *types.InlineKeyboardMarkup `json:"reply_markup,omitempty"`
+	Progress        rawTypes.ProgressCallable   `json:"-"`
+}
+
+func (entity *EditMessageMedia) ProgressCallable() rawTypes.ProgressCallable {
+	return entity.Progress
 }
 
 func (entity *EditMessageMedia) Files() map[string]rawTypes.InputFile {

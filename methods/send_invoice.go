@@ -40,6 +40,10 @@ type SendInvoice struct {
 	Title                     string                      `json:"title"`
 }
 
+func (entity *SendInvoice) ProgressCallable() rawTypes.ProgressCallable {
+	return nil
+}
+
 func (entity *SendInvoice) Files() map[string]rawTypes.InputFile {
 	return map[string]rawTypes.InputFile{}
 }

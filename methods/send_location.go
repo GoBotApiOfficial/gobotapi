@@ -12,18 +12,22 @@ import (
 // SendLocation Use this method to send point on the map
 // On success, the sent Message is returned.
 type SendLocation struct {
-	AllowSendingWithoutReply bool        `json:"allow_sending_without_reply,omitempty"`
-	ChatID                   int64       `json:"chat_id"`
-	DisableNotification      bool        `json:"disable_notification,omitempty"`
-	Heading                  int         `json:"heading,omitempty"`
-	HorizontalAccuracy       float64     `json:"horizontal_accuracy,omitempty"`
-	Latitude                 float64     `json:"latitude"`
-	LivePeriod               int         `json:"live_period,omitempty"`
-	Longitude                float64     `json:"longitude"`
-	ProtectContent           bool        `json:"protect_content,omitempty"`
-	ProximityAlertRadius     int         `json:"proximity_alert_radius,omitempty"`
-	ReplyMarkup              interface{} `json:"reply_markup,omitempty"`
-	ReplyToMessageID         int64       `json:"reply_to_message_id,omitempty"`
+	AllowSendingWithoutReply bool    `json:"allow_sending_without_reply,omitempty"`
+	ChatID                   int64   `json:"chat_id"`
+	DisableNotification      bool    `json:"disable_notification,omitempty"`
+	Heading                  int     `json:"heading,omitempty"`
+	HorizontalAccuracy       float64 `json:"horizontal_accuracy,omitempty"`
+	Latitude                 float64 `json:"latitude"`
+	LivePeriod               int     `json:"live_period,omitempty"`
+	Longitude                float64 `json:"longitude"`
+	ProtectContent           bool    `json:"protect_content,omitempty"`
+	ProximityAlertRadius     int     `json:"proximity_alert_radius,omitempty"`
+	ReplyMarkup              any     `json:"reply_markup,omitempty"`
+	ReplyToMessageID         int64   `json:"reply_to_message_id,omitempty"`
+}
+
+func (entity *SendLocation) ProgressCallable() rawTypes.ProgressCallable {
+	return nil
 }
 
 func (entity *SendLocation) Files() map[string]rawTypes.InputFile {

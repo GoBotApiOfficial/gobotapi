@@ -19,6 +19,10 @@ type ForwardMessage struct {
 	ProtectContent      bool  `json:"protect_content,omitempty"`
 }
 
+func (entity *ForwardMessage) ProgressCallable() rawTypes.ProgressCallable {
+	return nil
+}
+
 func (entity *ForwardMessage) Files() map[string]rawTypes.InputFile {
 	return map[string]rawTypes.InputFile{}
 }

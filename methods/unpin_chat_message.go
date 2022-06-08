@@ -16,6 +16,10 @@ type UnpinChatMessage struct {
 	MessageID int64 `json:"message_id,omitempty"`
 }
 
+func (entity *UnpinChatMessage) ProgressCallable() rawTypes.ProgressCallable {
+	return nil
+}
+
 func (entity *UnpinChatMessage) Files() map[string]rawTypes.InputFile {
 	return map[string]rawTypes.InputFile{}
 }

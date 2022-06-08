@@ -16,6 +16,10 @@ type SetChatPermissions struct {
 	Permissions types.ChatPermissions `json:"permissions"`
 }
 
+func (entity *SetChatPermissions) ProgressCallable() rawTypes.ProgressCallable {
+	return nil
+}
+
 func (entity *SetChatPermissions) Files() map[string]rawTypes.InputFile {
 	return map[string]rawTypes.InputFile{}
 }

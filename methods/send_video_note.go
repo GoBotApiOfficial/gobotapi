@@ -13,27 +13,32 @@ import (
 // Use this method to send video messages
 // On success, the sent Message is returned.
 type SendVideoNote struct {
-	AllowSendingWithoutReply bool               `json:"allow_sending_without_reply,omitempty"`
-	ChatID                   int64              `json:"chat_id"`
-	DisableNotification      bool               `json:"disable_notification,omitempty"`
-	Duration                 int                `json:"duration,omitempty"`
-	Length                   int                `json:"length,omitempty"`
-	ProtectContent           bool               `json:"protect_content,omitempty"`
-	ReplyMarkup              interface{}        `json:"reply_markup,omitempty"`
-	ReplyToMessageID         int64              `json:"reply_to_message_id,omitempty"`
-	Thumb                    rawTypes.InputFile `json:"thumb,omitempty"`
-	VideoNote                rawTypes.InputFile `json:"video_note,omitempty"`
+	AllowSendingWithoutReply bool                      `json:"allow_sending_without_reply,omitempty"`
+	ChatID                   int64                     `json:"chat_id"`
+	DisableNotification      bool                      `json:"disable_notification,omitempty"`
+	Duration                 int                       `json:"duration,omitempty"`
+	Length                   int                       `json:"length,omitempty"`
+	ProtectContent           bool                      `json:"protect_content,omitempty"`
+	ReplyMarkup              any                       `json:"reply_markup,omitempty"`
+	ReplyToMessageID         int64                     `json:"reply_to_message_id,omitempty"`
+	Thumb                    rawTypes.InputFile        `json:"thumb,omitempty"`
+	VideoNote                rawTypes.InputFile        `json:"video_note,omitempty"`
+	Progress                 rawTypes.ProgressCallable `json:"-"`
+}
+
+func (entity *SendVideoNote) ProgressCallable() rawTypes.ProgressCallable {
+	return entity.Progress
 }
 
 func (entity *SendVideoNote) Files() map[string]rawTypes.InputFile {
 	files := make(map[string]rawTypes.InputFile)
 	switch entity.Thumb.(type) {
-	case types.InputFile:
+	case types.InputBytes:
 		files["thumb"] = entity.Thumb
-		entity.Thumb = types.InputPath("attach://thumb")
+		entity.Thumb = types.InputURL("attach://thumb")
 	}
 	switch entity.VideoNote.(type) {
-	case types.InputFile:
+	case types.InputBytes:
 		files["video_note"] = entity.VideoNote
 		entity.VideoNote = nil
 	}

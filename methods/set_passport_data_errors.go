@@ -19,6 +19,10 @@ type SetPassportDataErrors struct {
 	UserID int64                        `json:"user_id"`
 }
 
+func (entity *SetPassportDataErrors) ProgressCallable() rawTypes.ProgressCallable {
+	return nil
+}
+
 func (entity *SetPassportDataErrors) Files() map[string]rawTypes.InputFile {
 	return map[string]rawTypes.InputFile{}
 }

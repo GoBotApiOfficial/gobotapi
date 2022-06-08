@@ -13,6 +13,10 @@ import (
 // Returns basic information about the bot in form of a User object.
 type GetMe struct{}
 
+func (entity *GetMe) ProgressCallable() rawTypes.ProgressCallable {
+	return nil
+}
+
 func (entity *GetMe) Files() map[string]rawTypes.InputFile {
 	return map[string]rawTypes.InputFile{}
 }

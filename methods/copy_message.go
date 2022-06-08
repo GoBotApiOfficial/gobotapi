@@ -23,8 +23,12 @@ type CopyMessage struct {
 	MessageID                int64                 `json:"message_id"`
 	ParseMode                string                `json:"parse_mode,omitempty"`
 	ProtectContent           bool                  `json:"protect_content,omitempty"`
-	ReplyMarkup              interface{}           `json:"reply_markup,omitempty"`
+	ReplyMarkup              any                   `json:"reply_markup,omitempty"`
 	ReplyToMessageID         int64                 `json:"reply_to_message_id,omitempty"`
+}
+
+func (entity *CopyMessage) ProgressCallable() rawTypes.ProgressCallable {
+	return nil
 }
 
 func (entity *CopyMessage) Files() map[string]rawTypes.InputFile {

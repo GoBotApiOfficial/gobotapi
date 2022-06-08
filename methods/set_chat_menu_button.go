@@ -15,6 +15,10 @@ type SetChatMenuButton struct {
 	MenuButton *types.MenuButton `json:"menu_button,omitempty"`
 }
 
+func (entity *SetChatMenuButton) ProgressCallable() rawTypes.ProgressCallable {
+	return nil
+}
+
 func (entity *SetChatMenuButton) Files() map[string]rawTypes.InputFile {
 	return map[string]rawTypes.InputFile{}
 }

@@ -16,6 +16,10 @@ type DeclineChatJoinRequest struct {
 	UserID int64 `json:"user_id"`
 }
 
+func (entity *DeclineChatJoinRequest) ProgressCallable() rawTypes.ProgressCallable {
+	return nil
+}
+
 func (entity *DeclineChatJoinRequest) Files() map[string]rawTypes.InputFile {
 	return map[string]rawTypes.InputFile{}
 }

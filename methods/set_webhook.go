@@ -16,18 +16,23 @@ import (
 // https://www.example.com/<token>
 // Since nobody else knows your bot's token, you can be pretty sure it's us.
 type SetWebhook struct {
-	AllowedUpdates     []string           `json:"allowed_updates,omitempty"`
-	Certificate        rawTypes.InputFile `json:"certificate,omitempty"`
-	DropPendingUpdates bool               `json:"drop_pending_updates,omitempty"`
-	IPAddress          string             `json:"ip_address,omitempty"`
-	MaxConnections     int                `json:"max_connections,omitempty"`
-	URL                string             `json:"url"`
+	AllowedUpdates     []string                  `json:"allowed_updates,omitempty"`
+	Certificate        rawTypes.InputFile        `json:"certificate,omitempty"`
+	DropPendingUpdates bool                      `json:"drop_pending_updates,omitempty"`
+	IPAddress          string                    `json:"ip_address,omitempty"`
+	MaxConnections     int                       `json:"max_connections,omitempty"`
+	URL                string                    `json:"url"`
+	Progress           rawTypes.ProgressCallable `json:"-"`
+}
+
+func (entity *SetWebhook) ProgressCallable() rawTypes.ProgressCallable {
+	return entity.Progress
 }
 
 func (entity *SetWebhook) Files() map[string]rawTypes.InputFile {
 	files := make(map[string]rawTypes.InputFile)
 	switch entity.Certificate.(type) {
-	case types.InputFile:
+	case types.InputBytes:
 		files["certificate"] = entity.Certificate
 		entity.Certificate = nil
 	}

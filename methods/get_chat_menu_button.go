@@ -14,6 +14,10 @@ type GetChatMenuButton struct {
 	ChatID int64 `json:"chat_id,omitempty"`
 }
 
+func (entity *GetChatMenuButton) ProgressCallable() rawTypes.ProgressCallable {
+	return nil
+}
+
 func (entity *GetChatMenuButton) Files() map[string]rawTypes.InputFile {
 	return map[string]rawTypes.InputFile{}
 }

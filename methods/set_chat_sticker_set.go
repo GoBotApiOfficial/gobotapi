@@ -17,6 +17,10 @@ type SetChatStickerSet struct {
 	StickerSetName string `json:"sticker_set_name"`
 }
 
+func (entity *SetChatStickerSet) ProgressCallable() rawTypes.ProgressCallable {
+	return nil
+}
+
 func (entity *SetChatStickerSet) Files() map[string]rawTypes.InputFile {
 	return map[string]rawTypes.InputFile{}
 }

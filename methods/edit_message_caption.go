@@ -20,6 +20,10 @@ type EditMessageCaption struct {
 	ReplyMarkup     *types.InlineKeyboardMarkup `json:"reply_markup,omitempty"`
 }
 
+func (entity *EditMessageCaption) ProgressCallable() rawTypes.ProgressCallable {
+	return nil
+}
+
 func (entity *EditMessageCaption) Files() map[string]rawTypes.InputFile {
 	return map[string]rawTypes.InputFile{}
 }

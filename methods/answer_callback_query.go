@@ -19,6 +19,10 @@ type AnswerCallbackQuery struct {
 	URL             string `json:"url,omitempty"`
 }
 
+func (entity *AnswerCallbackQuery) ProgressCallable() rawTypes.ProgressCallable {
+	return nil
+}
+
 func (entity *AnswerCallbackQuery) Files() map[string]rawTypes.InputFile {
 	return map[string]rawTypes.InputFile{}
 }

@@ -23,22 +23,22 @@ type InputMediaAnimation struct {
 func (entity *InputMediaAnimation) Files() map[string]rawTypes.InputFile {
 	files := make(map[string]rawTypes.InputFile)
 	switch entity.Media.(type) {
-	case InputFile:
+	case InputBytes:
 		files["animation"] = entity.Media
 	}
 	switch entity.Thumb.(type) {
-	case InputFile:
+	case InputBytes:
 		files["thumb"] = entity.Thumb
 	}
 	return files
 }
 
 func (entity *InputMediaAnimation) SetAttachment(attach string) {
-	entity.Media = InputPath(fmt.Sprintf("attach://%s", attach))
+	entity.Media = InputURL(fmt.Sprintf("attach://%s", attach))
 }
 
 func (entity *InputMediaAnimation) SetAttachmentThumb(attach string) {
-	entity.Thumb = InputPath(fmt.Sprintf("attach://%s", attach))
+	entity.Thumb = InputURL(fmt.Sprintf("attach://%s", attach))
 }
 
 func (entity InputMediaAnimation) MarshalJSON() ([]byte, error) {

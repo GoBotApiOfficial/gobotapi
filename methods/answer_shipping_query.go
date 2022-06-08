@@ -18,6 +18,10 @@ type AnswerShippingQuery struct {
 	ShippingQueryID string                 `json:"shipping_query_id"`
 }
 
+func (entity *AnswerShippingQuery) ProgressCallable() rawTypes.ProgressCallable {
+	return nil
+}
+
 func (entity *AnswerShippingQuery) Files() map[string]rawTypes.InputFile {
 	return map[string]rawTypes.InputFile{}
 }

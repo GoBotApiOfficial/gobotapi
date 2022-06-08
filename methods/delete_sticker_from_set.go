@@ -14,6 +14,10 @@ type DeleteStickerFromSet struct {
 	Sticker string `json:"sticker"`
 }
 
+func (entity *DeleteStickerFromSet) ProgressCallable() rawTypes.ProgressCallable {
+	return nil
+}
+
 func (entity *DeleteStickerFromSet) Files() map[string]rawTypes.InputFile {
 	return map[string]rawTypes.InputFile{}
 }

@@ -1,14 +1,18 @@
 package types
 
-type InputFile struct {
-	Name  string
-	Bytes []byte
-}
+import (
+	"github.com/Squirrel-Network/gobotapi/types/raw"
+	"os"
+	"path"
+)
 
-func (r InputFile) FileName() string {
-	return r.Name
-}
-
-func (r InputFile) Content() []byte {
-	return r.Bytes
+func InputFile(filePath string) raw.InputFile {
+	file, err := os.ReadFile(filePath)
+	if err != nil {
+		return nil
+	}
+	return InputBytes{
+		Name: path.Base(filePath),
+		Data: file,
+	}
 }

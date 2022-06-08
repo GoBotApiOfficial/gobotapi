@@ -15,6 +15,10 @@ type UnpinAllChatMessages struct {
 	ChatID int64 `json:"chat_id"`
 }
 
+func (entity *UnpinAllChatMessages) ProgressCallable() rawTypes.ProgressCallable {
+	return nil
+}
+
 func (entity *UnpinAllChatMessages) Files() map[string]rawTypes.InputFile {
 	return map[string]rawTypes.InputFile{}
 }

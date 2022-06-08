@@ -12,19 +12,24 @@ import (
 // SendSticker Use this method to send static .WEBP, animated .TGS, or video .WEBM stickers
 // On success, the sent Message is returned.
 type SendSticker struct {
-	AllowSendingWithoutReply bool               `json:"allow_sending_without_reply,omitempty"`
-	ChatID                   int64              `json:"chat_id"`
-	DisableNotification      bool               `json:"disable_notification,omitempty"`
-	ProtectContent           bool               `json:"protect_content,omitempty"`
-	ReplyMarkup              interface{}        `json:"reply_markup,omitempty"`
-	ReplyToMessageID         int64              `json:"reply_to_message_id,omitempty"`
-	Sticker                  rawTypes.InputFile `json:"sticker,omitempty"`
+	AllowSendingWithoutReply bool                      `json:"allow_sending_without_reply,omitempty"`
+	ChatID                   int64                     `json:"chat_id"`
+	DisableNotification      bool                      `json:"disable_notification,omitempty"`
+	ProtectContent           bool                      `json:"protect_content,omitempty"`
+	ReplyMarkup              any                       `json:"reply_markup,omitempty"`
+	ReplyToMessageID         int64                     `json:"reply_to_message_id,omitempty"`
+	Sticker                  rawTypes.InputFile        `json:"sticker,omitempty"`
+	Progress                 rawTypes.ProgressCallable `json:"-"`
+}
+
+func (entity *SendSticker) ProgressCallable() rawTypes.ProgressCallable {
+	return entity.Progress
 }
 
 func (entity *SendSticker) Files() map[string]rawTypes.InputFile {
 	files := make(map[string]rawTypes.InputFile)
 	switch entity.Sticker.(type) {
-	case types.InputFile:
+	case types.InputBytes:
 		files["sticker"] = entity.Sticker
 		entity.Sticker = nil
 	}

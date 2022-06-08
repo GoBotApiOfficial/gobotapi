@@ -21,6 +21,10 @@ type SetGameScore struct {
 	UserID             int64  `json:"user_id"`
 }
 
+func (entity *SetGameScore) ProgressCallable() rawTypes.ProgressCallable {
+	return nil
+}
+
 func (entity *SetGameScore) Files() map[string]rawTypes.InputFile {
 	return map[string]rawTypes.InputFile{}
 }

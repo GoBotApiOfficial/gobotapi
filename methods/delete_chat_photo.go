@@ -16,6 +16,10 @@ type DeleteChatPhoto struct {
 	ChatID int64 `json:"chat_id"`
 }
 
+func (entity *DeleteChatPhoto) ProgressCallable() rawTypes.ProgressCallable {
+	return nil
+}
+
 func (entity *DeleteChatPhoto) Files() map[string]rawTypes.InputFile {
 	return map[string]rawTypes.InputFile{}
 }

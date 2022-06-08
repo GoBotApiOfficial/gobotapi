@@ -19,7 +19,7 @@ type InlineQueryResultVenue struct {
 	GooglePlaceID       string                `json:"google_place_id,omitempty"`
 	GooglePlaceType     string                `json:"google_place_type,omitempty"`
 	ID                  string                `json:"id"`
-	InputMessageContent interface{}           `json:"input_message_content,omitempty"`
+	InputMessageContent any                   `json:"input_message_content,omitempty"`
 	Latitude            float64               `json:"latitude"`
 	Longitude           float64               `json:"longitude"`
 	ReplyMarkup         *InlineKeyboardMarkup `json:"reply_markup,omitempty"`
@@ -42,7 +42,7 @@ func (entity InlineQueryResultVenue) MarshalJSON() ([]byte, error) {
 		GooglePlaceID       string                `json:"google_place_id,omitempty"`
 		GooglePlaceType     string                `json:"google_place_type,omitempty"`
 		ReplyMarkup         *InlineKeyboardMarkup `json:"reply_markup,omitempty"`
-		InputMessageContent interface{}           `json:"input_message_content,omitempty"`
+		InputMessageContent any                   `json:"input_message_content,omitempty"`
 		ThumbURL            string                `json:"thumb_url,omitempty"`
 		ThumbWidth          int64                 `json:"thumb_width,omitempty"`
 		ThumbHeight         int                   `json:"thumb_height,omitempty"`

@@ -15,6 +15,10 @@ type GetChatMember struct {
 	UserID int64 `json:"user_id"`
 }
 
+func (entity *GetChatMember) ProgressCallable() rawTypes.ProgressCallable {
+	return nil
+}
+
 func (entity *GetChatMember) Files() map[string]rawTypes.InputFile {
 	return map[string]rawTypes.InputFile{}
 }

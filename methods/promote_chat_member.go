@@ -28,6 +28,10 @@ type PromoteChatMember struct {
 	UserID              int64 `json:"user_id"`
 }
 
+func (entity *PromoteChatMember) ProgressCallable() rawTypes.ProgressCallable {
+	return nil
+}
+
 func (entity *PromoteChatMember) Files() map[string]rawTypes.InputFile {
 	return map[string]rawTypes.InputFile{}
 }

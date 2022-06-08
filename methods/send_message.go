@@ -19,9 +19,13 @@ type SendMessage struct {
 	Entities                 []types.MessageEntity `json:"entities,omitempty"`
 	ParseMode                string                `json:"parse_mode,omitempty"`
 	ProtectContent           bool                  `json:"protect_content,omitempty"`
-	ReplyMarkup              interface{}           `json:"reply_markup,omitempty"`
+	ReplyMarkup              any                   `json:"reply_markup,omitempty"`
 	ReplyToMessageID         int64                 `json:"reply_to_message_id,omitempty"`
 	Text                     string                `json:"text"`
+}
+
+func (entity *SendMessage) ProgressCallable() rawTypes.ProgressCallable {
+	return nil
 }
 
 func (entity *SendMessage) Files() map[string]rawTypes.InputFile {

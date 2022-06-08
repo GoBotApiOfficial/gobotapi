@@ -27,9 +27,13 @@ type SendPoll struct {
 	Options                  []string              `json:"options,omitempty"`
 	ProtectContent           bool                  `json:"protect_content,omitempty"`
 	Question                 string                `json:"question"`
-	ReplyMarkup              interface{}           `json:"reply_markup,omitempty"`
+	ReplyMarkup              any                   `json:"reply_markup,omitempty"`
 	ReplyToMessageID         int64                 `json:"reply_to_message_id,omitempty"`
 	Type                     string                `json:"type,omitempty"`
+}
+
+func (entity *SendPoll) ProgressCallable() rawTypes.ProgressCallable {
+	return nil
 }
 
 func (entity *SendPoll) Files() map[string]rawTypes.InputFile {

@@ -12,20 +12,24 @@ import (
 // SendVenue Use this method to send information about a venue
 // On success, the sent Message is returned.
 type SendVenue struct {
-	Address                  string      `json:"address"`
-	AllowSendingWithoutReply bool        `json:"allow_sending_without_reply,omitempty"`
-	ChatID                   int64       `json:"chat_id"`
-	DisableNotification      bool        `json:"disable_notification,omitempty"`
-	FoursquareID             string      `json:"foursquare_id,omitempty"`
-	FoursquareType           string      `json:"foursquare_type,omitempty"`
-	GooglePlaceID            string      `json:"google_place_id,omitempty"`
-	GooglePlaceType          string      `json:"google_place_type,omitempty"`
-	Latitude                 float64     `json:"latitude"`
-	Longitude                float64     `json:"longitude"`
-	ProtectContent           bool        `json:"protect_content,omitempty"`
-	ReplyMarkup              interface{} `json:"reply_markup,omitempty"`
-	ReplyToMessageID         int64       `json:"reply_to_message_id,omitempty"`
-	Title                    string      `json:"title"`
+	Address                  string  `json:"address"`
+	AllowSendingWithoutReply bool    `json:"allow_sending_without_reply,omitempty"`
+	ChatID                   int64   `json:"chat_id"`
+	DisableNotification      bool    `json:"disable_notification,omitempty"`
+	FoursquareID             string  `json:"foursquare_id,omitempty"`
+	FoursquareType           string  `json:"foursquare_type,omitempty"`
+	GooglePlaceID            string  `json:"google_place_id,omitempty"`
+	GooglePlaceType          string  `json:"google_place_type,omitempty"`
+	Latitude                 float64 `json:"latitude"`
+	Longitude                float64 `json:"longitude"`
+	ProtectContent           bool    `json:"protect_content,omitempty"`
+	ReplyMarkup              any     `json:"reply_markup,omitempty"`
+	ReplyToMessageID         int64   `json:"reply_to_message_id,omitempty"`
+	Title                    string  `json:"title"`
+}
+
+func (entity *SendVenue) ProgressCallable() rawTypes.ProgressCallable {
+	return nil
 }
 
 func (entity *SendVenue) Files() map[string]rawTypes.InputFile {

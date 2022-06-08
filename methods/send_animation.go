@@ -13,33 +13,38 @@ import (
 // On success, the sent Message is returned
 // Bots can currently send animation files of up to 50 MB in size, this limit may be changed in the future.
 type SendAnimation struct {
-	AllowSendingWithoutReply bool                  `json:"allow_sending_without_reply,omitempty"`
-	Animation                rawTypes.InputFile    `json:"animation,omitempty"`
-	Caption                  string                `json:"caption,omitempty"`
-	CaptionEntities          []types.MessageEntity `json:"caption_entities,omitempty"`
-	ChatID                   int64                 `json:"chat_id"`
-	DisableNotification      bool                  `json:"disable_notification,omitempty"`
-	Duration                 int                   `json:"duration,omitempty"`
-	Height                   int                   `json:"height,omitempty"`
-	ParseMode                string                `json:"parse_mode,omitempty"`
-	ProtectContent           bool                  `json:"protect_content,omitempty"`
-	ReplyMarkup              interface{}           `json:"reply_markup,omitempty"`
-	ReplyToMessageID         int64                 `json:"reply_to_message_id,omitempty"`
-	Thumb                    rawTypes.InputFile    `json:"thumb,omitempty"`
-	Width                    int64                 `json:"width,omitempty"`
+	AllowSendingWithoutReply bool                      `json:"allow_sending_without_reply,omitempty"`
+	Animation                rawTypes.InputFile        `json:"animation,omitempty"`
+	Caption                  string                    `json:"caption,omitempty"`
+	CaptionEntities          []types.MessageEntity     `json:"caption_entities,omitempty"`
+	ChatID                   int64                     `json:"chat_id"`
+	DisableNotification      bool                      `json:"disable_notification,omitempty"`
+	Duration                 int                       `json:"duration,omitempty"`
+	Height                   int                       `json:"height,omitempty"`
+	ParseMode                string                    `json:"parse_mode,omitempty"`
+	ProtectContent           bool                      `json:"protect_content,omitempty"`
+	ReplyMarkup              any                       `json:"reply_markup,omitempty"`
+	ReplyToMessageID         int64                     `json:"reply_to_message_id,omitempty"`
+	Thumb                    rawTypes.InputFile        `json:"thumb,omitempty"`
+	Width                    int64                     `json:"width,omitempty"`
+	Progress                 rawTypes.ProgressCallable `json:"-"`
+}
+
+func (entity *SendAnimation) ProgressCallable() rawTypes.ProgressCallable {
+	return entity.Progress
 }
 
 func (entity *SendAnimation) Files() map[string]rawTypes.InputFile {
 	files := make(map[string]rawTypes.InputFile)
 	switch entity.Animation.(type) {
-	case types.InputFile:
+	case types.InputBytes:
 		files["animation"] = entity.Animation
 		entity.Animation = nil
 	}
 	switch entity.Thumb.(type) {
-	case types.InputFile:
+	case types.InputBytes:
 		files["thumb"] = entity.Thumb
-		entity.Thumb = types.InputPath("attach://thumb")
+		entity.Thumb = types.InputURL("attach://thumb")
 	}
 	return files
 }

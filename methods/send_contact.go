@@ -12,16 +12,20 @@ import (
 // SendContact Use this method to send phone contacts
 // On success, the sent Message is returned.
 type SendContact struct {
-	AllowSendingWithoutReply bool        `json:"allow_sending_without_reply,omitempty"`
-	ChatID                   int64       `json:"chat_id"`
-	DisableNotification      bool        `json:"disable_notification,omitempty"`
-	FirstName                string      `json:"first_name"`
-	LastName                 string      `json:"last_name,omitempty"`
-	PhoneNumber              string      `json:"phone_number"`
-	ProtectContent           bool        `json:"protect_content,omitempty"`
-	ReplyMarkup              interface{} `json:"reply_markup,omitempty"`
-	ReplyToMessageID         int64       `json:"reply_to_message_id,omitempty"`
-	Vcard                    string      `json:"vcard,omitempty"`
+	AllowSendingWithoutReply bool   `json:"allow_sending_without_reply,omitempty"`
+	ChatID                   int64  `json:"chat_id"`
+	DisableNotification      bool   `json:"disable_notification,omitempty"`
+	FirstName                string `json:"first_name"`
+	LastName                 string `json:"last_name,omitempty"`
+	PhoneNumber              string `json:"phone_number"`
+	ProtectContent           bool   `json:"protect_content,omitempty"`
+	ReplyMarkup              any    `json:"reply_markup,omitempty"`
+	ReplyToMessageID         int64  `json:"reply_to_message_id,omitempty"`
+	Vcard                    string `json:"vcard,omitempty"`
+}
+
+func (entity *SendContact) ProgressCallable() rawTypes.ProgressCallable {
+	return nil
 }
 
 func (entity *SendContact) Files() map[string]rawTypes.InputFile {

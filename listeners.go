@@ -7,14 +7,14 @@ import (
 	"strings"
 )
 
-func (ctx *Client) OnCommand(command string, aliasList []string, handler func(client Client, update types.Message)) {
+func (ctx *Client) OnCommand(command string, aliasList []string, handler func(client *Client, update types.Message)) {
 	if len(aliasList) == 0 {
 		aliasList = []string{"/"}
 	}
 	var withoutPrefixCompiler *regexp.Regexp
-	cmdHandler := func(client Client, message types.Message) {
+	cmdHandler := func(client *Client, message types.Message) {
 		if withoutPrefixCompiler == nil {
-			withoutPrefixCompiler, _ = regexp.Compile(fmt.Sprintf("(?i)(%s(?:@?%s)?)(?:\\s|$)", command, ctx.botUsername))
+			withoutPrefixCompiler, _ = regexp.Compile(fmt.Sprintf("(?i)(%s(?:@?%s)?)(?:\\s|$)", command, client.me.Username))
 		}
 		text := message.Text
 		if len(text) == 0 {

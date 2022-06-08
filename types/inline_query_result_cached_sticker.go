@@ -14,7 +14,7 @@ import (
 // Older clients will ignore them.
 type InlineQueryResultCachedSticker struct {
 	ID                  string                `json:"id"`
-	InputMessageContent interface{}           `json:"input_message_content,omitempty"`
+	InputMessageContent any                   `json:"input_message_content,omitempty"`
 	ReplyMarkup         *InlineKeyboardMarkup `json:"reply_markup,omitempty"`
 	StickerFileID       string                `json:"sticker_file_id"`
 }
@@ -25,7 +25,7 @@ func (entity InlineQueryResultCachedSticker) MarshalJSON() ([]byte, error) {
 		ID                  string                `json:"id"`
 		StickerFileID       string                `json:"sticker_file_id"`
 		ReplyMarkup         *InlineKeyboardMarkup `json:"reply_markup,omitempty"`
-		InputMessageContent interface{}           `json:"input_message_content,omitempty"`
+		InputMessageContent any                   `json:"input_message_content,omitempty"`
 	}{
 		Type:                "sticker",
 		ID:                  entity.ID,

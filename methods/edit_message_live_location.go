@@ -23,6 +23,10 @@ type EditMessageLiveLocation struct {
 	ReplyMarkup          *types.InlineKeyboardMarkup `json:"reply_markup,omitempty"`
 }
 
+func (entity *EditMessageLiveLocation) ProgressCallable() rawTypes.ProgressCallable {
+	return nil
+}
+
 func (entity *EditMessageLiveLocation) Files() map[string]rawTypes.InputFile {
 	return map[string]rawTypes.InputFile{}
 }

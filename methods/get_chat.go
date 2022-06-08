@@ -14,6 +14,10 @@ type GetChat struct {
 	ChatID int64 `json:"chat_id"`
 }
 
+func (entity *GetChat) ProgressCallable() rawTypes.ProgressCallable {
+	return nil
+}
+
 func (entity *GetChat) Files() map[string]rawTypes.InputFile {
 	return map[string]rawTypes.InputFile{}
 }

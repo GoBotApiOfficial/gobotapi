@@ -1,7 +1,7 @@
 package gobotapi
 
-func NewClient(token string) Client {
-	return Client{
+func NewClient(token string) *Client {
+	return &Client{
 		Token: token,
 	}
 }

@@ -21,6 +21,10 @@ type EditMessageText struct {
 	Text                  string                      `json:"text"`
 }
 
+func (entity *EditMessageText) ProgressCallable() rawTypes.ProgressCallable {
+	return nil
+}
+
 func (entity *EditMessageText) Files() map[string]rawTypes.InputFile {
 	return map[string]rawTypes.InputFile{}
 }

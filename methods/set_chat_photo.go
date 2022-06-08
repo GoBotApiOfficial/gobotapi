@@ -13,14 +13,19 @@ import (
 // The bot must be an administrator in the chat for this to work and must have the appropriate administrator rights
 // Returns True on success.
 type SetChatPhoto struct {
-	ChatID int64              `json:"chat_id"`
-	Photo  rawTypes.InputFile `json:"photo,omitempty"`
+	ChatID   int64                     `json:"chat_id"`
+	Photo    rawTypes.InputFile        `json:"photo,omitempty"`
+	Progress rawTypes.ProgressCallable `json:"-"`
+}
+
+func (entity *SetChatPhoto) ProgressCallable() rawTypes.ProgressCallable {
+	return entity.Progress
 }
 
 func (entity *SetChatPhoto) Files() map[string]rawTypes.InputFile {
 	files := make(map[string]rawTypes.InputFile)
 	switch entity.Photo.(type) {
-	case types.InputFile:
+	case types.InputBytes:
 		files["photo"] = entity.Photo
 		entity.Photo = nil
 	}

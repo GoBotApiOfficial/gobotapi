@@ -5,16 +5,18 @@ import (
 	"fmt"
 	"github.com/Squirrel-Network/gobotapi/methods"
 	"github.com/Squirrel-Network/gobotapi/types"
+	rawTypes "github.com/Squirrel-Network/gobotapi/types/raw"
 )
 
-func (ctx *Client) DownloadBytes(fileId string) ([]byte, error) {
+func (ctx *Client) DownloadBytes(fileId string, progress rawTypes.ProgressCallable) ([]byte, error) {
+	if len(ctx.BotApiConfig.HostName) > 0 && ctx.BotApiConfig.HostName != "api.telegram.org" {
+		return nil, errors.New("download is supported only on api.telegram.org")
+	}
 	invoke, err := ctx.Invoke(&methods.GetFile{
 		FileID: fileId,
 	})
 	if err != nil {
 		return nil, err
-	} else if len(ctx.BotApiConfig.HostName) > 0 && ctx.BotApiConfig.HostName != "api.telegram.org" {
-		return nil, errors.New("download is supported only on api.telegram.org")
 	}
 	return ctx.executeRequest(
 		fmt.Sprintf(
@@ -26,5 +28,6 @@ func (ctx *Client) DownloadBytes(fileId string) ([]byte, error) {
 		"GET",
 		nil,
 		nil,
+		progress,
 	)
 }

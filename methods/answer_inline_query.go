@@ -20,6 +20,10 @@ type AnswerInlineQuery struct {
 	SwitchPmText      string                    `json:"switch_pm_text,omitempty"`
 }
 
+func (entity *AnswerInlineQuery) ProgressCallable() rawTypes.ProgressCallable {
+	return nil
+}
+
 func (entity *AnswerInlineQuery) Files() map[string]rawTypes.InputFile {
 	return map[string]rawTypes.InputFile{}
 }

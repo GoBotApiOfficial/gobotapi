@@ -17,6 +17,10 @@ type GetUpdates struct {
 	Timeout        int      `json:"timeout,omitempty"`
 }
 
+func (entity *GetUpdates) ProgressCallable() rawTypes.ProgressCallable {
+	return nil
+}
+
 func (entity *GetUpdates) Files() map[string]rawTypes.InputFile {
 	return map[string]rawTypes.InputFile{}
 }

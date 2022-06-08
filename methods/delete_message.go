@@ -14,6 +14,10 @@ type DeleteMessage struct {
 	MessageID int64 `json:"message_id"`
 }
 
+func (entity *DeleteMessage) ProgressCallable() rawTypes.ProgressCallable {
+	return nil
+}
+
 func (entity *DeleteMessage) Files() map[string]rawTypes.InputFile {
 	return map[string]rawTypes.InputFile{}
 }

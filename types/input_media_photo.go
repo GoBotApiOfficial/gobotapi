@@ -19,14 +19,14 @@ type InputMediaPhoto struct {
 func (entity *InputMediaPhoto) Files() map[string]rawTypes.InputFile {
 	files := make(map[string]rawTypes.InputFile)
 	switch entity.Media.(type) {
-	case InputFile:
+	case InputBytes:
 		files["photo"] = entity.Media
 	}
 	return files
 }
 
 func (entity *InputMediaPhoto) SetAttachment(attach string) {
-	entity.Media = InputPath(fmt.Sprintf("attach://%s", attach))
+	entity.Media = InputURL(fmt.Sprintf("attach://%s", attach))
 }
 
 func (entity *InputMediaPhoto) SetAttachmentThumb(_ string) {

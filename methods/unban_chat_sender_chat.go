@@ -16,6 +16,10 @@ type UnbanChatSenderChat struct {
 	SenderChatID int64 `json:"sender_chat_id"`
 }
 
+func (entity *UnbanChatSenderChat) ProgressCallable() rawTypes.ProgressCallable {
+	return nil
+}
+
 func (entity *UnbanChatSenderChat) Files() map[string]rawTypes.InputFile {
 	return map[string]rawTypes.InputFile{}
 }

@@ -15,6 +15,10 @@ type SetStickerPositionInSet struct {
 	Sticker  string `json:"sticker"`
 }
 
+func (entity *SetStickerPositionInSet) ProgressCallable() rawTypes.ProgressCallable {
+	return nil
+}
+
 func (entity *SetStickerPositionInSet) Files() map[string]rawTypes.InputFile {
 	return map[string]rawTypes.InputFile{}
 }

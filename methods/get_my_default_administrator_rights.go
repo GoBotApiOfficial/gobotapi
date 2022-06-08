@@ -14,6 +14,10 @@ type GetMyDefaultAdministratorRights struct {
 	ForChannels bool `json:"for_channels,omitempty"`
 }
 
+func (entity *GetMyDefaultAdministratorRights) ProgressCallable() rawTypes.ProgressCallable {
+	return nil
+}
+
 func (entity *GetMyDefaultAdministratorRights) Files() map[string]rawTypes.InputFile {
 	return map[string]rawTypes.InputFile{}
 }

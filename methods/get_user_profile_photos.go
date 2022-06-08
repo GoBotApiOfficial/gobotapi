@@ -16,6 +16,10 @@ type GetUserProfilePhotos struct {
 	UserID int64 `json:"user_id"`
 }
 
+func (entity *GetUserProfilePhotos) ProgressCallable() rawTypes.ProgressCallable {
+	return nil
+}
+
 func (entity *GetUserProfilePhotos) Files() map[string]rawTypes.InputFile {
 	return map[string]rawTypes.InputFile{}
 }

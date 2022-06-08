@@ -14,6 +14,10 @@ type DeleteWebhook struct {
 	DropPendingUpdates bool `json:"drop_pending_updates,omitempty"`
 }
 
+func (entity *DeleteWebhook) ProgressCallable() rawTypes.ProgressCallable {
+	return nil
+}
+
 func (entity *DeleteWebhook) Files() map[string]rawTypes.InputFile {
 	return map[string]rawTypes.InputFile{}
 }

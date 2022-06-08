@@ -13,17 +13,22 @@ import (
 // Video thumbnails can be set only for video sticker sets only
 // Returns True on success.
 type SetStickerSetThumb struct {
-	Name   string             `json:"name"`
-	Thumb  rawTypes.InputFile `json:"thumb,omitempty"`
-	UserID int64              `json:"user_id"`
+	Name     string                    `json:"name"`
+	Thumb    rawTypes.InputFile        `json:"thumb,omitempty"`
+	UserID   int64                     `json:"user_id"`
+	Progress rawTypes.ProgressCallable `json:"-"`
+}
+
+func (entity *SetStickerSetThumb) ProgressCallable() rawTypes.ProgressCallable {
+	return entity.Progress
 }
 
 func (entity *SetStickerSetThumb) Files() map[string]rawTypes.InputFile {
 	files := make(map[string]rawTypes.InputFile)
 	switch entity.Thumb.(type) {
-	case types.InputFile:
+	case types.InputBytes:
 		files["thumb"] = entity.Thumb
-		entity.Thumb = types.InputPath("attach://thumb")
+		entity.Thumb = types.InputURL("attach://thumb")
 	}
 	return files
 }

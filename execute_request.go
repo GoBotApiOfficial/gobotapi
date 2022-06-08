@@ -5,13 +5,14 @@ import (
 	"context"
 	"fmt"
 	rawTypes "github.com/Squirrel-Network/gobotapi/types/raw"
+	"github.com/Squirrel-Network/gobotapi/utils/proxy_reader"
 	"io"
 	"mime/multipart"
 	"net/http"
 )
 
-func (ctx *Client) executeRequest(url, method string, data map[string]string, files map[string]rawTypes.InputFile) ([]byte, error) {
-	var body io.Reader
+func (ctx *Client) executeRequest(url, method string, data map[string]string, files map[string]rawTypes.InputFile, callable rawTypes.ProgressCallable) ([]byte, error) {
+	var body io.Reader = &bytes.Buffer{}
 	var multiPartWriter *multipart.Writer
 	if len(data) > 0 || len(files) > 0 {
 		reader := &bytes.Buffer{}
@@ -30,7 +31,8 @@ func (ctx *Client) executeRequest(url, method string, data map[string]string, fi
 			}
 		}
 		_ = multiPartWriter.Close()
-		body = reader
+		body = proxy_reader.NewProxyReader(reader, ctx.DownloadRefreshRate, int64(reader.Len()), callable)
+		defer body.(*proxy_reader.ProxyReader).Close()
 	}
 	ctxConn, cancelable := context.WithCancel(context.Background())
 	cancelableContext := rawTypes.CancelableContext{
@@ -61,7 +63,12 @@ func (ctx *Client) executeRequest(url, method string, data map[string]string, fi
 		_ = Body.Close()
 	}(do.Body)
 	var buf bytes.Buffer
-	_, err = io.Copy(&buf, do.Body)
+	var proxyBody io.Reader = do.Body
+	if method == "GET" {
+		proxyBody = proxy_reader.NewProxyReader(do.Body, ctx.DownloadRefreshRate, do.ContentLength, callable)
+		defer proxyBody.(*proxy_reader.ProxyReader).Close()
+	}
+	_, err = io.Copy(&buf, proxyBody)
 	if err != nil {
 		return nil, err
 	}

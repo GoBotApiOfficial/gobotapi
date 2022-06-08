@@ -11,4 +11,4 @@ package types
 //  - BotCommandScopeChat
 //  - BotCommandScopeChatAdministrators
 //  - BotCommandScopeChatMember
-type BotCommandScope interface{}
+type BotCommandScope any

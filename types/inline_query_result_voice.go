@@ -16,7 +16,7 @@ type InlineQueryResultVoice struct {
 	Caption             string                `json:"caption,omitempty"`
 	CaptionEntities     []MessageEntity       `json:"caption_entities,omitempty"`
 	ID                  string                `json:"id"`
-	InputMessageContent interface{}           `json:"input_message_content,omitempty"`
+	InputMessageContent any                   `json:"input_message_content,omitempty"`
 	ParseMode           string                `json:"parse_mode,omitempty"`
 	ReplyMarkup         *InlineKeyboardMarkup `json:"reply_markup,omitempty"`
 	Title               string                `json:"title"`
@@ -35,7 +35,7 @@ func (entity InlineQueryResultVoice) MarshalJSON() ([]byte, error) {
 		CaptionEntities     []MessageEntity       `json:"caption_entities,omitempty"`
 		VoiceDuration       int                   `json:"voice_duration,omitempty"`
 		ReplyMarkup         *InlineKeyboardMarkup `json:"reply_markup,omitempty"`
-		InputMessageContent interface{}           `json:"input_message_content,omitempty"`
+		InputMessageContent any                   `json:"input_message_content,omitempty"`
 	}{
 		Type:                "voice",
 		ID:                  entity.ID,

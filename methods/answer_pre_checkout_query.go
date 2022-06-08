@@ -18,6 +18,10 @@ type AnswerPreCheckoutQuery struct {
 	PreCheckoutQueryID string `json:"pre_checkout_query_id"`
 }
 
+func (entity *AnswerPreCheckoutQuery) ProgressCallable() rawTypes.ProgressCallable {
+	return nil
+}
+
 func (entity *AnswerPreCheckoutQuery) Files() map[string]rawTypes.InputFile {
 	return map[string]rawTypes.InputFile{}
 }

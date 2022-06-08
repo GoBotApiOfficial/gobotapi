@@ -12,13 +12,17 @@ import (
 // SendDice Use this method to send an animated emoji that will display a random value
 // On success, the sent Message is returned.
 type SendDice struct {
-	AllowSendingWithoutReply bool        `json:"allow_sending_without_reply,omitempty"`
-	ChatID                   int64       `json:"chat_id"`
-	DisableNotification      bool        `json:"disable_notification,omitempty"`
-	Emoji                    string      `json:"emoji,omitempty"`
-	ProtectContent           bool        `json:"protect_content,omitempty"`
-	ReplyMarkup              interface{} `json:"reply_markup,omitempty"`
-	ReplyToMessageID         int64       `json:"reply_to_message_id,omitempty"`
+	AllowSendingWithoutReply bool   `json:"allow_sending_without_reply,omitempty"`
+	ChatID                   int64  `json:"chat_id"`
+	DisableNotification      bool   `json:"disable_notification,omitempty"`
+	Emoji                    string `json:"emoji,omitempty"`
+	ProtectContent           bool   `json:"protect_content,omitempty"`
+	ReplyMarkup              any    `json:"reply_markup,omitempty"`
+	ReplyToMessageID         int64  `json:"reply_to_message_id,omitempty"`
+}
+
+func (entity *SendDice) ProgressCallable() rawTypes.ProgressCallable {
+	return nil
 }
 
 func (entity *SendDice) Files() map[string]rawTypes.InputFile {

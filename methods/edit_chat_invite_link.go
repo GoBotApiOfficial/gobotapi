@@ -20,6 +20,10 @@ type EditChatInviteLink struct {
 	Name               string `json:"name,omitempty"`
 }
 
+func (entity *EditChatInviteLink) ProgressCallable() rawTypes.ProgressCallable {
+	return nil
+}
+
 func (entity *EditChatInviteLink) Files() map[string]rawTypes.InputFile {
 	return map[string]rawTypes.InputFile{}
 }

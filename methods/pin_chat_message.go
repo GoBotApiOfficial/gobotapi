@@ -17,6 +17,10 @@ type PinChatMessage struct {
 	MessageID           int64 `json:"message_id"`
 }
 
+func (entity *PinChatMessage) ProgressCallable() rawTypes.ProgressCallable {
+	return nil
+}
+
 func (entity *PinChatMessage) Files() map[string]rawTypes.InputFile {
 	return map[string]rawTypes.InputFile{}
 }

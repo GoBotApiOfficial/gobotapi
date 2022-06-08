@@ -15,6 +15,10 @@ type AnswerWebAppQuery struct {
 	WebAppQueryID string                  `json:"web_app_query_id"`
 }
 
+func (entity *AnswerWebAppQuery) ProgressCallable() rawTypes.ProgressCallable {
+	return nil
+}
+
 func (entity *AnswerWebAppQuery) Files() map[string]rawTypes.InputFile {
 	return map[string]rawTypes.InputFile{}
 }

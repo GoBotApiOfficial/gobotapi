@@ -15,6 +15,10 @@ import (
 // Requires no parameters.
 type Close struct{}
 
+func (entity *Close) ProgressCallable() rawTypes.ProgressCallable {
+	return nil
+}
+
 func (entity *Close) Files() map[string]rawTypes.InputFile {
 	return map[string]rawTypes.InputFile{}
 }

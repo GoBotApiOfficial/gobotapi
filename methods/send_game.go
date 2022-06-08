@@ -20,6 +20,10 @@ type SendGame struct {
 	ReplyToMessageID         int64                       `json:"reply_to_message_id,omitempty"`
 }
 
+func (entity *SendGame) ProgressCallable() rawTypes.ProgressCallable {
+	return nil
+}
+
 func (entity *SendGame) Files() map[string]rawTypes.InputFile {
 	return map[string]rawTypes.InputFile{}
 }

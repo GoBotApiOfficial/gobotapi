@@ -19,6 +19,10 @@ type BanChatMember struct {
 	UserID         int64 `json:"user_id"`
 }
 
+func (entity *BanChatMember) ProgressCallable() rawTypes.ProgressCallable {
+	return nil
+}
+
 func (entity *BanChatMember) Files() map[string]rawTypes.InputFile {
 	return map[string]rawTypes.InputFile{}
 }

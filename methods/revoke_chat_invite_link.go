@@ -17,6 +17,10 @@ type RevokeChatInviteLink struct {
 	InviteLink string `json:"invite_link"`
 }
 
+func (entity *RevokeChatInviteLink) ProgressCallable() rawTypes.ProgressCallable {
+	return nil
+}
+
 func (entity *RevokeChatInviteLink) Files() map[string]rawTypes.InputFile {
 	return map[string]rawTypes.InputFile{}
 }

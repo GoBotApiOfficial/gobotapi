@@ -16,6 +16,10 @@ type SetMyDefaultAdministratorRights struct {
 	Rights      *types.ChatAdministratorRights `json:"rights,omitempty"`
 }
 
+func (entity *SetMyDefaultAdministratorRights) ProgressCallable() rawTypes.ProgressCallable {
+	return nil
+}
+
 func (entity *SetMyDefaultAdministratorRights) Files() map[string]rawTypes.InputFile {
 	return map[string]rawTypes.InputFile{}
 }

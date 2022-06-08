@@ -14,6 +14,10 @@ import (
 // If the bot is using getUpdates, will return an object with the url field empty.
 type GetWebhookInfo struct{}
 
+func (entity *GetWebhookInfo) ProgressCallable() rawTypes.ProgressCallable {
+	return nil
+}
+
 func (entity *GetWebhookInfo) Files() map[string]rawTypes.InputFile {
 	return map[string]rawTypes.InputFile{}
 }

@@ -16,6 +16,10 @@ type StopPoll struct {
 	ReplyMarkup *types.InlineKeyboardMarkup `json:"reply_markup,omitempty"`
 }
 
+func (entity *StopPoll) ProgressCallable() rawTypes.ProgressCallable {
+	return nil
+}
+
 func (entity *StopPoll) Files() map[string]rawTypes.InputFile {
 	return map[string]rawTypes.InputFile{}
 }

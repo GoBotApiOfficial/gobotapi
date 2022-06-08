@@ -16,6 +16,10 @@ type GetMyCommands struct {
 	Scope        *types.BotCommandScope `json:"scope,omitempty"`
 }
 
+func (entity *GetMyCommands) ProgressCallable() rawTypes.ProgressCallable {
+	return nil
+}
+
 func (entity *GetMyCommands) Files() map[string]rawTypes.InputFile {
 	return map[string]rawTypes.InputFile{}
 }

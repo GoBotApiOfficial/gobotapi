@@ -16,7 +16,7 @@ type InlineQueryResultLocation struct {
 	Heading              int                   `json:"heading,omitempty"`
 	HorizontalAccuracy   float64               `json:"horizontal_accuracy,omitempty"`
 	ID                   string                `json:"id"`
-	InputMessageContent  interface{}           `json:"input_message_content,omitempty"`
+	InputMessageContent  any                   `json:"input_message_content,omitempty"`
 	Latitude             float64               `json:"latitude"`
 	LivePeriod           int                   `json:"live_period,omitempty"`
 	Longitude            float64               `json:"longitude"`
@@ -40,7 +40,7 @@ func (entity InlineQueryResultLocation) MarshalJSON() ([]byte, error) {
 		Heading              int                   `json:"heading,omitempty"`
 		ProximityAlertRadius int                   `json:"proximity_alert_radius,omitempty"`
 		ReplyMarkup          *InlineKeyboardMarkup `json:"reply_markup,omitempty"`
-		InputMessageContent  interface{}           `json:"input_message_content,omitempty"`
+		InputMessageContent  any                   `json:"input_message_content,omitempty"`
 		ThumbURL             string                `json:"thumb_url,omitempty"`
 		ThumbWidth           int64                 `json:"thumb_width,omitempty"`
 		ThumbHeight          int                   `json:"thumb_height,omitempty"`

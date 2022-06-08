@@ -14,6 +14,10 @@ type LeaveChat struct {
 	ChatID int64 `json:"chat_id"`
 }
 
+func (entity *LeaveChat) ProgressCallable() rawTypes.ProgressCallable {
+	return nil
+}
+
 func (entity *LeaveChat) Files() map[string]rawTypes.InputFile {
 	return map[string]rawTypes.InputFile{}
 }

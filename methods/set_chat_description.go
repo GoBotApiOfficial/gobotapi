@@ -16,6 +16,10 @@ type SetChatDescription struct {
 	Description string `json:"description,omitempty"`
 }
 
+func (entity *SetChatDescription) ProgressCallable() rawTypes.ProgressCallable {
+	return nil
+}
+
 func (entity *SetChatDescription) Files() map[string]rawTypes.InputFile {
 	return map[string]rawTypes.InputFile{}
 }

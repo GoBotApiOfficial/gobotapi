@@ -14,6 +14,10 @@ type GetStickerSet struct {
 	Name string `json:"name"`
 }
 
+func (entity *GetStickerSet) ProgressCallable() rawTypes.ProgressCallable {
+	return nil
+}
+
 func (entity *GetStickerSet) Files() map[string]rawTypes.InputFile {
 	return map[string]rawTypes.InputFile{}
 }
