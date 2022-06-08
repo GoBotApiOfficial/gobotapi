@@ -36,8 +36,8 @@ import "github.com/Squirrel-Network/gobotapi/methods"
 
 func main() {
     client := gobotapi.NewClient("YOUR_TOKEN")
-    client.OnMessage(func(message types.Message) {
-        client.Invoke(&methods.SendMessage{
+    client.OnMessage(func(ctx *gobotapi.Client, message types.Message) {
+        ctx.Invoke(&methods.SendMessage{
             ChatID: message.Chat.ID,
             Text:   "Hello World!",
         })
