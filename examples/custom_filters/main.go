@@ -13,7 +13,7 @@ func main() {
 	w := cFilters.FilterWrapper(client)
 
 	// Custom filters (only messages from admin users)
-	client.OnMessage(filters.Filter(func(ctx gobotapi.Client, message types.Message) {
+	client.OnMessage(filters.Filter(func(ctx *gobotapi.Client, message types.Message) {
 		fmt.Println("Message Received from an admin:", message.Text)
 	}, w.IsAdmin()))
 

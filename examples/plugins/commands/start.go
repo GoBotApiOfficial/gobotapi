@@ -6,7 +6,7 @@ import (
 	"github.com/Squirrel-Network/gobotapi/types"
 )
 
-func Start(client gobotapi.Client, update types.Message) {
+func Start(client *gobotapi.Client, update types.Message) {
 	client.Invoke(&methods.SendMessage{
 		ChatID: update.Chat.ID,
 		Text:   "Hello World!",
