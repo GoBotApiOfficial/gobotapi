@@ -27,8 +27,9 @@ func (ctx *PollingClient) Run() error {
 	ctx.me = &me
 	for {
 		getUpdates := &methods.GetUpdates{
-			Timeout: int(ctx.PollingTimeout.Seconds()),
-			Offset:  ctx.lastUpdateID,
+			AllowedUpdates: ctx.AllowedUpdates,
+			Timeout:        int(ctx.PollingTimeout.Seconds()),
+			Offset:         ctx.lastUpdateID,
 		}
 		rawUpdates, err := ctx.Invoke(getUpdates)
 		if !ctx.isRunning {
