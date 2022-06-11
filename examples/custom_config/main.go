@@ -15,6 +15,7 @@ func main() {
 	client.PollingTimeout = time.Second * 10            // Timeout for polling
 	client.NoUpdates = true                             // If true, the bot will not receive updates
 	client.DownloadRefreshRate = time.Millisecond * 200 // Rate of download refresh time (in milliseconds)
+	client.AllowedUpdates = []string{"message"}         // Allowed updates
 	// Start and idle the bot
 	_ = client.Run()
 }
