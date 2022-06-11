@@ -4,105 +4,105 @@ package gobotapi
 
 import "github.com/Squirrel-Network/gobotapi/types"
 
-func (ctx *Client) OnRawUpdate(handler func(client *Client, update types.Update)) {
+func (ctx *BasicClient) OnRawUpdate(handler func(client *Client, update types.Update)) {
 	if ctx.handlers == nil {
 		ctx.handlers = make(map[string][]any)
 	}
 	ctx.handlers["raw"] = append(ctx.handlers["raw"], handler)
 }
 
-func (ctx *Client) OnMessage(handler func(client *Client, update types.Message)) {
+func (ctx *BasicClient) OnMessage(handler func(client *Client, update types.Message)) {
 	if ctx.handlers == nil {
 		ctx.handlers = make(map[string][]any)
 	}
 	ctx.handlers["message"] = append(ctx.handlers["message"], handler)
 }
 
-func (ctx *Client) OnEditedMessage(handler func(client *Client, update types.Message)) {
+func (ctx *BasicClient) OnEditedMessage(handler func(client *Client, update types.Message)) {
 	if ctx.handlers == nil {
 		ctx.handlers = make(map[string][]any)
 	}
 	ctx.handlers["edited_message"] = append(ctx.handlers["edited_message"], handler)
 }
 
-func (ctx *Client) OnChannelPost(handler func(client *Client, update types.Message)) {
+func (ctx *BasicClient) OnChannelPost(handler func(client *Client, update types.Message)) {
 	if ctx.handlers == nil {
 		ctx.handlers = make(map[string][]any)
 	}
 	ctx.handlers["channel_post"] = append(ctx.handlers["channel_post"], handler)
 }
 
-func (ctx *Client) OnEditedChannelPost(handler func(client *Client, update types.Message)) {
+func (ctx *BasicClient) OnEditedChannelPost(handler func(client *Client, update types.Message)) {
 	if ctx.handlers == nil {
 		ctx.handlers = make(map[string][]any)
 	}
 	ctx.handlers["edited_channel_post"] = append(ctx.handlers["edited_channel_post"], handler)
 }
 
-func (ctx *Client) OnInlineQuery(handler func(client *Client, update types.InlineQuery)) {
+func (ctx *BasicClient) OnInlineQuery(handler func(client *Client, update types.InlineQuery)) {
 	if ctx.handlers == nil {
 		ctx.handlers = make(map[string][]any)
 	}
 	ctx.handlers["inline_query"] = append(ctx.handlers["inline_query"], handler)
 }
 
-func (ctx *Client) OnChosenInlineResult(handler func(client *Client, update types.ChosenInlineResult)) {
+func (ctx *BasicClient) OnChosenInlineResult(handler func(client *Client, update types.ChosenInlineResult)) {
 	if ctx.handlers == nil {
 		ctx.handlers = make(map[string][]any)
 	}
 	ctx.handlers["chosen_inline_result"] = append(ctx.handlers["chosen_inline_result"], handler)
 }
 
-func (ctx *Client) OnCallbackQuery(handler func(client *Client, update types.CallbackQuery)) {
+func (ctx *BasicClient) OnCallbackQuery(handler func(client *Client, update types.CallbackQuery)) {
 	if ctx.handlers == nil {
 		ctx.handlers = make(map[string][]any)
 	}
 	ctx.handlers["callback_query"] = append(ctx.handlers["callback_query"], handler)
 }
 
-func (ctx *Client) OnShippingQuery(handler func(client *Client, update types.ShippingQuery)) {
+func (ctx *BasicClient) OnShippingQuery(handler func(client *Client, update types.ShippingQuery)) {
 	if ctx.handlers == nil {
 		ctx.handlers = make(map[string][]any)
 	}
 	ctx.handlers["shipping_query"] = append(ctx.handlers["shipping_query"], handler)
 }
 
-func (ctx *Client) OnPreCheckoutQuery(handler func(client *Client, update types.PreCheckoutQuery)) {
+func (ctx *BasicClient) OnPreCheckoutQuery(handler func(client *Client, update types.PreCheckoutQuery)) {
 	if ctx.handlers == nil {
 		ctx.handlers = make(map[string][]any)
 	}
 	ctx.handlers["pre_checkout_query"] = append(ctx.handlers["pre_checkout_query"], handler)
 }
 
-func (ctx *Client) OnPoll(handler func(client *Client, update types.Poll)) {
+func (ctx *BasicClient) OnPoll(handler func(client *Client, update types.Poll)) {
 	if ctx.handlers == nil {
 		ctx.handlers = make(map[string][]any)
 	}
 	ctx.handlers["poll"] = append(ctx.handlers["poll"], handler)
 }
 
-func (ctx *Client) OnPollAnswer(handler func(client *Client, update types.PollAnswer)) {
+func (ctx *BasicClient) OnPollAnswer(handler func(client *Client, update types.PollAnswer)) {
 	if ctx.handlers == nil {
 		ctx.handlers = make(map[string][]any)
 	}
 	ctx.handlers["poll_answer"] = append(ctx.handlers["poll_answer"], handler)
 }
 
-func (ctx *Client) OnMyChatMember(handler func(client *Client, update types.ChatMemberUpdated)) {
+func (ctx *BasicClient) OnMyChatMember(handler func(client *Client, update types.ChatMemberUpdated)) {
 	if ctx.handlers == nil {
 		ctx.handlers = make(map[string][]any)
 	}
 	ctx.handlers["my_chat_member"] = append(ctx.handlers["my_chat_member"], handler)
 }
 
-func (ctx *Client) OnChatMember(handler func(client *Client, update types.ChatMemberUpdated)) {
+func (ctx *BasicClient) OnChatMember(handler func(client *Client, update types.ChatMemberUpdated)) {
 	if ctx.handlers == nil {
 		ctx.handlers = make(map[string][]any)
 	}
 	ctx.handlers["chat_member"] = append(ctx.handlers["chat_member"], handler)
 }
 
-func (ctx *Client) OnChatJoinRequest(handler func(client *Client, update types.ChatJoinRequest)) {
+func (ctx *BasicClient) OnChatJoinRequest(handler func(client *Client, update types.ChatJoinRequest)) {
 	if ctx.handlers == nil {
 		ctx.handlers = make(map[string][]any)
 	}

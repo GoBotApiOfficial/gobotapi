@@ -7,7 +7,7 @@ import (
 	"strings"
 )
 
-func (ctx *Client) OnCommand(command string, aliasList []string, handler func(client *Client, update types.Message)) {
+func (ctx *BasicClient) OnCommand(command string, aliasList []string, handler func(client *Client, update types.Message)) {
 	if len(aliasList) == 0 {
 		aliasList = []string{"/"}
 	}

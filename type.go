@@ -7,18 +7,34 @@ import (
 	"time"
 )
 
-type Client struct {
-	PollingTimeout      time.Duration
+type BasicClient struct {
 	BotApiConfig        Config
-	Token               string
 	NoUpdates           bool
 	DownloadRefreshRate time.Duration
-	me                  *types.User
+	AllowedUpdates      []string
 	apiURL              string
+	cloningURL          string
 	isRunning           bool
 	client              *http.Client
 	handlers            map[string][]any
-	lastUpdateID        int
 	waitStart           chan bool
 	requestsContext     []rawTypes.CancelableContext
+}
+
+type Client struct {
+	*BasicClient
+	me    *types.User
+	Token string
+}
+
+type PollingClient struct {
+	*Client
+	PollingTimeout time.Duration
+	lastUpdateID   int
+}
+
+type WebhookClient struct {
+	*BasicClient
+	WebhookConfig *WebhookConfig
+	clients       map[string]*types.User
 }
