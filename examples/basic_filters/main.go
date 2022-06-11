@@ -32,5 +32,5 @@ func main() {
 	}, filters.ChatID(-100123456789, -100987654321)))
 
 	// Start and idle the bot
-	client.Run()
+	_ = client.Run()
 }

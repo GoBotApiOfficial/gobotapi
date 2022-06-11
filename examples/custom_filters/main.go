@@ -18,5 +18,5 @@ func main() {
 	}, w.IsAdmin()))
 
 	// Start and idle the bot
-	client.Run()
+	_ = client.Run()
 }

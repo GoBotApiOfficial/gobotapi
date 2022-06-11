@@ -6,18 +6,15 @@ import (
 )
 
 func main() {
-	client := gobotapi.Client{
-		BotApiConfig: gobotapi.Config{
-			HostName: "localhost", // Your bot API hostname
-			Port:     8080,        // Your bot API port
-			Https:    false,       // Your bot API protocol
-		},
-		Token:               "YOUR_TOKEN",           // Your bot token
-		PollingTimeout:      time.Second * 10,       // Timeout for polling
-		NoUpdates:           false,                  // If true, the bot will not receive updates
-		DownloadRefreshRate: time.Millisecond * 200, // Rate of download refresh time (in milliseconds)
-	}
-
+	client := gobotapi.NewClient("YOUR_TOKEN") // A polling client, you can use also a webhook client
+	client.SetupBotAPI(
+		"localhost", // Your bot API hostname
+		8080,        // Your bot API port
+		false,       // Your bot API protocol
+	)
+	client.PollingTimeout = time.Second * 10            // Timeout for polling
+	client.NoUpdates = true                             // If true, the bot will not receive updates
+	client.DownloadRefreshRate = time.Millisecond * 200 // Rate of download refresh time (in milliseconds)
 	// Start and idle the bot
-	client.Run()
+	_ = client.Run()
 }

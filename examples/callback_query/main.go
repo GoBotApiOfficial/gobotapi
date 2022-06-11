@@ -35,5 +35,5 @@ func main() {
 		}
 	})
 	// Start and idle the bot
-	client.Run()
+	_ = client.Run()
 }

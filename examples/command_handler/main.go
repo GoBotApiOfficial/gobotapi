@@ -25,5 +25,5 @@ func main() {
 		fmt.Println(fmt.Sprintf("Stop command received from %d", update.Chat.ID))
 	})
 	// Start and idle the bot
-	client.Run()
+	_ = client.Run()
 }

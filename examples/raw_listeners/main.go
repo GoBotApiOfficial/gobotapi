@@ -26,5 +26,5 @@ func main() {
 		fmt.Println(update)
 	})
 	// Start and idle the bot
-	client.Run()
+	_ = client.Run()
 }

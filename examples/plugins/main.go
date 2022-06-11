@@ -12,5 +12,5 @@ func main() {
 
 	client.OnCommand("start", AliasList, commands.Start)
 	client.OnCommand("hello", AliasList, commands.Hello)
-	client.Run()
+	_ = client.Run()
 }
