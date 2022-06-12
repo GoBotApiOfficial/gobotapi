@@ -38,13 +38,6 @@ func main() {
 			})
 		}
 	})
-	// Add listener to receive callback query with filtered data
-	client.OnCallbackQueryData("test2", func(client *gobotapi.Client, update types.CallbackQuery) {
-		client.Invoke(&methods.AnswerCallbackQuery{
-			CallbackQueryID: update.ID,
-			Text:            "You found another Fox 🦊!",
-		})
-	})
 	// Start and idle the bot
 	_ = client.Run()
 }
