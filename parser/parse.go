@@ -8,8 +8,8 @@ import (
 
 func Parse(data string, entities []types.MessageEntity) string {
 	text := utf16.Encode([]rune(data))
-	openingTags := make([]string, len(text)+1)
-	closingTags := make([]string, len(text)+1)
+	openingTags := make([]string, len(text))
+	closingTags := make([]string, len(text))
 	for _, entity := range entities {
 		name := HtmlTag(entity.Type)
 		if len(name) == 0 {
