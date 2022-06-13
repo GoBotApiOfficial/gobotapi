@@ -3,12 +3,13 @@ package parser
 import (
 	"fmt"
 	"github.com/Squirrel-Network/gobotapi/types"
+	"unicode/utf16"
 )
 
 func Parse(data string, entities []types.MessageEntity) string {
-	text := []rune(data)
-	openingTags := make([]string, len(text))
-	closingTags := make([]string, len(text))
+	text := utf16.Encode([]rune(data))
+	openingTags := make([]string, len(text)+1)
+	closingTags := make([]string, len(text)+1)
 	for _, entity := range entities {
 		name := HtmlTag(entity.Type)
 		if len(name) == 0 {
@@ -36,9 +37,17 @@ func Parse(data string, entities []types.MessageEntity) string {
 		openingTags[start] += startTag
 		closingTags[end] = endTag + closingTags[end]
 	}
-	var newText string
+	var newText []uint16
 	for i, t := range text {
-		newText += openingTags[i] + string(t) + closingTags[i]
+		newText = append(newText, utf16.Encode([]rune(openingTags[i]))...)
+		if t == 60 {
+			newText = append(newText, utf16.Encode([]rune("&lt;"))...)
+		} else if t == 62 {
+			newText = append(newText, utf16.Encode([]rune("&gt;"))...)
+		} else {
+			newText = append(newText, t)
+		}
+		newText = append(newText, utf16.Encode([]rune(closingTags[i]))...)
 	}
-	return newText
+	return string(utf16.Decode(newText))
 }
