@@ -35,11 +35,3 @@ func (ctx *BasicClient) OnCommand(command string, aliasList []string, handler fu
 	ctx.OnMessage(cmdHandler)
 	ctx.OnEditedMessage(cmdHandler)
 }
-
-func (ctx *BasicClient) OnCallbackQueryData(data string, handler func(client *Client, update types.CallbackQuery)) {
-	ctx.OnCallbackQuery(func(client *Client, update types.CallbackQuery) {
-		if update.Data == data {
-			handler(client, update)
-		}
-	})
-}
