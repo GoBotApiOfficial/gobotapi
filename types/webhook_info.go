@@ -2,7 +2,7 @@
 
 package types
 
-// WebhookInfo Contains information about the current status of a webhook.
+// WebhookInfo Describes the current status of a webhook.
 type WebhookInfo struct {
 	AllowedUpdates               []string `json:"allowed_updates,omitempty"`
 	HasCustomCertificate         bool     `json:"has_custom_certificate"`

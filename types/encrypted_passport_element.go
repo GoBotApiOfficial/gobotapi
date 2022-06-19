@@ -2,7 +2,7 @@
 
 package types
 
-// EncryptedPassportElement Contains information about documents or other Telegram Passport elements shared with the bot by the user.
+// EncryptedPassportElement Describes documents or other Telegram Passport elements shared with the bot by the user.
 type EncryptedPassportElement struct {
 	Data        string         `json:"data,omitempty"`
 	Email       string         `json:"email,omitempty"`

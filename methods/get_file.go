@@ -8,7 +8,7 @@ import (
 	rawTypes "github.com/Squirrel-Network/gobotapi/types/raw"
 )
 
-// GetFile Use this method to get basic info about a file and prepare it for downloading
+// GetFile Use this method to get basic information about a file and prepare it for downloading
 // For the moment, bots can download files of up to 20MB in size
 // On success, a File object is returned
 // The file can then be downloaded via the link https://api.telegram.org/file/bot<token>/<file_path>, where <file_path> is taken from the response

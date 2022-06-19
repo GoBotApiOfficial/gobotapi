@@ -2,7 +2,7 @@
 
 package types
 
-// WebAppInfo Contains information about a Web App.
+// WebAppInfo Describes a Web App.
 type WebAppInfo struct {
 	URL string `json:"url"`
 }

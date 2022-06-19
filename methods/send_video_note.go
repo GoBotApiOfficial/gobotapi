@@ -9,7 +9,7 @@ import (
 	rawTypes "github.com/Squirrel-Network/gobotapi/types/raw"
 )
 
-// SendVideoNote As of v.4.0, Telegram clients support rounded square mp4 videos of up to 1 minute long
+// SendVideoNote As of v.4.0, Telegram clients support rounded square MPEG4 videos of up to 1 minute long
 // Use this method to send video messages
 // On success, the sent Message is returned.
 type SendVideoNote struct {

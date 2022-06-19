@@ -12,6 +12,7 @@ type BasicClient struct {
 	NoUpdates           bool
 	DownloadRefreshRate time.Duration
 	AllowedUpdates      []string
+	Beta                bool
 	apiURL              string
 	cloningURL          string
 	isRunning           bool
