@@ -12,6 +12,8 @@ type Chat struct {
 	HasProtectedContent   bool             `json:"has_protected_content,omitempty"`
 	ID                    int64            `json:"id"`
 	InviteLink            string           `json:"invite_link,omitempty"`
+	JoinByRequest         bool             `json:"join_by_request,omitempty"`
+	JoinToSendMessages    bool             `json:"join_to_send_messages,omitempty"`
 	LastName              string           `json:"last_name,omitempty"`
 	LinkedChatID          int64            `json:"linked_chat_id,omitempty"`
 	Location              *ChatLocation    `json:"location,omitempty"`

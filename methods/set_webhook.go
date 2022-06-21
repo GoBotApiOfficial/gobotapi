@@ -12,15 +12,15 @@ import (
 // Whenever there is an update for the bot, we will send an HTTPS POST request to the specified URL, containing a JSON-serialized Update
 // In case of an unsuccessful request, we will give up after a reasonable amount of attempts
 // Returns True on success.
-// If you'd like to make sure that the webhook request comes from Telegram, we recommend using a secret path in the URL, e.g
-// https://www.example.com/<token>
-// Since nobody else knows your bot's token, you can be pretty sure it's us.
+// If you'd like to make sure that the webhook was set by you, you can specify secret data in the parameter secret_token
+// If specified, the request will contain a header “X-Telegram-Bot-Api-Secret-Token” with the secret token as content.
 type SetWebhook struct {
 	AllowedUpdates     []string                  `json:"allowed_updates,omitempty"`
 	Certificate        rawTypes.InputFile        `json:"certificate,omitempty"`
 	DropPendingUpdates bool                      `json:"drop_pending_updates,omitempty"`
 	IPAddress          string                    `json:"ip_address,omitempty"`
 	MaxConnections     int                       `json:"max_connections,omitempty"`
+	SecretToken        string                    `json:"secret_token,omitempty"`
 	URL                string                    `json:"url"`
 	Progress           rawTypes.ProgressCallable `json:"-"`
 }
