@@ -13,12 +13,12 @@ type BasicClient struct {
 	DownloadRefreshRate time.Duration
 	AllowedUpdates      []string
 	Beta                bool
+	SleepThreshold      int
 	apiURL              string
 	cloningURL          string
 	isRunning           bool
 	client              *http.Client
 	handlers            map[string][]any
-	waitStart           chan bool
 	requestsContext     []rawTypes.CancelableContext
 }
 

@@ -9,7 +9,7 @@ import (
 	"net/http"
 )
 
-func (ctx *WebhookClient) Run() error {
+func (ctx *WebhookClient) Start() error {
 	if ctx.isRunning {
 		return errors.New("client is already running")
 	}
@@ -59,9 +59,13 @@ func (ctx *WebhookClient) Run() error {
 	fmt.Println("[INFO] Webhook server started at", ctx.WebhookConfig.GetAddress())
 	var err error
 	if len(ctx.WebhookConfig.CertificateFile) > 0 && len(ctx.WebhookConfig.KeyFile) > 0 {
-		err = ctx.WebhookConfig.server.ListenAndServeTLS(ctx.WebhookConfig.CertificateFile, ctx.WebhookConfig.KeyFile)
+		go func() {
+			_ = ctx.WebhookConfig.server.ListenAndServeTLS(ctx.WebhookConfig.CertificateFile, ctx.WebhookConfig.KeyFile)
+		}()
 	} else {
-		err = ctx.WebhookConfig.server.ListenAndServe()
+		go func() {
+			_ = ctx.WebhookConfig.server.ListenAndServe()
+		}()
 	}
 	return err
 }

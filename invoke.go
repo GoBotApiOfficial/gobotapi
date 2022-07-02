@@ -3,8 +3,10 @@ package gobotapi
 import (
 	"errors"
 	"fmt"
+	"github.com/Squirrel-Network/gobotapi/types"
 	rawTypes "github.com/Squirrel-Network/gobotapi/types/raw"
 	"github.com/Squirrel-Network/gobotapi/utils"
+	"time"
 )
 
 func (ctx *Client) Invoke(method rawTypes.Method) (*rawTypes.Result, error) {
@@ -28,5 +30,13 @@ func (ctx *Client) Invoke(method rawTypes.Method) (*rawTypes.Result, error) {
 		files,
 		method.ProgressCallable(),
 	)
-	return utils.ParseResult(rawResult, err, method)
+	res, err := utils.ParseResult(rawResult, err, method)
+	if res.Kind == types.TypeErrorMessage {
+		retryAfter := res.Error.Parameters.RetryAfter
+		if retryAfter > 0 && retryAfter <= ctx.SleepThreshold {
+			time.Sleep(time.Duration(retryAfter) * time.Second)
+			return ctx.Invoke(method)
+		}
+	}
+	return res, err
 }

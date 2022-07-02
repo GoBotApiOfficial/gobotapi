@@ -8,15 +8,19 @@ import (
 func NewClient(token string) *PollingClient {
 	return &PollingClient{
 		Client: &Client{
-			BasicClient: &BasicClient{},
-			Token:       token,
+			BasicClient: &BasicClient{
+				SleepThreshold: 10,
+			},
+			Token: token,
 		},
 	}
 }
 
 func NewWebhook(hostname string, port int) *WebhookClient {
 	return &WebhookClient{
-		BasicClient: &BasicClient{},
+		BasicClient: &BasicClient{
+			SleepThreshold: 10,
+		},
 		WebhookConfig: &WebhookConfig{
 			Config: ServerConfig{
 				HostName: hostname,
@@ -34,7 +38,9 @@ func NewWebhookWithCert(hostname string, port int, certFile, keyFile string) (*W
 		return nil, fmt.Errorf("key file not found")
 	}
 	return &WebhookClient{
-		BasicClient: &BasicClient{},
+		BasicClient: &BasicClient{
+			SleepThreshold: 10,
+		},
 		WebhookConfig: &WebhookConfig{
 			Config: ServerConfig{
 				HostName: hostname,

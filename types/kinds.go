@@ -24,6 +24,7 @@ const (
 	TypeChatAdministratorRights
 	TypeChatInviteLink
 	TypeChatMember
+	TypeErrorMessage
 	TypeFile
 	TypeInteger
 	TypeMenuButton
