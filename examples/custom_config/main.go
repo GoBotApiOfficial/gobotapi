@@ -17,6 +17,7 @@ func main() {
 	client.DownloadRefreshRate = time.Millisecond * 200 // Rate of download refresh time (in milliseconds)
 	client.AllowedUpdates = []string{"message"}         // Allowed updates
 	client.Beta = true                                  // If true, the bot will use the beta API
+	client.SleepThreshold = 10                          // Sleep threshold, by default is 10
 	// Start and idle the bot
 	_ = client.Run()
 }

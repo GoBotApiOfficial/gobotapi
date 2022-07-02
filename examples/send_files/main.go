@@ -16,7 +16,7 @@ func main() {
 		ChatID:   -100123456789,
 		Document: types.InputFile("file.txt"),
 	})
-	// Send a file from an URL
+	// Send a file from a URL
 	client.Invoke(&methods.SendDocument{
 		ChatID:   -100123456789,
 		Document: types.InputURL("https://upload.wikimedia.org/wikipedia/commons/1/16/Fox_-_British_Wildlife_Centre_%2817429406401%29.jpg"),
