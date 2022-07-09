@@ -31,7 +31,7 @@ func (ctx *Client) Invoke(method rawTypes.Method) (*rawTypes.Result, error) {
 		method.ProgressCallable(),
 	)
 	res, err := utils.ParseResult(rawResult, err, method)
-	if res.Kind == types.TypeErrorMessage {
+	if res.Kind == types.TypeErrorMessage && res.Error.Parameters != nil {
 		retryAfter := res.Error.Parameters.RetryAfter
 		if retryAfter > 0 && retryAfter <= ctx.SleepThreshold {
 			time.Sleep(time.Duration(retryAfter) * time.Second)
