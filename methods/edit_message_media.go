@@ -29,6 +29,11 @@ func (entity *EditMessageMedia) Files() map[string]rawTypes.InputFile {
 	files := make(map[string]rawTypes.InputFile)
 	for k, v := range entity.Media.(rawTypes.InputMediaFiles).Files() {
 		files[k] = v
+		if k == "thumb" {
+			entity.Media.SetAttachmentThumb(k)
+		} else {
+			entity.Media.SetAttachment(k)
+		}
 	}
 	return files
 }

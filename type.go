@@ -3,6 +3,7 @@ package gobotapi
 import (
 	"github.com/Squirrel-Network/gobotapi/types"
 	rawTypes "github.com/Squirrel-Network/gobotapi/types/raw"
+	"github.com/Squirrel-Network/gobotapi/utils/concurrency"
 	"net/http"
 	"time"
 )
@@ -14,12 +15,14 @@ type BasicClient struct {
 	AllowedUpdates      []string
 	Beta                bool
 	SleepThreshold      int
+	MaxGoRoutines       int
 	apiURL              string
 	cloningURL          string
 	isRunning           bool
 	client              *http.Client
 	handlers            map[string][]any
 	requestsContext     []rawTypes.CancelableContext
+	concurrencyManager  *concurrency.Context
 }
 
 type Client struct {
