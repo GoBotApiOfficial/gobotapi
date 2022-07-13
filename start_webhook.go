@@ -43,6 +43,7 @@ func (ctx *WebhookClient) Start() error {
 				return
 			}
 			if ctx.clients[token] == nil {
+				ctx.logging.Info(nil, "Connecting...")
 				client := &Client{
 					Token:       token,
 					BasicClient: ctx.BasicClient,
@@ -50,13 +51,17 @@ func (ctx *WebhookClient) Start() error {
 				invoke, _ := client.Invoke(&methods.GetMe{})
 				me := invoke.Result.(types.User)
 				ctx.clients[token] = &me
+				ctx.logging.Info(&Client{me: ctx.clients[token]}, "Connected")
 			}
+			tmpC := &Client{me: ctx.clients[token]}
+			ctx.logging.Info(tmpC, "Received", 1, "updates")
+			ctx.logging.Debug(tmpC, "Received:", update)
 			ctx.handleUpdate(ctx.clients[token], token, update)
 			w.WriteHeader(http.StatusOK)
 			_, _ = w.Write([]byte("OK"))
 		}),
 	}
-	fmt.Println("[INFO] Webhook server started at", ctx.WebhookConfig.GetAddress())
+	ctx.logging.Warn(nil, "Webhook server started at", ctx.WebhookConfig.GetAddress())
 	var err error
 	if len(ctx.WebhookConfig.CertificateFile) > 0 && len(ctx.WebhookConfig.KeyFile) > 0 {
 		go func() {

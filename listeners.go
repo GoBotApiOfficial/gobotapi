@@ -15,17 +15,17 @@ func (ctx *BasicClient) OnCommand(command string, aliasList []string, handler fu
 	for _, alias := range aliasList {
 		prefixes = append(prefixes, fmt.Sprintf("(?:%s)", regexp.QuoteMeta(alias)))
 	}
-	var withoutPrefixCompiler *regexp.Regexp
+	withoutPrefixCompilers := make(map[int64]*regexp.Regexp)
 	cmdHandler := func(client *Client, message types.Message) {
-		if withoutPrefixCompiler == nil {
-			withoutPrefixCompiler, _ = regexp.Compile(fmt.Sprintf("(?i)((%s)%s(?:@?%s)?)(?:\\s|$)", strings.Join(prefixes, "|"), command, client.me.Username))
+		if withoutPrefixCompilers[client.me.ID] == nil {
+			withoutPrefixCompilers[client.me.ID], _ = regexp.Compile(fmt.Sprintf("(?i)((%s)%s(?:@?%s)?)(?:\\s|$)", strings.Join(prefixes, "|"), command, client.me.Username))
 		}
 		text := message.Text
 		if len(text) == 0 {
 			text = message.Caption
 		}
 		if len(text) > 0 {
-			matches := withoutPrefixCompiler.FindAllStringSubmatch(text, -1)
+			matches := withoutPrefixCompilers[client.me.ID].FindAllStringSubmatch(text, -1)
 			if len(matches) == 0 || !strings.HasPrefix(text, matches[0][1]) {
 				return
 			}

@@ -4,7 +4,6 @@ import (
 	"errors"
 	"github.com/Squirrel-Network/gobotapi/methods"
 	"github.com/Squirrel-Network/gobotapi/types"
-	"log"
 	"time"
 )
 
@@ -19,12 +18,14 @@ func (ctx *PollingClient) Start() error {
 	if ctx.NoUpdates {
 		return nil
 	}
+	ctx.logging.Info(nil, "Connecting...")
 	res, err := ctx.Invoke(&methods.GetMe{})
 	if err != nil {
 		return err
 	}
 	me := res.Result.(types.User)
 	ctx.me = &me
+	ctx.logging.Info(ctx.Client, "Connected")
 	go func() {
 		for {
 			getUpdates := &methods.GetUpdates{
@@ -37,11 +38,13 @@ func (ctx *PollingClient) Start() error {
 				break
 			}
 			if errUpdate != nil {
-				log.Printf("[%d] Retrying \"getUpdates\" due to Telegram says %s", ctx.me.ID, err)
 				time.Sleep(time.Second * 5)
 				continue
 			}
 			updates := rawUpdates.Result.([]types.Update)
+			if len(updates) > 0 {
+				ctx.logging.Info(ctx.Client, "Received", len(updates), "updates")
+			}
 			for _, update := range updates {
 				ctx.lastUpdateID = int(update.UpdateID) + 1
 				ctx.handleUpdate(ctx.me, ctx.Token, update)

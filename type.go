@@ -1,6 +1,7 @@
 package gobotapi
 
 import (
+	"github.com/Squirrel-Network/gobotapi/logger"
 	"github.com/Squirrel-Network/gobotapi/types"
 	rawTypes "github.com/Squirrel-Network/gobotapi/types/raw"
 	"github.com/Squirrel-Network/gobotapi/utils/concurrency"
@@ -16,6 +17,10 @@ type BasicClient struct {
 	Beta                bool
 	SleepThreshold      int
 	MaxGoRoutines       int
+	LoggingLevel        logger.LogLevel
+	LoggerColorful      bool
+	LoggerWriter        Writer
+	logging             Logger
 	apiURL              string
 	cloningURL          string
 	isRunning           bool

@@ -2,6 +2,7 @@ package gobotapi
 
 import (
 	"fmt"
+	"github.com/Squirrel-Network/gobotapi/logger"
 	"os"
 )
 
@@ -10,6 +11,9 @@ func NewClient(token string) *PollingClient {
 		Client: &Client{
 			BasicClient: &BasicClient{
 				SleepThreshold: 10,
+				MaxGoRoutines:  -1,
+				LoggerColorful: true,
+				LoggingLevel:   logger.Warn,
 			},
 			Token: token,
 		},
@@ -20,6 +24,9 @@ func NewWebhook(hostname string, port int) *WebhookClient {
 	return &WebhookClient{
 		BasicClient: &BasicClient{
 			SleepThreshold: 10,
+			MaxGoRoutines:  -1,
+			LoggerColorful: true,
+			LoggingLevel:   logger.Warn,
 		},
 		WebhookConfig: &WebhookConfig{
 			Config: ServerConfig{
@@ -40,6 +47,9 @@ func NewWebhookWithCert(hostname string, port int, certFile, keyFile string) (*W
 	return &WebhookClient{
 		BasicClient: &BasicClient{
 			SleepThreshold: 10,
+			MaxGoRoutines:  -1,
+			LoggerColorful: true,
+			LoggingLevel:   logger.Warn,
 		},
 		WebhookConfig: &WebhookConfig{
 			Config: ServerConfig{

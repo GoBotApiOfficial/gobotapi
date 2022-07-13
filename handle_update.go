@@ -13,16 +13,16 @@ func (ctx *BasicClient) handleUpdate(user *types.User, token string, update type
 	for _, x0 := range ctx.handlers["raw"] {
 		ctx.concurrencyManager.Wait()
 		go func(x any) {
+			defer ctx.concurrencyManager.Done()
 			x.(func(*Client, types.Update))(client, update)
-			ctx.concurrencyManager.Done()
 		}(x0)
 	}
 	if update.Message != nil {
 		for _, x0 := range ctx.handlers["message"] {
 			ctx.concurrencyManager.Wait()
 			go func(x any) {
+				defer ctx.concurrencyManager.Done()
 				x.(func(*Client, types.Message))(client, *update.Message)
-				ctx.concurrencyManager.Done()
 			}(x0)
 		}
 	}
@@ -30,8 +30,8 @@ func (ctx *BasicClient) handleUpdate(user *types.User, token string, update type
 		for _, x0 := range ctx.handlers["edited_message"] {
 			ctx.concurrencyManager.Wait()
 			go func(x any) {
+				defer ctx.concurrencyManager.Done()
 				x.(func(*Client, types.Message))(client, *update.EditedMessage)
-				ctx.concurrencyManager.Done()
 			}(x0)
 		}
 	}
@@ -39,8 +39,8 @@ func (ctx *BasicClient) handleUpdate(user *types.User, token string, update type
 		for _, x0 := range ctx.handlers["channel_post"] {
 			ctx.concurrencyManager.Wait()
 			go func(x any) {
+				defer ctx.concurrencyManager.Done()
 				x.(func(*Client, types.Message))(client, *update.ChannelPost)
-				ctx.concurrencyManager.Done()
 			}(x0)
 		}
 	}
@@ -48,8 +48,8 @@ func (ctx *BasicClient) handleUpdate(user *types.User, token string, update type
 		for _, x0 := range ctx.handlers["edited_channel_post"] {
 			ctx.concurrencyManager.Wait()
 			go func(x any) {
+				defer ctx.concurrencyManager.Done()
 				x.(func(*Client, types.Message))(client, *update.EditedChannelPost)
-				ctx.concurrencyManager.Done()
 			}(x0)
 		}
 	}
@@ -57,8 +57,8 @@ func (ctx *BasicClient) handleUpdate(user *types.User, token string, update type
 		for _, x0 := range ctx.handlers["inline_query"] {
 			ctx.concurrencyManager.Wait()
 			go func(x any) {
+				defer ctx.concurrencyManager.Done()
 				x.(func(*Client, types.InlineQuery))(client, *update.InlineQuery)
-				ctx.concurrencyManager.Done()
 			}(x0)
 		}
 	}
@@ -66,8 +66,8 @@ func (ctx *BasicClient) handleUpdate(user *types.User, token string, update type
 		for _, x0 := range ctx.handlers["chosen_inline_result"] {
 			ctx.concurrencyManager.Wait()
 			go func(x any) {
+				defer ctx.concurrencyManager.Done()
 				x.(func(*Client, types.ChosenInlineResult))(client, *update.ChosenInlineResult)
-				ctx.concurrencyManager.Done()
 			}(x0)
 		}
 	}
@@ -75,8 +75,8 @@ func (ctx *BasicClient) handleUpdate(user *types.User, token string, update type
 		for _, x0 := range ctx.handlers["callback_query"] {
 			ctx.concurrencyManager.Wait()
 			go func(x any) {
+				defer ctx.concurrencyManager.Done()
 				x.(func(*Client, types.CallbackQuery))(client, *update.CallbackQuery)
-				ctx.concurrencyManager.Done()
 			}(x0)
 		}
 	}
@@ -84,8 +84,8 @@ func (ctx *BasicClient) handleUpdate(user *types.User, token string, update type
 		for _, x0 := range ctx.handlers["shipping_query"] {
 			ctx.concurrencyManager.Wait()
 			go func(x any) {
+				defer ctx.concurrencyManager.Done()
 				x.(func(*Client, types.ShippingQuery))(client, *update.ShippingQuery)
-				ctx.concurrencyManager.Done()
 			}(x0)
 		}
 	}
@@ -93,8 +93,8 @@ func (ctx *BasicClient) handleUpdate(user *types.User, token string, update type
 		for _, x0 := range ctx.handlers["pre_checkout_query"] {
 			ctx.concurrencyManager.Wait()
 			go func(x any) {
+				defer ctx.concurrencyManager.Done()
 				x.(func(*Client, types.PreCheckoutQuery))(client, *update.PreCheckoutQuery)
-				ctx.concurrencyManager.Done()
 			}(x0)
 		}
 	}
@@ -102,8 +102,8 @@ func (ctx *BasicClient) handleUpdate(user *types.User, token string, update type
 		for _, x0 := range ctx.handlers["poll"] {
 			ctx.concurrencyManager.Wait()
 			go func(x any) {
+				defer ctx.concurrencyManager.Done()
 				x.(func(*Client, types.Poll))(client, *update.Poll)
-				ctx.concurrencyManager.Done()
 			}(x0)
 		}
 	}
@@ -111,8 +111,8 @@ func (ctx *BasicClient) handleUpdate(user *types.User, token string, update type
 		for _, x0 := range ctx.handlers["poll_answer"] {
 			ctx.concurrencyManager.Wait()
 			go func(x any) {
+				defer ctx.concurrencyManager.Done()
 				x.(func(*Client, types.PollAnswer))(client, *update.PollAnswer)
-				ctx.concurrencyManager.Done()
 			}(x0)
 		}
 	}
@@ -120,8 +120,8 @@ func (ctx *BasicClient) handleUpdate(user *types.User, token string, update type
 		for _, x0 := range ctx.handlers["my_chat_member"] {
 			ctx.concurrencyManager.Wait()
 			go func(x any) {
+				defer ctx.concurrencyManager.Done()
 				x.(func(*Client, types.ChatMemberUpdated))(client, *update.MyChatMember)
-				ctx.concurrencyManager.Done()
 			}(x0)
 		}
 	}
@@ -129,8 +129,8 @@ func (ctx *BasicClient) handleUpdate(user *types.User, token string, update type
 		for _, x0 := range ctx.handlers["chat_member"] {
 			ctx.concurrencyManager.Wait()
 			go func(x any) {
+				defer ctx.concurrencyManager.Done()
 				x.(func(*Client, types.ChatMemberUpdated))(client, *update.ChatMember)
-				ctx.concurrencyManager.Done()
 			}(x0)
 		}
 	}
@@ -138,8 +138,8 @@ func (ctx *BasicClient) handleUpdate(user *types.User, token string, update type
 		for _, x0 := range ctx.handlers["chat_join_request"] {
 			ctx.concurrencyManager.Wait()
 			go func(x any) {
+				defer ctx.concurrencyManager.Done()
 				x.(func(*Client, types.ChatJoinRequest))(client, *update.ChatJoinRequest)
-				ctx.concurrencyManager.Done()
 			}(x0)
 		}
 	}
