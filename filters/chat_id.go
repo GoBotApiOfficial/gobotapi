@@ -8,10 +8,10 @@ import (
 func ChatID(idList ...int64) FilterOperand {
 	return func(values ...any) bool {
 		for _, value := range values {
-			if chat, ok := value.(*types.Chat); ok && ok != nil {
+			if chat, ok := value.(*types.Chat); ok && chat != nil {
 				return utils.Contains(idList, chat.ID)
 			}
-			if message, ok := value.(*types.Message); ok && ok != nil {
+			if message, ok := value.(*types.Message); ok && message != nil {
 				return utils.Contains(idList, message.Chat.ID)
 			}
 		}
