@@ -9,6 +9,8 @@ import (
 // IsAdmin Returns a filter that checks if the user is an admin
 func (ctx *Wrapper) IsAdmin() filters.FilterOperand {
 	return func(options ...any) bool {
+		ctx.mutex.Lock()
+		defer ctx.mutex.Unlock()
 		var chatID int64
 		var userID int64
 		for _, option := range options {
@@ -41,7 +43,11 @@ func (ctx *Wrapper) IsAdmin() filters.FilterOperand {
 					return false
 				}
 			}
-			statusMember := ctx.listUsers[chatID][userID].Kind()
+			member := ctx.listUsers[chatID][userID]
+			statusMember := -1
+			if member != nil {
+				statusMember = member.Kind()
+			}
 			return statusMember == types.TypeChatMemberOwner ||
 				statusMember == types.TypeChatMemberAdministrator
 		}
