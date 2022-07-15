@@ -6,6 +6,7 @@ import (
 	rawTypes "github.com/Squirrel-Network/gobotapi/types/raw"
 	"github.com/Squirrel-Network/gobotapi/utils/concurrency"
 	"net/http"
+	"sync"
 	"time"
 )
 
@@ -46,4 +47,5 @@ type WebhookClient struct {
 	*BasicClient
 	WebhookConfig *WebhookConfig
 	clients       map[string]*types.User
+	mutex         sync.RWMutex
 }

@@ -45,7 +45,11 @@ func (ctx *Client) Invoke(method rawTypes.Method) (*rawTypes.Result, error) {
 		}
 	}
 	if err != nil {
-		ctx.logging.Error(ctx, "gobotapi.invoke:", "Telegram says:", fmt.Sprintf("[%d] - %s", res.Error.Code, res.Error.Description))
+		if res != nil {
+			ctx.logging.Error(ctx, "gobotapi.invoke:", "Telegram says:", fmt.Sprintf("[%d] - %s", res.Error.Code, res.Error.Description), "for method", methodName)
+		} else {
+			ctx.logging.Error(ctx, "gobotapi.invoke:", err.Error(), "for method", methodName)
+		}
 	} else {
 		if reflect.TypeOf(res.Result).Kind() == reflect.Slice {
 			for i := 0; i < reflect.ValueOf(res.Result).Len(); i++ {

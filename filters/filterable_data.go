@@ -36,6 +36,7 @@ func filterableData(filterable any) (*types.Chat, *types.Message, *types.User) {
 		x := filterable.(types.Message)
 		from = x.From
 		chat = &x.Chat
+		message = &x
 		break
 	case types.PreCheckoutQuery:
 		x := filterable.(types.PreCheckoutQuery)

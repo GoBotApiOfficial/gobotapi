@@ -42,6 +42,7 @@ func (ctx *WebhookClient) Start() error {
 				_, _ = w.Write(errMsg)
 				return
 			}
+			ctx.mutex.Lock()
 			if ctx.clients[token] == nil {
 				ctx.logging.Info(nil, "Connecting...")
 				client := &Client{
@@ -57,6 +58,7 @@ func (ctx *WebhookClient) Start() error {
 			ctx.logging.Info(tmpC, "Received", 1, "updates")
 			ctx.logging.Debug(tmpC, "Received:", update)
 			ctx.handleUpdate(ctx.clients[token], token, update)
+			ctx.mutex.Unlock()
 			w.WriteHeader(http.StatusOK)
 			_, _ = w.Write([]byte("OK"))
 		}),
