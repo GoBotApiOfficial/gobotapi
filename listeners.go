@@ -5,6 +5,7 @@ import (
 	"github.com/Squirrel-Network/gobotapi/types"
 	"regexp"
 	"strings"
+	"sync"
 )
 
 func (ctx *BasicClient) OnCommand(command string, aliasList []string, handler func(client *Client, update types.Message)) {
