@@ -22,6 +22,13 @@ func internalSerialize(v any) any {
 			if !reflect.ValueOf(v).IsNil() {
 				return internalSerialize(reflect.ValueOf(v).Elem().Interface())
 			}
+		case reflect.Slice:
+			var r []any
+			tmpSlice := reflect.ValueOf(v)
+			for i := 0; i < tmpSlice.Len(); i++ {
+				r = append(r, internalSerialize(tmpSlice.Index(i).Interface()))
+			}
+			return r
 		}
 	}
 	return v

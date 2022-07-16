@@ -4,6 +4,7 @@ import (
 	"fmt"
 	"github.com/Squirrel-Network/gobotapi/logger"
 	"reflect"
+	"strings"
 )
 
 func NewLogger(writer Writer, config logger.Config) Logger {
@@ -29,6 +30,7 @@ func NewLogger(writer Writer, config logger.Config) Logger {
 
 func (l logging) Debug(client *Client, msg string, data ...any) {
 	if l.LogLevel >= logger.Debug {
+		msg, data = censorSensitiveInfo(client, msg, data...)
 		if client != nil && client.me != nil {
 			l.Printf(l.debugStr, fmt.Sprintf("[%d] %s", client.me.ID, msg), sprint(data...))
 		} else {
@@ -39,6 +41,7 @@ func (l logging) Debug(client *Client, msg string, data ...any) {
 
 func (l logging) Info(client *Client, msg string, data ...any) {
 	if l.LogLevel >= logger.Info {
+		msg, data = censorSensitiveInfo(client, msg, data...)
 		if client != nil && client.me != nil {
 			l.Printf(l.infoStr, fmt.Sprintf("[%d] %s", client.me.ID, msg), sprint(data...))
 		} else {
@@ -49,6 +52,7 @@ func (l logging) Info(client *Client, msg string, data ...any) {
 
 func (l logging) Warn(client *Client, msg string, data ...any) {
 	if l.LogLevel >= logger.Warn {
+		msg, data = censorSensitiveInfo(client, msg, data...)
 		if client != nil && client.me != nil {
 			l.Printf(l.warnStr, fmt.Sprintf("[%d] %s", client.me.ID, msg), sprint(data...))
 		} else {
@@ -59,6 +63,7 @@ func (l logging) Warn(client *Client, msg string, data ...any) {
 
 func (l logging) Error(client *Client, msg string, data ...any) {
 	if l.LogLevel >= logger.Error {
+		msg, data = censorSensitiveInfo(client, msg, data...)
 		if client != nil && client.me != nil {
 			l.Printf(l.errStr, fmt.Sprintf("[%d] %s", client.me.ID, msg), sprint(data...))
 		} else {
@@ -84,6 +89,23 @@ type logging struct {
 	debugStr, infoStr, warnStr, errStr string
 }
 
+func censorSensitiveInfo(client *Client, a string, b ...any) (string, []any) {
+	if client == nil || client.Token == "" {
+		return a, b
+	}
+	tokenFixed := strings.Split(client.Token, ":")[1]
+	for t := range b {
+		if b[t] != nil {
+			rV := reflect.TypeOf(b[t]).Kind()
+			if rV == reflect.String {
+				b[t] = strings.ReplaceAll(b[t].(string), tokenFixed, strings.Repeat("X", len(tokenFixed)))
+			}
+		}
+	}
+	a = strings.ReplaceAll(a, tokenFixed, strings.Repeat("X", len(tokenFixed)))
+	return a, b
+}
+
 func sprint(a ...any) string {
 	for t := range a {
 		if a[t] != nil {
@@ -92,7 +114,7 @@ func sprint(a ...any) string {
 				a[t] = reflect.ValueOf(a[t]).Elem().Interface()
 			}
 			rV = reflect.TypeOf(a[t]).Kind()
-			if rV == reflect.Struct || rV == reflect.Map {
+			if rV == reflect.Struct || rV == reflect.Map || rV == reflect.Slice {
 				a[t], _ = logger.Serialize(a[t])
 			}
 		}
