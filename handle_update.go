@@ -11,136 +11,106 @@ func (ctx *BasicClient) handleUpdate(user *types.User, token string, update type
 		me:          user,
 	}
 	for _, x0 := range ctx.handlers["raw"] {
-		ctx.concurrencyManager.Wait()
-		go func(x any) {
-			defer ctx.concurrencyManager.Done()
-			x.(func(*Client, types.Update))(client, update)
-		}(x0)
+		ctx.concurrencyManager.Enqueue(func() {
+			x0.(func(*Client, types.Update))(client, update)
+		})
 	}
 	if update.Message != nil {
 		for _, x0 := range ctx.handlers["message"] {
-			ctx.concurrencyManager.Wait()
-			go func(x any) {
-				defer ctx.concurrencyManager.Done()
-				x.(func(*Client, types.Message))(client, *update.Message)
-			}(x0)
+			ctx.concurrencyManager.Enqueue(func() {
+				x0.(func(*Client, types.Message))(client, *update.Message)
+			})
 		}
 	}
 	if update.EditedMessage != nil {
 		for _, x0 := range ctx.handlers["edited_message"] {
-			ctx.concurrencyManager.Wait()
-			go func(x any) {
-				defer ctx.concurrencyManager.Done()
-				x.(func(*Client, types.Message))(client, *update.EditedMessage)
-			}(x0)
+			ctx.concurrencyManager.Enqueue(func() {
+				x0.(func(*Client, types.Message))(client, *update.EditedMessage)
+			})
 		}
 	}
 	if update.ChannelPost != nil {
 		for _, x0 := range ctx.handlers["channel_post"] {
-			ctx.concurrencyManager.Wait()
-			go func(x any) {
-				defer ctx.concurrencyManager.Done()
-				x.(func(*Client, types.Message))(client, *update.ChannelPost)
-			}(x0)
+			ctx.concurrencyManager.Enqueue(func() {
+				x0.(func(*Client, types.Message))(client, *update.ChannelPost)
+			})
 		}
 	}
 	if update.EditedChannelPost != nil {
 		for _, x0 := range ctx.handlers["edited_channel_post"] {
-			ctx.concurrencyManager.Wait()
-			go func(x any) {
-				defer ctx.concurrencyManager.Done()
-				x.(func(*Client, types.Message))(client, *update.EditedChannelPost)
-			}(x0)
+			ctx.concurrencyManager.Enqueue(func() {
+				x0.(func(*Client, types.Message))(client, *update.EditedChannelPost)
+			})
 		}
 	}
 	if update.InlineQuery != nil {
 		for _, x0 := range ctx.handlers["inline_query"] {
-			ctx.concurrencyManager.Wait()
-			go func(x any) {
-				defer ctx.concurrencyManager.Done()
-				x.(func(*Client, types.InlineQuery))(client, *update.InlineQuery)
-			}(x0)
+			ctx.concurrencyManager.Enqueue(func() {
+				x0.(func(*Client, types.InlineQuery))(client, *update.InlineQuery)
+			})
 		}
 	}
 	if update.ChosenInlineResult != nil {
 		for _, x0 := range ctx.handlers["chosen_inline_result"] {
-			ctx.concurrencyManager.Wait()
-			go func(x any) {
-				defer ctx.concurrencyManager.Done()
-				x.(func(*Client, types.ChosenInlineResult))(client, *update.ChosenInlineResult)
-			}(x0)
+			ctx.concurrencyManager.Enqueue(func() {
+				x0.(func(*Client, types.ChosenInlineResult))(client, *update.ChosenInlineResult)
+			})
 		}
 	}
 	if update.CallbackQuery != nil {
 		for _, x0 := range ctx.handlers["callback_query"] {
-			ctx.concurrencyManager.Wait()
-			go func(x any) {
-				defer ctx.concurrencyManager.Done()
-				x.(func(*Client, types.CallbackQuery))(client, *update.CallbackQuery)
-			}(x0)
+			ctx.concurrencyManager.Enqueue(func() {
+				x0.(func(*Client, types.CallbackQuery))(client, *update.CallbackQuery)
+			})
 		}
 	}
 	if update.ShippingQuery != nil {
 		for _, x0 := range ctx.handlers["shipping_query"] {
-			ctx.concurrencyManager.Wait()
-			go func(x any) {
-				defer ctx.concurrencyManager.Done()
-				x.(func(*Client, types.ShippingQuery))(client, *update.ShippingQuery)
-			}(x0)
+			ctx.concurrencyManager.Enqueue(func() {
+				x0.(func(*Client, types.ShippingQuery))(client, *update.ShippingQuery)
+			})
 		}
 	}
 	if update.PreCheckoutQuery != nil {
 		for _, x0 := range ctx.handlers["pre_checkout_query"] {
-			ctx.concurrencyManager.Wait()
-			go func(x any) {
-				defer ctx.concurrencyManager.Done()
-				x.(func(*Client, types.PreCheckoutQuery))(client, *update.PreCheckoutQuery)
-			}(x0)
+			ctx.concurrencyManager.Enqueue(func() {
+				x0.(func(*Client, types.PreCheckoutQuery))(client, *update.PreCheckoutQuery)
+			})
 		}
 	}
 	if update.Poll != nil {
 		for _, x0 := range ctx.handlers["poll"] {
-			ctx.concurrencyManager.Wait()
-			go func(x any) {
-				defer ctx.concurrencyManager.Done()
-				x.(func(*Client, types.Poll))(client, *update.Poll)
-			}(x0)
+			ctx.concurrencyManager.Enqueue(func() {
+				x0.(func(*Client, types.Poll))(client, *update.Poll)
+			})
 		}
 	}
 	if update.PollAnswer != nil {
 		for _, x0 := range ctx.handlers["poll_answer"] {
-			ctx.concurrencyManager.Wait()
-			go func(x any) {
-				defer ctx.concurrencyManager.Done()
-				x.(func(*Client, types.PollAnswer))(client, *update.PollAnswer)
-			}(x0)
+			ctx.concurrencyManager.Enqueue(func() {
+				x0.(func(*Client, types.PollAnswer))(client, *update.PollAnswer)
+			})
 		}
 	}
 	if update.MyChatMember != nil {
 		for _, x0 := range ctx.handlers["my_chat_member"] {
-			ctx.concurrencyManager.Wait()
-			go func(x any) {
-				defer ctx.concurrencyManager.Done()
-				x.(func(*Client, types.ChatMemberUpdated))(client, *update.MyChatMember)
-			}(x0)
+			ctx.concurrencyManager.Enqueue(func() {
+				x0.(func(*Client, types.ChatMemberUpdated))(client, *update.MyChatMember)
+			})
 		}
 	}
 	if update.ChatMember != nil {
 		for _, x0 := range ctx.handlers["chat_member"] {
-			ctx.concurrencyManager.Wait()
-			go func(x any) {
-				defer ctx.concurrencyManager.Done()
-				x.(func(*Client, types.ChatMemberUpdated))(client, *update.ChatMember)
-			}(x0)
+			ctx.concurrencyManager.Enqueue(func() {
+				x0.(func(*Client, types.ChatMemberUpdated))(client, *update.ChatMember)
+			})
 		}
 	}
 	if update.ChatJoinRequest != nil {
 		for _, x0 := range ctx.handlers["chat_join_request"] {
-			ctx.concurrencyManager.Wait()
-			go func(x any) {
-				defer ctx.concurrencyManager.Done()
-				x.(func(*Client, types.ChatJoinRequest))(client, *update.ChatJoinRequest)
-			}(x0)
+			ctx.concurrencyManager.Enqueue(func() {
+				x0.(func(*Client, types.ChatJoinRequest))(client, *update.ChatJoinRequest)
+			})
 		}
 	}
 }

@@ -22,7 +22,7 @@ func (ctx *BasicClient) setup() {
 		Colorful: ctx.LoggerColorful,
 		LogLevel: ctx.LoggingLevel,
 	})
-	ctx.concurrencyManager = concurrency.New(ctx.MaxGoRoutines)
+	ctx.concurrencyManager = concurrency.NewPool(ctx.MaxGoRoutines)
 	if ctx.DownloadRefreshRate == 0 {
 		ctx.DownloadRefreshRate = time.Millisecond * 200
 	}

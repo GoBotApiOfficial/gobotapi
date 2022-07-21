@@ -28,7 +28,7 @@ type BasicClient struct {
 	client              *http.Client
 	handlers            map[string][]any
 	requestsContext     []rawTypes.CancelableContext
-	concurrencyManager  *concurrency.Context
+	concurrencyManager  *concurrency.Pool
 }
 
 type Client struct {
