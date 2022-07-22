@@ -1,8 +1,8 @@
 package concurrency
 
-func (p *Pool) Enqueue(job func()) {
+func (p *Pool) Enqueue(job func(params ...any), params ...any) {
 	if p.jobs == 0 {
-		go job()
+		go job(params...)
 		return
 	}
 	p.queue <- struct{}{}
@@ -10,6 +10,6 @@ func (p *Pool) Enqueue(job func()) {
 		defer func() {
 			<-p.queue
 		}()
-		job()
+		job(params...)
 	}()
 }

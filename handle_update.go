@@ -11,106 +11,106 @@ func (ctx *BasicClient) handleUpdate(user *types.User, token string, update type
 		me:          user,
 	}
 	for _, x0 := range ctx.handlers["raw"] {
-		ctx.concurrencyManager.Enqueue(func() {
-			x0.(func(*Client, types.Update))(client, update)
-		})
+		ctx.concurrencyManager.Enqueue(func(x ...any) {
+			x[0].(func(*Client, types.Update))(client, update)
+		}, x0)
 	}
 	if update.Message != nil {
 		for _, x0 := range ctx.handlers["message"] {
-			ctx.concurrencyManager.Enqueue(func() {
-				x0.(func(*Client, types.Message))(client, *update.Message)
-			})
+			ctx.concurrencyManager.Enqueue(func(x ...any) {
+				x[0].(func(*Client, types.Message))(client, *update.Message)
+			}, x0)
 		}
 	}
 	if update.EditedMessage != nil {
 		for _, x0 := range ctx.handlers["edited_message"] {
-			ctx.concurrencyManager.Enqueue(func() {
-				x0.(func(*Client, types.Message))(client, *update.EditedMessage)
-			})
+			ctx.concurrencyManager.Enqueue(func(x ...any) {
+				x[0].(func(*Client, types.Message))(client, *update.EditedMessage)
+			}, x0)
 		}
 	}
 	if update.ChannelPost != nil {
 		for _, x0 := range ctx.handlers["channel_post"] {
-			ctx.concurrencyManager.Enqueue(func() {
-				x0.(func(*Client, types.Message))(client, *update.ChannelPost)
-			})
+			ctx.concurrencyManager.Enqueue(func(x ...any) {
+				x[0].(func(*Client, types.Message))(client, *update.ChannelPost)
+			}, x0)
 		}
 	}
 	if update.EditedChannelPost != nil {
 		for _, x0 := range ctx.handlers["edited_channel_post"] {
-			ctx.concurrencyManager.Enqueue(func() {
-				x0.(func(*Client, types.Message))(client, *update.EditedChannelPost)
-			})
+			ctx.concurrencyManager.Enqueue(func(x ...any) {
+				x[0].(func(*Client, types.Message))(client, *update.EditedChannelPost)
+			}, x0)
 		}
 	}
 	if update.InlineQuery != nil {
 		for _, x0 := range ctx.handlers["inline_query"] {
-			ctx.concurrencyManager.Enqueue(func() {
-				x0.(func(*Client, types.InlineQuery))(client, *update.InlineQuery)
-			})
+			ctx.concurrencyManager.Enqueue(func(x ...any) {
+				x[0].(func(*Client, types.InlineQuery))(client, *update.InlineQuery)
+			}, x0)
 		}
 	}
 	if update.ChosenInlineResult != nil {
 		for _, x0 := range ctx.handlers["chosen_inline_result"] {
-			ctx.concurrencyManager.Enqueue(func() {
-				x0.(func(*Client, types.ChosenInlineResult))(client, *update.ChosenInlineResult)
-			})
+			ctx.concurrencyManager.Enqueue(func(x ...any) {
+				x[0].(func(*Client, types.ChosenInlineResult))(client, *update.ChosenInlineResult)
+			}, x0)
 		}
 	}
 	if update.CallbackQuery != nil {
 		for _, x0 := range ctx.handlers["callback_query"] {
-			ctx.concurrencyManager.Enqueue(func() {
-				x0.(func(*Client, types.CallbackQuery))(client, *update.CallbackQuery)
-			})
+			ctx.concurrencyManager.Enqueue(func(x ...any) {
+				x[0].(func(*Client, types.CallbackQuery))(client, *update.CallbackQuery)
+			}, x0)
 		}
 	}
 	if update.ShippingQuery != nil {
 		for _, x0 := range ctx.handlers["shipping_query"] {
-			ctx.concurrencyManager.Enqueue(func() {
-				x0.(func(*Client, types.ShippingQuery))(client, *update.ShippingQuery)
-			})
+			ctx.concurrencyManager.Enqueue(func(x ...any) {
+				x[0].(func(*Client, types.ShippingQuery))(client, *update.ShippingQuery)
+			}, x0)
 		}
 	}
 	if update.PreCheckoutQuery != nil {
 		for _, x0 := range ctx.handlers["pre_checkout_query"] {
-			ctx.concurrencyManager.Enqueue(func() {
-				x0.(func(*Client, types.PreCheckoutQuery))(client, *update.PreCheckoutQuery)
-			})
+			ctx.concurrencyManager.Enqueue(func(x ...any) {
+				x[0].(func(*Client, types.PreCheckoutQuery))(client, *update.PreCheckoutQuery)
+			}, x0)
 		}
 	}
 	if update.Poll != nil {
 		for _, x0 := range ctx.handlers["poll"] {
-			ctx.concurrencyManager.Enqueue(func() {
-				x0.(func(*Client, types.Poll))(client, *update.Poll)
-			})
+			ctx.concurrencyManager.Enqueue(func(x ...any) {
+				x[0].(func(*Client, types.Poll))(client, *update.Poll)
+			}, x0)
 		}
 	}
 	if update.PollAnswer != nil {
 		for _, x0 := range ctx.handlers["poll_answer"] {
-			ctx.concurrencyManager.Enqueue(func() {
-				x0.(func(*Client, types.PollAnswer))(client, *update.PollAnswer)
-			})
+			ctx.concurrencyManager.Enqueue(func(x ...any) {
+				x[0].(func(*Client, types.PollAnswer))(client, *update.PollAnswer)
+			}, x0)
 		}
 	}
 	if update.MyChatMember != nil {
 		for _, x0 := range ctx.handlers["my_chat_member"] {
-			ctx.concurrencyManager.Enqueue(func() {
-				x0.(func(*Client, types.ChatMemberUpdated))(client, *update.MyChatMember)
-			})
+			ctx.concurrencyManager.Enqueue(func(x ...any) {
+				x[0].(func(*Client, types.ChatMemberUpdated))(client, *update.MyChatMember)
+			}, x0)
 		}
 	}
 	if update.ChatMember != nil {
 		for _, x0 := range ctx.handlers["chat_member"] {
-			ctx.concurrencyManager.Enqueue(func() {
-				x0.(func(*Client, types.ChatMemberUpdated))(client, *update.ChatMember)
-			})
+			ctx.concurrencyManager.Enqueue(func(x ...any) {
+				x[0].(func(*Client, types.ChatMemberUpdated))(client, *update.ChatMember)
+			}, x0)
 		}
 	}
 	if update.ChatJoinRequest != nil {
 		for _, x0 := range ctx.handlers["chat_join_request"] {
-			ctx.concurrencyManager.Enqueue(func() {
-				x0.(func(*Client, types.ChatJoinRequest))(client, *update.ChatJoinRequest)
-			})
+			ctx.concurrencyManager.Enqueue(func(x ...any) {
+				x[0].(func(*Client, types.ChatJoinRequest))(client, *update.ChatJoinRequest)
+			}, x0)
 		}
 	}
 }
