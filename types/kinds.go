@@ -18,6 +18,7 @@ const (
 	TypeArrayOfChatMember
 	TypeArrayOfGameHighScore
 	TypeArrayOfMessage
+	TypeArrayOfSticker
 	TypeArrayOfUpdate
 	TypeBoolean
 	TypeChat

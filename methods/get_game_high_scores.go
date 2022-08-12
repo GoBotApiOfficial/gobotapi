@@ -10,7 +10,7 @@ import (
 
 // GetGameHighScores Use this method to get data for high score tables
 // Will return the score of the specified user and several of their neighbors in a game
-// On success, returns an Array of GameHighScore objects.
+// Returns an Array of GameHighScore objects.
 type GetGameHighScores struct {
 	ChatID          int64  `json:"chat_id,omitempty"`
 	InlineMessageID string `json:"inline_message_id,omitempty"`

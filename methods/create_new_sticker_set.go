@@ -13,16 +13,16 @@ import (
 // You must use exactly one of the fields png_sticker, tgs_sticker, or webm_sticker
 // Returns True on success.
 type CreateNewStickerSet struct {
-	ContainsMasks bool                      `json:"contains_masks,omitempty"`
-	Emojis        string                    `json:"emojis"`
-	MaskPosition  *types.MaskPosition       `json:"mask_position,omitempty"`
-	Name          string                    `json:"name"`
-	PngSticker    rawTypes.InputFile        `json:"png_sticker,omitempty"`
-	TgsSticker    rawTypes.InputFile        `json:"tgs_sticker,omitempty"`
-	Title         string                    `json:"title"`
-	UserID        int64                     `json:"user_id"`
-	WebmSticker   rawTypes.InputFile        `json:"webm_sticker,omitempty"`
-	Progress      rawTypes.ProgressCallable `json:"-"`
+	Emojis       string                    `json:"emojis"`
+	MaskPosition *types.MaskPosition       `json:"mask_position,omitempty"`
+	Name         string                    `json:"name"`
+	PngSticker   rawTypes.InputFile        `json:"png_sticker,omitempty"`
+	StickerType  string                    `json:"sticker_type,omitempty"`
+	TgsSticker   rawTypes.InputFile        `json:"tgs_sticker,omitempty"`
+	Title        string                    `json:"title"`
+	UserID       int64                     `json:"user_id"`
+	WebmSticker  rawTypes.InputFile        `json:"webm_sticker,omitempty"`
+	Progress     rawTypes.ProgressCallable `json:"-"`
 }
 
 func (entity *CreateNewStickerSet) ProgressCallable() rawTypes.ProgressCallable {

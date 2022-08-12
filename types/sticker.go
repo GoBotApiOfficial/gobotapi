@@ -4,6 +4,7 @@ package types
 
 // Sticker Represents a sticker.
 type Sticker struct {
+	CustomEmojiID    string        `json:"custom_emoji_id,omitempty"`
 	Emoji            string        `json:"emoji,omitempty"`
 	FileID           string        `json:"file_id"`
 	FileSize         int           `json:"file_size,omitempty"`
@@ -15,5 +16,6 @@ type Sticker struct {
 	PremiumAnimation *File         `json:"premium_animation,omitempty"`
 	SetName          string        `json:"set_name,omitempty"`
 	Thumb            *PhotoSize    `json:"thumb,omitempty"`
+	Type             string        `json:"type"`
 	Width            int64         `json:"width"`
 }

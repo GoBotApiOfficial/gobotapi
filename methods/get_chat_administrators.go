@@ -8,9 +8,8 @@ import (
 	rawTypes "github.com/Squirrel-Network/gobotapi/types/raw"
 )
 
-// GetChatAdministrators Use this method to get a list of administrators in a chat
-// On success, returns an Array of ChatMember objects that contains information about all chat administrators except other bots
-// If the chat is a group or a supergroup and no administrators were appointed, only the creator will be returned.
+// GetChatAdministrators Use this method to get a list of administrators in a chat, which aren't bots
+// Returns an Array of ChatMember objects.
 type GetChatAdministrators struct {
 	ChatID int64 `json:"chat_id"`
 }

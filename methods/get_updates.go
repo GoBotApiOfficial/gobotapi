@@ -9,7 +9,7 @@ import (
 )
 
 // GetUpdates Use this method to receive incoming updates using long polling (wiki)
-// An Array of Update objects is returned.
+// Returns an Array of Update objects.
 type GetUpdates struct {
 	AllowedUpdates []string `json:"allowed_updates,omitempty"`
 	Limit          int      `json:"limit,omitempty"`
