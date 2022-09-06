@@ -4,6 +4,7 @@ package methods
 
 import (
 	"encoding/json"
+	"fmt"
 	"github.com/Squirrel-Network/gobotapi/types"
 	rawTypes "github.com/Squirrel-Network/gobotapi/types/raw"
 )
@@ -13,7 +14,7 @@ import (
 // The bot must be an administrator in the chat for this to work and must have the appropriate administrator rights
 // Returns True on success.
 type BanChatMember struct {
-	ChatID         int64 `json:"chat_id"`
+	ChatID         any   `json:"chat_id"`
 	RevokeMessages bool  `json:"revoke_messages,omitempty"`
 	UntilDate      int64 `json:"until_date,omitempty"`
 	UserID         int64 `json:"user_id"`
@@ -25,6 +26,19 @@ func (entity *BanChatMember) ProgressCallable() rawTypes.ProgressCallable {
 
 func (entity *BanChatMember) Files() map[string]rawTypes.InputFile {
 	return map[string]rawTypes.InputFile{}
+}
+
+func (entity BanChatMember) MarshalJSON() ([]byte, error) {
+	if entity.ChatID != nil {
+		switch entity.ChatID.(type) {
+		case int, int64, string:
+			break
+		default:
+			return nil, fmt.Errorf("chat_id: unknown type: %T", entity.ChatID)
+		}
+	}
+	type x0 BanChatMember
+	return json.Marshal((x0)(entity))
 }
 
 func (BanChatMember) MethodName() string {

@@ -2,8 +2,26 @@
 
 package types
 
+import (
+	"encoding/json"
+	"fmt"
+)
+
 // BotCommandScopeChat Represents the scope of bot commands, covering a specific chat.
 type BotCommandScopeChat struct {
-	ChatID int64  `json:"chat_id"`
+	ChatID any    `json:"chat_id"`
 	Type   string `json:"type"`
+}
+
+func (entity BotCommandScopeChat) MarshalJSON() ([]byte, error) {
+	if entity.ChatID != nil {
+		switch entity.ChatID.(type) {
+		case int, string:
+			break
+		default:
+			return nil, fmt.Errorf("chat_id: unknown type: %T", entity.ChatID)
+		}
+	}
+	type x0 BotCommandScopeChat
+	return json.Marshal((x0)(entity))
 }

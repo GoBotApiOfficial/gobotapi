@@ -4,6 +4,7 @@ package methods
 
 import (
 	"encoding/json"
+	"fmt"
 	"github.com/Squirrel-Network/gobotapi/types"
 	rawTypes "github.com/Squirrel-Network/gobotapi/types/raw"
 )
@@ -12,7 +13,7 @@ import (
 // Service messages can't be forwarded
 // On success, the sent Message is returned.
 type ForwardMessage struct {
-	ChatID              int64 `json:"chat_id"`
+	ChatID              any   `json:"chat_id"`
 	DisableNotification bool  `json:"disable_notification,omitempty"`
 	FromChatID          int64 `json:"from_chat_id"`
 	MessageID           int64 `json:"message_id"`
@@ -25,6 +26,19 @@ func (entity *ForwardMessage) ProgressCallable() rawTypes.ProgressCallable {
 
 func (entity *ForwardMessage) Files() map[string]rawTypes.InputFile {
 	return map[string]rawTypes.InputFile{}
+}
+
+func (entity ForwardMessage) MarshalJSON() ([]byte, error) {
+	if entity.ChatID != nil {
+		switch entity.ChatID.(type) {
+		case int, int64, string:
+			break
+		default:
+			return nil, fmt.Errorf("chat_id: unknown type: %T", entity.ChatID)
+		}
+	}
+	type x0 ForwardMessage
+	return json.Marshal((x0)(entity))
 }
 
 func (ForwardMessage) MethodName() string {

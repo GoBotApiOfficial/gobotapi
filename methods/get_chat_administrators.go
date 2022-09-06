@@ -4,6 +4,7 @@ package methods
 
 import (
 	"encoding/json"
+	"fmt"
 	"github.com/Squirrel-Network/gobotapi/types"
 	rawTypes "github.com/Squirrel-Network/gobotapi/types/raw"
 )
@@ -11,7 +12,7 @@ import (
 // GetChatAdministrators Use this method to get a list of administrators in a chat, which aren't bots
 // Returns an Array of ChatMember objects.
 type GetChatAdministrators struct {
-	ChatID int64 `json:"chat_id"`
+	ChatID any `json:"chat_id"`
 }
 
 func (entity *GetChatAdministrators) ProgressCallable() rawTypes.ProgressCallable {
@@ -20,6 +21,19 @@ func (entity *GetChatAdministrators) ProgressCallable() rawTypes.ProgressCallabl
 
 func (entity *GetChatAdministrators) Files() map[string]rawTypes.InputFile {
 	return map[string]rawTypes.InputFile{}
+}
+
+func (entity GetChatAdministrators) MarshalJSON() ([]byte, error) {
+	if entity.ChatID != nil {
+		switch entity.ChatID.(type) {
+		case int, int64, string:
+			break
+		default:
+			return nil, fmt.Errorf("chat_id: unknown type: %T", entity.ChatID)
+		}
+	}
+	type x0 GetChatAdministrators
+	return json.Marshal((x0)(entity))
 }
 
 func (GetChatAdministrators) MethodName() string {

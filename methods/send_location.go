@@ -13,7 +13,7 @@ import (
 // On success, the sent Message is returned.
 type SendLocation struct {
 	AllowSendingWithoutReply bool    `json:"allow_sending_without_reply,omitempty"`
-	ChatID                   int64   `json:"chat_id"`
+	ChatID                   any     `json:"chat_id"`
 	DisableNotification      bool    `json:"disable_notification,omitempty"`
 	Heading                  int     `json:"heading,omitempty"`
 	HorizontalAccuracy       float64 `json:"horizontal_accuracy,omitempty"`
@@ -41,6 +41,14 @@ func (entity SendLocation) MarshalJSON() ([]byte, error) {
 			break
 		default:
 			return nil, fmt.Errorf("reply_markup: unknown type: %T", entity.ReplyMarkup)
+		}
+	}
+	if entity.ChatID != nil {
+		switch entity.ChatID.(type) {
+		case int, int64, string:
+			break
+		default:
+			return nil, fmt.Errorf("chat_id: unknown type: %T", entity.ChatID)
 		}
 	}
 	type x0 SendLocation

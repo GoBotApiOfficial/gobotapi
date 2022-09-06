@@ -4,6 +4,7 @@ package methods
 
 import (
 	"encoding/json"
+	"fmt"
 	"github.com/Squirrel-Network/gobotapi/types"
 	rawTypes "github.com/Squirrel-Network/gobotapi/types/raw"
 )
@@ -12,7 +13,7 @@ import (
 // A location can be edited until its live_period expires or editing is explicitly disabled by a call to stopMessageLiveLocation
 // On success, if the edited message is not an inline message, the edited Message is returned, otherwise True is returned.
 type EditMessageLiveLocation struct {
-	ChatID               int64                       `json:"chat_id,omitempty"`
+	ChatID               any                         `json:"chat_id,omitempty"`
 	Heading              int                         `json:"heading,omitempty"`
 	HorizontalAccuracy   float64                     `json:"horizontal_accuracy,omitempty"`
 	InlineMessageID      string                      `json:"inline_message_id,omitempty"`
@@ -29,6 +30,19 @@ func (entity *EditMessageLiveLocation) ProgressCallable() rawTypes.ProgressCalla
 
 func (entity *EditMessageLiveLocation) Files() map[string]rawTypes.InputFile {
 	return map[string]rawTypes.InputFile{}
+}
+
+func (entity EditMessageLiveLocation) MarshalJSON() ([]byte, error) {
+	if entity.ChatID != nil {
+		switch entity.ChatID.(type) {
+		case int, int64, string:
+			break
+		default:
+			return nil, fmt.Errorf("chat_id: unknown type: %T", entity.ChatID)
+		}
+	}
+	type x0 EditMessageLiveLocation
+	return json.Marshal((x0)(entity))
 }
 
 func (EditMessageLiveLocation) MethodName() string {

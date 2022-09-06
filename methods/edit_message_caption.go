@@ -4,6 +4,7 @@ package methods
 
 import (
 	"encoding/json"
+	"fmt"
 	"github.com/Squirrel-Network/gobotapi/types"
 	rawTypes "github.com/Squirrel-Network/gobotapi/types/raw"
 )
@@ -13,7 +14,7 @@ import (
 type EditMessageCaption struct {
 	Caption         string                      `json:"caption,omitempty"`
 	CaptionEntities []types.MessageEntity       `json:"caption_entities,omitempty"`
-	ChatID          int64                       `json:"chat_id,omitempty"`
+	ChatID          any                         `json:"chat_id,omitempty"`
 	InlineMessageID string                      `json:"inline_message_id,omitempty"`
 	MessageID       int64                       `json:"message_id,omitempty"`
 	ParseMode       string                      `json:"parse_mode,omitempty"`
@@ -26,6 +27,19 @@ func (entity *EditMessageCaption) ProgressCallable() rawTypes.ProgressCallable {
 
 func (entity *EditMessageCaption) Files() map[string]rawTypes.InputFile {
 	return map[string]rawTypes.InputFile{}
+}
+
+func (entity EditMessageCaption) MarshalJSON() ([]byte, error) {
+	if entity.ChatID != nil {
+		switch entity.ChatID.(type) {
+		case int, int64, string:
+			break
+		default:
+			return nil, fmt.Errorf("chat_id: unknown type: %T", entity.ChatID)
+		}
+	}
+	type x0 EditMessageCaption
+	return json.Marshal((x0)(entity))
 }
 
 func (EditMessageCaption) MethodName() string {

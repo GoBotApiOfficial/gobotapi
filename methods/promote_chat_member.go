@@ -4,6 +4,7 @@ package methods
 
 import (
 	"encoding/json"
+	"fmt"
 	"github.com/Squirrel-Network/gobotapi/types"
 	rawTypes "github.com/Squirrel-Network/gobotapi/types/raw"
 )
@@ -23,7 +24,7 @@ type PromoteChatMember struct {
 	CanPostMessages     bool  `json:"can_post_messages,omitempty"`
 	CanPromoteMembers   bool  `json:"can_promote_members,omitempty"`
 	CanRestrictMembers  bool  `json:"can_restrict_members,omitempty"`
-	ChatID              int64 `json:"chat_id"`
+	ChatID              any   `json:"chat_id"`
 	IsAnonymous         bool  `json:"is_anonymous,omitempty"`
 	UserID              int64 `json:"user_id"`
 }
@@ -34,6 +35,19 @@ func (entity *PromoteChatMember) ProgressCallable() rawTypes.ProgressCallable {
 
 func (entity *PromoteChatMember) Files() map[string]rawTypes.InputFile {
 	return map[string]rawTypes.InputFile{}
+}
+
+func (entity PromoteChatMember) MarshalJSON() ([]byte, error) {
+	if entity.ChatID != nil {
+		switch entity.ChatID.(type) {
+		case int, int64, string:
+			break
+		default:
+			return nil, fmt.Errorf("chat_id: unknown type: %T", entity.ChatID)
+		}
+	}
+	type x0 PromoteChatMember
+	return json.Marshal((x0)(entity))
 }
 
 func (PromoteChatMember) MethodName() string {

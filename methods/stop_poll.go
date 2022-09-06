@@ -4,6 +4,7 @@ package methods
 
 import (
 	"encoding/json"
+	"fmt"
 	"github.com/Squirrel-Network/gobotapi/types"
 	rawTypes "github.com/Squirrel-Network/gobotapi/types/raw"
 )
@@ -11,7 +12,7 @@ import (
 // StopPoll Use this method to stop a poll which was sent by the bot
 // On success, the stopped Poll is returned.
 type StopPoll struct {
-	ChatID      int64                       `json:"chat_id"`
+	ChatID      any                         `json:"chat_id"`
 	MessageID   int64                       `json:"message_id"`
 	ReplyMarkup *types.InlineKeyboardMarkup `json:"reply_markup,omitempty"`
 }
@@ -22,6 +23,19 @@ func (entity *StopPoll) ProgressCallable() rawTypes.ProgressCallable {
 
 func (entity *StopPoll) Files() map[string]rawTypes.InputFile {
 	return map[string]rawTypes.InputFile{}
+}
+
+func (entity StopPoll) MarshalJSON() ([]byte, error) {
+	if entity.ChatID != nil {
+		switch entity.ChatID.(type) {
+		case int, int64, string:
+			break
+		default:
+			return nil, fmt.Errorf("chat_id: unknown type: %T", entity.ChatID)
+		}
+	}
+	type x0 StopPoll
+	return json.Marshal((x0)(entity))
 }
 
 func (StopPoll) MethodName() string {

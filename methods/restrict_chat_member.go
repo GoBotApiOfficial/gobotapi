@@ -4,6 +4,7 @@ package methods
 
 import (
 	"encoding/json"
+	"fmt"
 	"github.com/Squirrel-Network/gobotapi/types"
 	rawTypes "github.com/Squirrel-Network/gobotapi/types/raw"
 )
@@ -13,7 +14,7 @@ import (
 // Pass True for all permissions to lift restrictions from a user
 // Returns True on success.
 type RestrictChatMember struct {
-	ChatID      int64                 `json:"chat_id"`
+	ChatID      any                   `json:"chat_id"`
 	Permissions types.ChatPermissions `json:"permissions"`
 	UntilDate   int64                 `json:"until_date,omitempty"`
 	UserID      int64                 `json:"user_id"`
@@ -25,6 +26,19 @@ func (entity *RestrictChatMember) ProgressCallable() rawTypes.ProgressCallable {
 
 func (entity *RestrictChatMember) Files() map[string]rawTypes.InputFile {
 	return map[string]rawTypes.InputFile{}
+}
+
+func (entity RestrictChatMember) MarshalJSON() ([]byte, error) {
+	if entity.ChatID != nil {
+		switch entity.ChatID.(type) {
+		case int, int64, string:
+			break
+		default:
+			return nil, fmt.Errorf("chat_id: unknown type: %T", entity.ChatID)
+		}
+	}
+	type x0 RestrictChatMember
+	return json.Marshal((x0)(entity))
 }
 
 func (RestrictChatMember) MethodName() string {

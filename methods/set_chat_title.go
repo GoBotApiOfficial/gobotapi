@@ -4,6 +4,7 @@ package methods
 
 import (
 	"encoding/json"
+	"fmt"
 	"github.com/Squirrel-Network/gobotapi/types"
 	rawTypes "github.com/Squirrel-Network/gobotapi/types/raw"
 )
@@ -13,7 +14,7 @@ import (
 // The bot must be an administrator in the chat for this to work and must have the appropriate administrator rights
 // Returns True on success.
 type SetChatTitle struct {
-	ChatID int64  `json:"chat_id"`
+	ChatID any    `json:"chat_id"`
 	Title  string `json:"title"`
 }
 
@@ -23,6 +24,19 @@ func (entity *SetChatTitle) ProgressCallable() rawTypes.ProgressCallable {
 
 func (entity *SetChatTitle) Files() map[string]rawTypes.InputFile {
 	return map[string]rawTypes.InputFile{}
+}
+
+func (entity SetChatTitle) MarshalJSON() ([]byte, error) {
+	if entity.ChatID != nil {
+		switch entity.ChatID.(type) {
+		case int, int64, string:
+			break
+		default:
+			return nil, fmt.Errorf("chat_id: unknown type: %T", entity.ChatID)
+		}
+	}
+	type x0 SetChatTitle
+	return json.Marshal((x0)(entity))
 }
 
 func (SetChatTitle) MethodName() string {

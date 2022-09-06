@@ -4,6 +4,7 @@ package methods
 
 import (
 	"encoding/json"
+	"fmt"
 	"github.com/Squirrel-Network/gobotapi/types"
 	rawTypes "github.com/Squirrel-Network/gobotapi/types/raw"
 )
@@ -11,7 +12,7 @@ import (
 // StopMessageLiveLocation Use this method to stop updating a live location message before live_period expires
 // On success, if the message is not an inline message, the edited Message is returned, otherwise True is returned.
 type StopMessageLiveLocation struct {
-	ChatID          int64                       `json:"chat_id,omitempty"`
+	ChatID          any                         `json:"chat_id,omitempty"`
 	InlineMessageID string                      `json:"inline_message_id,omitempty"`
 	MessageID       int64                       `json:"message_id,omitempty"`
 	ReplyMarkup     *types.InlineKeyboardMarkup `json:"reply_markup,omitempty"`
@@ -23,6 +24,19 @@ func (entity *StopMessageLiveLocation) ProgressCallable() rawTypes.ProgressCalla
 
 func (entity *StopMessageLiveLocation) Files() map[string]rawTypes.InputFile {
 	return map[string]rawTypes.InputFile{}
+}
+
+func (entity StopMessageLiveLocation) MarshalJSON() ([]byte, error) {
+	if entity.ChatID != nil {
+		switch entity.ChatID.(type) {
+		case int, int64, string:
+			break
+		default:
+			return nil, fmt.Errorf("chat_id: unknown type: %T", entity.ChatID)
+		}
+	}
+	type x0 StopMessageLiveLocation
+	return json.Marshal((x0)(entity))
 }
 
 func (StopMessageLiveLocation) MethodName() string {

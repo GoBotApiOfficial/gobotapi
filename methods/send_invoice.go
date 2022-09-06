@@ -4,6 +4,7 @@ package methods
 
 import (
 	"encoding/json"
+	"fmt"
 	"github.com/Squirrel-Network/gobotapi/types"
 	rawTypes "github.com/Squirrel-Network/gobotapi/types/raw"
 )
@@ -12,7 +13,7 @@ import (
 // On success, the sent Message is returned.
 type SendInvoice struct {
 	AllowSendingWithoutReply  bool                        `json:"allow_sending_without_reply,omitempty"`
-	ChatID                    int64                       `json:"chat_id"`
+	ChatID                    any                         `json:"chat_id"`
 	Currency                  string                      `json:"currency"`
 	Description               string                      `json:"description"`
 	DisableNotification       bool                        `json:"disable_notification,omitempty"`
@@ -46,6 +47,19 @@ func (entity *SendInvoice) ProgressCallable() rawTypes.ProgressCallable {
 
 func (entity *SendInvoice) Files() map[string]rawTypes.InputFile {
 	return map[string]rawTypes.InputFile{}
+}
+
+func (entity SendInvoice) MarshalJSON() ([]byte, error) {
+	if entity.ChatID != nil {
+		switch entity.ChatID.(type) {
+		case int, int64, string:
+			break
+		default:
+			return nil, fmt.Errorf("chat_id: unknown type: %T", entity.ChatID)
+		}
+	}
+	type x0 SendInvoice
+	return json.Marshal((x0)(entity))
 }
 
 func (SendInvoice) MethodName() string {

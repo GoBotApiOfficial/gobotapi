@@ -4,6 +4,7 @@ package methods
 
 import (
 	"encoding/json"
+	"fmt"
 	"github.com/Squirrel-Network/gobotapi/types"
 	rawTypes "github.com/Squirrel-Network/gobotapi/types/raw"
 )
@@ -13,7 +14,7 @@ import (
 // Use the field can_set_sticker_set optionally returned in getChat requests to check if the bot can use this method
 // Returns True on success.
 type SetChatStickerSet struct {
-	ChatID         int64  `json:"chat_id"`
+	ChatID         any    `json:"chat_id"`
 	StickerSetName string `json:"sticker_set_name"`
 }
 
@@ -23,6 +24,19 @@ func (entity *SetChatStickerSet) ProgressCallable() rawTypes.ProgressCallable {
 
 func (entity *SetChatStickerSet) Files() map[string]rawTypes.InputFile {
 	return map[string]rawTypes.InputFile{}
+}
+
+func (entity SetChatStickerSet) MarshalJSON() ([]byte, error) {
+	if entity.ChatID != nil {
+		switch entity.ChatID.(type) {
+		case int, int64, string:
+			break
+		default:
+			return nil, fmt.Errorf("chat_id: unknown type: %T", entity.ChatID)
+		}
+	}
+	type x0 SetChatStickerSet
+	return json.Marshal((x0)(entity))
 }
 
 func (SetChatStickerSet) MethodName() string {

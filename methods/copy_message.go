@@ -18,7 +18,7 @@ type CopyMessage struct {
 	AllowSendingWithoutReply bool                  `json:"allow_sending_without_reply,omitempty"`
 	Caption                  string                `json:"caption,omitempty"`
 	CaptionEntities          []types.MessageEntity `json:"caption_entities,omitempty"`
-	ChatID                   int64                 `json:"chat_id"`
+	ChatID                   any                   `json:"chat_id"`
 	DisableNotification      bool                  `json:"disable_notification,omitempty"`
 	FromChatID               int64                 `json:"from_chat_id"`
 	MessageID                int64                 `json:"message_id"`
@@ -37,6 +37,14 @@ func (entity *CopyMessage) Files() map[string]rawTypes.InputFile {
 }
 
 func (entity CopyMessage) MarshalJSON() ([]byte, error) {
+	if entity.ChatID != nil {
+		switch entity.ChatID.(type) {
+		case int, int64, string:
+			break
+		default:
+			return nil, fmt.Errorf("chat_id: unknown type: %T", entity.ChatID)
+		}
+	}
 	if entity.ReplyMarkup != nil {
 		switch entity.ReplyMarkup.(type) {
 		case *types.InlineKeyboardMarkup, *types.ReplyKeyboardMarkup, *types.ReplyKeyboardRemove, *types.ForceReply:

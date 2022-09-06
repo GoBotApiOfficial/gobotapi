@@ -40,4 +40,16 @@ func (ctx *BasicClient) OnCommand(command string, aliasList []string, handler fu
 	}
 	ctx.OnMessage(cmdHandler)
 	ctx.OnEditedMessage(cmdHandler)
+	ctx.OnChannelPost(cmdHandler)
+	ctx.OnEditedChannelPost(cmdHandler)
+}
+
+func (ctx *BasicClient) OnAnyMessage(handler func(client *Client, update types.Message)) {
+	ctx.OnMessage(handler)
+	ctx.OnChannelPost(handler)
+}
+
+func (ctx *BasicClient) OnAnyEditedMessage(handler func(client *Client, update types.Message)) {
+	ctx.OnEditedMessage(handler)
+	ctx.OnEditedChannelPost(handler)
 }

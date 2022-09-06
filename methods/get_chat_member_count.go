@@ -4,6 +4,7 @@ package methods
 
 import (
 	"encoding/json"
+	"fmt"
 	"github.com/Squirrel-Network/gobotapi/types"
 	rawTypes "github.com/Squirrel-Network/gobotapi/types/raw"
 )
@@ -11,7 +12,7 @@ import (
 // GetChatMemberCount Use this method to get the number of members in a chat
 // Returns Int on success.
 type GetChatMemberCount struct {
-	ChatID int64 `json:"chat_id"`
+	ChatID any `json:"chat_id"`
 }
 
 func (entity *GetChatMemberCount) ProgressCallable() rawTypes.ProgressCallable {
@@ -20,6 +21,19 @@ func (entity *GetChatMemberCount) ProgressCallable() rawTypes.ProgressCallable {
 
 func (entity *GetChatMemberCount) Files() map[string]rawTypes.InputFile {
 	return map[string]rawTypes.InputFile{}
+}
+
+func (entity GetChatMemberCount) MarshalJSON() ([]byte, error) {
+	if entity.ChatID != nil {
+		switch entity.ChatID.(type) {
+		case int, int64, string:
+			break
+		default:
+			return nil, fmt.Errorf("chat_id: unknown type: %T", entity.ChatID)
+		}
+	}
+	type x0 GetChatMemberCount
+	return json.Marshal((x0)(entity))
 }
 
 func (GetChatMemberCount) MethodName() string {

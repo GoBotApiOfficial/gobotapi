@@ -4,6 +4,7 @@ package methods
 
 import (
 	"encoding/json"
+	"fmt"
 	"github.com/Squirrel-Network/gobotapi/types"
 	rawTypes "github.com/Squirrel-Network/gobotapi/types/raw"
 )
@@ -11,7 +12,7 @@ import (
 // GetChat Use this method to get up to date information about the chat (current name of the user for one-on-one conversations, current username of a user, group or channel, etc.)
 // Returns a Chat object on success.
 type GetChat struct {
-	ChatID int64 `json:"chat_id"`
+	ChatID any `json:"chat_id"`
 }
 
 func (entity *GetChat) ProgressCallable() rawTypes.ProgressCallable {
@@ -20,6 +21,19 @@ func (entity *GetChat) ProgressCallable() rawTypes.ProgressCallable {
 
 func (entity *GetChat) Files() map[string]rawTypes.InputFile {
 	return map[string]rawTypes.InputFile{}
+}
+
+func (entity GetChat) MarshalJSON() ([]byte, error) {
+	if entity.ChatID != nil {
+		switch entity.ChatID.(type) {
+		case int, int64, string:
+			break
+		default:
+			return nil, fmt.Errorf("chat_id: unknown type: %T", entity.ChatID)
+		}
+	}
+	type x0 GetChat
+	return json.Marshal((x0)(entity))
 }
 
 func (GetChat) MethodName() string {

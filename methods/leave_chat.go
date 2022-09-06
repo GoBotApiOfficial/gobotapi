@@ -4,6 +4,7 @@ package methods
 
 import (
 	"encoding/json"
+	"fmt"
 	"github.com/Squirrel-Network/gobotapi/types"
 	rawTypes "github.com/Squirrel-Network/gobotapi/types/raw"
 )
@@ -11,7 +12,7 @@ import (
 // LeaveChat Use this method for your bot to leave a group, supergroup or channel
 // Returns True on success.
 type LeaveChat struct {
-	ChatID int64 `json:"chat_id"`
+	ChatID any `json:"chat_id"`
 }
 
 func (entity *LeaveChat) ProgressCallable() rawTypes.ProgressCallable {
@@ -20,6 +21,19 @@ func (entity *LeaveChat) ProgressCallable() rawTypes.ProgressCallable {
 
 func (entity *LeaveChat) Files() map[string]rawTypes.InputFile {
 	return map[string]rawTypes.InputFile{}
+}
+
+func (entity LeaveChat) MarshalJSON() ([]byte, error) {
+	if entity.ChatID != nil {
+		switch entity.ChatID.(type) {
+		case int, int64, string:
+			break
+		default:
+			return nil, fmt.Errorf("chat_id: unknown type: %T", entity.ChatID)
+		}
+	}
+	type x0 LeaveChat
+	return json.Marshal((x0)(entity))
 }
 
 func (LeaveChat) MethodName() string {

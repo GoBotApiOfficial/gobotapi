@@ -14,7 +14,7 @@ import (
 // On success, an array of Messages that were sent is returned.
 type SendMediaGroup struct {
 	AllowSendingWithoutReply bool                      `json:"allow_sending_without_reply,omitempty"`
-	ChatID                   int64                     `json:"chat_id"`
+	ChatID                   any                       `json:"chat_id"`
 	DisableNotification      bool                      `json:"disable_notification,omitempty"`
 	Media                    []types.InputMedia        `json:"media,omitempty"`
 	ProtectContent           bool                      `json:"protect_content,omitempty"`
@@ -46,6 +46,14 @@ func (entity *SendMediaGroup) Files() map[string]rawTypes.InputFile {
 }
 
 func (entity SendMediaGroup) MarshalJSON() ([]byte, error) {
+	if entity.ChatID != nil {
+		switch entity.ChatID.(type) {
+		case int, int64, string:
+			break
+		default:
+			return nil, fmt.Errorf("chat_id: unknown type: %T", entity.ChatID)
+		}
+	}
 	for _, x0 := range entity.Media {
 		switch x0.(type) {
 		case *types.InputMediaAudio, *types.InputMediaDocument, *types.InputMediaPhoto, *types.InputMediaVideo:

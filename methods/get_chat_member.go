@@ -4,6 +4,7 @@ package methods
 
 import (
 	"encoding/json"
+	"fmt"
 	"github.com/Squirrel-Network/gobotapi/types"
 	rawTypes "github.com/Squirrel-Network/gobotapi/types/raw"
 )
@@ -11,7 +12,7 @@ import (
 // GetChatMember Use this method to get information about a member of a chat
 // Returns a ChatMember object on success.
 type GetChatMember struct {
-	ChatID int64 `json:"chat_id"`
+	ChatID any   `json:"chat_id"`
 	UserID int64 `json:"user_id"`
 }
 
@@ -21,6 +22,19 @@ func (entity *GetChatMember) ProgressCallable() rawTypes.ProgressCallable {
 
 func (entity *GetChatMember) Files() map[string]rawTypes.InputFile {
 	return map[string]rawTypes.InputFile{}
+}
+
+func (entity GetChatMember) MarshalJSON() ([]byte, error) {
+	if entity.ChatID != nil {
+		switch entity.ChatID.(type) {
+		case int, int64, string:
+			break
+		default:
+			return nil, fmt.Errorf("chat_id: unknown type: %T", entity.ChatID)
+		}
+	}
+	type x0 GetChatMember
+	return json.Marshal((x0)(entity))
 }
 
 func (GetChatMember) MethodName() string {

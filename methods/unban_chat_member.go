@@ -4,6 +4,7 @@ package methods
 
 import (
 	"encoding/json"
+	"fmt"
 	"github.com/Squirrel-Network/gobotapi/types"
 	rawTypes "github.com/Squirrel-Network/gobotapi/types/raw"
 )
@@ -16,7 +17,7 @@ import (
 // If you don't want this, use the parameter only_if_banned
 // Returns True on success.
 type UnbanChatMember struct {
-	ChatID       int64 `json:"chat_id"`
+	ChatID       any   `json:"chat_id"`
 	OnlyIfBanned bool  `json:"only_if_banned,omitempty"`
 	UserID       int64 `json:"user_id"`
 }
@@ -27,6 +28,19 @@ func (entity *UnbanChatMember) ProgressCallable() rawTypes.ProgressCallable {
 
 func (entity *UnbanChatMember) Files() map[string]rawTypes.InputFile {
 	return map[string]rawTypes.InputFile{}
+}
+
+func (entity UnbanChatMember) MarshalJSON() ([]byte, error) {
+	if entity.ChatID != nil {
+		switch entity.ChatID.(type) {
+		case int, int64, string:
+			break
+		default:
+			return nil, fmt.Errorf("chat_id: unknown type: %T", entity.ChatID)
+		}
+	}
+	type x0 UnbanChatMember
+	return json.Marshal((x0)(entity))
 }
 
 func (UnbanChatMember) MethodName() string {

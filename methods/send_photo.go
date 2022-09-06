@@ -15,7 +15,7 @@ type SendPhoto struct {
 	AllowSendingWithoutReply bool                      `json:"allow_sending_without_reply,omitempty"`
 	Caption                  string                    `json:"caption,omitempty"`
 	CaptionEntities          []types.MessageEntity     `json:"caption_entities,omitempty"`
-	ChatID                   int64                     `json:"chat_id"`
+	ChatID                   any                       `json:"chat_id"`
 	DisableNotification      bool                      `json:"disable_notification,omitempty"`
 	ParseMode                string                    `json:"parse_mode,omitempty"`
 	Photo                    rawTypes.InputFile        `json:"photo,omitempty"`
@@ -40,6 +40,14 @@ func (entity *SendPhoto) Files() map[string]rawTypes.InputFile {
 }
 
 func (entity SendPhoto) MarshalJSON() ([]byte, error) {
+	if entity.ChatID != nil {
+		switch entity.ChatID.(type) {
+		case int, int64, string:
+			break
+		default:
+			return nil, fmt.Errorf("chat_id: unknown type: %T", entity.ChatID)
+		}
+	}
 	if entity.ReplyMarkup != nil {
 		switch entity.ReplyMarkup.(type) {
 		case *types.InlineKeyboardMarkup, *types.ReplyKeyboardMarkup, *types.ReplyKeyboardRemove, *types.ForceReply:

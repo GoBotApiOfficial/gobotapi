@@ -4,6 +4,7 @@ package methods
 
 import (
 	"encoding/json"
+	"fmt"
 	"github.com/Squirrel-Network/gobotapi/types"
 	rawTypes "github.com/Squirrel-Network/gobotapi/types/raw"
 )
@@ -14,7 +15,7 @@ import (
 // We only recommend using this method when a response from the bot will take a noticeable amount of time to arrive.
 type SendChatAction struct {
 	Action string `json:"action"`
-	ChatID int64  `json:"chat_id"`
+	ChatID any    `json:"chat_id"`
 }
 
 func (entity *SendChatAction) ProgressCallable() rawTypes.ProgressCallable {
@@ -23,6 +24,19 @@ func (entity *SendChatAction) ProgressCallable() rawTypes.ProgressCallable {
 
 func (entity *SendChatAction) Files() map[string]rawTypes.InputFile {
 	return map[string]rawTypes.InputFile{}
+}
+
+func (entity SendChatAction) MarshalJSON() ([]byte, error) {
+	if entity.ChatID != nil {
+		switch entity.ChatID.(type) {
+		case int, int64, string:
+			break
+		default:
+			return nil, fmt.Errorf("chat_id: unknown type: %T", entity.ChatID)
+		}
+	}
+	type x0 SendChatAction
+	return json.Marshal((x0)(entity))
 }
 
 func (SendChatAction) MethodName() string {

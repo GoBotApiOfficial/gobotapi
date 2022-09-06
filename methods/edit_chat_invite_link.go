@@ -4,6 +4,7 @@ package methods
 
 import (
 	"encoding/json"
+	"fmt"
 	"github.com/Squirrel-Network/gobotapi/types"
 	rawTypes "github.com/Squirrel-Network/gobotapi/types/raw"
 )
@@ -12,7 +13,7 @@ import (
 // The bot must be an administrator in the chat for this to work and must have the appropriate administrator rights
 // Returns the edited invite link as a ChatInviteLink object.
 type EditChatInviteLink struct {
-	ChatID             int64  `json:"chat_id"`
+	ChatID             any    `json:"chat_id"`
 	CreatesJoinRequest bool   `json:"creates_join_request,omitempty"`
 	ExpireDate         int64  `json:"expire_date,omitempty"`
 	InviteLink         string `json:"invite_link"`
@@ -26,6 +27,19 @@ func (entity *EditChatInviteLink) ProgressCallable() rawTypes.ProgressCallable {
 
 func (entity *EditChatInviteLink) Files() map[string]rawTypes.InputFile {
 	return map[string]rawTypes.InputFile{}
+}
+
+func (entity EditChatInviteLink) MarshalJSON() ([]byte, error) {
+	if entity.ChatID != nil {
+		switch entity.ChatID.(type) {
+		case int, int64, string:
+			break
+		default:
+			return nil, fmt.Errorf("chat_id: unknown type: %T", entity.ChatID)
+		}
+	}
+	type x0 EditChatInviteLink
+	return json.Marshal((x0)(entity))
 }
 
 func (EditChatInviteLink) MethodName() string {

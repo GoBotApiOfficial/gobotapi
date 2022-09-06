@@ -14,7 +14,7 @@ import (
 // On success, the sent Message is returned.
 type SendVideoNote struct {
 	AllowSendingWithoutReply bool                      `json:"allow_sending_without_reply,omitempty"`
-	ChatID                   int64                     `json:"chat_id"`
+	ChatID                   any                       `json:"chat_id"`
 	DisableNotification      bool                      `json:"disable_notification,omitempty"`
 	Duration                 int                       `json:"duration,omitempty"`
 	Length                   int                       `json:"length,omitempty"`
@@ -46,6 +46,14 @@ func (entity *SendVideoNote) Files() map[string]rawTypes.InputFile {
 }
 
 func (entity SendVideoNote) MarshalJSON() ([]byte, error) {
+	if entity.ChatID != nil {
+		switch entity.ChatID.(type) {
+		case int, int64, string:
+			break
+		default:
+			return nil, fmt.Errorf("chat_id: unknown type: %T", entity.ChatID)
+		}
+	}
 	if entity.ReplyMarkup != nil {
 		switch entity.ReplyMarkup.(type) {
 		case *types.InlineKeyboardMarkup, *types.ReplyKeyboardMarkup, *types.ReplyKeyboardRemove, *types.ForceReply:

@@ -2,8 +2,26 @@
 
 package types
 
+import (
+	"encoding/json"
+	"fmt"
+)
+
 // BotCommandScopeChatAdministrators Represents the scope of bot commands, covering all administrators of a specific group or supergroup chat.
 type BotCommandScopeChatAdministrators struct {
-	ChatID int64  `json:"chat_id"`
+	ChatID any    `json:"chat_id"`
 	Type   string `json:"type"`
+}
+
+func (entity BotCommandScopeChatAdministrators) MarshalJSON() ([]byte, error) {
+	if entity.ChatID != nil {
+		switch entity.ChatID.(type) {
+		case int, string:
+			break
+		default:
+			return nil, fmt.Errorf("chat_id: unknown type: %T", entity.ChatID)
+		}
+	}
+	type x0 BotCommandScopeChatAdministrators
+	return json.Marshal((x0)(entity))
 }

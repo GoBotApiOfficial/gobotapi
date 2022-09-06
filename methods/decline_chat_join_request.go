@@ -4,6 +4,7 @@ package methods
 
 import (
 	"encoding/json"
+	"fmt"
 	"github.com/Squirrel-Network/gobotapi/types"
 	rawTypes "github.com/Squirrel-Network/gobotapi/types/raw"
 )
@@ -12,7 +13,7 @@ import (
 // The bot must be an administrator in the chat for this to work and must have the can_invite_users administrator right
 // Returns True on success.
 type DeclineChatJoinRequest struct {
-	ChatID int64 `json:"chat_id"`
+	ChatID any   `json:"chat_id"`
 	UserID int64 `json:"user_id"`
 }
 
@@ -22,6 +23,19 @@ func (entity *DeclineChatJoinRequest) ProgressCallable() rawTypes.ProgressCallab
 
 func (entity *DeclineChatJoinRequest) Files() map[string]rawTypes.InputFile {
 	return map[string]rawTypes.InputFile{}
+}
+
+func (entity DeclineChatJoinRequest) MarshalJSON() ([]byte, error) {
+	if entity.ChatID != nil {
+		switch entity.ChatID.(type) {
+		case int, int64, string:
+			break
+		default:
+			return nil, fmt.Errorf("chat_id: unknown type: %T", entity.ChatID)
+		}
+	}
+	type x0 DeclineChatJoinRequest
+	return json.Marshal((x0)(entity))
 }
 
 func (DeclineChatJoinRequest) MethodName() string {

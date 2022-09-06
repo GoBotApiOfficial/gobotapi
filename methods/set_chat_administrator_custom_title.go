@@ -4,6 +4,7 @@ package methods
 
 import (
 	"encoding/json"
+	"fmt"
 	"github.com/Squirrel-Network/gobotapi/types"
 	rawTypes "github.com/Squirrel-Network/gobotapi/types/raw"
 )
@@ -11,7 +12,7 @@ import (
 // SetChatAdministratorCustomTitle Use this method to set a custom title for an administrator in a supergroup promoted by the bot
 // Returns True on success.
 type SetChatAdministratorCustomTitle struct {
-	ChatID      int64  `json:"chat_id"`
+	ChatID      any    `json:"chat_id"`
 	CustomTitle string `json:"custom_title"`
 	UserID      int64  `json:"user_id"`
 }
@@ -22,6 +23,19 @@ func (entity *SetChatAdministratorCustomTitle) ProgressCallable() rawTypes.Progr
 
 func (entity *SetChatAdministratorCustomTitle) Files() map[string]rawTypes.InputFile {
 	return map[string]rawTypes.InputFile{}
+}
+
+func (entity SetChatAdministratorCustomTitle) MarshalJSON() ([]byte, error) {
+	if entity.ChatID != nil {
+		switch entity.ChatID.(type) {
+		case int, int64, string:
+			break
+		default:
+			return nil, fmt.Errorf("chat_id: unknown type: %T", entity.ChatID)
+		}
+	}
+	type x0 SetChatAdministratorCustomTitle
+	return json.Marshal((x0)(entity))
 }
 
 func (SetChatAdministratorCustomTitle) MethodName() string {

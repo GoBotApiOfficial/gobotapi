@@ -4,6 +4,7 @@ package methods
 
 import (
 	"encoding/json"
+	"fmt"
 	"github.com/Squirrel-Network/gobotapi/types"
 	rawTypes "github.com/Squirrel-Network/gobotapi/types/raw"
 )
@@ -11,7 +12,7 @@ import (
 // EditMessageText Use this method to edit text and game messages
 // On success, if the edited message is not an inline message, the edited Message is returned, otherwise True is returned.
 type EditMessageText struct {
-	ChatID                int64                       `json:"chat_id,omitempty"`
+	ChatID                any                         `json:"chat_id,omitempty"`
 	DisableWebPagePreview bool                        `json:"disable_web_page_preview,omitempty"`
 	Entities              []types.MessageEntity       `json:"entities,omitempty"`
 	InlineMessageID       string                      `json:"inline_message_id,omitempty"`
@@ -27,6 +28,19 @@ func (entity *EditMessageText) ProgressCallable() rawTypes.ProgressCallable {
 
 func (entity *EditMessageText) Files() map[string]rawTypes.InputFile {
 	return map[string]rawTypes.InputFile{}
+}
+
+func (entity EditMessageText) MarshalJSON() ([]byte, error) {
+	if entity.ChatID != nil {
+		switch entity.ChatID.(type) {
+		case int, int64, string:
+			break
+		default:
+			return nil, fmt.Errorf("chat_id: unknown type: %T", entity.ChatID)
+		}
+	}
+	type x0 EditMessageText
+	return json.Marshal((x0)(entity))
 }
 
 func (EditMessageText) MethodName() string {
