@@ -6,7 +6,6 @@ import (
 )
 
 type Wrapper struct {
-	client    GenericClient
 	mutex     sync.RWMutex
 	listUsers map[int64]map[int64]*types.ChatMember
 }

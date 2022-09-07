@@ -5,6 +5,7 @@ import (
 	"github.com/Squirrel-Network/gobotapi"
 	"github.com/Squirrel-Network/gobotapi/filters"
 	"github.com/Squirrel-Network/gobotapi/types"
+	"time"
 )
 
 func main() {
@@ -30,6 +31,12 @@ func main() {
 	client.OnMessage(filters.Filter(func(client *gobotapi.Client, message types.Message) {
 		fmt.Println("Message Received Contained filter", message.Chat.ID, " with text ", message.Text)
 	}, filters.ChatID(-100123456789, -100987654321)))
+
+	// Anti-flood filter
+	// (only messages from -100123456789 with a maximum of 5 messages per 10 seconds with a ban of 20 seconds)
+	client.OnMessage(filters.Filter(func(client *gobotapi.Client, message types.Message) {
+		fmt.Println("Message Received from", message.Chat.ID, " with text ", message.Text)
+	}, filters.And(filters.ChatID(-100123456789), filters.AntiFlood(5, 10*time.Second, 20*time.Second))))
 
 	// Start and idle the bot
 	_ = client.Run()

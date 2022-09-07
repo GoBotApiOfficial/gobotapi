@@ -8,27 +8,25 @@ import (
 
 // IsAdmin Returns a filter that checks if the user is an admin
 func (ctx *Wrapper) IsAdmin() filters.FilterOperand {
-	return func(options ...any) bool {
+	return func(options *filters.DataFilter) bool {
 		ctx.mutex.Lock()
 		defer ctx.mutex.Unlock()
 		var chatID int64
 		var userID int64
-		for _, option := range options {
-			if chat, ok := option.(*types.Chat); ok && chat != nil {
-				chatID = chat.ID
-			}
-			if user, ok := option.(*types.User); ok && user != nil {
-				userID = user.ID
-			}
+		if options.Chat != nil {
+			chatID = options.Chat.ID
+		}
+		if options.From != nil {
+			userID = options.From.ID
+		}
 
-			// For callback queries (grab the chat id from the linked message)
-			if message, ok := option.(*types.Message); ok && message != nil {
-				chatID = message.Chat.ID
-			}
+		// For callback queries (grab the chat id from the linked message)
+		if options.Message != nil {
+			chatID = options.Message.Chat.ID
 		}
 		if chatID != 0 && userID != 0 {
 			if ctx.listUsers[chatID] == nil || ctx.listUsers[chatID][userID] == nil {
-				invoke, err := ctx.client.Invoke(&methods.GetChatAdministrators{
+				invoke, err := options.Client.Invoke(&methods.GetChatAdministrators{
 					ChatID: chatID,
 				})
 				if err == nil {

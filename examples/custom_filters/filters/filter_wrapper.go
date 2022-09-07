@@ -7,7 +7,6 @@ import (
 
 func FilterWrapper(client GenericClient) *Wrapper {
 	wrapper := &Wrapper{
-		client:    client,
 		listUsers: make(map[int64]map[int64]*types.ChatMember),
 	}
 
