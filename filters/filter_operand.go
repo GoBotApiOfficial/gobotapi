@@ -1,3 +1,3 @@
 package filters
 
-type FilterOperand func(options ...any) bool
+type FilterOperand func(options *DataFilter) bool

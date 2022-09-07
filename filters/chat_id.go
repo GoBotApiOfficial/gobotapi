@@ -1,19 +1,14 @@
 package filters
 
-import (
-	"github.com/Squirrel-Network/gobotapi/types"
-	"github.com/Squirrel-Network/gobotapi/utils"
-)
+import "github.com/Squirrel-Network/gobotapi/utils"
 
 func ChatID(idList ...int64) FilterOperand {
-	return func(values ...any) bool {
-		for _, value := range values {
-			if chat, ok := value.(*types.Chat); ok && chat != nil {
-				return utils.Contains(idList, chat.ID)
-			}
-			if message, ok := value.(*types.Message); ok && message != nil {
-				return utils.Contains(idList, message.Chat.ID)
-			}
+	return func(values *DataFilter) bool {
+		if values.Chat != nil {
+			return utils.Contains(idList, values.Chat.ID)
+		}
+		if values.Message != nil {
+			return utils.Contains(idList, values.Message.Chat.ID)
 		}
 		return false
 	}

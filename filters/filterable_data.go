@@ -2,50 +2,47 @@
 
 package filters
 
-import "github.com/Squirrel-Network/gobotapi/types"
+import (
+	"github.com/Squirrel-Network/gobotapi"
+	"github.com/Squirrel-Network/gobotapi/types"
+)
 
-func filterableData(filterable any) (*types.Chat, *types.Message, *types.User) {
-	var chat *types.Chat
-	var from *types.User
-	var message *types.Message
+func filterableData(client *gobotapi.Client, filterable any) *DataFilter {
+	dataResult := &DataFilter{}
 	switch filterable.(type) {
 	case types.CallbackQuery:
 		x := filterable.(types.CallbackQuery)
-		from = &x.From
-		message = x.Message
-		break
+		dataResult.From = &x.From
+		dataResult.Message = x.Message
 	case types.ChatJoinRequest:
 		x := filterable.(types.ChatJoinRequest)
-		chat = &x.Chat
-		from = &x.From
-		break
+		dataResult.Chat = &x.Chat
+		dataResult.From = &x.From
+		dataResult.Date = &x.Date
 	case types.ChatMemberUpdated:
 		x := filterable.(types.ChatMemberUpdated)
-		chat = &x.Chat
-		from = &x.From
-		break
+		dataResult.Chat = &x.Chat
+		dataResult.From = &x.From
+		dataResult.Date = &x.Date
 	case types.ChosenInlineResult:
 		x := filterable.(types.ChosenInlineResult)
-		from = &x.From
-		break
+		dataResult.From = &x.From
 	case types.InlineQuery:
 		x := filterable.(types.InlineQuery)
-		from = &x.From
-		break
+		dataResult.From = &x.From
 	case types.Message:
 		x := filterable.(types.Message)
-		from = x.From
-		chat = &x.Chat
-		message = &x
-		break
+		dataResult.From = x.From
+		dataResult.Date = &x.Date
+		dataResult.Chat = &x.Chat
 	case types.PreCheckoutQuery:
 		x := filterable.(types.PreCheckoutQuery)
-		from = &x.From
-		break
+		dataResult.From = &x.From
 	case types.ShippingQuery:
 		x := filterable.(types.ShippingQuery)
-		from = &x.From
-		break
+		dataResult.From = &x.From
 	}
-	return chat, message, from
+	dataResult.Client = client
+	dataResult.RawUpdate = filterable
+	return dataResult
 }

@@ -1,16 +1,12 @@
 package filters
 
-import "github.com/Squirrel-Network/gobotapi/types"
-
 func Private() FilterOperand {
-	return func(values ...any) bool {
-		for _, value := range values {
-			if chat, ok := value.(*types.Chat); ok && chat != nil {
-				return chat.Type == "private"
-			}
-			if message, ok := value.(*types.Message); ok && message != nil {
-				return message.Chat.Type == "private"
-			}
+	return func(values *DataFilter) bool {
+		if values.Chat != nil {
+			return values.Chat.Type == "private"
+		}
+		if values.Message != nil {
+			return values.Message.Chat.Type == "private"
 		}
 		return false
 	}

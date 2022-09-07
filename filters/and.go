@@ -1,9 +1,9 @@
 package filters
 
 func And(options ...FilterOperand) FilterOperand {
-	return func(values ...any) bool {
+	return func(values *DataFilter) bool {
 		for _, option := range options {
-			if !option(values...) {
+			if !option(values) {
 				return false
 			}
 		}

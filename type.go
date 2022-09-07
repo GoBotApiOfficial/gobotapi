@@ -21,6 +21,7 @@ type BasicClient struct {
 	LoggingLevel        logger.LogLevel
 	LoggerColorful      bool
 	LoggerWriter        Writer
+	AntiFloodData       map[int64]*rawTypes.AntiFloodData
 	logging             Logger
 	apiURL              string
 	cloningURL          string

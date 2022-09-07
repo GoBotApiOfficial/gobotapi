@@ -18,7 +18,7 @@ func (ctx *Client) Invoke(method rawTypes.Method) (*rawTypes.Result, error) {
 	files := method.Files()
 	form, err := utils.GetForm(method)
 	if err != nil {
-		ctx.logging.Error(ctx, "gobotapi.invoke:", "Failed to get form for", methodName)
+		ctx.logging.Error(ctx, "gobotapi.invoke:", fmt.Sprintf("Failed to get form for %s,", methodName), err.Error())
 		return nil, err
 	}
 	ctx.logging.Debug(ctx, "gobotapi.invoke:", "Generated form:", form)

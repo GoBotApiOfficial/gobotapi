@@ -3,6 +3,7 @@ package gobotapi
 import (
 	"fmt"
 	"github.com/Squirrel-Network/gobotapi/logger"
+	rawTypes "github.com/Squirrel-Network/gobotapi/types/raw"
 	"os"
 )
 
@@ -10,6 +11,7 @@ func NewClient(token string) *PollingClient {
 	return &PollingClient{
 		Client: &Client{
 			BasicClient: &BasicClient{
+				AntiFloodData:  make(map[int64]*rawTypes.AntiFloodData),
 				SleepThreshold: 10,
 				MaxGoRoutines:  -1,
 				LoggerColorful: true,
@@ -23,6 +25,7 @@ func NewClient(token string) *PollingClient {
 func NewWebhook(hostname string, port int) *WebhookClient {
 	return &WebhookClient{
 		BasicClient: &BasicClient{
+			AntiFloodData:  make(map[int64]*rawTypes.AntiFloodData),
 			SleepThreshold: 10,
 			MaxGoRoutines:  -1,
 			LoggerColorful: true,
@@ -46,6 +49,7 @@ func NewWebhookWithCert(hostname string, port int, certFile, keyFile string) (*W
 	}
 	return &WebhookClient{
 		BasicClient: &BasicClient{
+			AntiFloodData:  make(map[int64]*rawTypes.AntiFloodData),
 			SleepThreshold: 10,
 			MaxGoRoutines:  -1,
 			LoggerColorful: true,
