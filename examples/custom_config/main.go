@@ -24,6 +24,7 @@ func main() {
 	client.LoggingLevel = logger.Debug                          // Logging level
 	client.LoggerColorful = true                                // If true, the logger will use colorful output
 	client.LoggerWriter = log.New(os.Stdout, "", log.LstdFlags) // If you want to use a custom writer, you can set it here
+	client.MaxGoRoutines = 400                                  // Max number of go routines that the bot can use
 	// Start and idle the bot
 	_ = client.Run()
 }
