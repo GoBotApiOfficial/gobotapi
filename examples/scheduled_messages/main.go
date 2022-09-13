@@ -19,7 +19,7 @@ func main() {
 		})
 	})
 	// Repeat every day at 00:00
-	crontab.AddFunc("@every 0 0 * * *", func() {
+	crontab.AddFunc("@every 0 0 0 * * *", func() {
 		client.Invoke(&methods.SendMessage{
 			ChatID: 123456789,
 			Text:   "Hello World",
