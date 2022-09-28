@@ -2,6 +2,7 @@ package main
 
 import (
 	"github.com/Squirrel-Network/gobotapi"
+	"github.com/Squirrel-Network/gobotapi/filters"
 	"github.com/Squirrel-Network/gobotapi/methods"
 	"github.com/Squirrel-Network/gobotapi/types"
 	"github.com/Squirrel-Network/gobotapi/utils"
@@ -10,7 +11,7 @@ import (
 func main() {
 	client := gobotapi.NewClient("YOUR_TOKEN")
 	// Add listener to start command
-	client.OnCommand("start", nil, func(client *gobotapi.Client, update types.Message) {
+	client.OnAnyMessageEvent(filters.Filter(func(client *gobotapi.Client, update types.Message) {
 		client.Invoke(&methods.SendMessage{
 			ChatID: update.Chat.ID,
 			Text:   "Hello, I'm a bot!",
@@ -29,7 +30,7 @@ func main() {
 				},
 			},
 		})
-	})
+	}, filters.Command("start")))
 	// Add listener to receive callback query
 	client.OnCallbackQuery(func(client *gobotapi.Client, update types.CallbackQuery) {
 		if update.Data == "test" {
@@ -41,7 +42,7 @@ func main() {
 	})
 
 	// Split buttons by 2
-	client.OnCommand("split", nil, func(client *gobotapi.Client, update types.Message) {
+	client.OnAnyMessageEvent(filters.Filter(func(client *gobotapi.Client, update types.Message) {
 		client.Invoke(&methods.SendMessage{
 			ChatID: update.Chat.ID,
 			Text:   "Hello, I'm a bot!",
@@ -66,7 +67,7 @@ func main() {
 				),
 			},
 		})
-	})
+	}, filters.Command("split")))
 	// Start and idle the bot
 	_ = client.Run()
 }

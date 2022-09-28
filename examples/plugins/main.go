@@ -2,6 +2,7 @@ package main
 
 import (
 	"github.com/Squirrel-Network/gobotapi"
+	"github.com/Squirrel-Network/gobotapi/filters"
 	"main/commands"
 )
 
@@ -11,9 +12,9 @@ func main() {
 	client := gobotapi.NewClient("YOUR_TOKEN")
 
 	// Add listener to /start commands
-	client.OnCommand("start", AliasList, commands.Start)
+	client.OnAnyMessageEvent(filters.Filter(commands.Start, filters.Command("start", AliasList...)))
 	// Add listener to /hello commands
-	client.OnCommand("hello", AliasList, commands.Hello)
+	client.OnAnyMessageEvent(filters.Filter(commands.Hello, filters.Command("hello", AliasList...)))
 	// Start and idle the bot
 	_ = client.Run()
 }
