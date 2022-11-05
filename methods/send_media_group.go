@@ -17,6 +17,7 @@ type SendMediaGroup struct {
 	ChatID                   any                       `json:"chat_id"`
 	DisableNotification      bool                      `json:"disable_notification,omitempty"`
 	Media                    []types.InputMedia        `json:"media,omitempty"`
+	MessageThreadID          int64                     `json:"message_thread_id,omitempty"`
 	ProtectContent           bool                      `json:"protect_content,omitempty"`
 	ReplyToMessageID         int64                     `json:"reply_to_message_id,omitempty"`
 	Progress                 rawTypes.ProgressCallable `json:"-"`

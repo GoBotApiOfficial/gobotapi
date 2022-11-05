@@ -4,15 +4,18 @@ package types
 
 // Chat Represents a chat.
 type Chat struct {
+	ActiveUsernames                    []string         `json:"active_usernames,omitempty"`
 	Bio                                string           `json:"bio,omitempty"`
 	CanSetStickerSet                   bool             `json:"can_set_sticker_set,omitempty"`
 	Description                        string           `json:"description,omitempty"`
+	EmojiStatusCustomEmojiID           string           `json:"emoji_status_custom_emoji_id,omitempty"`
 	FirstName                          string           `json:"first_name,omitempty"`
 	HasPrivateForwards                 bool             `json:"has_private_forwards,omitempty"`
 	HasProtectedContent                bool             `json:"has_protected_content,omitempty"`
 	HasRestrictedVoiceAndVideoMessages bool             `json:"has_restricted_voice_and_video_messages,omitempty"`
 	ID                                 int64            `json:"id"`
 	InviteLink                         string           `json:"invite_link,omitempty"`
+	IsForum                            bool             `json:"is_forum,omitempty"`
 	JoinByRequest                      bool             `json:"join_by_request,omitempty"`
 	JoinToSendMessages                 bool             `json:"join_to_send_messages,omitempty"`
 	LastName                           string           `json:"last_name,omitempty"`

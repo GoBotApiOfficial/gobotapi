@@ -17,6 +17,7 @@ type ForwardMessage struct {
 	DisableNotification bool  `json:"disable_notification,omitempty"`
 	FromChatID          int64 `json:"from_chat_id"`
 	MessageID           int64 `json:"message_id"`
+	MessageThreadID     int64 `json:"message_thread_id,omitempty"`
 	ProtectContent      bool  `json:"protect_content,omitempty"`
 }
 

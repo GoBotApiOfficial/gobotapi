@@ -27,6 +27,7 @@ const (
 	TypeChatMember
 	TypeErrorMessage
 	TypeFile
+	TypeForumTopic
 	TypeInteger
 	TypeMenuButton
 	TypeMessage

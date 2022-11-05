@@ -19,6 +19,7 @@ type PromoteChatMember struct {
 	CanEditMessages     bool  `json:"can_edit_messages,omitempty"`
 	CanInviteUsers      bool  `json:"can_invite_users,omitempty"`
 	CanManageChat       bool  `json:"can_manage_chat,omitempty"`
+	CanManageTopics     bool  `json:"can_manage_topics,omitempty"`
 	CanManageVideoChats bool  `json:"can_manage_video_chats,omitempty"`
 	CanPinMessages      bool  `json:"can_pin_messages,omitempty"`
 	CanPostMessages     bool  `json:"can_post_messages,omitempty"`

@@ -20,6 +20,7 @@ type SendVoice struct {
 	ChatID                   any                       `json:"chat_id"`
 	DisableNotification      bool                      `json:"disable_notification,omitempty"`
 	Duration                 int                       `json:"duration,omitempty"`
+	MessageThreadID          int64                     `json:"message_thread_id,omitempty"`
 	ParseMode                string                    `json:"parse_mode,omitempty"`
 	ProtectContent           bool                      `json:"protect_content,omitempty"`
 	ReplyMarkup              any                       `json:"reply_markup,omitempty"`

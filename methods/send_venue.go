@@ -22,6 +22,7 @@ type SendVenue struct {
 	GooglePlaceType          string  `json:"google_place_type,omitempty"`
 	Latitude                 float64 `json:"latitude"`
 	Longitude                float64 `json:"longitude"`
+	MessageThreadID          int64   `json:"message_thread_id,omitempty"`
 	ProtectContent           bool    `json:"protect_content,omitempty"`
 	ReplyMarkup              any     `json:"reply_markup,omitempty"`
 	ReplyToMessageID         int64   `json:"reply_to_message_id,omitempty"`

@@ -16,6 +16,7 @@ type SendDice struct {
 	ChatID                   any    `json:"chat_id"`
 	DisableNotification      bool   `json:"disable_notification,omitempty"`
 	Emoji                    string `json:"emoji,omitempty"`
+	MessageThreadID          int64  `json:"message_thread_id,omitempty"`
 	ProtectContent           bool   `json:"protect_content,omitempty"`
 	ReplyMarkup              any    `json:"reply_markup,omitempty"`
 	ReplyToMessageID         int64  `json:"reply_to_message_id,omitempty"`

@@ -19,6 +19,9 @@ type Message struct {
 	Document                      *Document                      `json:"document,omitempty"`
 	EditDate                      int64                          `json:"edit_date,omitempty"`
 	Entities                      []MessageEntity                `json:"entities,omitempty"`
+	ForumTopicClosed              *ForumTopicClosed              `json:"forum_topic_closed,omitempty"`
+	ForumTopicCreated             *ForumTopicCreated             `json:"forum_topic_created,omitempty"`
+	ForumTopicReopened            *ForumTopicReopened            `json:"forum_topic_reopened,omitempty"`
 	ForwardDate                   int64                          `json:"forward_date,omitempty"`
 	ForwardFrom                   *User                          `json:"forward_from,omitempty"`
 	ForwardFromChat               *Chat                          `json:"forward_from_chat,omitempty"`
@@ -31,11 +34,13 @@ type Message struct {
 	HasProtectedContent           bool                           `json:"has_protected_content,omitempty"`
 	Invoice                       *Invoice                       `json:"invoice,omitempty"`
 	IsAutomaticForward            bool                           `json:"is_automatic_forward,omitempty"`
+	IsTopicMessage                bool                           `json:"is_topic_message,omitempty"`
 	LeftChatMember                *User                          `json:"left_chat_member,omitempty"`
 	Location                      *Location                      `json:"location,omitempty"`
 	MediaGroupID                  string                         `json:"media_group_id,omitempty"`
 	MessageAutoDeleteTimerChanged *MessageAutoDeleteTimerChanged `json:"message_auto_delete_timer_changed,omitempty"`
 	MessageID                     int64                          `json:"message_id"`
+	MessageThreadID               int64                          `json:"message_thread_id,omitempty"`
 	MigrateFromChatID             int64                          `json:"migrate_from_chat_id,omitempty"`
 	MigrateToChatID               int64                          `json:"migrate_to_chat_id,omitempty"`
 	NewChatMembers                []User                         `json:"new_chat_members,omitempty"`

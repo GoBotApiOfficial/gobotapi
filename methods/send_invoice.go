@@ -19,6 +19,7 @@ type SendInvoice struct {
 	DisableNotification       bool                        `json:"disable_notification,omitempty"`
 	IsFlexible                bool                        `json:"is_flexible,omitempty"`
 	MaxTipAmount              int                         `json:"max_tip_amount,omitempty"`
+	MessageThreadID           int64                       `json:"message_thread_id,omitempty"`
 	NeedEmail                 bool                        `json:"need_email,omitempty"`
 	NeedName                  bool                        `json:"need_name,omitempty"`
 	NeedPhoneNumber           bool                        `json:"need_phone_number,omitempty"`

@@ -17,6 +17,7 @@ type SendMessage struct {
 	DisableNotification      bool                  `json:"disable_notification,omitempty"`
 	DisableWebPagePreview    bool                  `json:"disable_web_page_preview,omitempty"`
 	Entities                 []types.MessageEntity `json:"entities,omitempty"`
+	MessageThreadID          int64                 `json:"message_thread_id,omitempty"`
 	ParseMode                string                `json:"parse_mode,omitempty"`
 	ProtectContent           bool                  `json:"protect_content,omitempty"`
 	ReplyMarkup              any                   `json:"reply_markup,omitempty"`

@@ -15,6 +15,7 @@ type SendGame struct {
 	ChatID                   int64                       `json:"chat_id"`
 	DisableNotification      bool                        `json:"disable_notification,omitempty"`
 	GameShortName            string                      `json:"game_short_name"`
+	MessageThreadID          int64                       `json:"message_thread_id,omitempty"`
 	ProtectContent           bool                        `json:"protect_content,omitempty"`
 	ReplyMarkup              *types.InlineKeyboardMarkup `json:"reply_markup,omitempty"`
 	ReplyToMessageID         int64                       `json:"reply_to_message_id,omitempty"`

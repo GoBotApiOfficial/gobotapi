@@ -15,6 +15,7 @@ type SendSticker struct {
 	AllowSendingWithoutReply bool                      `json:"allow_sending_without_reply,omitempty"`
 	ChatID                   any                       `json:"chat_id"`
 	DisableNotification      bool                      `json:"disable_notification,omitempty"`
+	MessageThreadID          int64                     `json:"message_thread_id,omitempty"`
 	ProtectContent           bool                      `json:"protect_content,omitempty"`
 	ReplyMarkup              any                       `json:"reply_markup,omitempty"`
 	ReplyToMessageID         int64                     `json:"reply_to_message_id,omitempty"`

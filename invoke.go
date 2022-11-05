@@ -23,18 +23,29 @@ func (ctx *Client) Invoke(method rawTypes.Method) (*rawTypes.Result, error) {
 	}
 	ctx.logging.Debug(ctx, "gobotapi.invoke:", "Generated form:", form)
 	ctx.logging.Debug(ctx, "gobotapi.invoke:", "Sent:", method)
-	rawResult, err := ctx.executeRequest(
-		fmt.Sprintf(
-			"%sbot%s/%s",
-			ctx.apiURL,
-			ctx.Token,
-			method.MethodName(),
-		),
-		"POST",
-		form,
-		files,
-		method.ProgressCallable(),
-	)
+	var rawResult []byte
+	var maxAttempts = 3
+	for {
+		rawResult, err = ctx.executeRequest(
+			fmt.Sprintf(
+				"%sbot%s/%s",
+				ctx.apiURL,
+				ctx.Token,
+				method.MethodName(),
+			),
+			"POST",
+			form,
+			files,
+			method.ProgressCallable(),
+		)
+		if utils.IsServerError(rawResult, err) && maxAttempts > 0 {
+			ctx.logging.Debug(ctx, "gobotapi.invoke:", "Server error, retrying...", err.Error())
+			time.Sleep(time.Second)
+			maxAttempts--
+			continue
+		}
+		break
+	}
 	res, err := utils.ParseResult(rawResult, err, method)
 	if res != nil && res.Kind == types.TypeErrorMessage && res.Error.Parameters != nil {
 		retryAfter := res.Error.Parameters.RetryAfter

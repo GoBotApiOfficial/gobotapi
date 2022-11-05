@@ -9,7 +9,7 @@ import (
 )
 
 // SetMyCommands Use this method to change the list of the bot's commands
-// See https://core.telegram.org/bots#commands for more details about bot commands
+// See this manual for more details about bot commands
 // Returns True on success.
 type SetMyCommands struct {
 	Commands     []types.BotCommand     `json:"commands,omitempty"`

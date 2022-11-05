@@ -20,6 +20,7 @@ type SendDocument struct {
 	DisableContentTypeDetection bool                      `json:"disable_content_type_detection,omitempty"`
 	DisableNotification         bool                      `json:"disable_notification,omitempty"`
 	Document                    rawTypes.InputFile        `json:"document,omitempty"`
+	MessageThreadID             int64                     `json:"message_thread_id,omitempty"`
 	ParseMode                   string                    `json:"parse_mode,omitempty"`
 	ProtectContent              bool                      `json:"protect_content,omitempty"`
 	ReplyMarkup                 any                       `json:"reply_markup,omitempty"`

@@ -22,6 +22,7 @@ type CopyMessage struct {
 	DisableNotification      bool                  `json:"disable_notification,omitempty"`
 	FromChatID               int64                 `json:"from_chat_id"`
 	MessageID                int64                 `json:"message_id"`
+	MessageThreadID          int64                 `json:"message_thread_id,omitempty"`
 	ParseMode                string                `json:"parse_mode,omitempty"`
 	ProtectContent           bool                  `json:"protect_content,omitempty"`
 	ReplyMarkup              any                   `json:"reply_markup,omitempty"`
@@ -37,20 +38,20 @@ func (entity *CopyMessage) Files() map[string]rawTypes.InputFile {
 }
 
 func (entity CopyMessage) MarshalJSON() ([]byte, error) {
-	if entity.ReplyMarkup != nil {
-		switch entity.ReplyMarkup.(type) {
-		case *types.InlineKeyboardMarkup, *types.ReplyKeyboardMarkup, *types.ReplyKeyboardRemove, *types.ForceReply:
-			break
-		default:
-			return nil, fmt.Errorf("reply_markup: unknown type: %T", entity.ReplyMarkup)
-		}
-	}
 	if entity.ChatID != nil {
 		switch entity.ChatID.(type) {
 		case int, int64, string:
 			break
 		default:
 			return nil, fmt.Errorf("chat_id: unknown type: %T", entity.ChatID)
+		}
+	}
+	if entity.ReplyMarkup != nil {
+		switch entity.ReplyMarkup.(type) {
+		case *types.InlineKeyboardMarkup, *types.ReplyKeyboardMarkup, *types.ReplyKeyboardRemove, *types.ForceReply:
+			break
+		default:
+			return nil, fmt.Errorf("reply_markup: unknown type: %T", entity.ReplyMarkup)
 		}
 	}
 	type x0 CopyMessage
