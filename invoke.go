@@ -24,8 +24,7 @@ func (ctx *Client) Invoke(method rawTypes.Method) (*rawTypes.Result, error) {
 	ctx.logging.Debug(ctx, "gobotapi.invoke:", "Generated form:", form)
 	ctx.logging.Debug(ctx, "gobotapi.invoke:", "Sent:", method)
 	var rawResult []byte
-	var maxAttempts = 3
-	for {
+	for i := 0; i < 3; i++ {
 		rawResult, err = ctx.executeRequest(
 			fmt.Sprintf(
 				"%sbot%s/%s",
@@ -38,10 +37,9 @@ func (ctx *Client) Invoke(method rawTypes.Method) (*rawTypes.Result, error) {
 			files,
 			method.ProgressCallable(),
 		)
-		if utils.IsServerError(rawResult, err) && maxAttempts > 0 {
+		if utils.IsServerError(rawResult, err) {
 			ctx.logging.Debug(ctx, "gobotapi.invoke:", "Server error, retrying...", err.Error())
 			time.Sleep(time.Second)
-			maxAttempts--
 			continue
 		}
 		break
