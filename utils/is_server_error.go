@@ -1,9 +1,12 @@
 package utils
 
-import "strings"
+import (
+	rawTypes "github.com/Squirrel-Network/gobotapi/types/raw"
+	"strings"
+)
 
-func IsServerError(rawResult []byte, err error) bool {
-	res, err := ParseResult(rawResult, err, nil)
+func IsServerError(rawResult []byte, err error, method rawTypes.Method) bool {
+	res, err := ParseResult(rawResult, err, method)
 	if err != nil {
 		if res != nil {
 			return res.Error.Code >= 500 && res.Error.Code < 600

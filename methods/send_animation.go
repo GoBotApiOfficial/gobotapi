@@ -51,20 +51,20 @@ func (entity *SendAnimation) Files() map[string]rawTypes.InputFile {
 }
 
 func (entity SendAnimation) MarshalJSON() ([]byte, error) {
-	if entity.ReplyMarkup != nil {
-		switch entity.ReplyMarkup.(type) {
-		case *types.InlineKeyboardMarkup, *types.ReplyKeyboardMarkup, *types.ReplyKeyboardRemove, *types.ForceReply:
-			break
-		default:
-			return nil, fmt.Errorf("reply_markup: unknown type: %T", entity.ReplyMarkup)
-		}
-	}
 	if entity.ChatID != nil {
 		switch entity.ChatID.(type) {
 		case int, int64, string:
 			break
 		default:
 			return nil, fmt.Errorf("chat_id: unknown type: %T", entity.ChatID)
+		}
+	}
+	if entity.ReplyMarkup != nil {
+		switch entity.ReplyMarkup.(type) {
+		case *types.InlineKeyboardMarkup, *types.ReplyKeyboardMarkup, *types.ReplyKeyboardRemove, *types.ForceReply:
+			break
+		default:
+			return nil, fmt.Errorf("reply_markup: unknown type: %T", entity.ReplyMarkup)
 		}
 	}
 	type x0 SendAnimation

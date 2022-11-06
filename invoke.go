@@ -37,7 +37,7 @@ func (ctx *Client) Invoke(method rawTypes.Method) (*rawTypes.Result, error) {
 			files,
 			method.ProgressCallable(),
 		)
-		if utils.IsServerError(rawResult, err) {
+		if utils.IsServerError(rawResult, err, method) {
 			ctx.logging.Debug(ctx, "gobotapi.invoke:", "Server error, retrying...", err.Error())
 			time.Sleep(time.Second)
 			continue
