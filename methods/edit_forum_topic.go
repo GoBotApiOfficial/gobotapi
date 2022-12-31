@@ -14,9 +14,9 @@ import (
 // Returns True on success.
 type EditForumTopic struct {
 	ChatID            any    `json:"chat_id"`
-	IconCustomEmojiID string `json:"icon_custom_emoji_id"`
+	IconCustomEmojiID string `json:"icon_custom_emoji_id,omitempty"`
 	MessageThreadID   int64  `json:"message_thread_id"`
-	Name              string `json:"name"`
+	Name              string `json:"name,omitempty"`
 }
 
 func (entity *EditForumTopic) ProgressCallable() rawTypes.ProgressCallable {

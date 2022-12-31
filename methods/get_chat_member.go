@@ -10,6 +10,7 @@ import (
 )
 
 // GetChatMember Use this method to get information about a member of a chat
+// The method is guaranteed to work only if the bot is an administrator in the chat
 // Returns a ChatMember object on success.
 type GetChatMember struct {
 	ChatID any   `json:"chat_id"`

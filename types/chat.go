@@ -10,6 +10,8 @@ type Chat struct {
 	Description                        string           `json:"description,omitempty"`
 	EmojiStatusCustomEmojiID           string           `json:"emoji_status_custom_emoji_id,omitempty"`
 	FirstName                          string           `json:"first_name,omitempty"`
+	HasAggressiveAntiSpamEnabled       bool             `json:"has_aggressive_anti_spam_enabled,omitempty"`
+	HasHiddenMembers                   bool             `json:"has_hidden_members,omitempty"`
 	HasPrivateForwards                 bool             `json:"has_private_forwards,omitempty"`
 	HasProtectedContent                bool             `json:"has_protected_content,omitempty"`
 	HasRestrictedVoiceAndVideoMessages bool             `json:"has_restricted_voice_and_video_messages,omitempty"`

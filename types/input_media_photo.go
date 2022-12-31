@@ -12,6 +12,7 @@ import (
 type InputMediaPhoto struct {
 	Caption         string             `json:"caption,omitempty"`
 	CaptionEntities []MessageEntity    `json:"caption_entities,omitempty"`
+	HasSpoiler      bool               `json:"has_spoiler,omitempty"`
 	Media           rawTypes.InputFile `json:"media,omitempty"`
 	ParseMode       string             `json:"parse_mode,omitempty"`
 }
@@ -39,12 +40,14 @@ func (entity InputMediaPhoto) MarshalJSON() ([]byte, error) {
 		Caption         string             `json:"caption,omitempty"`
 		ParseMode       string             `json:"parse_mode,omitempty"`
 		CaptionEntities []MessageEntity    `json:"caption_entities,omitempty"`
+		HasSpoiler      bool               `json:"has_spoiler,omitempty"`
 	}{
 		Type:            "photo",
 		Media:           entity.Media,
 		Caption:         entity.Caption,
 		ParseMode:       entity.ParseMode,
 		CaptionEntities: entity.CaptionEntities,
+		HasSpoiler:      entity.HasSpoiler,
 	}
 	return json.Marshal(alias)
 }

@@ -20,6 +20,7 @@ type SendAnimation struct {
 	ChatID                   any                       `json:"chat_id"`
 	DisableNotification      bool                      `json:"disable_notification,omitempty"`
 	Duration                 int                       `json:"duration,omitempty"`
+	HasSpoiler               bool                      `json:"has_spoiler,omitempty"`
 	Height                   int                       `json:"height,omitempty"`
 	MessageThreadID          int64                     `json:"message_thread_id,omitempty"`
 	ParseMode                string                    `json:"parse_mode,omitempty"`

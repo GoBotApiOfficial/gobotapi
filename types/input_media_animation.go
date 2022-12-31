@@ -13,6 +13,7 @@ type InputMediaAnimation struct {
 	Caption         string             `json:"caption,omitempty"`
 	CaptionEntities []MessageEntity    `json:"caption_entities,omitempty"`
 	Duration        int                `json:"duration,omitempty"`
+	HasSpoiler      bool               `json:"has_spoiler,omitempty"`
 	Height          int                `json:"height,omitempty"`
 	Media           rawTypes.InputFile `json:"media,omitempty"`
 	ParseMode       string             `json:"parse_mode,omitempty"`
@@ -52,6 +53,7 @@ func (entity InputMediaAnimation) MarshalJSON() ([]byte, error) {
 		Width           int64              `json:"width,omitempty"`
 		Height          int                `json:"height,omitempty"`
 		Duration        int                `json:"duration,omitempty"`
+		HasSpoiler      bool               `json:"has_spoiler,omitempty"`
 	}{
 		Type:            "animation",
 		Media:           entity.Media,
@@ -62,6 +64,7 @@ func (entity InputMediaAnimation) MarshalJSON() ([]byte, error) {
 		Width:           entity.Width,
 		Height:          entity.Height,
 		Duration:        entity.Duration,
+		HasSpoiler:      entity.HasSpoiler,
 	}
 	return json.Marshal(alias)
 }

@@ -21,6 +21,7 @@ type Message struct {
 	Entities                      []MessageEntity                `json:"entities,omitempty"`
 	ForumTopicClosed              *ForumTopicClosed              `json:"forum_topic_closed,omitempty"`
 	ForumTopicCreated             *ForumTopicCreated             `json:"forum_topic_created,omitempty"`
+	ForumTopicEdited              *ForumTopicEdited              `json:"forum_topic_edited,omitempty"`
 	ForumTopicReopened            *ForumTopicReopened            `json:"forum_topic_reopened,omitempty"`
 	ForwardDate                   int64                          `json:"forward_date,omitempty"`
 	ForwardFrom                   *User                          `json:"forward_from,omitempty"`
@@ -30,7 +31,10 @@ type Message struct {
 	ForwardSignature              string                         `json:"forward_signature,omitempty"`
 	From                          *User                          `json:"from,omitempty"`
 	Game                          *Game                          `json:"game,omitempty"`
+	GeneralForumTopicHidden       *GeneralForumTopicHidden       `json:"general_forum_topic_hidden,omitempty"`
+	GeneralForumTopicUnhidden     *GeneralForumTopicUnhidden     `json:"general_forum_topic_unhidden,omitempty"`
 	GroupChatCreated              bool                           `json:"group_chat_created,omitempty"`
+	HasMediaSpoiler               bool                           `json:"has_media_spoiler,omitempty"`
 	HasProtectedContent           bool                           `json:"has_protected_content,omitempty"`
 	Invoice                       *Invoice                       `json:"invoice,omitempty"`
 	IsAutomaticForward            bool                           `json:"is_automatic_forward,omitempty"`
@@ -68,4 +72,5 @@ type Message struct {
 	VideoNote                     *VideoNote                     `json:"video_note,omitempty"`
 	Voice                         *Voice                         `json:"voice,omitempty"`
 	WebAppData                    *WebAppData                    `json:"web_app_data,omitempty"`
+	WriteAccessAllowed            *WriteAccessAllowed            `json:"write_access_allowed,omitempty"`
 }

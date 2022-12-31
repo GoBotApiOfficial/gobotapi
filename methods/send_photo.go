@@ -17,6 +17,7 @@ type SendPhoto struct {
 	CaptionEntities          []types.MessageEntity     `json:"caption_entities,omitempty"`
 	ChatID                   any                       `json:"chat_id"`
 	DisableNotification      bool                      `json:"disable_notification,omitempty"`
+	HasSpoiler               bool                      `json:"has_spoiler,omitempty"`
 	MessageThreadID          int64                     `json:"message_thread_id,omitempty"`
 	ParseMode                string                    `json:"parse_mode,omitempty"`
 	Photo                    rawTypes.InputFile        `json:"photo,omitempty"`
