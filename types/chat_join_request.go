@@ -9,4 +9,5 @@ type ChatJoinRequest struct {
 	Date       int64           `json:"date"`
 	From       User            `json:"from"`
 	InviteLink *ChatInviteLink `json:"invite_link,omitempty"`
+	UserChatID int64           `json:"user_chat_id"`
 }

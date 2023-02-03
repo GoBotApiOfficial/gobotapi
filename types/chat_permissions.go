@@ -9,8 +9,13 @@ type ChatPermissions struct {
 	CanInviteUsers        bool `json:"can_invite_users,omitempty"`
 	CanManageTopics       bool `json:"can_manage_topics,omitempty"`
 	CanPinMessages        bool `json:"can_pin_messages,omitempty"`
-	CanSendMediaMessages  bool `json:"can_send_media_messages,omitempty"`
+	CanSendAudios         bool `json:"can_send_audios,omitempty"`
+	CanSendDocuments      bool `json:"can_send_documents,omitempty"`
 	CanSendMessages       bool `json:"can_send_messages,omitempty"`
 	CanSendOtherMessages  bool `json:"can_send_other_messages,omitempty"`
+	CanSendPhotos         bool `json:"can_send_photos,omitempty"`
 	CanSendPolls          bool `json:"can_send_polls,omitempty"`
+	CanSendVideoNotes     bool `json:"can_send_video_notes,omitempty"`
+	CanSendVideos         bool `json:"can_send_videos,omitempty"`
+	CanSendVoiceNotes     bool `json:"can_send_voice_notes,omitempty"`
 }

@@ -14,10 +14,11 @@ import (
 // Pass True for all permissions to lift restrictions from a user
 // Returns True on success.
 type RestrictChatMember struct {
-	ChatID      any                   `json:"chat_id"`
-	Permissions types.ChatPermissions `json:"permissions"`
-	UntilDate   int64                 `json:"until_date,omitempty"`
-	UserID      int64                 `json:"user_id"`
+	ChatID                        any                   `json:"chat_id"`
+	Permissions                   types.ChatPermissions `json:"permissions"`
+	UntilDate                     int64                 `json:"until_date,omitempty"`
+	UseIndependentChatPermissions bool                  `json:"use_independent_chat_permissions,omitempty"`
+	UserID                        int64                 `json:"user_id"`
 }
 
 func (entity *RestrictChatMember) ProgressCallable() rawTypes.ProgressCallable {

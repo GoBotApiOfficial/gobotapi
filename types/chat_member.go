@@ -24,10 +24,15 @@ type ChatMember struct {
 	CanPostMessages       bool   `json:"can_post_messages"`
 	CanPromoteMembers     bool   `json:"can_promote_members"`
 	CanRestrictMembers    bool   `json:"can_restrict_members"`
-	CanSendMediaMessages  bool   `json:"can_send_media_messages"`
+	CanSendAudios         bool   `json:"can_send_audios"`
+	CanSendDocuments      bool   `json:"can_send_documents"`
 	CanSendMessages       bool   `json:"can_send_messages"`
 	CanSendOtherMessages  bool   `json:"can_send_other_messages"`
+	CanSendPhotos         bool   `json:"can_send_photos"`
 	CanSendPolls          bool   `json:"can_send_polls"`
+	CanSendVideoNotes     bool   `json:"can_send_video_notes"`
+	CanSendVideos         bool   `json:"can_send_videos"`
+	CanSendVoiceNotes     bool   `json:"can_send_voice_notes"`
 	CustomTitle           string `json:"custom_title"`
 	IsAnonymous           bool   `json:"is_anonymous"`
 	IsMember              bool   `json:"is_member"`

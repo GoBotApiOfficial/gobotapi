@@ -3,16 +3,19 @@
 package types
 
 // KeyboardButton Represents one button of the reply keyboard
-// For simple text buttons String can be used instead of this object to specify text of the button
-// Optional fields web_app, request_contact, request_location, and request_poll are mutually exclusive.
+// For simple text buttons, String can be used instead of this object to specify the button text
+// The optional fields web_app, request_user, request_chat, request_contact, request_location, and request_poll are mutually exclusive.
 // Note: request_contact and request_location options will only work in Telegram versions released after 9 April, 2016
 // Older clients will display unsupported message.Note: request_poll option will only work in Telegram versions released after 23 January, 2020
 // Older clients will display unsupported message.Note: web_app option will only work in Telegram versions released after 16 April, 2022
+// Older clients will display unsupported message.Note: request_user and request_chat options will only work in Telegram versions released after 3 February, 2023
 // Older clients will display unsupported message.
 type KeyboardButton struct {
-	RequestContact  bool                    `json:"request_contact,omitempty"`
-	RequestLocation bool                    `json:"request_location,omitempty"`
-	RequestPoll     *KeyboardButtonPollType `json:"request_poll,omitempty"`
-	Text            string                  `json:"text"`
-	WebApp          *WebAppInfo             `json:"web_app,omitempty"`
+	RequestChat     *KeyboardButtonRequestChat `json:"request_chat,omitempty"`
+	RequestContact  bool                       `json:"request_contact,omitempty"`
+	RequestLocation bool                       `json:"request_location,omitempty"`
+	RequestPoll     *KeyboardButtonPollType    `json:"request_poll,omitempty"`
+	RequestUser     *KeyboardButtonRequestUser `json:"request_user,omitempty"`
+	Text            string                     `json:"text"`
+	WebApp          *WebAppInfo                `json:"web_app,omitempty"`
 }

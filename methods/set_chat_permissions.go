@@ -13,8 +13,9 @@ import (
 // The bot must be an administrator in the group or a supergroup for this to work and must have the can_restrict_members administrator rights
 // Returns True on success.
 type SetChatPermissions struct {
-	ChatID      any                   `json:"chat_id"`
-	Permissions types.ChatPermissions `json:"permissions"`
+	ChatID                        any                   `json:"chat_id"`
+	Permissions                   types.ChatPermissions `json:"permissions"`
+	UseIndependentChatPermissions bool                  `json:"use_independent_chat_permissions,omitempty"`
 }
 
 func (entity *SetChatPermissions) ProgressCallable() rawTypes.ProgressCallable {

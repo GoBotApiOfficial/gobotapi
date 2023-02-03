@@ -11,6 +11,7 @@ type Message struct {
 	CaptionEntities               []MessageEntity                `json:"caption_entities,omitempty"`
 	ChannelChatCreated            bool                           `json:"channel_chat_created,omitempty"`
 	Chat                          Chat                           `json:"chat"`
+	ChatShared                    *ChatShared                    `json:"chat_shared,omitempty"`
 	ConnectedWebsite              string                         `json:"connected_website,omitempty"`
 	Contact                       *Contact                       `json:"contact,omitempty"`
 	Date                          int64                          `json:"date"`
@@ -62,6 +63,7 @@ type Message struct {
 	SuccessfulPayment             *SuccessfulPayment             `json:"successful_payment,omitempty"`
 	SupergroupChatCreated         bool                           `json:"supergroup_chat_created,omitempty"`
 	Text                          string                         `json:"text,omitempty"`
+	UserShared                    *UserShared                    `json:"user_shared,omitempty"`
 	Venue                         *Venue                         `json:"venue,omitempty"`
 	ViaBot                        *User                          `json:"via_bot,omitempty"`
 	Video                         *Video                         `json:"video,omitempty"`
