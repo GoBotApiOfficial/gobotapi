@@ -1,7 +1,7 @@
 name: Create Tag
 on:
   push:
-    branches: [ master ]
+    branches: [ main ]
     paths-ignore:
       - '.gitignore'
       - 'create-tag.yml'
@@ -11,6 +11,8 @@ on:
       - 'README.md'
       - '.github/**'
       - 'examples/**'
+permissions:
+  contents: write
 
 jobs:
   build:
@@ -23,4 +25,4 @@ jobs:
       - uses: rickstaa/action-create-tag@v1
         with:
           tag: "v${{ env.VERSION }}"
-          GITHUB_TOKEN: "${{ secrets.GITHUB_TOKEN }}"
+          GITHUB_TOKEN: "${{ secrets.TOKEN_GITHUB }}"
