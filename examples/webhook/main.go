@@ -1,8 +1,8 @@
 package main
 
 import (
-	"github.com/Squirrel-Network/gobotapi"
-	"github.com/Squirrel-Network/gobotapi/types"
+	"github.com/GoBotApiOfficial/gobotapi"
+	"github.com/GoBotApiOfficial/gobotapi/types"
 	"log"
 )
 

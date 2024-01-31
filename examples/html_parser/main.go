@@ -1,10 +1,10 @@
 package main
 
 import (
-	"github.com/Squirrel-Network/gobotapi"
-	"github.com/Squirrel-Network/gobotapi/methods"
-	"github.com/Squirrel-Network/gobotapi/parser"
-	"github.com/Squirrel-Network/gobotapi/types"
+	"github.com/GoBotApiOfficial/gobotapi"
+	"github.com/GoBotApiOfficial/gobotapi/methods"
+	"github.com/GoBotApiOfficial/gobotapi/parser"
+	"github.com/GoBotApiOfficial/gobotapi/types"
 )
 
 func main() {

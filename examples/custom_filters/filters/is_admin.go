@@ -1,9 +1,9 @@
 package filters
 
 import (
-	"github.com/Squirrel-Network/gobotapi/filters"
-	"github.com/Squirrel-Network/gobotapi/methods"
-	"github.com/Squirrel-Network/gobotapi/types"
+	"github.com/GoBotApiOfficial/gobotapi/filters"
+	"github.com/GoBotApiOfficial/gobotapi/methods"
+	"github.com/GoBotApiOfficial/gobotapi/types"
 )
 
 // IsAdmin Returns a filter that checks if the user is an admin

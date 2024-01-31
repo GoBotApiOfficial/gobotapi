@@ -2,9 +2,9 @@ package main
 
 import (
 	"fmt"
-	"github.com/Squirrel-Network/gobotapi"
-	"github.com/Squirrel-Network/gobotapi/types"
-	"github.com/Squirrel-Network/gobotapi/utils"
+	"github.com/GoBotApiOfficial/gobotapi"
+	"github.com/GoBotApiOfficial/gobotapi/types"
+	"github.com/GoBotApiOfficial/gobotapi/utils"
 	"log"
 )
 

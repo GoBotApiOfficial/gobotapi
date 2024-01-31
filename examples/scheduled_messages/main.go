@@ -1,8 +1,8 @@
 package main
 
 import (
-	"github.com/Squirrel-Network/gobotapi"
-	"github.com/Squirrel-Network/gobotapi/methods"
+	"github.com/GoBotApiOfficial/gobotapi"
+	"github.com/GoBotApiOfficial/gobotapi/methods"
 	"github.com/robfig/cron/v3"
 	"time"
 )

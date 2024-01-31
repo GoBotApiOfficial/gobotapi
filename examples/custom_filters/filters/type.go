@@ -1,7 +1,7 @@
 package filters
 
 import (
-	"github.com/Squirrel-Network/gobotapi/types"
+	"github.com/GoBotApiOfficial/gobotapi/types"
 	"sync"
 )
 

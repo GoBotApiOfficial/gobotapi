@@ -1,7 +1,7 @@
 package main
 
 import (
-	"github.com/Squirrel-Network/gobotapi"
+	"github.com/GoBotApiOfficial/gobotapi"
 )
 
 func main() {
