@@ -5,8 +5,8 @@ package methods
 import (
 	"encoding/json"
 	"fmt"
-	"github.com/Squirrel-Network/gobotapi/types"
-	rawTypes "github.com/Squirrel-Network/gobotapi/types/raw"
+	"github.com/GoBotApiOfficial/gobotapi/types"
+	rawTypes "github.com/GoBotApiOfficial/gobotapi/types/raw"
 )
 
 // ReopenForumTopic Use this method to reopen a closed topic in a forum supergroup chat

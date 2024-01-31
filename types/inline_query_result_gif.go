@@ -21,8 +21,8 @@ type InlineQueryResultGif struct {
 	InputMessageContent any                   `json:"input_message_content,omitempty"`
 	ParseMode           string                `json:"parse_mode,omitempty"`
 	ReplyMarkup         *InlineKeyboardMarkup `json:"reply_markup,omitempty"`
-	ThumbMimeType       string                `json:"thumb_mime_type,omitempty"`
-	ThumbURL            string                `json:"thumb_url"`
+	ThumbnailMimeType   string                `json:"thumbnail_mime_type,omitempty"`
+	ThumbnailURL        string                `json:"thumbnail_url"`
 	Title               string                `json:"title,omitempty"`
 }
 
@@ -34,8 +34,8 @@ func (entity InlineQueryResultGif) MarshalJSON() ([]byte, error) {
 		GifWidth            int64                 `json:"gif_width,omitempty"`
 		GifHeight           int                   `json:"gif_height,omitempty"`
 		GifDuration         int                   `json:"gif_duration,omitempty"`
-		ThumbURL            string                `json:"thumb_url"`
-		ThumbMimeType       string                `json:"thumb_mime_type,omitempty"`
+		ThumbnailURL        string                `json:"thumbnail_url"`
+		ThumbnailMimeType   string                `json:"thumbnail_mime_type,omitempty"`
 		Title               string                `json:"title,omitempty"`
 		Caption             string                `json:"caption,omitempty"`
 		ParseMode           string                `json:"parse_mode,omitempty"`
@@ -49,8 +49,8 @@ func (entity InlineQueryResultGif) MarshalJSON() ([]byte, error) {
 		GifWidth:            entity.GifWidth,
 		GifHeight:           entity.GifHeight,
 		GifDuration:         entity.GifDuration,
-		ThumbURL:            entity.ThumbURL,
-		ThumbMimeType:       entity.ThumbMimeType,
+		ThumbnailURL:        entity.ThumbnailURL,
+		ThumbnailMimeType:   entity.ThumbnailMimeType,
 		Title:               entity.Title,
 		Caption:             entity.Caption,
 		ParseMode:           entity.ParseMode,

@@ -2,7 +2,7 @@ package gobotapi
 
 import (
 	"fmt"
-	"github.com/Squirrel-Network/gobotapi/logger"
+	"github.com/GoBotApiOfficial/gobotapi/logger"
 	"reflect"
 	"strings"
 )

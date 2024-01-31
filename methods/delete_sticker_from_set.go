@@ -4,8 +4,8 @@ package methods
 
 import (
 	"encoding/json"
-	"github.com/Squirrel-Network/gobotapi/types"
-	rawTypes "github.com/Squirrel-Network/gobotapi/types/raw"
+	"github.com/GoBotApiOfficial/gobotapi/types"
+	rawTypes "github.com/GoBotApiOfficial/gobotapi/types/raw"
 )
 
 // DeleteStickerFromSet Use this method to delete a sticker from a set created by the bot

@@ -2,7 +2,7 @@
 
 package gobotapi
 
-import "github.com/Squirrel-Network/gobotapi/types"
+import "github.com/GoBotApiOfficial/gobotapi/types"
 
 func (ctx *BasicClient) OnRawUpdate(handler func(client *Client, update types.Update)) {
 	if ctx.handlers == nil {
@@ -37,6 +37,20 @@ func (ctx *BasicClient) OnEditedChannelPost(handler func(client *Client, update 
 		ctx.handlers = make(map[string][]any)
 	}
 	ctx.handlers["edited_channel_post"] = append(ctx.handlers["edited_channel_post"], handler)
+}
+
+func (ctx *BasicClient) OnMessageReaction(handler func(client *Client, update types.MessageReactionUpdated)) {
+	if ctx.handlers == nil {
+		ctx.handlers = make(map[string][]any)
+	}
+	ctx.handlers["message_reaction"] = append(ctx.handlers["message_reaction"], handler)
+}
+
+func (ctx *BasicClient) OnMessageReactionCount(handler func(client *Client, update types.MessageReactionCountUpdated)) {
+	if ctx.handlers == nil {
+		ctx.handlers = make(map[string][]any)
+	}
+	ctx.handlers["message_reaction_count"] = append(ctx.handlers["message_reaction_count"], handler)
 }
 
 func (ctx *BasicClient) OnInlineQuery(handler func(client *Client, update types.InlineQuery)) {
@@ -107,4 +121,18 @@ func (ctx *BasicClient) OnChatJoinRequest(handler func(client *Client, update ty
 		ctx.handlers = make(map[string][]any)
 	}
 	ctx.handlers["chat_join_request"] = append(ctx.handlers["chat_join_request"], handler)
+}
+
+func (ctx *BasicClient) OnChatBoost(handler func(client *Client, update types.ChatBoostUpdated)) {
+	if ctx.handlers == nil {
+		ctx.handlers = make(map[string][]any)
+	}
+	ctx.handlers["chat_boost"] = append(ctx.handlers["chat_boost"], handler)
+}
+
+func (ctx *BasicClient) OnRemovedChatBoost(handler func(client *Client, update types.ChatBoostRemoved)) {
+	if ctx.handlers == nil {
+		ctx.handlers = make(map[string][]any)
+	}
+	ctx.handlers["removed_chat_boost"] = append(ctx.handlers["removed_chat_boost"], handler)
 }

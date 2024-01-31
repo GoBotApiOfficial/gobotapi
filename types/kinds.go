@@ -2,6 +2,13 @@
 
 package types
 
+// CHAT_BOOST_SOURCE
+const (
+	TypeChatBoostSourcePremium = iota
+	TypeChatBoostSourceGiftCode
+	TypeChatBoostSourceGiveaway
+)
+
 // CHAT_MEMBER
 const (
 	TypeChatMemberOwner = iota
@@ -12,15 +19,33 @@ const (
 	TypeChatMemberBanned
 )
 
+// MAYBE_INACCESSIBLE_MESSAGE
+const (
+	TypeMessage = iota
+	TypeInaccessibleMessage
+)
+
+// MESSAGE_ORIGIN
+const (
+	TypeMessageOriginUser = iota
+	TypeMessageOriginHiddenUser
+	TypeMessageOriginChat
+	TypeMessageOriginChannel
+)
+
 // RETURN_TYPES
 const (
 	TypeArrayOfBotCommand = iota
 	TypeArrayOfChatMember
 	TypeArrayOfGameHighScore
 	TypeArrayOfMessage
+	TypeArrayOfMessageId
 	TypeArrayOfSticker
 	TypeArrayOfUpdate
 	TypeBoolean
+	TypeBotDescription
+	TypeBotName
+	TypeBotShortDescription
 	TypeChat
 	TypeChatAdministratorRights
 	TypeChatInviteLink
@@ -30,13 +55,13 @@ const (
 	TypeForumTopic
 	TypeInteger
 	TypeMenuButton
-	TypeMessage
 	TypeMessageId
 	TypePoll
 	TypeSentWebAppMessage
 	TypeStickerSet
 	TypeString
 	TypeUser
+	TypeUserChatBoosts
 	TypeUserProfilePhotos
 	TypeWebhookInfo
 )

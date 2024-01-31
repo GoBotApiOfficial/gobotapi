@@ -4,8 +4,8 @@ package methods
 
 import (
 	"encoding/json"
-	"github.com/Squirrel-Network/gobotapi/types"
-	rawTypes "github.com/Squirrel-Network/gobotapi/types/raw"
+	"github.com/GoBotApiOfficial/gobotapi/types"
+	rawTypes "github.com/GoBotApiOfficial/gobotapi/types/raw"
 )
 
 // DeleteWebhook Use this method to remove webhook integration if you decide to switch back to getUpdates

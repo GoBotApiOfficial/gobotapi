@@ -5,8 +5,8 @@ package methods
 import (
 	"encoding/json"
 	"fmt"
-	"github.com/Squirrel-Network/gobotapi/types"
-	rawTypes "github.com/Squirrel-Network/gobotapi/types/raw"
+	"github.com/GoBotApiOfficial/gobotapi/types"
+	rawTypes "github.com/GoBotApiOfficial/gobotapi/types/raw"
 )
 
 // ApproveChatJoinRequest Use this method to approve a chat join request

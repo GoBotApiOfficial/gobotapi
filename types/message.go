@@ -20,20 +20,20 @@ type Message struct {
 	Document                      *Document                      `json:"document,omitempty"`
 	EditDate                      int64                          `json:"edit_date,omitempty"`
 	Entities                      []MessageEntity                `json:"entities,omitempty"`
+	ExternalReply                 *ExternalReplyInfo             `json:"external_reply,omitempty"`
 	ForumTopicClosed              *ForumTopicClosed              `json:"forum_topic_closed,omitempty"`
 	ForumTopicCreated             *ForumTopicCreated             `json:"forum_topic_created,omitempty"`
 	ForumTopicEdited              *ForumTopicEdited              `json:"forum_topic_edited,omitempty"`
 	ForumTopicReopened            *ForumTopicReopened            `json:"forum_topic_reopened,omitempty"`
-	ForwardDate                   int64                          `json:"forward_date,omitempty"`
-	ForwardFrom                   *User                          `json:"forward_from,omitempty"`
-	ForwardFromChat               *Chat                          `json:"forward_from_chat,omitempty"`
-	ForwardFromMessageID          int64                          `json:"forward_from_message_id,omitempty"`
-	ForwardSenderName             string                         `json:"forward_sender_name,omitempty"`
-	ForwardSignature              string                         `json:"forward_signature,omitempty"`
+	ForwardOrigin                 *MessageOrigin                 `json:"forward_origin,omitempty"`
 	From                          *User                          `json:"from,omitempty"`
 	Game                          *Game                          `json:"game,omitempty"`
 	GeneralForumTopicHidden       *GeneralForumTopicHidden       `json:"general_forum_topic_hidden,omitempty"`
 	GeneralForumTopicUnhidden     *GeneralForumTopicUnhidden     `json:"general_forum_topic_unhidden,omitempty"`
+	Giveaway                      *Giveaway                      `json:"giveaway,omitempty"`
+	GiveawayCompleted             *GiveawayCompleted             `json:"giveaway_completed,omitempty"`
+	GiveawayCreated               *GiveawayCreated               `json:"giveaway_created,omitempty"`
+	GiveawayWinners               *GiveawayWinners               `json:"giveaway_winners,omitempty"`
 	GroupChatCreated              bool                           `json:"group_chat_created,omitempty"`
 	HasMediaSpoiler               bool                           `json:"has_media_spoiler,omitempty"`
 	HasProtectedContent           bool                           `json:"has_protected_content,omitempty"`
@@ -41,6 +41,7 @@ type Message struct {
 	IsAutomaticForward            bool                           `json:"is_automatic_forward,omitempty"`
 	IsTopicMessage                bool                           `json:"is_topic_message,omitempty"`
 	LeftChatMember                *User                          `json:"left_chat_member,omitempty"`
+	LinkPreviewOptions            *LinkPreviewOptions            `json:"link_preview_options,omitempty"`
 	Location                      *Location                      `json:"location,omitempty"`
 	MediaGroupID                  string                         `json:"media_group_id,omitempty"`
 	MessageAutoDeleteTimerChanged *MessageAutoDeleteTimerChanged `json:"message_auto_delete_timer_changed,omitempty"`
@@ -53,17 +54,19 @@ type Message struct {
 	NewChatTitle                  string                         `json:"new_chat_title,omitempty"`
 	PassportData                  *PassportData                  `json:"passport_data,omitempty"`
 	Photo                         []PhotoSize                    `json:"photo,omitempty"`
-	PinnedMessage                 *Message                       `json:"pinned_message,omitempty"`
+	PinnedMessage                 *MaybeInaccessibleMessage      `json:"pinned_message,omitempty"`
 	Poll                          *Poll                          `json:"poll,omitempty"`
 	ProximityAlertTriggered       *ProximityAlertTriggered       `json:"proximity_alert_triggered,omitempty"`
+	Quote                         *TextQuote                     `json:"quote,omitempty"`
 	ReplyMarkup                   *InlineKeyboardMarkup          `json:"reply_markup,omitempty"`
 	ReplyToMessage                *Message                       `json:"reply_to_message,omitempty"`
 	SenderChat                    *Chat                          `json:"sender_chat,omitempty"`
 	Sticker                       *Sticker                       `json:"sticker,omitempty"`
+	Story                         *Story                         `json:"story,omitempty"`
 	SuccessfulPayment             *SuccessfulPayment             `json:"successful_payment,omitempty"`
 	SupergroupChatCreated         bool                           `json:"supergroup_chat_created,omitempty"`
 	Text                          string                         `json:"text,omitempty"`
-	UserShared                    *UserShared                    `json:"user_shared,omitempty"`
+	UsersShared                   *UsersShared                   `json:"users_shared,omitempty"`
 	Venue                         *Venue                         `json:"venue,omitempty"`
 	ViaBot                        *User                          `json:"via_bot,omitempty"`
 	Video                         *Video                         `json:"video,omitempty"`
@@ -75,4 +78,13 @@ type Message struct {
 	Voice                         *Voice                         `json:"voice,omitempty"`
 	WebAppData                    *WebAppData                    `json:"web_app_data,omitempty"`
 	WriteAccessAllowed            *WriteAccessAllowed            `json:"write_access_allowed,omitempty"`
+}
+
+func (x Message) Kind() int {
+	switch x.Date {
+	case 0:
+		return TypeInaccessibleMessage
+	default:
+		return TypeMessage
+	}
 }

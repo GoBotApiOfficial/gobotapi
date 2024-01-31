@@ -9,5 +9,5 @@ type Document struct {
 	FileSize     int        `json:"file_size,omitempty"`
 	FileUniqueID string     `json:"file_unique_id"`
 	MimeType     string     `json:"mime_type,omitempty"`
-	Thumb        *PhotoSize `json:"thumb,omitempty"`
+	Thumbnail    *PhotoSize `json:"thumbnail,omitempty"`
 }

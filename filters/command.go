@@ -2,7 +2,7 @@ package filters
 
 import (
 	"fmt"
-	"github.com/Squirrel-Network/gobotapi/types"
+	"github.com/GoBotApiOfficial/gobotapi/types"
 	"reflect"
 	"regexp"
 	"strings"

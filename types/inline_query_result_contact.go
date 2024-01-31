@@ -10,8 +10,6 @@ import (
 // InlineQueryResultContact Represents a contact with a phone number
 // By default, this contact will be sent by the user
 // Alternatively, you can use input_message_content to send a message with the specified content instead of the contact.
-// Note: This will only work in Telegram versions released after 9 April, 2016
-// Older clients will ignore them.
 type InlineQueryResultContact struct {
 	FirstName           string                `json:"first_name"`
 	ID                  string                `json:"id"`
@@ -19,9 +17,9 @@ type InlineQueryResultContact struct {
 	LastName            string                `json:"last_name,omitempty"`
 	PhoneNumber         string                `json:"phone_number"`
 	ReplyMarkup         *InlineKeyboardMarkup `json:"reply_markup,omitempty"`
-	ThumbHeight         int                   `json:"thumb_height,omitempty"`
-	ThumbURL            string                `json:"thumb_url,omitempty"`
-	ThumbWidth          int64                 `json:"thumb_width,omitempty"`
+	ThumbnailHeight     int                   `json:"thumbnail_height,omitempty"`
+	ThumbnailURL        string                `json:"thumbnail_url,omitempty"`
+	ThumbnailWidth      int64                 `json:"thumbnail_width,omitempty"`
 	Vcard               string                `json:"vcard,omitempty"`
 }
 
@@ -35,9 +33,9 @@ func (entity InlineQueryResultContact) MarshalJSON() ([]byte, error) {
 		Vcard               string                `json:"vcard,omitempty"`
 		ReplyMarkup         *InlineKeyboardMarkup `json:"reply_markup,omitempty"`
 		InputMessageContent any                   `json:"input_message_content,omitempty"`
-		ThumbURL            string                `json:"thumb_url,omitempty"`
-		ThumbWidth          int64                 `json:"thumb_width,omitempty"`
-		ThumbHeight         int                   `json:"thumb_height,omitempty"`
+		ThumbnailURL        string                `json:"thumbnail_url,omitempty"`
+		ThumbnailWidth      int64                 `json:"thumbnail_width,omitempty"`
+		ThumbnailHeight     int                   `json:"thumbnail_height,omitempty"`
 	}{
 		Type:                "contact",
 		ID:                  entity.ID,
@@ -47,9 +45,9 @@ func (entity InlineQueryResultContact) MarshalJSON() ([]byte, error) {
 		Vcard:               entity.Vcard,
 		ReplyMarkup:         entity.ReplyMarkup,
 		InputMessageContent: entity.InputMessageContent,
-		ThumbURL:            entity.ThumbURL,
-		ThumbWidth:          entity.ThumbWidth,
-		ThumbHeight:         entity.ThumbHeight,
+		ThumbnailURL:        entity.ThumbnailURL,
+		ThumbnailWidth:      entity.ThumbnailWidth,
+		ThumbnailHeight:     entity.ThumbnailHeight,
 	}
 	if entity.InputMessageContent != nil {
 		switch entity.InputMessageContent.(type) {

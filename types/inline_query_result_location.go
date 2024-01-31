@@ -10,8 +10,6 @@ import (
 // InlineQueryResultLocation Represents a location on a map
 // By default, the location will be sent by the user
 // Alternatively, you can use input_message_content to send a message with the specified content instead of the location.
-// Note: This will only work in Telegram versions released after 9 April, 2016
-// Older clients will ignore them.
 type InlineQueryResultLocation struct {
 	Heading              int                   `json:"heading,omitempty"`
 	HorizontalAccuracy   float64               `json:"horizontal_accuracy,omitempty"`
@@ -22,9 +20,9 @@ type InlineQueryResultLocation struct {
 	Longitude            float64               `json:"longitude"`
 	ProximityAlertRadius int                   `json:"proximity_alert_radius,omitempty"`
 	ReplyMarkup          *InlineKeyboardMarkup `json:"reply_markup,omitempty"`
-	ThumbHeight          int                   `json:"thumb_height,omitempty"`
-	ThumbURL             string                `json:"thumb_url,omitempty"`
-	ThumbWidth           int64                 `json:"thumb_width,omitempty"`
+	ThumbnailHeight      int                   `json:"thumbnail_height,omitempty"`
+	ThumbnailURL         string                `json:"thumbnail_url,omitempty"`
+	ThumbnailWidth       int64                 `json:"thumbnail_width,omitempty"`
 	Title                string                `json:"title"`
 }
 
@@ -41,9 +39,9 @@ func (entity InlineQueryResultLocation) MarshalJSON() ([]byte, error) {
 		ProximityAlertRadius int                   `json:"proximity_alert_radius,omitempty"`
 		ReplyMarkup          *InlineKeyboardMarkup `json:"reply_markup,omitempty"`
 		InputMessageContent  any                   `json:"input_message_content,omitempty"`
-		ThumbURL             string                `json:"thumb_url,omitempty"`
-		ThumbWidth           int64                 `json:"thumb_width,omitempty"`
-		ThumbHeight          int                   `json:"thumb_height,omitempty"`
+		ThumbnailURL         string                `json:"thumbnail_url,omitempty"`
+		ThumbnailWidth       int64                 `json:"thumbnail_width,omitempty"`
+		ThumbnailHeight      int                   `json:"thumbnail_height,omitempty"`
 	}{
 		Type:                 "location",
 		ID:                   entity.ID,
@@ -56,9 +54,9 @@ func (entity InlineQueryResultLocation) MarshalJSON() ([]byte, error) {
 		ProximityAlertRadius: entity.ProximityAlertRadius,
 		ReplyMarkup:          entity.ReplyMarkup,
 		InputMessageContent:  entity.InputMessageContent,
-		ThumbURL:             entity.ThumbURL,
-		ThumbWidth:           entity.ThumbWidth,
-		ThumbHeight:          entity.ThumbHeight,
+		ThumbnailURL:         entity.ThumbnailURL,
+		ThumbnailWidth:       entity.ThumbnailWidth,
+		ThumbnailHeight:      entity.ThumbnailHeight,
 	}
 	if entity.InputMessageContent != nil {
 		switch entity.InputMessageContent.(type) {

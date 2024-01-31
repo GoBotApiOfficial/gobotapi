@@ -2,15 +2,19 @@
 
 package filters
 
-import "github.com/Squirrel-Network/gobotapi/types"
+import "github.com/GoBotApiOfficial/gobotapi/types"
 
 type Filterable interface {
 	types.CallbackQuery |
+		types.ChatBoostRemoved |
+		types.ChatBoostUpdated |
 		types.ChatJoinRequest |
 		types.ChatMemberUpdated |
 		types.ChosenInlineResult |
 		types.InlineQuery |
 		types.Message |
+		types.MessageReactionCountUpdated |
+		types.MessageReactionUpdated |
 		types.PreCheckoutQuery |
 		types.ShippingQuery
 }

@@ -4,8 +4,8 @@ package gobotapi
 
 import (
 	"errors"
-	"github.com/Squirrel-Network/gobotapi/types"
-	rawTypes "github.com/Squirrel-Network/gobotapi/types/raw"
+	"github.com/GoBotApiOfficial/gobotapi/types"
+	rawTypes "github.com/GoBotApiOfficial/gobotapi/types/raw"
 )
 
 func (ctx *Client) DownloadMedia(message types.Message, filePath string, progress rawTypes.ProgressCallable) error {

@@ -11,8 +11,6 @@ import (
 // By default, this file will be sent by the user with an optional caption
 // Alternatively, you can use input_message_content to send a message with the specified content instead of the file
 // Currently, only .PDF and .ZIP files can be sent using this method.
-// Note: This will only work in Telegram versions released after 9 April, 2016
-// Older clients will ignore them.
 type InlineQueryResultDocument struct {
 	Caption             string                `json:"caption,omitempty"`
 	CaptionEntities     []MessageEntity       `json:"caption_entities,omitempty"`
@@ -23,9 +21,9 @@ type InlineQueryResultDocument struct {
 	MimeType            string                `json:"mime_type"`
 	ParseMode           string                `json:"parse_mode,omitempty"`
 	ReplyMarkup         *InlineKeyboardMarkup `json:"reply_markup,omitempty"`
-	ThumbHeight         int                   `json:"thumb_height,omitempty"`
-	ThumbURL            string                `json:"thumb_url,omitempty"`
-	ThumbWidth          int64                 `json:"thumb_width,omitempty"`
+	ThumbnailHeight     int                   `json:"thumbnail_height,omitempty"`
+	ThumbnailURL        string                `json:"thumbnail_url,omitempty"`
+	ThumbnailWidth      int64                 `json:"thumbnail_width,omitempty"`
 	Title               string                `json:"title"`
 }
 
@@ -42,9 +40,9 @@ func (entity InlineQueryResultDocument) MarshalJSON() ([]byte, error) {
 		Description         string                `json:"description,omitempty"`
 		ReplyMarkup         *InlineKeyboardMarkup `json:"reply_markup,omitempty"`
 		InputMessageContent any                   `json:"input_message_content,omitempty"`
-		ThumbURL            string                `json:"thumb_url,omitempty"`
-		ThumbWidth          int64                 `json:"thumb_width,omitempty"`
-		ThumbHeight         int                   `json:"thumb_height,omitempty"`
+		ThumbnailURL        string                `json:"thumbnail_url,omitempty"`
+		ThumbnailWidth      int64                 `json:"thumbnail_width,omitempty"`
+		ThumbnailHeight     int                   `json:"thumbnail_height,omitempty"`
 	}{
 		Type:                "document",
 		ID:                  entity.ID,
@@ -57,9 +55,9 @@ func (entity InlineQueryResultDocument) MarshalJSON() ([]byte, error) {
 		Description:         entity.Description,
 		ReplyMarkup:         entity.ReplyMarkup,
 		InputMessageContent: entity.InputMessageContent,
-		ThumbURL:            entity.ThumbURL,
-		ThumbWidth:          entity.ThumbWidth,
-		ThumbHeight:         entity.ThumbHeight,
+		ThumbnailURL:        entity.ThumbnailURL,
+		ThumbnailWidth:      entity.ThumbnailWidth,
+		ThumbnailHeight:     entity.ThumbnailHeight,
 	}
 	if entity.InputMessageContent != nil {
 		switch entity.InputMessageContent.(type) {

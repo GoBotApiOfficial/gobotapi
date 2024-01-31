@@ -13,9 +13,10 @@ type Sticker struct {
 	IsAnimated       bool          `json:"is_animated"`
 	IsVideo          bool          `json:"is_video"`
 	MaskPosition     *MaskPosition `json:"mask_position,omitempty"`
+	NeedsRepainting  bool          `json:"needs_repainting,omitempty"`
 	PremiumAnimation *File         `json:"premium_animation,omitempty"`
 	SetName          string        `json:"set_name,omitempty"`
-	Thumb            *PhotoSize    `json:"thumb,omitempty"`
+	Thumbnail        *PhotoSize    `json:"thumbnail,omitempty"`
 	Type             string        `json:"type"`
 	Width            int64         `json:"width"`
 }

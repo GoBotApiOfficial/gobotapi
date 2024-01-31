@@ -5,21 +5,21 @@ package methods
 import (
 	"encoding/json"
 	"fmt"
-	"github.com/Squirrel-Network/gobotapi/types"
-	rawTypes "github.com/Squirrel-Network/gobotapi/types/raw"
+	"github.com/GoBotApiOfficial/gobotapi/types"
+	rawTypes "github.com/GoBotApiOfficial/gobotapi/types/raw"
 )
 
 // EditMessageText Use this method to edit text and game messages
 // On success, if the edited message is not an inline message, the edited Message is returned, otherwise True is returned.
 type EditMessageText struct {
-	ChatID                any                         `json:"chat_id,omitempty"`
-	DisableWebPagePreview bool                        `json:"disable_web_page_preview,omitempty"`
-	Entities              []types.MessageEntity       `json:"entities,omitempty"`
-	InlineMessageID       string                      `json:"inline_message_id,omitempty"`
-	MessageID             int64                       `json:"message_id,omitempty"`
-	ParseMode             string                      `json:"parse_mode,omitempty"`
-	ReplyMarkup           *types.InlineKeyboardMarkup `json:"reply_markup,omitempty"`
-	Text                  string                      `json:"text"`
+	ChatID             any                         `json:"chat_id,omitempty"`
+	Entities           []types.MessageEntity       `json:"entities,omitempty"`
+	InlineMessageID    string                      `json:"inline_message_id,omitempty"`
+	LinkPreviewOptions *types.LinkPreviewOptions   `json:"link_preview_options,omitempty"`
+	MessageID          int64                       `json:"message_id,omitempty"`
+	ParseMode          string                      `json:"parse_mode,omitempty"`
+	ReplyMarkup        *types.InlineKeyboardMarkup `json:"reply_markup,omitempty"`
+	Text               string                      `json:"text"`
 }
 
 func (entity *EditMessageText) ProgressCallable() rawTypes.ProgressCallable {

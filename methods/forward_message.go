@@ -5,12 +5,12 @@ package methods
 import (
 	"encoding/json"
 	"fmt"
-	"github.com/Squirrel-Network/gobotapi/types"
-	rawTypes "github.com/Squirrel-Network/gobotapi/types/raw"
+	"github.com/GoBotApiOfficial/gobotapi/types"
+	rawTypes "github.com/GoBotApiOfficial/gobotapi/types/raw"
 )
 
 // ForwardMessage Use this method to forward messages of any kind
-// Service messages can't be forwarded
+// Service messages and messages with protected content can't be forwarded
 // On success, the sent Message is returned.
 type ForwardMessage struct {
 	ChatID              any   `json:"chat_id"`

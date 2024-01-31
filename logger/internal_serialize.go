@@ -1,7 +1,7 @@
 package logger
 
 import (
-	"github.com/Squirrel-Network/gobotapi/utils/ordered_map"
+	"github.com/GoBotApiOfficial/gobotapi/utils/ordered_map"
 	"reflect"
 )
 

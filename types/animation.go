@@ -11,6 +11,6 @@ type Animation struct {
 	FileUniqueID string     `json:"file_unique_id"`
 	Height       int        `json:"height"`
 	MimeType     string     `json:"mime_type,omitempty"`
-	Thumb        *PhotoSize `json:"thumb,omitempty"`
+	Thumbnail    *PhotoSize `json:"thumbnail,omitempty"`
 	Width        int64      `json:"width"`
 }

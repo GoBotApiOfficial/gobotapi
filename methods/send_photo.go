@@ -5,26 +5,25 @@ package methods
 import (
 	"encoding/json"
 	"fmt"
-	"github.com/Squirrel-Network/gobotapi/types"
-	rawTypes "github.com/Squirrel-Network/gobotapi/types/raw"
+	"github.com/GoBotApiOfficial/gobotapi/types"
+	rawTypes "github.com/GoBotApiOfficial/gobotapi/types/raw"
 )
 
 // SendPhoto Use this method to send photos
 // On success, the sent Message is returned.
 type SendPhoto struct {
-	AllowSendingWithoutReply bool                      `json:"allow_sending_without_reply,omitempty"`
-	Caption                  string                    `json:"caption,omitempty"`
-	CaptionEntities          []types.MessageEntity     `json:"caption_entities,omitempty"`
-	ChatID                   any                       `json:"chat_id"`
-	DisableNotification      bool                      `json:"disable_notification,omitempty"`
-	HasSpoiler               bool                      `json:"has_spoiler,omitempty"`
-	MessageThreadID          int64                     `json:"message_thread_id,omitempty"`
-	ParseMode                string                    `json:"parse_mode,omitempty"`
-	Photo                    rawTypes.InputFile        `json:"photo,omitempty"`
-	ProtectContent           bool                      `json:"protect_content,omitempty"`
-	ReplyMarkup              any                       `json:"reply_markup,omitempty"`
-	ReplyToMessageID         int64                     `json:"reply_to_message_id,omitempty"`
-	Progress                 rawTypes.ProgressCallable `json:"-"`
+	Caption             string                    `json:"caption,omitempty"`
+	CaptionEntities     []types.MessageEntity     `json:"caption_entities,omitempty"`
+	ChatID              any                       `json:"chat_id"`
+	DisableNotification bool                      `json:"disable_notification,omitempty"`
+	HasSpoiler          bool                      `json:"has_spoiler,omitempty"`
+	MessageThreadID     int64                     `json:"message_thread_id,omitempty"`
+	ParseMode           string                    `json:"parse_mode,omitempty"`
+	Photo               rawTypes.InputFile        `json:"photo,omitempty"`
+	ProtectContent      bool                      `json:"protect_content,omitempty"`
+	ReplyMarkup         any                       `json:"reply_markup,omitempty"`
+	ReplyParameters     *types.ReplyParameters    `json:"reply_parameters,omitempty"`
+	Progress            rawTypes.ProgressCallable `json:"-"`
 }
 
 func (entity *SendPhoto) ProgressCallable() rawTypes.ProgressCallable {

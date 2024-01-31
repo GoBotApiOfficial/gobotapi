@@ -5,7 +5,7 @@ package types
 import (
 	"encoding/json"
 	"fmt"
-	rawTypes "github.com/Squirrel-Network/gobotapi/types/raw"
+	rawTypes "github.com/GoBotApiOfficial/gobotapi/types/raw"
 )
 
 // InputMediaVideo Represents a video to be sent.
@@ -18,7 +18,7 @@ type InputMediaVideo struct {
 	Media             rawTypes.InputFile `json:"media,omitempty"`
 	ParseMode         string             `json:"parse_mode,omitempty"`
 	SupportsStreaming bool               `json:"supports_streaming,omitempty"`
-	Thumb             rawTypes.InputFile `json:"thumb,omitempty"`
+	Thumbnail         rawTypes.InputFile `json:"thumbnail,omitempty"`
 	Width             int64              `json:"width,omitempty"`
 }
 
@@ -28,9 +28,9 @@ func (entity *InputMediaVideo) Files() map[string]rawTypes.InputFile {
 	case InputBytes:
 		files["video"] = entity.Media
 	}
-	switch entity.Thumb.(type) {
+	switch entity.Thumbnail.(type) {
 	case InputBytes:
-		files["thumb"] = entity.Thumb
+		files["thumbnail"] = entity.Thumbnail
 	}
 	return files
 }
@@ -39,15 +39,14 @@ func (entity *InputMediaVideo) SetAttachment(attach string) {
 	entity.Media = InputURL(fmt.Sprintf("attach://%s", attach))
 }
 
-func (entity *InputMediaVideo) SetAttachmentThumb(attach string) {
-	entity.Thumb = InputURL(fmt.Sprintf("attach://%s", attach))
+func (entity *InputMediaVideo) SetAttachmentThumb(_ string) {
 }
 
 func (entity InputMediaVideo) MarshalJSON() ([]byte, error) {
 	alias := struct {
 		Type              string             `json:"type"`
 		Media             rawTypes.InputFile `json:"media,omitempty"`
-		Thumb             rawTypes.InputFile `json:"thumb,omitempty"`
+		Thumbnail         rawTypes.InputFile `json:"thumbnail,omitempty"`
 		Caption           string             `json:"caption,omitempty"`
 		ParseMode         string             `json:"parse_mode,omitempty"`
 		CaptionEntities   []MessageEntity    `json:"caption_entities,omitempty"`
@@ -59,7 +58,7 @@ func (entity InputMediaVideo) MarshalJSON() ([]byte, error) {
 	}{
 		Type:              "video",
 		Media:             entity.Media,
-		Thumb:             entity.Thumb,
+		Thumbnail:         entity.Thumbnail,
 		Caption:           entity.Caption,
 		ParseMode:         entity.ParseMode,
 		CaptionEntities:   entity.CaptionEntities,

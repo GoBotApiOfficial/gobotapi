@@ -6,13 +6,16 @@ package types
 type ChatAdministratorRights struct {
 	CanChangeInfo       bool `json:"can_change_info"`
 	CanDeleteMessages   bool `json:"can_delete_messages"`
+	CanDeleteStories    bool `json:"can_delete_stories,omitempty"`
 	CanEditMessages     bool `json:"can_edit_messages,omitempty"`
+	CanEditStories      bool `json:"can_edit_stories,omitempty"`
 	CanInviteUsers      bool `json:"can_invite_users"`
 	CanManageChat       bool `json:"can_manage_chat"`
 	CanManageTopics     bool `json:"can_manage_topics,omitempty"`
 	CanManageVideoChats bool `json:"can_manage_video_chats"`
 	CanPinMessages      bool `json:"can_pin_messages,omitempty"`
 	CanPostMessages     bool `json:"can_post_messages,omitempty"`
+	CanPostStories      bool `json:"can_post_stories,omitempty"`
 	CanPromoteMembers   bool `json:"can_promote_members"`
 	CanRestrictMembers  bool `json:"can_restrict_members"`
 	IsAnonymous         bool `json:"is_anonymous"`

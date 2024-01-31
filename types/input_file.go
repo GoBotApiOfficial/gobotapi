@@ -1,7 +1,7 @@
 package types
 
 import (
-	"github.com/Squirrel-Network/gobotapi/types/raw"
+	"github.com/GoBotApiOfficial/gobotapi/types/raw"
 	"os"
 	"path"
 )

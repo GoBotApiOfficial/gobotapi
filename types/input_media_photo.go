@@ -5,7 +5,7 @@ package types
 import (
 	"encoding/json"
 	"fmt"
-	rawTypes "github.com/Squirrel-Network/gobotapi/types/raw"
+	rawTypes "github.com/GoBotApiOfficial/gobotapi/types/raw"
 )
 
 // InputMediaPhoto Represents a photo to be sent.

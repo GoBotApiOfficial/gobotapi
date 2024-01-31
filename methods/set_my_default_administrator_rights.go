@@ -4,12 +4,12 @@ package methods
 
 import (
 	"encoding/json"
-	"github.com/Squirrel-Network/gobotapi/types"
-	rawTypes "github.com/Squirrel-Network/gobotapi/types/raw"
+	"github.com/GoBotApiOfficial/gobotapi/types"
+	rawTypes "github.com/GoBotApiOfficial/gobotapi/types/raw"
 )
 
 // SetMyDefaultAdministratorRights Use this method to change the default administrator rights requested by the bot when it's added as an administrator to groups or channels
-// These rights will be suggested to users, but they are are free to modify the list before adding the bot
+// These rights will be suggested to users, but they are free to modify the list before adding the bot
 // Returns True on success.
 type SetMyDefaultAdministratorRights struct {
 	ForChannels bool                           `json:"for_channels,omitempty"`

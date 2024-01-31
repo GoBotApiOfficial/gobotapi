@@ -5,28 +5,27 @@ package methods
 import (
 	"encoding/json"
 	"fmt"
-	"github.com/Squirrel-Network/gobotapi/types"
-	rawTypes "github.com/Squirrel-Network/gobotapi/types/raw"
+	"github.com/GoBotApiOfficial/gobotapi/types"
+	rawTypes "github.com/GoBotApiOfficial/gobotapi/types/raw"
 )
 
 // CopyMessage Use this method to copy messages of any kind
-// Service messages and invoice messages can't be copied
+// Service messages, giveaway messages, giveaway winners messages, and invoice messages can't be copied
 // A quiz poll can be copied only if the value of the field correct_option_id is known to the bot
 // The method is analogous to the method forwardMessage, but the copied message doesn't have a link to the original message
 // Returns the MessageId of the sent message on success.
 type CopyMessage struct {
-	AllowSendingWithoutReply bool                  `json:"allow_sending_without_reply,omitempty"`
-	Caption                  string                `json:"caption,omitempty"`
-	CaptionEntities          []types.MessageEntity `json:"caption_entities,omitempty"`
-	ChatID                   any                   `json:"chat_id"`
-	DisableNotification      bool                  `json:"disable_notification,omitempty"`
-	FromChatID               int64                 `json:"from_chat_id"`
-	MessageID                int64                 `json:"message_id"`
-	MessageThreadID          int64                 `json:"message_thread_id,omitempty"`
-	ParseMode                string                `json:"parse_mode,omitempty"`
-	ProtectContent           bool                  `json:"protect_content,omitempty"`
-	ReplyMarkup              any                   `json:"reply_markup,omitempty"`
-	ReplyToMessageID         int64                 `json:"reply_to_message_id,omitempty"`
+	Caption             string                 `json:"caption,omitempty"`
+	CaptionEntities     []types.MessageEntity  `json:"caption_entities,omitempty"`
+	ChatID              any                    `json:"chat_id"`
+	DisableNotification bool                   `json:"disable_notification,omitempty"`
+	FromChatID          int64                  `json:"from_chat_id"`
+	MessageID           int64                  `json:"message_id"`
+	MessageThreadID     int64                  `json:"message_thread_id,omitempty"`
+	ParseMode           string                 `json:"parse_mode,omitempty"`
+	ProtectContent      bool                   `json:"protect_content,omitempty"`
+	ReplyMarkup         any                    `json:"reply_markup,omitempty"`
+	ReplyParameters     *types.ReplyParameters `json:"reply_parameters,omitempty"`
 }
 
 func (entity *CopyMessage) ProgressCallable() rawTypes.ProgressCallable {

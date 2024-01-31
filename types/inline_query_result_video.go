@@ -19,7 +19,7 @@ type InlineQueryResultVideo struct {
 	MimeType            string                `json:"mime_type"`
 	ParseMode           string                `json:"parse_mode,omitempty"`
 	ReplyMarkup         *InlineKeyboardMarkup `json:"reply_markup,omitempty"`
-	ThumbURL            string                `json:"thumb_url"`
+	ThumbnailURL        string                `json:"thumbnail_url"`
 	Title               string                `json:"title"`
 	VideoDuration       int64                 `json:"video_duration,omitempty"`
 	VideoHeight         int64                 `json:"video_height,omitempty"`
@@ -33,7 +33,7 @@ func (entity InlineQueryResultVideo) MarshalJSON() ([]byte, error) {
 		ID                  string                `json:"id"`
 		VideoURL            string                `json:"video_url"`
 		MimeType            string                `json:"mime_type"`
-		ThumbURL            string                `json:"thumb_url"`
+		ThumbnailURL        string                `json:"thumbnail_url"`
 		Title               string                `json:"title"`
 		Caption             string                `json:"caption,omitempty"`
 		ParseMode           string                `json:"parse_mode,omitempty"`
@@ -49,7 +49,7 @@ func (entity InlineQueryResultVideo) MarshalJSON() ([]byte, error) {
 		ID:                  entity.ID,
 		VideoURL:            entity.VideoURL,
 		MimeType:            entity.MimeType,
-		ThumbURL:            entity.ThumbURL,
+		ThumbnailURL:        entity.ThumbnailURL,
 		Title:               entity.Title,
 		Caption:             entity.Caption,
 		ParseMode:           entity.ParseMode,

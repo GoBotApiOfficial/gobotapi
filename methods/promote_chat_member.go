@@ -5,8 +5,8 @@ package methods
 import (
 	"encoding/json"
 	"fmt"
-	"github.com/Squirrel-Network/gobotapi/types"
-	rawTypes "github.com/Squirrel-Network/gobotapi/types/raw"
+	"github.com/GoBotApiOfficial/gobotapi/types"
+	rawTypes "github.com/GoBotApiOfficial/gobotapi/types/raw"
 )
 
 // PromoteChatMember Use this method to promote or demote a user in a supergroup or a channel
@@ -16,13 +16,16 @@ import (
 type PromoteChatMember struct {
 	CanChangeInfo       bool  `json:"can_change_info,omitempty"`
 	CanDeleteMessages   bool  `json:"can_delete_messages,omitempty"`
+	CanDeleteStories    bool  `json:"can_delete_stories,omitempty"`
 	CanEditMessages     bool  `json:"can_edit_messages,omitempty"`
+	CanEditStories      bool  `json:"can_edit_stories,omitempty"`
 	CanInviteUsers      bool  `json:"can_invite_users,omitempty"`
 	CanManageChat       bool  `json:"can_manage_chat,omitempty"`
 	CanManageTopics     bool  `json:"can_manage_topics,omitempty"`
 	CanManageVideoChats bool  `json:"can_manage_video_chats,omitempty"`
 	CanPinMessages      bool  `json:"can_pin_messages,omitempty"`
 	CanPostMessages     bool  `json:"can_post_messages,omitempty"`
+	CanPostStories      bool  `json:"can_post_stories,omitempty"`
 	CanPromoteMembers   bool  `json:"can_promote_members,omitempty"`
 	CanRestrictMembers  bool  `json:"can_restrict_members,omitempty"`
 	ChatID              any   `json:"chat_id"`

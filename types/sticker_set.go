@@ -9,6 +9,6 @@ type StickerSet struct {
 	Name        string     `json:"name"`
 	StickerType string     `json:"sticker_type"`
 	Stickers    []Sticker  `json:"stickers,omitempty"`
-	Thumb       *PhotoSize `json:"thumb,omitempty"`
+	Thumbnail   *PhotoSize `json:"thumbnail,omitempty"`
 	Title       string     `json:"title"`
 }

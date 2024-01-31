@@ -2,8 +2,8 @@ package gobotapi
 
 import (
 	"errors"
-	"github.com/Squirrel-Network/gobotapi/methods"
-	"github.com/Squirrel-Network/gobotapi/types"
+	"github.com/GoBotApiOfficial/gobotapi/methods"
+	"github.com/GoBotApiOfficial/gobotapi/types"
 	"time"
 )
 

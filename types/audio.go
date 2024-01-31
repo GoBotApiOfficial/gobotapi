@@ -11,6 +11,6 @@ type Audio struct {
 	FileUniqueID string     `json:"file_unique_id"`
 	MimeType     string     `json:"mime_type,omitempty"`
 	Performer    string     `json:"performer,omitempty"`
-	Thumb        *PhotoSize `json:"thumb,omitempty"`
+	Thumbnail    *PhotoSize `json:"thumbnail,omitempty"`
 	Title        string     `json:"title,omitempty"`
 }

@@ -2,8 +2,8 @@ package gobotapi
 
 import (
 	"fmt"
-	"github.com/Squirrel-Network/gobotapi/logger"
-	rawTypes "github.com/Squirrel-Network/gobotapi/types/raw"
+	"github.com/GoBotApiOfficial/gobotapi/logger"
+	rawTypes "github.com/GoBotApiOfficial/gobotapi/types/raw"
 	"os"
 )
 
@@ -22,7 +22,7 @@ func NewClient(token string) *PollingClient {
 	}
 }
 
-func NewWebhook(hostname string, port int) *WebhookClient {
+func NewWebhook(hostname string, port int, isLocalWebhookServer bool) *WebhookClient {
 	return &WebhookClient{
 		BasicClient: &BasicClient{
 			AntiFloodData:  make(map[int64]*rawTypes.AntiFloodData),
@@ -33,8 +33,9 @@ func NewWebhook(hostname string, port int) *WebhookClient {
 		},
 		WebhookConfig: &WebhookConfig{
 			Config: ServerConfig{
-				HostName: hostname,
-				Port:     port,
+				HostName:             hostname,
+				Port:                 port,
+				IsLocalWebHookServer: isLocalWebhookServer,
 			},
 		},
 	}

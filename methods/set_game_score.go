@@ -4,8 +4,8 @@ package methods
 
 import (
 	"encoding/json"
-	"github.com/Squirrel-Network/gobotapi/types"
-	rawTypes "github.com/Squirrel-Network/gobotapi/types/raw"
+	"github.com/GoBotApiOfficial/gobotapi/types"
+	rawTypes "github.com/GoBotApiOfficial/gobotapi/types/raw"
 )
 
 // SetGameScore Use this method to set the score of the specified user in a game message

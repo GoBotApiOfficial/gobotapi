@@ -5,32 +5,31 @@ package methods
 import (
 	"encoding/json"
 	"fmt"
-	"github.com/Squirrel-Network/gobotapi/types"
-	rawTypes "github.com/Squirrel-Network/gobotapi/types/raw"
+	"github.com/GoBotApiOfficial/gobotapi/types"
+	rawTypes "github.com/GoBotApiOfficial/gobotapi/types/raw"
 )
 
 // SendVideo Use this method to send video files, Telegram clients support MPEG4 videos (other formats may be sent as Document)
 // On success, the sent Message is returned
 // Bots can currently send video files of up to 50 MB in size, this limit may be changed in the future.
 type SendVideo struct {
-	AllowSendingWithoutReply bool                      `json:"allow_sending_without_reply,omitempty"`
-	Caption                  string                    `json:"caption,omitempty"`
-	CaptionEntities          []types.MessageEntity     `json:"caption_entities,omitempty"`
-	ChatID                   any                       `json:"chat_id"`
-	DisableNotification      bool                      `json:"disable_notification,omitempty"`
-	Duration                 int                       `json:"duration,omitempty"`
-	HasSpoiler               bool                      `json:"has_spoiler,omitempty"`
-	Height                   int                       `json:"height,omitempty"`
-	MessageThreadID          int64                     `json:"message_thread_id,omitempty"`
-	ParseMode                string                    `json:"parse_mode,omitempty"`
-	ProtectContent           bool                      `json:"protect_content,omitempty"`
-	ReplyMarkup              any                       `json:"reply_markup,omitempty"`
-	ReplyToMessageID         int64                     `json:"reply_to_message_id,omitempty"`
-	SupportsStreaming        bool                      `json:"supports_streaming,omitempty"`
-	Thumb                    rawTypes.InputFile        `json:"thumb,omitempty"`
-	Video                    rawTypes.InputFile        `json:"video,omitempty"`
-	Width                    int64                     `json:"width,omitempty"`
-	Progress                 rawTypes.ProgressCallable `json:"-"`
+	Caption             string                    `json:"caption,omitempty"`
+	CaptionEntities     []types.MessageEntity     `json:"caption_entities,omitempty"`
+	ChatID              any                       `json:"chat_id"`
+	DisableNotification bool                      `json:"disable_notification,omitempty"`
+	Duration            int                       `json:"duration,omitempty"`
+	HasSpoiler          bool                      `json:"has_spoiler,omitempty"`
+	Height              int                       `json:"height,omitempty"`
+	MessageThreadID     int64                     `json:"message_thread_id,omitempty"`
+	ParseMode           string                    `json:"parse_mode,omitempty"`
+	ProtectContent      bool                      `json:"protect_content,omitempty"`
+	ReplyMarkup         any                       `json:"reply_markup,omitempty"`
+	ReplyParameters     *types.ReplyParameters    `json:"reply_parameters,omitempty"`
+	SupportsStreaming   bool                      `json:"supports_streaming,omitempty"`
+	Thumbnail           rawTypes.InputFile        `json:"thumbnail,omitempty"`
+	Video               rawTypes.InputFile        `json:"video,omitempty"`
+	Width               int64                     `json:"width,omitempty"`
+	Progress            rawTypes.ProgressCallable `json:"-"`
 }
 
 func (entity *SendVideo) ProgressCallable() rawTypes.ProgressCallable {
@@ -39,10 +38,10 @@ func (entity *SendVideo) ProgressCallable() rawTypes.ProgressCallable {
 
 func (entity *SendVideo) Files() map[string]rawTypes.InputFile {
 	files := make(map[string]rawTypes.InputFile)
-	switch entity.Thumb.(type) {
+	switch entity.Thumbnail.(type) {
 	case types.InputBytes:
-		files["thumb"] = entity.Thumb
-		entity.Thumb = types.InputURL("attach://thumb")
+		files["thumbnail"] = entity.Thumbnail
+		entity.Thumbnail = nil
 	}
 	switch entity.Video.(type) {
 	case types.InputBytes:
@@ -53,20 +52,20 @@ func (entity *SendVideo) Files() map[string]rawTypes.InputFile {
 }
 
 func (entity SendVideo) MarshalJSON() ([]byte, error) {
-	if entity.ReplyMarkup != nil {
-		switch entity.ReplyMarkup.(type) {
-		case *types.InlineKeyboardMarkup, *types.ReplyKeyboardMarkup, *types.ReplyKeyboardRemove, *types.ForceReply:
-			break
-		default:
-			return nil, fmt.Errorf("reply_markup: unknown type: %T", entity.ReplyMarkup)
-		}
-	}
 	if entity.ChatID != nil {
 		switch entity.ChatID.(type) {
 		case int, int64, string:
 			break
 		default:
 			return nil, fmt.Errorf("chat_id: unknown type: %T", entity.ChatID)
+		}
+	}
+	if entity.ReplyMarkup != nil {
+		switch entity.ReplyMarkup.(type) {
+		case *types.InlineKeyboardMarkup, *types.ReplyKeyboardMarkup, *types.ReplyKeyboardRemove, *types.ForceReply:
+			break
+		default:
+			return nil, fmt.Errorf("reply_markup: unknown type: %T", entity.ReplyMarkup)
 		}
 	}
 	type x0 SendVideo

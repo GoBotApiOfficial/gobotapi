@@ -2,6 +2,9 @@
 
 package types
 
-// WriteAccessAllowed Represents a service message about a user allowing a bot added to the attachment menu to write messages
-// Currently holds no information.
-type WriteAccessAllowed any
+// WriteAccessAllowed Represents a service message about a user allowing a bot to write messages after adding it to the attachment menu, launching a Web App from a link, or accepting an explicit request from a Web App sent by the method requestWriteAccess.
+type WriteAccessAllowed struct {
+	FromAttachmentMenu bool   `json:"from_attachment_menu,omitempty"`
+	FromRequest        bool   `json:"from_request,omitempty"`
+	WebAppName         string `json:"web_app_name,omitempty"`
+}

@@ -2,19 +2,29 @@
 
 package types
 
+import (
+	"encoding/json"
+	"fmt"
+)
+
 // Chat Represents a chat.
 type Chat struct {
+	AccentColorID                      int64            `json:"accent_color_id,omitempty"`
 	ActiveUsernames                    []string         `json:"active_usernames,omitempty"`
+	AvailableReactions                 []ReactionType   `json:"available_reactions,omitempty"`
+	BackgroundCustomEmojiID            string           `json:"background_custom_emoji_id,omitempty"`
 	Bio                                string           `json:"bio,omitempty"`
 	CanSetStickerSet                   bool             `json:"can_set_sticker_set,omitempty"`
 	Description                        string           `json:"description,omitempty"`
 	EmojiStatusCustomEmojiID           string           `json:"emoji_status_custom_emoji_id,omitempty"`
+	EmojiStatusExpirationDate          int64            `json:"emoji_status_expiration_date,omitempty"`
 	FirstName                          string           `json:"first_name,omitempty"`
 	HasAggressiveAntiSpamEnabled       bool             `json:"has_aggressive_anti_spam_enabled,omitempty"`
 	HasHiddenMembers                   bool             `json:"has_hidden_members,omitempty"`
 	HasPrivateForwards                 bool             `json:"has_private_forwards,omitempty"`
 	HasProtectedContent                bool             `json:"has_protected_content,omitempty"`
 	HasRestrictedVoiceAndVideoMessages bool             `json:"has_restricted_voice_and_video_messages,omitempty"`
+	HasVisibleHistory                  bool             `json:"has_visible_history,omitempty"`
 	ID                                 int64            `json:"id"`
 	InviteLink                         string           `json:"invite_link,omitempty"`
 	IsForum                            bool             `json:"is_forum,omitempty"`
@@ -27,9 +37,26 @@ type Chat struct {
 	Permissions                        *ChatPermissions `json:"permissions,omitempty"`
 	Photo                              *ChatPhoto       `json:"photo,omitempty"`
 	PinnedMessage                      *Message         `json:"pinned_message,omitempty"`
+	ProfileAccentColorID               int64            `json:"profile_accent_color_id,omitempty"`
+	ProfileBackgroundCustomEmojiID     string           `json:"profile_background_custom_emoji_id,omitempty"`
 	SlowModeDelay                      int              `json:"slow_mode_delay,omitempty"`
 	StickerSetName                     string           `json:"sticker_set_name,omitempty"`
 	Title                              string           `json:"title,omitempty"`
 	Type                               string           `json:"type"`
 	Username                           string           `json:"username,omitempty"`
+}
+
+func (entity Chat) MarshalJSON() ([]byte, error) {
+	for _, x0 := range entity.AvailableReactions {
+		if x0 != nil {
+			switch x0.(type) {
+			case ReactionTypeEmoji, ReactionTypeCustomEmoji:
+				break
+			default:
+				return nil, fmt.Errorf("available_reactions: unknown type: %T", x0)
+			}
+		}
+	}
+	type x0 Chat
+	return json.Marshal((x0)(entity))
 }

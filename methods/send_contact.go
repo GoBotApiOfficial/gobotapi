@@ -5,24 +5,23 @@ package methods
 import (
 	"encoding/json"
 	"fmt"
-	"github.com/Squirrel-Network/gobotapi/types"
-	rawTypes "github.com/Squirrel-Network/gobotapi/types/raw"
+	"github.com/GoBotApiOfficial/gobotapi/types"
+	rawTypes "github.com/GoBotApiOfficial/gobotapi/types/raw"
 )
 
 // SendContact Use this method to send phone contacts
 // On success, the sent Message is returned.
 type SendContact struct {
-	AllowSendingWithoutReply bool   `json:"allow_sending_without_reply,omitempty"`
-	ChatID                   any    `json:"chat_id"`
-	DisableNotification      bool   `json:"disable_notification,omitempty"`
-	FirstName                string `json:"first_name"`
-	LastName                 string `json:"last_name,omitempty"`
-	MessageThreadID          int64  `json:"message_thread_id,omitempty"`
-	PhoneNumber              string `json:"phone_number"`
-	ProtectContent           bool   `json:"protect_content,omitempty"`
-	ReplyMarkup              any    `json:"reply_markup,omitempty"`
-	ReplyToMessageID         int64  `json:"reply_to_message_id,omitempty"`
-	Vcard                    string `json:"vcard,omitempty"`
+	ChatID              any                    `json:"chat_id"`
+	DisableNotification bool                   `json:"disable_notification,omitempty"`
+	FirstName           string                 `json:"first_name"`
+	LastName            string                 `json:"last_name,omitempty"`
+	MessageThreadID     int64                  `json:"message_thread_id,omitempty"`
+	PhoneNumber         string                 `json:"phone_number"`
+	ProtectContent      bool                   `json:"protect_content,omitempty"`
+	ReplyMarkup         any                    `json:"reply_markup,omitempty"`
+	ReplyParameters     *types.ReplyParameters `json:"reply_parameters,omitempty"`
+	Vcard               string                 `json:"vcard,omitempty"`
 }
 
 func (entity *SendContact) ProgressCallable() rawTypes.ProgressCallable {

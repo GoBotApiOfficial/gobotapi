@@ -21,7 +21,7 @@ type InlineQueryResultPhoto struct {
 	PhotoURL            string                `json:"photo_url"`
 	PhotoWidth          int64                 `json:"photo_width,omitempty"`
 	ReplyMarkup         *InlineKeyboardMarkup `json:"reply_markup,omitempty"`
-	ThumbURL            string                `json:"thumb_url"`
+	ThumbnailURL        string                `json:"thumbnail_url"`
 	Title               string                `json:"title,omitempty"`
 }
 
@@ -30,7 +30,7 @@ func (entity InlineQueryResultPhoto) MarshalJSON() ([]byte, error) {
 		Type                string                `json:"type"`
 		ID                  string                `json:"id"`
 		PhotoURL            string                `json:"photo_url"`
-		ThumbURL            string                `json:"thumb_url"`
+		ThumbnailURL        string                `json:"thumbnail_url"`
 		PhotoWidth          int64                 `json:"photo_width,omitempty"`
 		PhotoHeight         int                   `json:"photo_height,omitempty"`
 		Title               string                `json:"title,omitempty"`
@@ -44,7 +44,7 @@ func (entity InlineQueryResultPhoto) MarshalJSON() ([]byte, error) {
 		Type:                "photo",
 		ID:                  entity.ID,
 		PhotoURL:            entity.PhotoURL,
-		ThumbURL:            entity.ThumbURL,
+		ThumbnailURL:        entity.ThumbnailURL,
 		PhotoWidth:          entity.PhotoWidth,
 		PhotoHeight:         entity.PhotoHeight,
 		Title:               entity.Title,

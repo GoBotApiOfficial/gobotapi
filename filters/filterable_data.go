@@ -3,8 +3,8 @@
 package filters
 
 import (
-	"github.com/Squirrel-Network/gobotapi"
-	"github.com/Squirrel-Network/gobotapi/types"
+	"github.com/GoBotApiOfficial/gobotapi"
+	"github.com/GoBotApiOfficial/gobotapi/types"
 )
 
 func filterableData(client *gobotapi.Client, filterable any) *DataFilter {
@@ -14,6 +14,12 @@ func filterableData(client *gobotapi.Client, filterable any) *DataFilter {
 		x := filterable.(types.CallbackQuery)
 		dataResult.From = &x.From
 		dataResult.Message = x.Message
+	case types.ChatBoostRemoved:
+		x := filterable.(types.ChatBoostRemoved)
+		dataResult.Chat = &x.Chat
+	case types.ChatBoostUpdated:
+		x := filterable.(types.ChatBoostUpdated)
+		dataResult.Chat = &x.Chat
 	case types.ChatJoinRequest:
 		x := filterable.(types.ChatJoinRequest)
 		dataResult.Chat = &x.Chat
@@ -35,6 +41,14 @@ func filterableData(client *gobotapi.Client, filterable any) *DataFilter {
 		dataResult.From = x.From
 		dataResult.Date = &x.Date
 		dataResult.Chat = &x.Chat
+	case types.MessageReactionCountUpdated:
+		x := filterable.(types.MessageReactionCountUpdated)
+		dataResult.Chat = &x.Chat
+		dataResult.Date = &x.Date
+	case types.MessageReactionUpdated:
+		x := filterable.(types.MessageReactionUpdated)
+		dataResult.Chat = &x.Chat
+		dataResult.Date = &x.Date
 	case types.PreCheckoutQuery:
 		x := filterable.(types.PreCheckoutQuery)
 		dataResult.From = &x.From

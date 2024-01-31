@@ -2,7 +2,7 @@
 
 package gobotapi
 
-import "github.com/Squirrel-Network/gobotapi/types"
+import "github.com/GoBotApiOfficial/gobotapi/types"
 
 func (ctx *BasicClient) handleUpdate(user *types.User, token string, update types.Update) {
 	client := &Client{
@@ -40,6 +40,20 @@ func (ctx *BasicClient) handleUpdate(user *types.User, token string, update type
 		for _, x0 := range ctx.handlers["edited_channel_post"] {
 			ctx.concurrencyManager.Enqueue(func(x ...any) {
 				x[0].(func(*Client, types.Message))(client, *update.EditedChannelPost)
+			}, x0)
+		}
+	}
+	if update.MessageReaction != nil {
+		for _, x0 := range ctx.handlers["message_reaction"] {
+			ctx.concurrencyManager.Enqueue(func(x ...any) {
+				x[0].(func(*Client, types.MessageReactionUpdated))(client, *update.MessageReaction)
+			}, x0)
+		}
+	}
+	if update.MessageReactionCount != nil {
+		for _, x0 := range ctx.handlers["message_reaction_count"] {
+			ctx.concurrencyManager.Enqueue(func(x ...any) {
+				x[0].(func(*Client, types.MessageReactionCountUpdated))(client, *update.MessageReactionCount)
 			}, x0)
 		}
 	}
@@ -110,6 +124,20 @@ func (ctx *BasicClient) handleUpdate(user *types.User, token string, update type
 		for _, x0 := range ctx.handlers["chat_join_request"] {
 			ctx.concurrencyManager.Enqueue(func(x ...any) {
 				x[0].(func(*Client, types.ChatJoinRequest))(client, *update.ChatJoinRequest)
+			}, x0)
+		}
+	}
+	if update.ChatBoost != nil {
+		for _, x0 := range ctx.handlers["chat_boost"] {
+			ctx.concurrencyManager.Enqueue(func(x ...any) {
+				x[0].(func(*Client, types.ChatBoostUpdated))(client, *update.ChatBoost)
+			}, x0)
+		}
+	}
+	if update.RemovedChatBoost != nil {
+		for _, x0 := range ctx.handlers["removed_chat_boost"] {
+			ctx.concurrencyManager.Enqueue(func(x ...any) {
+				x[0].(func(*Client, types.ChatBoostRemoved))(client, *update.RemovedChatBoost)
 			}, x0)
 		}
 	}

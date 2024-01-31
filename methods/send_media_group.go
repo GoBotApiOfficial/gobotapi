@@ -5,22 +5,21 @@ package methods
 import (
 	"encoding/json"
 	"fmt"
-	"github.com/Squirrel-Network/gobotapi/types"
-	rawTypes "github.com/Squirrel-Network/gobotapi/types/raw"
+	"github.com/GoBotApiOfficial/gobotapi/types"
+	rawTypes "github.com/GoBotApiOfficial/gobotapi/types/raw"
 )
 
 // SendMediaGroup Use this method to send a group of photos, videos, documents or audios as an album
 // Documents and audio files can be only grouped in an album with messages of the same type
 // On success, an array of Messages that were sent is returned.
 type SendMediaGroup struct {
-	AllowSendingWithoutReply bool                      `json:"allow_sending_without_reply,omitempty"`
-	ChatID                   any                       `json:"chat_id"`
-	DisableNotification      bool                      `json:"disable_notification,omitempty"`
-	Media                    []types.InputMedia        `json:"media,omitempty"`
-	MessageThreadID          int64                     `json:"message_thread_id,omitempty"`
-	ProtectContent           bool                      `json:"protect_content,omitempty"`
-	ReplyToMessageID         int64                     `json:"reply_to_message_id,omitempty"`
-	Progress                 rawTypes.ProgressCallable `json:"-"`
+	ChatID              any                       `json:"chat_id"`
+	DisableNotification bool                      `json:"disable_notification,omitempty"`
+	Media               []types.InputMedia        `json:"media,omitempty"`
+	MessageThreadID     int64                     `json:"message_thread_id,omitempty"`
+	ProtectContent      bool                      `json:"protect_content,omitempty"`
+	ReplyParameters     *types.ReplyParameters    `json:"reply_parameters,omitempty"`
+	Progress            rawTypes.ProgressCallable `json:"-"`
 }
 
 func (entity *SendMediaGroup) ProgressCallable() rawTypes.ProgressCallable {

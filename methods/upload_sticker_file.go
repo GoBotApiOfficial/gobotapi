@@ -4,16 +4,17 @@ package methods
 
 import (
 	"encoding/json"
-	"github.com/Squirrel-Network/gobotapi/types"
-	rawTypes "github.com/Squirrel-Network/gobotapi/types/raw"
+	"github.com/GoBotApiOfficial/gobotapi/types"
+	rawTypes "github.com/GoBotApiOfficial/gobotapi/types/raw"
 )
 
-// UploadStickerFile Use this method to upload a .PNG file with a sticker for later use in createNewStickerSet and addStickerToSet methods (can be used multiple times)
+// UploadStickerFile Use this method to upload a file with a sticker for later use in the createNewStickerSet and addStickerToSet methods (the file can be used multiple times)
 // Returns the uploaded File on success.
 type UploadStickerFile struct {
-	PngSticker rawTypes.InputFile        `json:"png_sticker,omitempty"`
-	UserID     int64                     `json:"user_id"`
-	Progress   rawTypes.ProgressCallable `json:"-"`
+	Sticker       rawTypes.InputFile        `json:"sticker,omitempty"`
+	StickerFormat string                    `json:"sticker_format"`
+	UserID        int64                     `json:"user_id"`
+	Progress      rawTypes.ProgressCallable `json:"-"`
 }
 
 func (entity *UploadStickerFile) ProgressCallable() rawTypes.ProgressCallable {
@@ -22,10 +23,10 @@ func (entity *UploadStickerFile) ProgressCallable() rawTypes.ProgressCallable {
 
 func (entity *UploadStickerFile) Files() map[string]rawTypes.InputFile {
 	files := make(map[string]rawTypes.InputFile)
-	switch entity.PngSticker.(type) {
+	switch entity.Sticker.(type) {
 	case types.InputBytes:
-		files["png_sticker"] = entity.PngSticker
-		entity.PngSticker = nil
+		files["sticker"] = entity.Sticker
+		entity.Sticker = nil
 	}
 	return files
 }

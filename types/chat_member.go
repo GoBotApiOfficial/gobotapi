@@ -15,13 +15,16 @@ type ChatMember struct {
 	CanBeEdited           bool   `json:"can_be_edited"`
 	CanChangeInfo         bool   `json:"can_change_info"`
 	CanDeleteMessages     bool   `json:"can_delete_messages"`
+	CanDeleteStories      bool   `json:"can_delete_stories"`
 	CanEditMessages       bool   `json:"can_edit_messages"`
+	CanEditStories        bool   `json:"can_edit_stories"`
 	CanInviteUsers        bool   `json:"can_invite_users"`
 	CanManageChat         bool   `json:"can_manage_chat"`
 	CanManageTopics       bool   `json:"can_manage_topics"`
 	CanManageVideoChats   bool   `json:"can_manage_video_chats"`
 	CanPinMessages        bool   `json:"can_pin_messages"`
 	CanPostMessages       bool   `json:"can_post_messages"`
+	CanPostStories        bool   `json:"can_post_stories"`
 	CanPromoteMembers     bool   `json:"can_promote_members"`
 	CanRestrictMembers    bool   `json:"can_restrict_members"`
 	CanSendAudios         bool   `json:"can_send_audios"`

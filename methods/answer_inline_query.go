@@ -4,20 +4,19 @@ package methods
 
 import (
 	"encoding/json"
-	"github.com/Squirrel-Network/gobotapi/types"
-	rawTypes "github.com/Squirrel-Network/gobotapi/types/raw"
+	"github.com/GoBotApiOfficial/gobotapi/types"
+	rawTypes "github.com/GoBotApiOfficial/gobotapi/types/raw"
 )
 
 // AnswerInlineQuery Use this method to send answers to an inline query
 // On success, True is returned.No more than 50 results per query are allowed.
 type AnswerInlineQuery struct {
-	CacheTime         int                       `json:"cache_time,omitempty"`
-	InlineQueryID     string                    `json:"inline_query_id"`
-	IsPersonal        bool                      `json:"is_personal,omitempty"`
-	NextOffset        string                    `json:"next_offset,omitempty"`
-	Results           []types.InlineQueryResult `json:"results,omitempty"`
-	SwitchPmParameter string                    `json:"switch_pm_parameter,omitempty"`
-	SwitchPmText      string                    `json:"switch_pm_text,omitempty"`
+	Button        *types.InlineQueryResultsButton `json:"button,omitempty"`
+	CacheTime     int                             `json:"cache_time,omitempty"`
+	InlineQueryID string                          `json:"inline_query_id"`
+	IsPersonal    bool                            `json:"is_personal,omitempty"`
+	NextOffset    string                          `json:"next_offset,omitempty"`
+	Results       []types.InlineQueryResult       `json:"results,omitempty"`
 }
 
 func (entity *AnswerInlineQuery) ProgressCallable() rawTypes.ProgressCallable {

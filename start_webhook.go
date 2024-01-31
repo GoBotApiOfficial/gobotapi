@@ -4,8 +4,8 @@ import (
 	"encoding/json"
 	"errors"
 	"fmt"
-	"github.com/Squirrel-Network/gobotapi/methods"
-	"github.com/Squirrel-Network/gobotapi/types"
+	"github.com/GoBotApiOfficial/gobotapi/methods"
+	"github.com/GoBotApiOfficial/gobotapi/types"
 	"net/http"
 )
 
@@ -16,11 +16,19 @@ func (ctx *WebhookClient) Start() error {
 	if ctx.clients == nil {
 		ctx.clients = make(map[string]*types.User)
 	}
-	ctx.BasicClient.cloningURL = fmt.Sprintf(
-		"https://%s:%d/",
-		ctx.WebhookConfig.Config.HostName,
-		ctx.WebhookConfig.Config.Port,
-	)
+	if ctx.WebhookConfig.Config.IsLocalWebHookServer {
+		ctx.BasicClient.cloningURL = fmt.Sprintf(
+			"http://%s:%d/",
+			ctx.WebhookConfig.Config.HostName,
+			ctx.WebhookConfig.Config.Port,
+		)
+	} else {
+		ctx.BasicClient.cloningURL = fmt.Sprintf(
+			"https://%s:%d/",
+			ctx.WebhookConfig.Config.HostName,
+			ctx.WebhookConfig.Config.Port,
+		)
+	}
 	ctx.BasicClient.setup()
 	if ctx.NoUpdates {
 		return nil

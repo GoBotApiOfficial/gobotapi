@@ -3,15 +3,15 @@
 package filters
 
 import (
-	"github.com/Squirrel-Network/gobotapi"
-	"github.com/Squirrel-Network/gobotapi/types"
+	"github.com/GoBotApiOfficial/gobotapi"
+	"github.com/GoBotApiOfficial/gobotapi/types"
 )
 
 type DataFilter struct {
 	Chat      *types.Chat
 	Date      *int64
 	From      *types.User
-	Message   *types.Message
+	Message   *types.MaybeInaccessibleMessage
 	Client    *gobotapi.Client
 	RawUpdate any
 }

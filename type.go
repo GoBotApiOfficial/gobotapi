@@ -1,10 +1,10 @@
 package gobotapi
 
 import (
-	"github.com/Squirrel-Network/gobotapi/logger"
-	"github.com/Squirrel-Network/gobotapi/types"
-	rawTypes "github.com/Squirrel-Network/gobotapi/types/raw"
-	"github.com/Squirrel-Network/gobotapi/utils/concurrency"
+	"github.com/GoBotApiOfficial/gobotapi/logger"
+	"github.com/GoBotApiOfficial/gobotapi/types"
+	rawTypes "github.com/GoBotApiOfficial/gobotapi/types/raw"
+	"github.com/GoBotApiOfficial/gobotapi/utils/concurrency"
 	"net/http"
 	"sync"
 	"time"

@@ -21,8 +21,8 @@ type InlineQueryResultMpeg4Gif struct {
 	Mpeg4Width          int64                 `json:"mpeg4_width,omitempty"`
 	ParseMode           string                `json:"parse_mode,omitempty"`
 	ReplyMarkup         *InlineKeyboardMarkup `json:"reply_markup,omitempty"`
-	ThumbMimeType       string                `json:"thumb_mime_type,omitempty"`
-	ThumbURL            string                `json:"thumb_url"`
+	ThumbnailMimeType   string                `json:"thumbnail_mime_type,omitempty"`
+	ThumbnailURL        string                `json:"thumbnail_url"`
 	Title               string                `json:"title,omitempty"`
 }
 
@@ -34,8 +34,8 @@ func (entity InlineQueryResultMpeg4Gif) MarshalJSON() ([]byte, error) {
 		Mpeg4Width          int64                 `json:"mpeg4_width,omitempty"`
 		Mpeg4Height         int                   `json:"mpeg4_height,omitempty"`
 		Mpeg4Duration       int                   `json:"mpeg4_duration,omitempty"`
-		ThumbURL            string                `json:"thumb_url"`
-		ThumbMimeType       string                `json:"thumb_mime_type,omitempty"`
+		ThumbnailURL        string                `json:"thumbnail_url"`
+		ThumbnailMimeType   string                `json:"thumbnail_mime_type,omitempty"`
 		Title               string                `json:"title,omitempty"`
 		Caption             string                `json:"caption,omitempty"`
 		ParseMode           string                `json:"parse_mode,omitempty"`
@@ -49,8 +49,8 @@ func (entity InlineQueryResultMpeg4Gif) MarshalJSON() ([]byte, error) {
 		Mpeg4Width:          entity.Mpeg4Width,
 		Mpeg4Height:         entity.Mpeg4Height,
 		Mpeg4Duration:       entity.Mpeg4Duration,
-		ThumbURL:            entity.ThumbURL,
-		ThumbMimeType:       entity.ThumbMimeType,
+		ThumbnailURL:        entity.ThumbnailURL,
+		ThumbnailMimeType:   entity.ThumbnailMimeType,
 		Title:               entity.Title,
 		Caption:             entity.Caption,
 		ParseMode:           entity.ParseMode,

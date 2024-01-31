@@ -5,14 +5,13 @@ package methods
 import (
 	"encoding/json"
 	"fmt"
-	"github.com/Squirrel-Network/gobotapi/types"
-	rawTypes "github.com/Squirrel-Network/gobotapi/types/raw"
+	"github.com/GoBotApiOfficial/gobotapi/types"
+	rawTypes "github.com/GoBotApiOfficial/gobotapi/types/raw"
 )
 
 // SendInvoice Use this method to send invoices
 // On success, the sent Message is returned.
 type SendInvoice struct {
-	AllowSendingWithoutReply  bool                        `json:"allow_sending_without_reply,omitempty"`
 	ChatID                    any                         `json:"chat_id"`
 	Currency                  string                      `json:"currency"`
 	Description               string                      `json:"description"`
@@ -34,7 +33,7 @@ type SendInvoice struct {
 	ProviderData              string                      `json:"provider_data,omitempty"`
 	ProviderToken             string                      `json:"provider_token"`
 	ReplyMarkup               *types.InlineKeyboardMarkup `json:"reply_markup,omitempty"`
-	ReplyToMessageID          int64                       `json:"reply_to_message_id,omitempty"`
+	ReplyParameters           *types.ReplyParameters      `json:"reply_parameters,omitempty"`
 	SendEmailToProvider       bool                        `json:"send_email_to_provider,omitempty"`
 	SendPhoneNumberToProvider bool                        `json:"send_phone_number_to_provider,omitempty"`
 	StartParameter            string                      `json:"start_parameter,omitempty"`

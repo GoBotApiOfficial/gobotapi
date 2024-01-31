@@ -5,22 +5,22 @@ package methods
 import (
 	"encoding/json"
 	"fmt"
-	"github.com/Squirrel-Network/gobotapi/types"
-	rawTypes "github.com/Squirrel-Network/gobotapi/types/raw"
+	"github.com/GoBotApiOfficial/gobotapi/types"
+	rawTypes "github.com/GoBotApiOfficial/gobotapi/types/raw"
 )
 
 // SendSticker Use this method to send static .WEBP, animated .TGS, or video .WEBM stickers
 // On success, the sent Message is returned.
 type SendSticker struct {
-	AllowSendingWithoutReply bool                      `json:"allow_sending_without_reply,omitempty"`
-	ChatID                   any                       `json:"chat_id"`
-	DisableNotification      bool                      `json:"disable_notification,omitempty"`
-	MessageThreadID          int64                     `json:"message_thread_id,omitempty"`
-	ProtectContent           bool                      `json:"protect_content,omitempty"`
-	ReplyMarkup              any                       `json:"reply_markup,omitempty"`
-	ReplyToMessageID         int64                     `json:"reply_to_message_id,omitempty"`
-	Sticker                  rawTypes.InputFile        `json:"sticker,omitempty"`
-	Progress                 rawTypes.ProgressCallable `json:"-"`
+	ChatID              any                       `json:"chat_id"`
+	DisableNotification bool                      `json:"disable_notification,omitempty"`
+	Emoji               string                    `json:"emoji,omitempty"`
+	MessageThreadID     int64                     `json:"message_thread_id,omitempty"`
+	ProtectContent      bool                      `json:"protect_content,omitempty"`
+	ReplyMarkup         any                       `json:"reply_markup,omitempty"`
+	ReplyParameters     *types.ReplyParameters    `json:"reply_parameters,omitempty"`
+	Sticker             rawTypes.InputFile        `json:"sticker,omitempty"`
+	Progress            rawTypes.ProgressCallable `json:"-"`
 }
 
 func (entity *SendSticker) ProgressCallable() rawTypes.ProgressCallable {

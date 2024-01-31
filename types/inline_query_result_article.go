@@ -14,9 +14,9 @@ type InlineQueryResultArticle struct {
 	ID                  string                `json:"id"`
 	InputMessageContent any                   `json:"input_message_content"`
 	ReplyMarkup         *InlineKeyboardMarkup `json:"reply_markup,omitempty"`
-	ThumbHeight         int                   `json:"thumb_height,omitempty"`
-	ThumbURL            string                `json:"thumb_url,omitempty"`
-	ThumbWidth          int64                 `json:"thumb_width,omitempty"`
+	ThumbnailHeight     int                   `json:"thumbnail_height,omitempty"`
+	ThumbnailURL        string                `json:"thumbnail_url,omitempty"`
+	ThumbnailWidth      int64                 `json:"thumbnail_width,omitempty"`
 	Title               string                `json:"title"`
 	URL                 string                `json:"url,omitempty"`
 }
@@ -31,9 +31,9 @@ func (entity InlineQueryResultArticle) MarshalJSON() ([]byte, error) {
 		URL                 string                `json:"url,omitempty"`
 		HideURL             bool                  `json:"hide_url,omitempty"`
 		Description         string                `json:"description,omitempty"`
-		ThumbURL            string                `json:"thumb_url,omitempty"`
-		ThumbWidth          int64                 `json:"thumb_width,omitempty"`
-		ThumbHeight         int                   `json:"thumb_height,omitempty"`
+		ThumbnailURL        string                `json:"thumbnail_url,omitempty"`
+		ThumbnailWidth      int64                 `json:"thumbnail_width,omitempty"`
+		ThumbnailHeight     int                   `json:"thumbnail_height,omitempty"`
 	}{
 		Type:                "article",
 		ID:                  entity.ID,
@@ -43,9 +43,9 @@ func (entity InlineQueryResultArticle) MarshalJSON() ([]byte, error) {
 		URL:                 entity.URL,
 		HideURL:             entity.HideURL,
 		Description:         entity.Description,
-		ThumbURL:            entity.ThumbURL,
-		ThumbWidth:          entity.ThumbWidth,
-		ThumbHeight:         entity.ThumbHeight,
+		ThumbnailURL:        entity.ThumbnailURL,
+		ThumbnailWidth:      entity.ThumbnailWidth,
+		ThumbnailHeight:     entity.ThumbnailHeight,
 	}
 	switch entity.InputMessageContent.(type) {
 	case InputTextMessageContent, InputLocationMessageContent, InputVenueMessageContent, InputContactMessageContent, InputInvoiceMessageContent:

@@ -4,49 +4,29 @@ package methods
 
 import (
 	"encoding/json"
-	"github.com/Squirrel-Network/gobotapi/types"
-	rawTypes "github.com/Squirrel-Network/gobotapi/types/raw"
+	"github.com/GoBotApiOfficial/gobotapi/types"
+	rawTypes "github.com/GoBotApiOfficial/gobotapi/types/raw"
 )
 
 // CreateNewStickerSet Use this method to create a new sticker set owned by a user
 // The bot will be able to edit the sticker set thus created
-// You must use exactly one of the fields png_sticker, tgs_sticker, or webm_sticker
 // Returns True on success.
 type CreateNewStickerSet struct {
-	Emojis       string                    `json:"emojis"`
-	MaskPosition *types.MaskPosition       `json:"mask_position,omitempty"`
-	Name         string                    `json:"name"`
-	PngSticker   rawTypes.InputFile        `json:"png_sticker,omitempty"`
-	StickerType  string                    `json:"sticker_type,omitempty"`
-	TgsSticker   rawTypes.InputFile        `json:"tgs_sticker,omitempty"`
-	Title        string                    `json:"title"`
-	UserID       int64                     `json:"user_id"`
-	WebmSticker  rawTypes.InputFile        `json:"webm_sticker,omitempty"`
-	Progress     rawTypes.ProgressCallable `json:"-"`
+	Name            string               `json:"name"`
+	NeedsRepainting bool                 `json:"needs_repainting,omitempty"`
+	StickerFormat   string               `json:"sticker_format"`
+	StickerType     string               `json:"sticker_type,omitempty"`
+	Stickers        []types.InputSticker `json:"stickers,omitempty"`
+	Title           string               `json:"title"`
+	UserID          int64                `json:"user_id"`
 }
 
 func (entity *CreateNewStickerSet) ProgressCallable() rawTypes.ProgressCallable {
-	return entity.Progress
+	return nil
 }
 
 func (entity *CreateNewStickerSet) Files() map[string]rawTypes.InputFile {
-	files := make(map[string]rawTypes.InputFile)
-	switch entity.PngSticker.(type) {
-	case types.InputBytes:
-		files["png_sticker"] = entity.PngSticker
-		entity.PngSticker = nil
-	}
-	switch entity.TgsSticker.(type) {
-	case types.InputBytes:
-		files["tgs_sticker"] = entity.TgsSticker
-		entity.TgsSticker = nil
-	}
-	switch entity.WebmSticker.(type) {
-	case types.InputBytes:
-		files["webm_sticker"] = entity.WebmSticker
-		entity.WebmSticker = nil
-	}
-	return files
+	return map[string]rawTypes.InputFile{}
 }
 
 func (CreateNewStickerSet) MethodName() string {

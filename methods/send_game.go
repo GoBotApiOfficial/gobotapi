@@ -4,21 +4,20 @@ package methods
 
 import (
 	"encoding/json"
-	"github.com/Squirrel-Network/gobotapi/types"
-	rawTypes "github.com/Squirrel-Network/gobotapi/types/raw"
+	"github.com/GoBotApiOfficial/gobotapi/types"
+	rawTypes "github.com/GoBotApiOfficial/gobotapi/types/raw"
 )
 
 // SendGame Use this method to send a game
 // On success, the sent Message is returned.
 type SendGame struct {
-	AllowSendingWithoutReply bool                        `json:"allow_sending_without_reply,omitempty"`
-	ChatID                   int64                       `json:"chat_id"`
-	DisableNotification      bool                        `json:"disable_notification,omitempty"`
-	GameShortName            string                      `json:"game_short_name"`
-	MessageThreadID          int64                       `json:"message_thread_id,omitempty"`
-	ProtectContent           bool                        `json:"protect_content,omitempty"`
-	ReplyMarkup              *types.InlineKeyboardMarkup `json:"reply_markup,omitempty"`
-	ReplyToMessageID         int64                       `json:"reply_to_message_id,omitempty"`
+	ChatID              int64                       `json:"chat_id"`
+	DisableNotification bool                        `json:"disable_notification,omitempty"`
+	GameShortName       string                      `json:"game_short_name"`
+	MessageThreadID     int64                       `json:"message_thread_id,omitempty"`
+	ProtectContent      bool                        `json:"protect_content,omitempty"`
+	ReplyMarkup         *types.InlineKeyboardMarkup `json:"reply_markup,omitempty"`
+	ReplyParameters     *types.ReplyParameters      `json:"reply_parameters,omitempty"`
 }
 
 func (entity *SendGame) ProgressCallable() rawTypes.ProgressCallable {
