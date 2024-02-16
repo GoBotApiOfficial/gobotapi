@@ -7,6 +7,7 @@ type Message struct {
 	Animation                     *Animation                     `json:"animation,omitempty"`
 	Audio                         *Audio                         `json:"audio,omitempty"`
 	AuthorSignature               string                         `json:"author_signature,omitempty"`
+	BoostAdded                    *ChatBoostAdded                `json:"boost_added,omitempty"`
 	Caption                       string                         `json:"caption,omitempty"`
 	CaptionEntities               []MessageEntity                `json:"caption_entities,omitempty"`
 	ChannelChatCreated            bool                           `json:"channel_chat_created,omitempty"`
@@ -60,6 +61,8 @@ type Message struct {
 	Quote                         *TextQuote                     `json:"quote,omitempty"`
 	ReplyMarkup                   *InlineKeyboardMarkup          `json:"reply_markup,omitempty"`
 	ReplyToMessage                *Message                       `json:"reply_to_message,omitempty"`
+	ReplyToStory                  *Story                         `json:"reply_to_story,omitempty"`
+	SenderBoostCount              int                            `json:"sender_boost_count,omitempty"`
 	SenderChat                    *Chat                          `json:"sender_chat,omitempty"`
 	Sticker                       *Sticker                       `json:"sticker,omitempty"`
 	Story                         *Story                         `json:"story,omitempty"`

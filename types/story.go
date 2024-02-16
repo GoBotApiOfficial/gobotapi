@@ -2,6 +2,8 @@
 
 package types
 
-// Story Represents a message about a forwarded story in the chat
-// Currently holds no information.
-type Story any
+// Story Represents a story.
+type Story struct {
+	Chat Chat  `json:"chat"`
+	ID   int64 `json:"id"`
+}

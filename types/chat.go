@@ -15,6 +15,7 @@ type Chat struct {
 	BackgroundCustomEmojiID            string           `json:"background_custom_emoji_id,omitempty"`
 	Bio                                string           `json:"bio,omitempty"`
 	CanSetStickerSet                   bool             `json:"can_set_sticker_set,omitempty"`
+	CustomEmojiStickerSetName          string           `json:"custom_emoji_sticker_set_name,omitempty"`
 	Description                        string           `json:"description,omitempty"`
 	EmojiStatusCustomEmojiID           string           `json:"emoji_status_custom_emoji_id,omitempty"`
 	EmojiStatusExpirationDate          int64            `json:"emoji_status_expiration_date,omitempty"`
@@ -43,6 +44,7 @@ type Chat struct {
 	StickerSetName                     string           `json:"sticker_set_name,omitempty"`
 	Title                              string           `json:"title,omitempty"`
 	Type                               string           `json:"type"`
+	UnrestrictBoostCount               int              `json:"unrestrict_boost_count,omitempty"`
 	Username                           string           `json:"username,omitempty"`
 }
 
