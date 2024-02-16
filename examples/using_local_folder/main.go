@@ -8,13 +8,12 @@ import (
 )
 
 func main() {
-	client := gobotapi.NewClient("XXXX:XXXXXXXXX")
-	// Start the bot
-	client.Start()
-	// Invoke a SendMessage method
+	client := gobotapi.NewClient("1234567890:abcdegh145198x$")
+	_ = client.Start()
+
 	result, err := client.Invoke(&methods.SendMessage{
-		ChatID: 1234556789,
-		Text:   "Hello World!",
+		ChatID: 123456789,
+		Text:   "WORK!",
 	})
 	// Check if there is an error
 	if err != nil {
