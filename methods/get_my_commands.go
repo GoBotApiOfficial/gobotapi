@@ -4,8 +4,8 @@ package methods
 
 import (
 	"encoding/json"
-	"github.com/GoBotApiOfficial/gobotapi/types"
-	rawTypes "github.com/GoBotApiOfficial/gobotapi/types/raw"
+	"gobotapi/types"
+	rawTypes "gobotapi/types/raw"
 )
 
 // GetMyCommands Use this method to get the current list of the bot's commands for the given scope and user language

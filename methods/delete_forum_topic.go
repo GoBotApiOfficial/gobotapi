@@ -5,8 +5,8 @@ package methods
 import (
 	"encoding/json"
 	"fmt"
-	"github.com/GoBotApiOfficial/gobotapi/types"
-	rawTypes "github.com/GoBotApiOfficial/gobotapi/types/raw"
+	"gobotapi/types"
+	rawTypes "gobotapi/types/raw"
 )
 
 // DeleteForumTopic Use this method to delete a forum topic along with all its messages in a forum supergroup chat

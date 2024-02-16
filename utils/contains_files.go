@@ -2,7 +2,7 @@
 
 package utils
 
-import "github.com/GoBotApiOfficial/gobotapi/types"
+import "gobotapi/types"
 
 func ContainsFiles(message types.Message) bool {
 	return message.Animation != nil ||

@@ -4,8 +4,8 @@ package methods
 
 import (
 	"encoding/json"
-	"github.com/GoBotApiOfficial/gobotapi/types"
-	rawTypes "github.com/GoBotApiOfficial/gobotapi/types/raw"
+	"gobotapi/types"
+	rawTypes "gobotapi/types/raw"
 )
 
 // GetWebhookInfo Use this method to get current webhook status

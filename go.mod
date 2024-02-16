@@ -1,3 +1,3 @@
-module github.com/GoBotApiOfficial/gobotapi
+module gobotapi
 
 go 1.18

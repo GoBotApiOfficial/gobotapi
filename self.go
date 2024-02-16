@@ -1,6 +1,6 @@
 package gobotapi
 
-import "github.com/GoBotApiOfficial/gobotapi/types"
+import "gobotapi/types"
 
 func (ctx *Client) Self() types.User {
 	return *ctx.me

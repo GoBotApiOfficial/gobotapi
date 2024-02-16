@@ -1,7 +1,7 @@
 package utils
 
 import (
-	rawTypes "github.com/GoBotApiOfficial/gobotapi/types/raw"
+	rawTypes "gobotapi/types/raw"
 	"strings"
 )
 

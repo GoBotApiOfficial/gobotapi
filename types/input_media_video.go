@@ -5,7 +5,7 @@ package types
 import (
 	"encoding/json"
 	"fmt"
-	rawTypes "github.com/GoBotApiOfficial/gobotapi/types/raw"
+	rawTypes "gobotapi/types/raw"
 )
 
 // InputMediaVideo Represents a video to be sent.
@@ -39,7 +39,8 @@ func (entity *InputMediaVideo) SetAttachment(attach string) {
 	entity.Media = InputURL(fmt.Sprintf("attach://%s", attach))
 }
 
-func (entity *InputMediaVideo) SetAttachmentThumb(_ string) {
+func (entity *InputMediaVideo) SetAttachmentThumb(attach string) {
+	entity.Thumbnail = InputURL(fmt.Sprintf("attach://%s", attach))
 }
 
 func (entity InputMediaVideo) MarshalJSON() ([]byte, error) {

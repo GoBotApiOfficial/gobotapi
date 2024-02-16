@@ -2,7 +2,7 @@
 
 package filters
 
-import "github.com/GoBotApiOfficial/gobotapi/types"
+import "gobotapi/types"
 
 type Filterable interface {
 	types.CallbackQuery |

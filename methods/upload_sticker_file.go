@@ -4,8 +4,8 @@ package methods
 
 import (
 	"encoding/json"
-	"github.com/GoBotApiOfficial/gobotapi/types"
-	rawTypes "github.com/GoBotApiOfficial/gobotapi/types/raw"
+	"gobotapi/types"
+	rawTypes "gobotapi/types/raw"
 )
 
 // UploadStickerFile Use this method to upload a file with a sticker for later use in the createNewStickerSet and addStickerToSet methods (the file can be used multiple times)

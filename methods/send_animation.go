@@ -5,8 +5,8 @@ package methods
 import (
 	"encoding/json"
 	"fmt"
-	"github.com/GoBotApiOfficial/gobotapi/types"
-	rawTypes "github.com/GoBotApiOfficial/gobotapi/types/raw"
+	"gobotapi/types"
+	rawTypes "gobotapi/types/raw"
 )
 
 // SendAnimation Use this method to send animation files (GIF or H.264/MPEG-4 AVC video without sound)
@@ -45,26 +45,26 @@ func (entity *SendAnimation) Files() map[string]rawTypes.InputFile {
 	switch entity.Thumbnail.(type) {
 	case types.InputBytes:
 		files["thumbnail"] = entity.Thumbnail
-		entity.Thumbnail = nil
+		entity.Thumbnail = types.InputURL("attach://thumbnail")
 	}
 	return files
 }
 
 func (entity SendAnimation) MarshalJSON() ([]byte, error) {
-	if entity.ReplyMarkup != nil {
-		switch entity.ReplyMarkup.(type) {
-		case *types.InlineKeyboardMarkup, *types.ReplyKeyboardMarkup, *types.ReplyKeyboardRemove, *types.ForceReply:
-			break
-		default:
-			return nil, fmt.Errorf("reply_markup: unknown type: %T", entity.ReplyMarkup)
-		}
-	}
 	if entity.ChatID != nil {
 		switch entity.ChatID.(type) {
 		case int, int64, string:
 			break
 		default:
 			return nil, fmt.Errorf("chat_id: unknown type: %T", entity.ChatID)
+		}
+	}
+	if entity.ReplyMarkup != nil {
+		switch entity.ReplyMarkup.(type) {
+		case *types.InlineKeyboardMarkup, *types.ReplyKeyboardMarkup, *types.ReplyKeyboardRemove, *types.ForceReply:
+			break
+		default:
+			return nil, fmt.Errorf("reply_markup: unknown type: %T", entity.ReplyMarkup)
 		}
 	}
 	type x0 SendAnimation

@@ -4,8 +4,8 @@ import (
 	"encoding/json"
 	"errors"
 	"fmt"
-	"github.com/GoBotApiOfficial/gobotapi/methods"
-	"github.com/GoBotApiOfficial/gobotapi/types"
+	"gobotapi/methods"
+	"gobotapi/types"
 	"net/http"
 )
 

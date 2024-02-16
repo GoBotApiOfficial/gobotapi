@@ -2,7 +2,7 @@ package gobotapi
 
 import (
 	"errors"
-	rawTypes "github.com/GoBotApiOfficial/gobotapi/types/raw"
+	rawTypes "gobotapi/types/raw"
 	"os"
 	"path"
 )

@@ -5,7 +5,7 @@ package types
 import (
 	"encoding/json"
 	"fmt"
-	rawTypes "github.com/GoBotApiOfficial/gobotapi/types/raw"
+	rawTypes "gobotapi/types/raw"
 )
 
 // InputMediaDocument Represents a general file to be sent.
@@ -35,7 +35,8 @@ func (entity *InputMediaDocument) SetAttachment(attach string) {
 	entity.Media = InputURL(fmt.Sprintf("attach://%s", attach))
 }
 
-func (entity *InputMediaDocument) SetAttachmentThumb(_ string) {
+func (entity *InputMediaDocument) SetAttachmentThumb(attach string) {
+	entity.Thumbnail = InputURL(fmt.Sprintf("attach://%s", attach))
 }
 
 func (entity InputMediaDocument) MarshalJSON() ([]byte, error) {

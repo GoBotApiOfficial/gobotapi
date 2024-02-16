@@ -5,8 +5,8 @@ package methods
 import (
 	"encoding/json"
 	"fmt"
-	"github.com/GoBotApiOfficial/gobotapi/types"
-	rawTypes "github.com/GoBotApiOfficial/gobotapi/types/raw"
+	"gobotapi/types"
+	rawTypes "gobotapi/types/raw"
 )
 
 // SendVideo Use this method to send video files, Telegram clients support MPEG4 videos (other formats may be sent as Document)
@@ -41,7 +41,7 @@ func (entity *SendVideo) Files() map[string]rawTypes.InputFile {
 	switch entity.Thumbnail.(type) {
 	case types.InputBytes:
 		files["thumbnail"] = entity.Thumbnail
-		entity.Thumbnail = nil
+		entity.Thumbnail = types.InputURL("attach://thumbnail")
 	}
 	switch entity.Video.(type) {
 	case types.InputBytes:

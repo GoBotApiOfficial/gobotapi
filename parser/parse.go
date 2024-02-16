@@ -2,7 +2,7 @@ package parser
 
 import (
 	"fmt"
-	"github.com/GoBotApiOfficial/gobotapi/types"
+	"gobotapi/types"
 	"unicode/utf16"
 )
 

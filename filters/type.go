@@ -3,8 +3,8 @@
 package filters
 
 import (
-	"github.com/GoBotApiOfficial/gobotapi"
-	"github.com/GoBotApiOfficial/gobotapi/types"
+	"gobotapi"
+	"gobotapi/types"
 )
 
 type DataFilter struct {

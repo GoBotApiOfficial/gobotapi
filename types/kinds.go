@@ -2,11 +2,18 @@
 
 package types
 
-// CHAT_BOOST_SOURCE
+// MESSAGE_ORIGIN
 const (
-	TypeChatBoostSourcePremium = iota
-	TypeChatBoostSourceGiftCode
-	TypeChatBoostSourceGiveaway
+	TypeMessageOriginUser = iota
+	TypeMessageOriginHiddenUser
+	TypeMessageOriginChat
+	TypeMessageOriginChannel
+)
+
+// MAYBE_INACCESSIBLE_MESSAGE
+const (
+	TypeMessage = iota
+	TypeInaccessibleMessage
 )
 
 // CHAT_MEMBER
@@ -19,18 +26,11 @@ const (
 	TypeChatMemberBanned
 )
 
-// MAYBE_INACCESSIBLE_MESSAGE
+// CHAT_BOOST_SOURCE
 const (
-	TypeMessage = iota
-	TypeInaccessibleMessage
-)
-
-// MESSAGE_ORIGIN
-const (
-	TypeMessageOriginUser = iota
-	TypeMessageOriginHiddenUser
-	TypeMessageOriginChat
-	TypeMessageOriginChannel
+	TypeChatBoostSourcePremium = iota
+	TypeChatBoostSourceGiftCode
+	TypeChatBoostSourceGiveaway
 )
 
 // RETURN_TYPES

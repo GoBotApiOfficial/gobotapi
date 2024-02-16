@@ -2,7 +2,7 @@
 
 package gobotapi
 
-import "github.com/GoBotApiOfficial/gobotapi/types"
+import "gobotapi/types"
 
 func (ctx *BasicClient) handleUpdate(user *types.User, token string, update types.Update) {
 	client := &Client{

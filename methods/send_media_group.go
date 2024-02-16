@@ -5,8 +5,8 @@ package methods
 import (
 	"encoding/json"
 	"fmt"
-	"github.com/GoBotApiOfficial/gobotapi/types"
-	rawTypes "github.com/GoBotApiOfficial/gobotapi/types/raw"
+	"gobotapi/types"
+	rawTypes "gobotapi/types/raw"
 )
 
 // SendMediaGroup Use this method to send a group of photos, videos, documents or audios as an album
@@ -32,8 +32,8 @@ func (entity *SendMediaGroup) Files() map[string]rawTypes.InputFile {
 		x1 := x0.(rawTypes.InputMediaFiles).Files()
 		for k, v := range x1 {
 			var attachName string
-			if k == "thumb" {
-				attachName = fmt.Sprintf("file-%d-thumb", i)
+			if k == "thumbnail" {
+				attachName = fmt.Sprintf("file-%d-thumbnail", i)
 				x0.SetAttachmentThumb(attachName)
 			} else {
 				attachName = fmt.Sprintf("file-%d", i)
@@ -46,20 +46,20 @@ func (entity *SendMediaGroup) Files() map[string]rawTypes.InputFile {
 }
 
 func (entity SendMediaGroup) MarshalJSON() ([]byte, error) {
-	if entity.ChatID != nil {
-		switch entity.ChatID.(type) {
-		case int, int64, string:
-			break
-		default:
-			return nil, fmt.Errorf("chat_id: unknown type: %T", entity.ChatID)
-		}
-	}
 	for _, x0 := range entity.Media {
 		switch x0.(type) {
 		case *types.InputMediaAudio, *types.InputMediaDocument, *types.InputMediaPhoto, *types.InputMediaVideo:
 			break
 		default:
 			return nil, fmt.Errorf("media: unknown type: %T", x0)
+		}
+	}
+	if entity.ChatID != nil {
+		switch entity.ChatID.(type) {
+		case int, int64, string:
+			break
+		default:
+			return nil, fmt.Errorf("chat_id: unknown type: %T", entity.ChatID)
 		}
 	}
 	type x0 SendMediaGroup

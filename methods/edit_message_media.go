@@ -5,8 +5,8 @@ package methods
 import (
 	"encoding/json"
 	"fmt"
-	"github.com/GoBotApiOfficial/gobotapi/types"
-	rawTypes "github.com/GoBotApiOfficial/gobotapi/types/raw"
+	"gobotapi/types"
+	rawTypes "gobotapi/types/raw"
 )
 
 // EditMessageMedia Use this method to edit animation, audio, document, photo, or video messages
@@ -30,7 +30,7 @@ func (entity *EditMessageMedia) Files() map[string]rawTypes.InputFile {
 	files := make(map[string]rawTypes.InputFile)
 	for k, v := range entity.Media.(rawTypes.InputMediaFiles).Files() {
 		files[k] = v
-		if k == "thumb" {
+		if k == "thumbnail" {
 			entity.Media.SetAttachmentThumb(k)
 		} else {
 			entity.Media.SetAttachment(k)

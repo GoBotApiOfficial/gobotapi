@@ -5,7 +5,7 @@ package types
 import (
 	"encoding/json"
 	"fmt"
-	rawTypes "github.com/GoBotApiOfficial/gobotapi/types/raw"
+	rawTypes "gobotapi/types/raw"
 )
 
 // InputMediaAudio Represents an audio file to be treated as music to be sent.
@@ -37,7 +37,8 @@ func (entity *InputMediaAudio) SetAttachment(attach string) {
 	entity.Media = InputURL(fmt.Sprintf("attach://%s", attach))
 }
 
-func (entity *InputMediaAudio) SetAttachmentThumb(_ string) {
+func (entity *InputMediaAudio) SetAttachmentThumb(attach string) {
+	entity.Thumbnail = InputURL(fmt.Sprintf("attach://%s", attach))
 }
 
 func (entity InputMediaAudio) MarshalJSON() ([]byte, error) {

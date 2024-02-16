@@ -1,8 +1,8 @@
 package gobotapi
 
 import (
-	"github.com/GoBotApiOfficial/gobotapi/logger"
-	"github.com/GoBotApiOfficial/gobotapi/utils/concurrency"
+	"gobotapi/logger"
+	"gobotapi/utils/concurrency"
 	"log"
 	"net/http"
 	"os"

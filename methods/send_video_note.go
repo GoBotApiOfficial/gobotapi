@@ -5,8 +5,8 @@ package methods
 import (
 	"encoding/json"
 	"fmt"
-	"github.com/GoBotApiOfficial/gobotapi/types"
-	rawTypes "github.com/GoBotApiOfficial/gobotapi/types/raw"
+	"gobotapi/types"
+	rawTypes "gobotapi/types/raw"
 )
 
 // SendVideoNote As of v.4.0, Telegram clients support rounded square MPEG4 videos of up to 1 minute long
@@ -35,7 +35,7 @@ func (entity *SendVideoNote) Files() map[string]rawTypes.InputFile {
 	switch entity.Thumbnail.(type) {
 	case types.InputBytes:
 		files["thumbnail"] = entity.Thumbnail
-		entity.Thumbnail = nil
+		entity.Thumbnail = types.InputURL("attach://thumbnail")
 	}
 	switch entity.VideoNote.(type) {
 	case types.InputBytes:

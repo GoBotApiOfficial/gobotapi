@@ -3,9 +3,9 @@ package gobotapi
 import (
 	"errors"
 	"fmt"
-	"github.com/GoBotApiOfficial/gobotapi/methods"
-	"github.com/GoBotApiOfficial/gobotapi/types"
-	rawTypes "github.com/GoBotApiOfficial/gobotapi/types/raw"
+	"gobotapi/methods"
+	"gobotapi/types"
+	rawTypes "gobotapi/types/raw"
 )
 
 func (ctx *Client) DownloadBytes(fileId string, progress rawTypes.ProgressCallable) ([]byte, error) {

@@ -1,6 +1,6 @@
 package filters
 
-import "github.com/GoBotApiOfficial/gobotapi/utils"
+import "gobotapi/utils"
 
 func ChatID(idList ...int64) FilterOperand {
 	return func(values *DataFilter) bool {

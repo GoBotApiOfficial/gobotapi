@@ -5,7 +5,7 @@ package types
 import (
 	"encoding/json"
 	"fmt"
-	rawTypes "github.com/GoBotApiOfficial/gobotapi/types/raw"
+	rawTypes "gobotapi/types/raw"
 )
 
 // InputMediaAnimation Represents an animation file (GIF or H.264/MPEG-4 AVC video without sound) to be sent.
@@ -38,7 +38,8 @@ func (entity *InputMediaAnimation) SetAttachment(attach string) {
 	entity.Media = InputURL(fmt.Sprintf("attach://%s", attach))
 }
 
-func (entity *InputMediaAnimation) SetAttachmentThumb(_ string) {
+func (entity *InputMediaAnimation) SetAttachmentThumb(attach string) {
+	entity.Thumbnail = InputURL(fmt.Sprintf("attach://%s", attach))
 }
 
 func (entity InputMediaAnimation) MarshalJSON() ([]byte, error) {

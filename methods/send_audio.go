@@ -5,8 +5,8 @@ package methods
 import (
 	"encoding/json"
 	"fmt"
-	"github.com/GoBotApiOfficial/gobotapi/types"
-	rawTypes "github.com/GoBotApiOfficial/gobotapi/types/raw"
+	"gobotapi/types"
+	rawTypes "gobotapi/types/raw"
 )
 
 // SendAudio Use this method to send audio files, if you want Telegram clients to display them in the music player
@@ -46,26 +46,26 @@ func (entity *SendAudio) Files() map[string]rawTypes.InputFile {
 	switch entity.Thumbnail.(type) {
 	case types.InputBytes:
 		files["thumbnail"] = entity.Thumbnail
-		entity.Thumbnail = nil
+		entity.Thumbnail = types.InputURL("attach://thumbnail")
 	}
 	return files
 }
 
 func (entity SendAudio) MarshalJSON() ([]byte, error) {
-	if entity.ChatID != nil {
-		switch entity.ChatID.(type) {
-		case int, int64, string:
-			break
-		default:
-			return nil, fmt.Errorf("chat_id: unknown type: %T", entity.ChatID)
-		}
-	}
 	if entity.ReplyMarkup != nil {
 		switch entity.ReplyMarkup.(type) {
 		case *types.InlineKeyboardMarkup, *types.ReplyKeyboardMarkup, *types.ReplyKeyboardRemove, *types.ForceReply:
 			break
 		default:
 			return nil, fmt.Errorf("reply_markup: unknown type: %T", entity.ReplyMarkup)
+		}
+	}
+	if entity.ChatID != nil {
+		switch entity.ChatID.(type) {
+		case int, int64, string:
+			break
+		default:
+			return nil, fmt.Errorf("chat_id: unknown type: %T", entity.ChatID)
 		}
 	}
 	type x0 SendAudio

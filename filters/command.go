@@ -2,7 +2,7 @@ package filters
 
 import (
 	"fmt"
-	"github.com/GoBotApiOfficial/gobotapi/types"
+	"gobotapi/types"
 	"reflect"
 	"regexp"
 	"strings"

@@ -2,7 +2,7 @@ package utils
 
 import (
 	"encoding/json"
-	rawTypes "github.com/GoBotApiOfficial/gobotapi/types/raw"
+	rawTypes "gobotapi/types/raw"
 	"strings"
 )
 

@@ -3,9 +3,9 @@ package gobotapi
 import (
 	"errors"
 	"fmt"
-	"github.com/GoBotApiOfficial/gobotapi/types"
-	rawTypes "github.com/GoBotApiOfficial/gobotapi/types/raw"
-	"github.com/GoBotApiOfficial/gobotapi/utils"
+	"gobotapi/types"
+	rawTypes "gobotapi/types/raw"
+	"gobotapi/utils"
 	"reflect"
 	"time"
 )
