@@ -18,9 +18,11 @@ func main() {
 					InputMessageContent: types.InputTextMessageContent{
 						MessageText: "Firefox is just the chinese name (火狐) of Red Panda.\n\nKnow more about Red Panda: https://en.wikipedia.org/wiki/Red_Panda",
 					},
-					Title:       "Firefox is a Red Panda!",
-					Description: "Read More!",
-					ThumbURL:    "https://upload.wikimedia.org/wikipedia/commons/f/ff/Mozilla_Firefox_logo_2013.png",
+					Title:           "Firefox is a Red Panda!",
+					Description:     "Read More!",
+					ThumbnailURL:    "https://upload.wikimedia.org/wikipedia/commons/f/ff/Mozilla_Firefox_logo_2013.png",
+					ThumbnailHeight: 128,
+					ThumbnailWidth:  128,
 				},
 			},
 		})
