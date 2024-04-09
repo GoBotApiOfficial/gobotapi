@@ -2,16 +2,6 @@
 
 package types
 
-// CHAT_MEMBER
-const (
-	TypeChatMemberOwner = iota
-	TypeChatMemberAdministrator
-	TypeChatMemberMember
-	TypeChatMemberRestricted
-	TypeChatMemberLeft
-	TypeChatMemberBanned
-)
-
 // MAYBE_INACCESSIBLE_MESSAGE
 const (
 	TypeMessage = iota
@@ -23,6 +13,16 @@ const (
 	TypeChatBoostSourcePremium = iota
 	TypeChatBoostSourceGiftCode
 	TypeChatBoostSourceGiveaway
+)
+
+// CHAT_MEMBER
+const (
+	TypeChatMemberOwner = iota
+	TypeChatMemberAdministrator
+	TypeChatMemberMember
+	TypeChatMemberRestricted
+	TypeChatMemberLeft
+	TypeChatMemberBanned
 )
 
 // MESSAGE_ORIGIN
