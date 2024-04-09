@@ -10,6 +10,12 @@ import (
 func filterableData(client *gobotapi.Client, filterable any) *DataFilter {
 	dataResult := &DataFilter{}
 	switch filterable.(type) {
+	case types.BusinessConnection:
+		x := filterable.(types.BusinessConnection)
+		dataResult.Date = &x.Date
+	case types.BusinessMessagesDeleted:
+		x := filterable.(types.BusinessMessagesDeleted)
+		dataResult.Chat = &x.Chat
 	case types.CallbackQuery:
 		x := filterable.(types.CallbackQuery)
 		dataResult.From = &x.From

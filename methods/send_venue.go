@@ -12,20 +12,21 @@ import (
 // SendVenue Use this method to send information about a venue
 // On success, the sent Message is returned.
 type SendVenue struct {
-	Address             string                 `json:"address"`
-	ChatID              any                    `json:"chat_id"`
-	DisableNotification bool                   `json:"disable_notification,omitempty"`
-	FoursquareID        string                 `json:"foursquare_id,omitempty"`
-	FoursquareType      string                 `json:"foursquare_type,omitempty"`
-	GooglePlaceID       string                 `json:"google_place_id,omitempty"`
-	GooglePlaceType     string                 `json:"google_place_type,omitempty"`
-	Latitude            float64                `json:"latitude"`
-	Longitude           float64                `json:"longitude"`
-	MessageThreadID     int64                  `json:"message_thread_id,omitempty"`
-	ProtectContent      bool                   `json:"protect_content,omitempty"`
-	ReplyMarkup         any                    `json:"reply_markup,omitempty"`
-	ReplyParameters     *types.ReplyParameters `json:"reply_parameters,omitempty"`
-	Title               string                 `json:"title"`
+	Address              string                 `json:"address"`
+	BusinessConnectionID string                 `json:"business_connection_id,omitempty"`
+	ChatID               any                    `json:"chat_id"`
+	DisableNotification  bool                   `json:"disable_notification,omitempty"`
+	FoursquareID         string                 `json:"foursquare_id,omitempty"`
+	FoursquareType       string                 `json:"foursquare_type,omitempty"`
+	GooglePlaceID        string                 `json:"google_place_id,omitempty"`
+	GooglePlaceType      string                 `json:"google_place_type,omitempty"`
+	Latitude             float64                `json:"latitude"`
+	Longitude            float64                `json:"longitude"`
+	MessageThreadID      int64                  `json:"message_thread_id,omitempty"`
+	ProtectContent       bool                   `json:"protect_content,omitempty"`
+	ReplyMarkup          any                    `json:"reply_markup,omitempty"`
+	ReplyParameters      *types.ReplyParameters `json:"reply_parameters,omitempty"`
+	Title                string                 `json:"title"`
 }
 
 func (entity *SendVenue) ProgressCallable() rawTypes.ProgressCallable {

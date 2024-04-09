@@ -13,13 +13,14 @@ import (
 // Documents and audio files can be only grouped in an album with messages of the same type
 // On success, an array of Messages that were sent is returned.
 type SendMediaGroup struct {
-	ChatID              any                       `json:"chat_id"`
-	DisableNotification bool                      `json:"disable_notification,omitempty"`
-	Media               []types.InputMedia        `json:"media,omitempty"`
-	MessageThreadID     int64                     `json:"message_thread_id,omitempty"`
-	ProtectContent      bool                      `json:"protect_content,omitempty"`
-	ReplyParameters     *types.ReplyParameters    `json:"reply_parameters,omitempty"`
-	Progress            rawTypes.ProgressCallable `json:"-"`
+	BusinessConnectionID string                    `json:"business_connection_id,omitempty"`
+	ChatID               any                       `json:"chat_id"`
+	DisableNotification  bool                      `json:"disable_notification,omitempty"`
+	Media                []types.InputMedia        `json:"media,omitempty"`
+	MessageThreadID      int64                     `json:"message_thread_id,omitempty"`
+	ProtectContent       bool                      `json:"protect_content,omitempty"`
+	ReplyParameters      *types.ReplyParameters    `json:"reply_parameters,omitempty"`
+	Progress             rawTypes.ProgressCallable `json:"-"`
 }
 
 func (entity *SendMediaGroup) ProgressCallable() rawTypes.ProgressCallable {

@@ -8,7 +8,7 @@ import (
 	rawTypes "gobotapi/types/raw"
 )
 
-// UploadStickerFile Use this method to upload a file with a sticker for later use in the createNewStickerSet and addStickerToSet methods (the file can be used multiple times)
+// UploadStickerFile Use this method to upload a file with a sticker for later use in the createNewStickerSet, addStickerToSet, or replaceStickerInSet methods (the file can be used multiple times)
 // Returns the uploaded File on success.
 type UploadStickerFile struct {
 	Sticker       rawTypes.InputFile        `json:"sticker,omitempty"`

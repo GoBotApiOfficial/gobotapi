@@ -3,11 +3,14 @@
 package types
 
 // KeyboardButtonRequestUsers This object defines the criteria used to request suitable users
-// The identifiers of the selected users will be shared with the bot when the corresponding button is pressed
+// Information about the selected users will be shared with the bot when the corresponding button is pressed
 // More about requesting users »
 type KeyboardButtonRequestUsers struct {
-	MaxQuantity   int   `json:"max_quantity,omitempty"`
-	RequestID     int64 `json:"request_id"`
-	UserIsBot     bool  `json:"user_is_bot,omitempty"`
-	UserIsPremium bool  `json:"user_is_premium,omitempty"`
+	MaxQuantity     int   `json:"max_quantity,omitempty"`
+	RequestID       int64 `json:"request_id"`
+	RequestName     bool  `json:"request_name,omitempty"`
+	RequestPhoto    bool  `json:"request_photo,omitempty"`
+	RequestUsername bool  `json:"request_username,omitempty"`
+	UserIsBot       bool  `json:"user_is_bot,omitempty"`
+	UserIsPremium   bool  `json:"user_is_premium,omitempty"`
 }

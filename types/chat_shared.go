@@ -2,8 +2,11 @@
 
 package types
 
-// ChatShared This object contains information about the chat whose identifier was shared with the bot using a KeyboardButtonRequestChat button.
+// ChatShared This object contains information about a chat that was shared with the bot using a KeyboardButtonRequestChat button.
 type ChatShared struct {
-	ChatID    int64 `json:"chat_id"`
-	RequestID int64 `json:"request_id"`
+	ChatID    int64       `json:"chat_id"`
+	Photo     []PhotoSize `json:"photo,omitempty"`
+	RequestID int64       `json:"request_id"`
+	Title     string      `json:"title,omitempty"`
+	Username  string      `json:"username,omitempty"`
 }

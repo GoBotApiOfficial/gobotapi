@@ -5,6 +5,7 @@ package types
 // User Represents a Telegram user or bot.
 type User struct {
 	AddedToAttachmentMenu   bool   `json:"added_to_attachment_menu,omitempty"`
+	CanConnectToBusiness    bool   `json:"can_connect_to_business,omitempty"`
 	CanJoinGroups           bool   `json:"can_join_groups,omitempty"`
 	CanReadAllGroupMessages bool   `json:"can_read_all_group_messages,omitempty"`
 	FirstName               string `json:"first_name"`

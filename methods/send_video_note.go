@@ -13,17 +13,18 @@ import (
 // Use this method to send video messages
 // On success, the sent Message is returned.
 type SendVideoNote struct {
-	ChatID              any                       `json:"chat_id"`
-	DisableNotification bool                      `json:"disable_notification,omitempty"`
-	Duration            int                       `json:"duration,omitempty"`
-	Length              int                       `json:"length,omitempty"`
-	MessageThreadID     int64                     `json:"message_thread_id,omitempty"`
-	ProtectContent      bool                      `json:"protect_content,omitempty"`
-	ReplyMarkup         any                       `json:"reply_markup,omitempty"`
-	ReplyParameters     *types.ReplyParameters    `json:"reply_parameters,omitempty"`
-	Thumbnail           rawTypes.InputFile        `json:"thumbnail,omitempty"`
-	VideoNote           rawTypes.InputFile        `json:"video_note,omitempty"`
-	Progress            rawTypes.ProgressCallable `json:"-"`
+	BusinessConnectionID string                    `json:"business_connection_id,omitempty"`
+	ChatID               any                       `json:"chat_id"`
+	DisableNotification  bool                      `json:"disable_notification,omitempty"`
+	Duration             int                       `json:"duration,omitempty"`
+	Length               int                       `json:"length,omitempty"`
+	MessageThreadID      int64                     `json:"message_thread_id,omitempty"`
+	ProtectContent       bool                      `json:"protect_content,omitempty"`
+	ReplyMarkup          any                       `json:"reply_markup,omitempty"`
+	ReplyParameters      *types.ReplyParameters    `json:"reply_parameters,omitempty"`
+	Thumbnail            rawTypes.InputFile        `json:"thumbnail,omitempty"`
+	VideoNote            rawTypes.InputFile        `json:"video_note,omitempty"`
+	Progress             rawTypes.ProgressCallable `json:"-"`
 }
 
 func (entity *SendVideoNote) ProgressCallable() rawTypes.ProgressCallable {
@@ -46,20 +47,20 @@ func (entity *SendVideoNote) Files() map[string]rawTypes.InputFile {
 }
 
 func (entity SendVideoNote) MarshalJSON() ([]byte, error) {
-	if entity.ReplyMarkup != nil {
-		switch entity.ReplyMarkup.(type) {
-		case *types.InlineKeyboardMarkup, *types.ReplyKeyboardMarkup, *types.ReplyKeyboardRemove, *types.ForceReply:
-			break
-		default:
-			return nil, fmt.Errorf("reply_markup: unknown type: %T", entity.ReplyMarkup)
-		}
-	}
 	if entity.ChatID != nil {
 		switch entity.ChatID.(type) {
 		case int, int64, string:
 			break
 		default:
 			return nil, fmt.Errorf("chat_id: unknown type: %T", entity.ChatID)
+		}
+	}
+	if entity.ReplyMarkup != nil {
+		switch entity.ReplyMarkup.(type) {
+		case *types.InlineKeyboardMarkup, *types.ReplyKeyboardMarkup, *types.ReplyKeyboardRemove, *types.ForceReply:
+			break
+		default:
+			return nil, fmt.Errorf("reply_markup: unknown type: %T", entity.ReplyMarkup)
 		}
 	}
 	type x0 SendVideoNote

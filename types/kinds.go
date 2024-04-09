@@ -2,23 +2,6 @@
 
 package types
 
-// CHAT_BOOST_SOURCE
-const (
-	TypeChatBoostSourcePremium = iota
-	TypeChatBoostSourceGiftCode
-	TypeChatBoostSourceGiveaway
-)
-
-// CHAT_MEMBER
-const (
-	TypeChatMemberOwner = iota
-	TypeChatMemberAdministrator
-	TypeChatMemberMember
-	TypeChatMemberRestricted
-	TypeChatMemberLeft
-	TypeChatMemberBanned
-)
-
 // MAYBE_INACCESSIBLE_MESSAGE
 const (
 	TypeMessage = iota
@@ -31,6 +14,23 @@ const (
 	TypeMessageOriginHiddenUser
 	TypeMessageOriginChat
 	TypeMessageOriginChannel
+)
+
+// CHAT_MEMBER
+const (
+	TypeChatMemberOwner = iota
+	TypeChatMemberAdministrator
+	TypeChatMemberMember
+	TypeChatMemberRestricted
+	TypeChatMemberLeft
+	TypeChatMemberBanned
+)
+
+// CHAT_BOOST_SOURCE
+const (
+	TypeChatBoostSourcePremium = iota
+	TypeChatBoostSourceGiftCode
+	TypeChatBoostSourceGiveaway
 )
 
 // RETURN_TYPES
@@ -46,6 +46,7 @@ const (
 	TypeBotDescription
 	TypeBotName
 	TypeBotShortDescription
+	TypeBusinessConnection
 	TypeChat
 	TypeChatAdministratorRights
 	TypeChatInviteLink

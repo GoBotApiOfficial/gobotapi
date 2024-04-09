@@ -3,8 +3,8 @@
 package types
 
 // KeyboardButtonRequestChat This object defines the criteria used to request a suitable chat
-// The identifier of the selected chat will be shared with the bot when the corresponding button is pressed
-// More about requesting chats »
+// Information about the selected chat will be shared with the bot when the corresponding button is pressed
+// The bot will be granted requested rights in the сhat if appropriate More about requesting chats »
 type KeyboardButtonRequestChat struct {
 	BotAdministratorRights  *ChatAdministratorRights `json:"bot_administrator_rights,omitempty"`
 	BotIsMember             bool                     `json:"bot_is_member,omitempty"`
@@ -13,5 +13,8 @@ type KeyboardButtonRequestChat struct {
 	ChatIsCreated           bool                     `json:"chat_is_created,omitempty"`
 	ChatIsForum             bool                     `json:"chat_is_forum,omitempty"`
 	RequestID               int64                    `json:"request_id"`
+	RequestPhoto            bool                     `json:"request_photo,omitempty"`
+	RequestTitle            bool                     `json:"request_title,omitempty"`
+	RequestUsername         bool                     `json:"request_username,omitempty"`
 	UserAdministratorRights *ChatAdministratorRights `json:"user_administrator_rights,omitempty"`
 }

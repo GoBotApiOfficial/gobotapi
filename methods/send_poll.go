@@ -13,6 +13,7 @@ import (
 // On success, the sent Message is returned.
 type SendPoll struct {
 	AllowsMultipleAnswers bool                   `json:"allows_multiple_answers,omitempty"`
+	BusinessConnectionID  string                 `json:"business_connection_id,omitempty"`
 	ChatID                any                    `json:"chat_id"`
 	CloseDate             int64                  `json:"close_date,omitempty"`
 	CorrectOptionID       int64                  `json:"correct_option_id,omitempty"`

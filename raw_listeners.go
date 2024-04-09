@@ -39,6 +39,34 @@ func (ctx *BasicClient) OnEditedChannelPost(handler func(client *Client, update 
 	ctx.handlers["edited_channel_post"] = append(ctx.handlers["edited_channel_post"], handler)
 }
 
+func (ctx *BasicClient) OnBusinessConnection(handler func(client *Client, update types.BusinessConnection)) {
+	if ctx.handlers == nil {
+		ctx.handlers = make(map[string][]any)
+	}
+	ctx.handlers["business_connection"] = append(ctx.handlers["business_connection"], handler)
+}
+
+func (ctx *BasicClient) OnBusinessMessage(handler func(client *Client, update types.Message)) {
+	if ctx.handlers == nil {
+		ctx.handlers = make(map[string][]any)
+	}
+	ctx.handlers["business_message"] = append(ctx.handlers["business_message"], handler)
+}
+
+func (ctx *BasicClient) OnEditedBusinessMessage(handler func(client *Client, update types.Message)) {
+	if ctx.handlers == nil {
+		ctx.handlers = make(map[string][]any)
+	}
+	ctx.handlers["edited_business_message"] = append(ctx.handlers["edited_business_message"], handler)
+}
+
+func (ctx *BasicClient) OnDeletedBusinessMessages(handler func(client *Client, update types.BusinessMessagesDeleted)) {
+	if ctx.handlers == nil {
+		ctx.handlers = make(map[string][]any)
+	}
+	ctx.handlers["deleted_business_messages"] = append(ctx.handlers["deleted_business_messages"], handler)
+}
+
 func (ctx *BasicClient) OnMessageReaction(handler func(client *Client, update types.MessageReactionUpdated)) {
 	if ctx.handlers == nil {
 		ctx.handlers = make(map[string][]any)

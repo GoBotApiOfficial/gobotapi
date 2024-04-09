@@ -12,6 +12,7 @@ import (
 // The format of the thumbnail file must match the format of the stickers in the set
 // Returns True on success.
 type SetStickerSetThumbnail struct {
+	Format    string                    `json:"format"`
 	Name      string                    `json:"name"`
 	Thumbnail rawTypes.InputFile        `json:"thumbnail,omitempty"`
 	UserID    int64                     `json:"user_id"`

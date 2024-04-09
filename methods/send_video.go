@@ -13,23 +13,24 @@ import (
 // On success, the sent Message is returned
 // Bots can currently send video files of up to 50 MB in size, this limit may be changed in the future.
 type SendVideo struct {
-	Caption             string                    `json:"caption,omitempty"`
-	CaptionEntities     []types.MessageEntity     `json:"caption_entities,omitempty"`
-	ChatID              any                       `json:"chat_id"`
-	DisableNotification bool                      `json:"disable_notification,omitempty"`
-	Duration            int                       `json:"duration,omitempty"`
-	HasSpoiler          bool                      `json:"has_spoiler,omitempty"`
-	Height              int                       `json:"height,omitempty"`
-	MessageThreadID     int64                     `json:"message_thread_id,omitempty"`
-	ParseMode           string                    `json:"parse_mode,omitempty"`
-	ProtectContent      bool                      `json:"protect_content,omitempty"`
-	ReplyMarkup         any                       `json:"reply_markup,omitempty"`
-	ReplyParameters     *types.ReplyParameters    `json:"reply_parameters,omitempty"`
-	SupportsStreaming   bool                      `json:"supports_streaming,omitempty"`
-	Thumbnail           rawTypes.InputFile        `json:"thumbnail,omitempty"`
-	Video               rawTypes.InputFile        `json:"video,omitempty"`
-	Width               int64                     `json:"width,omitempty"`
-	Progress            rawTypes.ProgressCallable `json:"-"`
+	BusinessConnectionID string                    `json:"business_connection_id,omitempty"`
+	Caption              string                    `json:"caption,omitempty"`
+	CaptionEntities      []types.MessageEntity     `json:"caption_entities,omitempty"`
+	ChatID               any                       `json:"chat_id"`
+	DisableNotification  bool                      `json:"disable_notification,omitempty"`
+	Duration             int                       `json:"duration,omitempty"`
+	HasSpoiler           bool                      `json:"has_spoiler,omitempty"`
+	Height               int                       `json:"height,omitempty"`
+	MessageThreadID      int64                     `json:"message_thread_id,omitempty"`
+	ParseMode            string                    `json:"parse_mode,omitempty"`
+	ProtectContent       bool                      `json:"protect_content,omitempty"`
+	ReplyMarkup          any                       `json:"reply_markup,omitempty"`
+	ReplyParameters      *types.ReplyParameters    `json:"reply_parameters,omitempty"`
+	SupportsStreaming    bool                      `json:"supports_streaming,omitempty"`
+	Thumbnail            rawTypes.InputFile        `json:"thumbnail,omitempty"`
+	Video                rawTypes.InputFile        `json:"video,omitempty"`
+	Width                int64                     `json:"width,omitempty"`
+	Progress             rawTypes.ProgressCallable `json:"-"`
 }
 
 func (entity *SendVideo) ProgressCallable() rawTypes.ProgressCallable {

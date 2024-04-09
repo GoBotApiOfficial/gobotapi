@@ -14,7 +14,6 @@ import (
 type CreateNewStickerSet struct {
 	Name            string               `json:"name"`
 	NeedsRepainting bool                 `json:"needs_repainting,omitempty"`
-	StickerFormat   string               `json:"sticker_format"`
 	StickerType     string               `json:"sticker_type,omitempty"`
 	Stickers        []types.InputSticker `json:"stickers,omitempty"`
 	Title           string               `json:"title"`

@@ -12,15 +12,16 @@ import (
 // SendSticker Use this method to send static .WEBP, animated .TGS, or video .WEBM stickers
 // On success, the sent Message is returned.
 type SendSticker struct {
-	ChatID              any                       `json:"chat_id"`
-	DisableNotification bool                      `json:"disable_notification,omitempty"`
-	Emoji               string                    `json:"emoji,omitempty"`
-	MessageThreadID     int64                     `json:"message_thread_id,omitempty"`
-	ProtectContent      bool                      `json:"protect_content,omitempty"`
-	ReplyMarkup         any                       `json:"reply_markup,omitempty"`
-	ReplyParameters     *types.ReplyParameters    `json:"reply_parameters,omitempty"`
-	Sticker             rawTypes.InputFile        `json:"sticker,omitempty"`
-	Progress            rawTypes.ProgressCallable `json:"-"`
+	BusinessConnectionID string                    `json:"business_connection_id,omitempty"`
+	ChatID               any                       `json:"chat_id"`
+	DisableNotification  bool                      `json:"disable_notification,omitempty"`
+	Emoji                string                    `json:"emoji,omitempty"`
+	MessageThreadID      int64                     `json:"message_thread_id,omitempty"`
+	ProtectContent       bool                      `json:"protect_content,omitempty"`
+	ReplyMarkup          any                       `json:"reply_markup,omitempty"`
+	ReplyParameters      *types.ReplyParameters    `json:"reply_parameters,omitempty"`
+	Sticker              rawTypes.InputFile        `json:"sticker,omitempty"`
+	Progress             rawTypes.ProgressCallable `json:"-"`
 }
 
 func (entity *SendSticker) ProgressCallable() rawTypes.ProgressCallable {

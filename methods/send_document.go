@@ -13,6 +13,7 @@ import (
 // On success, the sent Message is returned
 // Bots can currently send files of any type of up to 50 MB in size, this limit may be changed in the future.
 type SendDocument struct {
+	BusinessConnectionID        string                    `json:"business_connection_id,omitempty"`
 	Caption                     string                    `json:"caption,omitempty"`
 	CaptionEntities             []types.MessageEntity     `json:"caption_entities,omitempty"`
 	ChatID                      any                       `json:"chat_id"`

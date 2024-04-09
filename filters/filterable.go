@@ -5,7 +5,9 @@ package filters
 import "gobotapi/types"
 
 type Filterable interface {
-	types.CallbackQuery |
+	types.BusinessConnection |
+		types.BusinessMessagesDeleted |
+		types.CallbackQuery |
 		types.ChatBoostRemoved |
 		types.ChatBoostUpdated |
 		types.ChatJoinRequest |

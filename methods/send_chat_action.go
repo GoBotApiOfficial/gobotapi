@@ -14,9 +14,10 @@ import (
 // Returns True on success.
 // We only recommend using this method when a response from the bot will take a noticeable amount of time to arrive.
 type SendChatAction struct {
-	Action          string `json:"action"`
-	ChatID          any    `json:"chat_id"`
-	MessageThreadID int64  `json:"message_thread_id,omitempty"`
+	Action               string `json:"action"`
+	BusinessConnectionID string `json:"business_connection_id,omitempty"`
+	ChatID               any    `json:"chat_id"`
+	MessageThreadID      int64  `json:"message_thread_id,omitempty"`
 }
 
 func (entity *SendChatAction) ProgressCallable() rawTypes.ProgressCallable {

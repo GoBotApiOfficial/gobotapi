@@ -8,6 +8,7 @@ type Message struct {
 	Audio                         *Audio                         `json:"audio,omitempty"`
 	AuthorSignature               string                         `json:"author_signature,omitempty"`
 	BoostAdded                    *ChatBoostAdded                `json:"boost_added,omitempty"`
+	BusinessConnectionID          string                         `json:"business_connection_id,omitempty"`
 	Caption                       string                         `json:"caption,omitempty"`
 	CaptionEntities               []MessageEntity                `json:"caption_entities,omitempty"`
 	ChannelChatCreated            bool                           `json:"channel_chat_created,omitempty"`
@@ -40,6 +41,7 @@ type Message struct {
 	HasProtectedContent           bool                           `json:"has_protected_content,omitempty"`
 	Invoice                       *Invoice                       `json:"invoice,omitempty"`
 	IsAutomaticForward            bool                           `json:"is_automatic_forward,omitempty"`
+	IsFromOffline                 bool                           `json:"is_from_offline,omitempty"`
 	IsTopicMessage                bool                           `json:"is_topic_message,omitempty"`
 	LeftChatMember                *User                          `json:"left_chat_member,omitempty"`
 	LinkPreviewOptions            *LinkPreviewOptions            `json:"link_preview_options,omitempty"`
@@ -63,6 +65,7 @@ type Message struct {
 	ReplyToMessage                *Message                       `json:"reply_to_message,omitempty"`
 	ReplyToStory                  *Story                         `json:"reply_to_story,omitempty"`
 	SenderBoostCount              int                            `json:"sender_boost_count,omitempty"`
+	SenderBusinessBot             *User                          `json:"sender_business_bot,omitempty"`
 	SenderChat                    *Chat                          `json:"sender_chat,omitempty"`
 	Sticker                       *Sticker                       `json:"sticker,omitempty"`
 	Story                         *Story                         `json:"story,omitempty"`

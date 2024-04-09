@@ -12,16 +12,17 @@ import (
 // SendMessage Use this method to send text messages
 // On success, the sent Message is returned.
 type SendMessage struct {
-	ChatID              any                       `json:"chat_id"`
-	DisableNotification bool                      `json:"disable_notification,omitempty"`
-	Entities            []types.MessageEntity     `json:"entities,omitempty"`
-	LinkPreviewOptions  *types.LinkPreviewOptions `json:"link_preview_options,omitempty"`
-	MessageThreadID     int64                     `json:"message_thread_id,omitempty"`
-	ParseMode           string                    `json:"parse_mode,omitempty"`
-	ProtectContent      bool                      `json:"protect_content,omitempty"`
-	ReplyMarkup         any                       `json:"reply_markup,omitempty"`
-	ReplyParameters     *types.ReplyParameters    `json:"reply_parameters,omitempty"`
-	Text                string                    `json:"text"`
+	BusinessConnectionID string                    `json:"business_connection_id,omitempty"`
+	ChatID               any                       `json:"chat_id"`
+	DisableNotification  bool                      `json:"disable_notification,omitempty"`
+	Entities             []types.MessageEntity     `json:"entities,omitempty"`
+	LinkPreviewOptions   *types.LinkPreviewOptions `json:"link_preview_options,omitempty"`
+	MessageThreadID      int64                     `json:"message_thread_id,omitempty"`
+	ParseMode            string                    `json:"parse_mode,omitempty"`
+	ProtectContent       bool                      `json:"protect_content,omitempty"`
+	ReplyMarkup          any                       `json:"reply_markup,omitempty"`
+	ReplyParameters      *types.ReplyParameters    `json:"reply_parameters,omitempty"`
+	Text                 string                    `json:"text"`
 }
 
 func (entity *SendMessage) ProgressCallable() rawTypes.ProgressCallable {

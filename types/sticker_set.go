@@ -4,8 +4,6 @@ package types
 
 // StickerSet Represents a sticker set.
 type StickerSet struct {
-	IsAnimated  bool       `json:"is_animated"`
-	IsVideo     bool       `json:"is_video"`
 	Name        string     `json:"name"`
 	StickerType string     `json:"sticker_type"`
 	Stickers    []Sticker  `json:"stickers,omitempty"`

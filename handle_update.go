@@ -43,6 +43,34 @@ func (ctx *BasicClient) handleUpdate(user *types.User, token string, update type
 			}, x0)
 		}
 	}
+	if update.BusinessConnection != nil {
+		for _, x0 := range ctx.handlers["business_connection"] {
+			ctx.concurrencyManager.Enqueue(func(x ...any) {
+				x[0].(func(*Client, types.BusinessConnection))(client, *update.BusinessConnection)
+			}, x0)
+		}
+	}
+	if update.BusinessMessage != nil {
+		for _, x0 := range ctx.handlers["business_message"] {
+			ctx.concurrencyManager.Enqueue(func(x ...any) {
+				x[0].(func(*Client, types.Message))(client, *update.BusinessMessage)
+			}, x0)
+		}
+	}
+	if update.EditedBusinessMessage != nil {
+		for _, x0 := range ctx.handlers["edited_business_message"] {
+			ctx.concurrencyManager.Enqueue(func(x ...any) {
+				x[0].(func(*Client, types.Message))(client, *update.EditedBusinessMessage)
+			}, x0)
+		}
+	}
+	if update.DeletedBusinessMessages != nil {
+		for _, x0 := range ctx.handlers["deleted_business_messages"] {
+			ctx.concurrencyManager.Enqueue(func(x ...any) {
+				x[0].(func(*Client, types.BusinessMessagesDeleted))(client, *update.DeletedBusinessMessages)
+			}, x0)
+		}
+	}
 	if update.MessageReaction != nil {
 		for _, x0 := range ctx.handlers["message_reaction"] {
 			ctx.concurrencyManager.Enqueue(func(x ...any) {

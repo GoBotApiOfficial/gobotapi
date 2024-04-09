@@ -12,16 +12,17 @@ import (
 // SendContact Use this method to send phone contacts
 // On success, the sent Message is returned.
 type SendContact struct {
-	ChatID              any                    `json:"chat_id"`
-	DisableNotification bool                   `json:"disable_notification,omitempty"`
-	FirstName           string                 `json:"first_name"`
-	LastName            string                 `json:"last_name,omitempty"`
-	MessageThreadID     int64                  `json:"message_thread_id,omitempty"`
-	PhoneNumber         string                 `json:"phone_number"`
-	ProtectContent      bool                   `json:"protect_content,omitempty"`
-	ReplyMarkup         any                    `json:"reply_markup,omitempty"`
-	ReplyParameters     *types.ReplyParameters `json:"reply_parameters,omitempty"`
-	Vcard               string                 `json:"vcard,omitempty"`
+	BusinessConnectionID string                 `json:"business_connection_id,omitempty"`
+	ChatID               any                    `json:"chat_id"`
+	DisableNotification  bool                   `json:"disable_notification,omitempty"`
+	FirstName            string                 `json:"first_name"`
+	LastName             string                 `json:"last_name,omitempty"`
+	MessageThreadID      int64                  `json:"message_thread_id,omitempty"`
+	PhoneNumber          string                 `json:"phone_number"`
+	ProtectContent       bool                   `json:"protect_content,omitempty"`
+	ReplyMarkup          any                    `json:"reply_markup,omitempty"`
+	ReplyParameters      *types.ReplyParameters `json:"reply_parameters,omitempty"`
+	Vcard                string                 `json:"vcard,omitempty"`
 }
 
 func (entity *SendContact) ProgressCallable() rawTypes.ProgressCallable {

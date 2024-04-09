@@ -12,6 +12,7 @@ import (
 // SendLocation Use this method to send point on the map
 // On success, the sent Message is returned.
 type SendLocation struct {
+	BusinessConnectionID string                 `json:"business_connection_id,omitempty"`
 	ChatID               any                    `json:"chat_id"`
 	DisableNotification  bool                   `json:"disable_notification,omitempty"`
 	Heading              int                    `json:"heading,omitempty"`
