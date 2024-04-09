@@ -2,7 +2,7 @@ package gobotapi
 
 import (
 	"fmt"
-	"gobotapi/logger"
+	"github.com/GoBotApiOfficial/gobotapi/logger"
 	"reflect"
 	"strings"
 )

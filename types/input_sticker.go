@@ -2,7 +2,7 @@
 
 package types
 
-import rawTypes "gobotapi/types/raw"
+import rawTypes "github.com/GoBotApiOfficial/gobotapi/types/raw"
 
 // InputSticker This object describes a sticker to be added to a sticker set.
 type InputSticker struct {

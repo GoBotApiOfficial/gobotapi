@@ -3,8 +3,8 @@ package utils
 import (
 	"encoding/json"
 	"errors"
-	"gobotapi/types"
-	rawTypes "gobotapi/types/raw"
+	"github.com/GoBotApiOfficial/gobotapi/types"
+	rawTypes "github.com/GoBotApiOfficial/gobotapi/types/raw"
 )
 
 func ParseResult(rawResult []byte, err error, method rawTypes.Method) (*rawTypes.Result, error) {

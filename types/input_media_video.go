@@ -5,7 +5,7 @@ package types
 import (
 	"encoding/json"
 	"fmt"
-	rawTypes "gobotapi/types/raw"
+	rawTypes "github.com/GoBotApiOfficial/gobotapi/types/raw"
 )
 
 // InputMediaVideo Represents a video to be sent.

@@ -1,10 +1,10 @@
 package gobotapi
 
 import (
-	"gobotapi/logger"
-	"gobotapi/types"
-	rawTypes "gobotapi/types/raw"
-	"gobotapi/utils/concurrency"
+	"github.com/GoBotApiOfficial/gobotapi/logger"
+	"github.com/GoBotApiOfficial/gobotapi/types"
+	rawTypes "github.com/GoBotApiOfficial/gobotapi/types/raw"
+	"github.com/GoBotApiOfficial/gobotapi/utils/concurrency"
 	"net/http"
 	"sync"
 	"time"

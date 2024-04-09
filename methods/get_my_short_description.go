@@ -4,8 +4,8 @@ package methods
 
 import (
 	"encoding/json"
-	"gobotapi/types"
-	rawTypes "gobotapi/types/raw"
+	"github.com/GoBotApiOfficial/gobotapi/types"
+	rawTypes "github.com/GoBotApiOfficial/gobotapi/types/raw"
 )
 
 // GetMyShortDescription Use this method to get the current bot short description for the given user language

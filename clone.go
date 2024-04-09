@@ -3,7 +3,7 @@ package gobotapi
 import (
 	"errors"
 	"fmt"
-	"gobotapi/methods"
+	"github.com/GoBotApiOfficial/gobotapi/methods"
 )
 
 func (ctx *BasicClient) Clone(token string, dropUpdates bool, maxConnections int) error {

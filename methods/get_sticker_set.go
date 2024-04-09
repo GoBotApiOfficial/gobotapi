@@ -4,8 +4,8 @@ package methods
 
 import (
 	"encoding/json"
-	"gobotapi/types"
-	rawTypes "gobotapi/types/raw"
+	"github.com/GoBotApiOfficial/gobotapi/types"
+	rawTypes "github.com/GoBotApiOfficial/gobotapi/types/raw"
 )
 
 // GetStickerSet Use this method to get a sticker set

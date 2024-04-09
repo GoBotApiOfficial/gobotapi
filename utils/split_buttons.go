@@ -1,6 +1,6 @@
 package utils
 
-import "gobotapi/types"
+import "github.com/GoBotApiOfficial/gobotapi/types"
 
 func SplitButtons(splitBy int, buttons ...types.InlineKeyboardButton) [][]types.InlineKeyboardButton {
 	var result [][]types.InlineKeyboardButton

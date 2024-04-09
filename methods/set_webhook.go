@@ -4,8 +4,8 @@ package methods
 
 import (
 	"encoding/json"
-	"gobotapi/types"
-	rawTypes "gobotapi/types/raw"
+	"github.com/GoBotApiOfficial/gobotapi/types"
+	rawTypes "github.com/GoBotApiOfficial/gobotapi/types/raw"
 )
 
 // SetWebhook Use this method to specify a URL and receive incoming updates via an outgoing webhook

@@ -2,7 +2,7 @@
 
 package filters
 
-import "gobotapi/types"
+import "github.com/GoBotApiOfficial/gobotapi/types"
 
 type Filterable interface {
 	types.BusinessConnection |

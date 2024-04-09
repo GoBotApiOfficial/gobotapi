@@ -4,8 +4,8 @@ package methods
 
 import (
 	"encoding/json"
-	"gobotapi/types"
-	rawTypes "gobotapi/types/raw"
+	"github.com/GoBotApiOfficial/gobotapi/types"
+	rawTypes "github.com/GoBotApiOfficial/gobotapi/types/raw"
 )
 
 // GetCustomEmojiStickers Use this method to get information about custom emoji stickers by their identifiers

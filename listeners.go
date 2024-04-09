@@ -1,6 +1,6 @@
 package gobotapi
 
-import "gobotapi/types"
+import "github.com/GoBotApiOfficial/gobotapi/types"
 
 func (ctx *BasicClient) OnAnyMessageEvent(handler func(client *Client, update types.Message)) {
 	ctx.OnMessage(handler)

@@ -1,7 +1,7 @@
 package filters
 
 import (
-	rawTypes "gobotapi/types/raw"
+	rawTypes "github.com/GoBotApiOfficial/gobotapi/types/raw"
 	"time"
 )
 

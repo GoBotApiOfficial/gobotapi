@@ -2,8 +2,8 @@ package gobotapi
 
 import (
 	"fmt"
-	"gobotapi/logger"
-	rawTypes "gobotapi/types/raw"
+	"github.com/GoBotApiOfficial/gobotapi/logger"
+	rawTypes "github.com/GoBotApiOfficial/gobotapi/types/raw"
 	"os"
 )
 

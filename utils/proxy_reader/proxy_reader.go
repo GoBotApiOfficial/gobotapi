@@ -1,7 +1,7 @@
 package proxy_reader
 
 import (
-	rawTypes "gobotapi/types/raw"
+	rawTypes "github.com/GoBotApiOfficial/gobotapi/types/raw"
 	"io"
 	"time"
 )

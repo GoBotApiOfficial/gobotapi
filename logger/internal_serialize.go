@@ -1,7 +1,7 @@
 package logger
 
 import (
-	"gobotapi/utils/ordered_map"
+	"github.com/GoBotApiOfficial/gobotapi/utils/ordered_map"
 	"reflect"
 )
 

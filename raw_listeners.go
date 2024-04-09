@@ -2,7 +2,7 @@
 
 package gobotapi
 
-import "gobotapi/types"
+import "github.com/GoBotApiOfficial/gobotapi/types"
 
 func (ctx *BasicClient) OnRawUpdate(handler func(client *Client, update types.Update)) {
 	if ctx.handlers == nil {
