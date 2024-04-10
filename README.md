@@ -59,8 +59,8 @@ go get -u github.com/GoBotApiOfficial/gobotapi
 ```
 
 # GoBotAPI Generator
-[![GO Version](https://img.shields.io/github/go-mod/go-version/GoBotApiOfficial/GoBotApiCompiler)](https://go.dev/)
-[![GitHub](https://img.shields.io/github/license/GoBotApiOfficial/GoBotApiCompiler)](https://github.com/GoBotApiOfficial/GoBotApiCompiler/blob/main/LICENSE.md)
+[![GO Version](https://img.shields.io/github/go-mod/go-version/GoBotApiOfficial/GoBotApiGenerator)](https://go.dev/)
+[![GitHub](https://img.shields.io/github/license/GoBotApiOfficial/GoBotApiGenerator)](https://github.com/GoBotApiOfficial/GoBotApiGenerator/blob/main/LICENSE.md)
 ![OS](https://img.shields.io/badge/platform-Linux%20%7C%20Windows%20%7C%20macOS-lightgrey)
 ![Architectures](https://img.shields.io/badge/architectures-x86__64%20%7C%20arm64v8%20%7C%20win__amd64%20%7C%20darwin__x64-blue)
 
