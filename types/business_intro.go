@@ -2,6 +2,7 @@
 
 package types
 
+// BusinessIntro Contains information about the start page settings of a Telegram Business account.
 type BusinessIntro struct {
 	Message string   `json:"message,omitempty"`
 	Sticker *Sticker `json:"sticker,omitempty"`

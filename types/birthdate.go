@@ -2,6 +2,7 @@
 
 package types
 
+// Birthdate Describes the birthdate of a user.
 type Birthdate struct {
 	Day   int `json:"day"`
 	Month int `json:"month"`

@@ -18,6 +18,7 @@ type EditMessageLiveLocation struct {
 	HorizontalAccuracy   float64                     `json:"horizontal_accuracy,omitempty"`
 	InlineMessageID      string                      `json:"inline_message_id,omitempty"`
 	Latitude             float64                     `json:"latitude"`
+	LivePeriod           int                         `json:"live_period,omitempty"`
 	Longitude            float64                     `json:"longitude"`
 	MessageID            int64                       `json:"message_id,omitempty"`
 	ProximityAlertRadius int                         `json:"proximity_alert_radius,omitempty"`

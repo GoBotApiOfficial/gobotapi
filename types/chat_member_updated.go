@@ -11,4 +11,5 @@ type ChatMemberUpdated struct {
 	NewChatMember           ChatMember      `json:"new_chat_member"`
 	OldChatMember           ChatMember      `json:"old_chat_member"`
 	ViaChatFolderInviteLink bool            `json:"via_chat_folder_invite_link,omitempty"`
+	ViaJoinRequest          bool            `json:"via_join_request,omitempty"`
 }

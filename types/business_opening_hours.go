@@ -2,6 +2,7 @@
 
 package types
 
+// BusinessOpeningHours Describes the opening hours of a business.
 type BusinessOpeningHours struct {
 	OpeningHours []BusinessOpeningHoursInterval `json:"opening_hours,omitempty"`
 	TimeZoneName string                         `json:"time_zone_name"`

@@ -12,25 +12,27 @@ import (
 // SendPoll Use this method to send a native poll
 // On success, the sent Message is returned.
 type SendPoll struct {
-	AllowsMultipleAnswers bool                   `json:"allows_multiple_answers,omitempty"`
-	BusinessConnectionID  string                 `json:"business_connection_id,omitempty"`
-	ChatID                any                    `json:"chat_id"`
-	CloseDate             int64                  `json:"close_date,omitempty"`
-	CorrectOptionID       int64                  `json:"correct_option_id,omitempty"`
-	DisableNotification   bool                   `json:"disable_notification,omitempty"`
-	Explanation           string                 `json:"explanation,omitempty"`
-	ExplanationEntities   []types.MessageEntity  `json:"explanation_entities,omitempty"`
-	ExplanationParseMode  string                 `json:"explanation_parse_mode,omitempty"`
-	IsAnonymous           bool                   `json:"is_anonymous,omitempty"`
-	IsClosed              bool                   `json:"is_closed,omitempty"`
-	MessageThreadID       int64                  `json:"message_thread_id,omitempty"`
-	OpenPeriod            int                    `json:"open_period,omitempty"`
-	Options               []string               `json:"options,omitempty"`
-	ProtectContent        bool                   `json:"protect_content,omitempty"`
-	Question              string                 `json:"question"`
-	ReplyMarkup           any                    `json:"reply_markup,omitempty"`
-	ReplyParameters       *types.ReplyParameters `json:"reply_parameters,omitempty"`
-	Type                  string                 `json:"type,omitempty"`
+	AllowsMultipleAnswers bool                    `json:"allows_multiple_answers,omitempty"`
+	BusinessConnectionID  string                  `json:"business_connection_id,omitempty"`
+	ChatID                any                     `json:"chat_id"`
+	CloseDate             int64                   `json:"close_date,omitempty"`
+	CorrectOptionID       int64                   `json:"correct_option_id,omitempty"`
+	DisableNotification   bool                    `json:"disable_notification,omitempty"`
+	Explanation           string                  `json:"explanation,omitempty"`
+	ExplanationEntities   []types.MessageEntity   `json:"explanation_entities,omitempty"`
+	ExplanationParseMode  string                  `json:"explanation_parse_mode,omitempty"`
+	IsAnonymous           bool                    `json:"is_anonymous,omitempty"`
+	IsClosed              bool                    `json:"is_closed,omitempty"`
+	MessageThreadID       int64                   `json:"message_thread_id,omitempty"`
+	OpenPeriod            int                     `json:"open_period,omitempty"`
+	Options               []types.InputPollOption `json:"options,omitempty"`
+	ProtectContent        bool                    `json:"protect_content,omitempty"`
+	Question              string                  `json:"question"`
+	QuestionEntities      []types.MessageEntity   `json:"question_entities,omitempty"`
+	QuestionParseMode     string                  `json:"question_parse_mode,omitempty"`
+	ReplyMarkup           any                     `json:"reply_markup,omitempty"`
+	ReplyParameters       *types.ReplyParameters  `json:"reply_parameters,omitempty"`
+	Type                  string                  `json:"type,omitempty"`
 }
 
 func (entity *SendPoll) ProgressCallable() rawTypes.ProgressCallable {

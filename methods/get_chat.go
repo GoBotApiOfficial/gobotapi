@@ -9,8 +9,8 @@ import (
 	rawTypes "github.com/GoBotApiOfficial/gobotapi/types/raw"
 )
 
-// GetChat Use this method to get up to date information about the chat
-// Returns a Chat object on success.
+// GetChat Use this method to get up-to-date information about the chat
+// Returns a ChatFullInfo object on success.
 type GetChat struct {
 	ChatID any `json:"chat_id"`
 }
@@ -42,14 +42,14 @@ func (GetChat) MethodName() string {
 
 func (GetChat) ParseResult(response []byte) (*rawTypes.Result, error) {
 	var x1 struct {
-		Result types.Chat `json:"result"`
+		Result types.ChatFullInfo `json:"result"`
 	}
 	err := json.Unmarshal(response, &x1)
 	if err != nil {
 		return nil, err
 	}
 	result := rawTypes.Result{
-		Kind:   types.TypeChat,
+		Kind:   types.TypeChatFullInfo,
 		Result: x1.Result,
 	}
 	return &result, nil

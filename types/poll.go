@@ -15,6 +15,7 @@ type Poll struct {
 	OpenPeriod            int             `json:"open_period,omitempty"`
 	Options               []PollOption    `json:"options,omitempty"`
 	Question              string          `json:"question"`
+	QuestionEntities      []MessageEntity `json:"question_entities,omitempty"`
 	TotalVoterCount       int             `json:"total_voter_count"`
 	Type                  string          `json:"type"`
 }

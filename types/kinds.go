@@ -2,10 +2,12 @@
 
 package types
 
-// MAYBE_INACCESSIBLE_MESSAGE
+// BACKGROUND_TYPE
 const (
-	TypeMessage = iota
-	TypeInaccessibleMessage
+	TypeBackgroundTypeFill = iota
+	TypeBackgroundTypeWallpaper
+	TypeBackgroundTypePattern
+	TypeBackgroundTypeChatTheme
 )
 
 // CHAT_BOOST_SOURCE
@@ -13,6 +15,21 @@ const (
 	TypeChatBoostSourcePremium = iota
 	TypeChatBoostSourceGiftCode
 	TypeChatBoostSourceGiveaway
+)
+
+// MESSAGE_ORIGIN
+const (
+	TypeMessageOriginUser = iota
+	TypeMessageOriginHiddenUser
+	TypeMessageOriginChat
+	TypeMessageOriginChannel
+)
+
+// BACKGROUND_FILL
+const (
+	TypeBackgroundFillSolid = iota
+	TypeBackgroundFillGradient
+	TypeBackgroundFillFreeformGradient
 )
 
 // CHAT_MEMBER
@@ -25,12 +42,10 @@ const (
 	TypeChatMemberBanned
 )
 
-// MESSAGE_ORIGIN
+// MAYBE_INACCESSIBLE_MESSAGE
 const (
-	TypeMessageOriginUser = iota
-	TypeMessageOriginHiddenUser
-	TypeMessageOriginChat
-	TypeMessageOriginChannel
+	TypeMessage = iota
+	TypeInaccessibleMessage
 )
 
 // RETURN_TYPES
@@ -47,8 +62,8 @@ const (
 	TypeBotName
 	TypeBotShortDescription
 	TypeBusinessConnection
-	TypeChat
 	TypeChatAdministratorRights
+	TypeChatFullInfo
 	TypeChatInviteLink
 	TypeChatMember
 	TypeErrorMessage

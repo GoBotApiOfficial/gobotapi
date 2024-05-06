@@ -2,6 +2,7 @@
 
 package types
 
+// BusinessOpeningHoursInterval Describes an interval of time during which a business is open.
 type BusinessOpeningHoursInterval struct {
 	ClosingMinute int `json:"closing_minute"`
 	OpeningMinute int `json:"opening_minute"`

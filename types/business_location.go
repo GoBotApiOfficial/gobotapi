@@ -2,6 +2,7 @@
 
 package types
 
+// BusinessLocation Contains information about the location of a Telegram Business account.
 type BusinessLocation struct {
 	Address  string    `json:"address"`
 	Location *Location `json:"location,omitempty"`

@@ -4,7 +4,8 @@ package types
 
 // KeyboardButtonRequestChat This object defines the criteria used to request a suitable chat
 // Information about the selected chat will be shared with the bot when the corresponding button is pressed
-// The bot will be granted requested rights in the сhat if appropriate More about requesting chats »
+// The bot will be granted requested rights in the chat if appropriate
+// More about requesting chats ».
 type KeyboardButtonRequestChat struct {
 	BotAdministratorRights  *ChatAdministratorRights `json:"bot_administrator_rights,omitempty"`
 	BotIsMember             bool                     `json:"bot_is_member,omitempty"`

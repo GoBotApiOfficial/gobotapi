@@ -2,7 +2,7 @@
 
 package types
 
-// SharedUser This object contains information about a user that was shared with the bot using a KeyboardButtonRequestUser button.
+// SharedUser This object contains information about a user that was shared with the bot using a KeyboardButtonRequestUsers button.
 type SharedUser struct {
 	FirstName string      `json:"first_name,omitempty"`
 	LastName  string      `json:"last_name,omitempty"`

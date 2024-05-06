@@ -2,7 +2,8 @@
 
 package types
 
-// ReplyKeyboardMarkup Represents a custom keyboard with reply options (see Introduction to bots for details and examples).
+// ReplyKeyboardMarkup Represents a custom keyboard with reply options (see Introduction to bots for details and examples)
+// Not supported in channels and for messages sent on behalf of a Telegram Business account.
 type ReplyKeyboardMarkup struct {
 	InputFieldPlaceholder string             `json:"input_field_placeholder,omitempty"`
 	IsPersistent          bool               `json:"is_persistent,omitempty"`
