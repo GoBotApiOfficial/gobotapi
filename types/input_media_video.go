@@ -10,16 +10,17 @@ import (
 
 // InputMediaVideo Represents a video to be sent.
 type InputMediaVideo struct {
-	Caption           string             `json:"caption,omitempty"`
-	CaptionEntities   []MessageEntity    `json:"caption_entities,omitempty"`
-	Duration          int                `json:"duration,omitempty"`
-	HasSpoiler        bool               `json:"has_spoiler,omitempty"`
-	Height            int                `json:"height,omitempty"`
-	Media             rawTypes.InputFile `json:"media,omitempty"`
-	ParseMode         string             `json:"parse_mode,omitempty"`
-	SupportsStreaming bool               `json:"supports_streaming,omitempty"`
-	Thumbnail         rawTypes.InputFile `json:"thumbnail,omitempty"`
-	Width             int64              `json:"width,omitempty"`
+	Caption               string             `json:"caption,omitempty"`
+	CaptionEntities       []MessageEntity    `json:"caption_entities,omitempty"`
+	Duration              int                `json:"duration,omitempty"`
+	HasSpoiler            bool               `json:"has_spoiler,omitempty"`
+	Height                int                `json:"height,omitempty"`
+	Media                 rawTypes.InputFile `json:"media,omitempty"`
+	ParseMode             string             `json:"parse_mode,omitempty"`
+	ShowCaptionAboveMedia bool               `json:"show_caption_above_media,omitempty"`
+	SupportsStreaming     bool               `json:"supports_streaming,omitempty"`
+	Thumbnail             rawTypes.InputFile `json:"thumbnail,omitempty"`
+	Width                 int64              `json:"width,omitempty"`
 }
 
 func (entity *InputMediaVideo) Files() map[string]rawTypes.InputFile {
@@ -45,29 +46,31 @@ func (entity *InputMediaVideo) SetAttachmentThumb(attach string) {
 
 func (entity InputMediaVideo) MarshalJSON() ([]byte, error) {
 	alias := struct {
-		Type              string             `json:"type"`
-		Media             rawTypes.InputFile `json:"media,omitempty"`
-		Thumbnail         rawTypes.InputFile `json:"thumbnail,omitempty"`
-		Caption           string             `json:"caption,omitempty"`
-		ParseMode         string             `json:"parse_mode,omitempty"`
-		CaptionEntities   []MessageEntity    `json:"caption_entities,omitempty"`
-		Width             int64              `json:"width,omitempty"`
-		Height            int                `json:"height,omitempty"`
-		Duration          int                `json:"duration,omitempty"`
-		SupportsStreaming bool               `json:"supports_streaming,omitempty"`
-		HasSpoiler        bool               `json:"has_spoiler,omitempty"`
+		Type                  string             `json:"type"`
+		Media                 rawTypes.InputFile `json:"media,omitempty"`
+		Thumbnail             rawTypes.InputFile `json:"thumbnail,omitempty"`
+		Caption               string             `json:"caption,omitempty"`
+		ParseMode             string             `json:"parse_mode,omitempty"`
+		CaptionEntities       []MessageEntity    `json:"caption_entities,omitempty"`
+		ShowCaptionAboveMedia bool               `json:"show_caption_above_media,omitempty"`
+		Width                 int64              `json:"width,omitempty"`
+		Height                int                `json:"height,omitempty"`
+		Duration              int                `json:"duration,omitempty"`
+		SupportsStreaming     bool               `json:"supports_streaming,omitempty"`
+		HasSpoiler            bool               `json:"has_spoiler,omitempty"`
 	}{
-		Type:              "video",
-		Media:             entity.Media,
-		Thumbnail:         entity.Thumbnail,
-		Caption:           entity.Caption,
-		ParseMode:         entity.ParseMode,
-		CaptionEntities:   entity.CaptionEntities,
-		Width:             entity.Width,
-		Height:            entity.Height,
-		Duration:          entity.Duration,
-		SupportsStreaming: entity.SupportsStreaming,
-		HasSpoiler:        entity.HasSpoiler,
+		Type:                  "video",
+		Media:                 entity.Media,
+		Thumbnail:             entity.Thumbnail,
+		Caption:               entity.Caption,
+		ParseMode:             entity.ParseMode,
+		CaptionEntities:       entity.CaptionEntities,
+		ShowCaptionAboveMedia: entity.ShowCaptionAboveMedia,
+		Width:                 entity.Width,
+		Height:                entity.Height,
+		Duration:              entity.Duration,
+		SupportsStreaming:     entity.SupportsStreaming,
+		HasSpoiler:            entity.HasSpoiler,
 	}
 	return json.Marshal(alias)
 }

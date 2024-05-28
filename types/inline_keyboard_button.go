@@ -3,7 +3,7 @@
 package types
 
 // InlineKeyboardButton Represents one button of an inline keyboard
-// You must use exactly one of the optional fields.
+// Exactly one of the optional fields must be used to specify type of the button.
 type InlineKeyboardButton struct {
 	CallbackData                 string                       `json:"callback_data,omitempty"`
 	CallbackGame                 *CallbackGame                `json:"callback_game,omitempty"`

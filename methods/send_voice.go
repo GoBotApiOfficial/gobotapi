@@ -20,6 +20,7 @@ type SendVoice struct {
 	ChatID               any                       `json:"chat_id"`
 	DisableNotification  bool                      `json:"disable_notification,omitempty"`
 	Duration             int                       `json:"duration,omitempty"`
+	MessageEffectID      string                    `json:"message_effect_id,omitempty"`
 	MessageThreadID      int64                     `json:"message_thread_id,omitempty"`
 	ParseMode            string                    `json:"parse_mode,omitempty"`
 	ProtectContent       bool                      `json:"protect_content,omitempty"`
@@ -44,20 +45,20 @@ func (entity *SendVoice) Files() map[string]rawTypes.InputFile {
 }
 
 func (entity SendVoice) MarshalJSON() ([]byte, error) {
-	if entity.ChatID != nil {
-		switch entity.ChatID.(type) {
-		case int, int64, string:
-			break
-		default:
-			return nil, fmt.Errorf("chat_id: unknown type: %T", entity.ChatID)
-		}
-	}
 	if entity.ReplyMarkup != nil {
 		switch entity.ReplyMarkup.(type) {
 		case *types.InlineKeyboardMarkup, *types.ReplyKeyboardMarkup, *types.ReplyKeyboardRemove, *types.ForceReply:
 			break
 		default:
 			return nil, fmt.Errorf("reply_markup: unknown type: %T", entity.ReplyMarkup)
+		}
+	}
+	if entity.ChatID != nil {
+		switch entity.ChatID.(type) {
+		case int, int64, string:
+			break
+		default:
+			return nil, fmt.Errorf("chat_id: unknown type: %T", entity.ChatID)
 		}
 	}
 	type x0 SendVoice

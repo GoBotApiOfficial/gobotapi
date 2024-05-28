@@ -10,15 +10,16 @@ import (
 
 // InputMediaAnimation Represents an animation file (GIF or H.264/MPEG-4 AVC video without sound) to be sent.
 type InputMediaAnimation struct {
-	Caption         string             `json:"caption,omitempty"`
-	CaptionEntities []MessageEntity    `json:"caption_entities,omitempty"`
-	Duration        int                `json:"duration,omitempty"`
-	HasSpoiler      bool               `json:"has_spoiler,omitempty"`
-	Height          int                `json:"height,omitempty"`
-	Media           rawTypes.InputFile `json:"media,omitempty"`
-	ParseMode       string             `json:"parse_mode,omitempty"`
-	Thumbnail       rawTypes.InputFile `json:"thumbnail,omitempty"`
-	Width           int64              `json:"width,omitempty"`
+	Caption               string             `json:"caption,omitempty"`
+	CaptionEntities       []MessageEntity    `json:"caption_entities,omitempty"`
+	Duration              int                `json:"duration,omitempty"`
+	HasSpoiler            bool               `json:"has_spoiler,omitempty"`
+	Height                int                `json:"height,omitempty"`
+	Media                 rawTypes.InputFile `json:"media,omitempty"`
+	ParseMode             string             `json:"parse_mode,omitempty"`
+	ShowCaptionAboveMedia bool               `json:"show_caption_above_media,omitempty"`
+	Thumbnail             rawTypes.InputFile `json:"thumbnail,omitempty"`
+	Width                 int64              `json:"width,omitempty"`
 }
 
 func (entity *InputMediaAnimation) Files() map[string]rawTypes.InputFile {
@@ -44,27 +45,29 @@ func (entity *InputMediaAnimation) SetAttachmentThumb(attach string) {
 
 func (entity InputMediaAnimation) MarshalJSON() ([]byte, error) {
 	alias := struct {
-		Type            string             `json:"type"`
-		Media           rawTypes.InputFile `json:"media,omitempty"`
-		Thumbnail       rawTypes.InputFile `json:"thumbnail,omitempty"`
-		Caption         string             `json:"caption,omitempty"`
-		ParseMode       string             `json:"parse_mode,omitempty"`
-		CaptionEntities []MessageEntity    `json:"caption_entities,omitempty"`
-		Width           int64              `json:"width,omitempty"`
-		Height          int                `json:"height,omitempty"`
-		Duration        int                `json:"duration,omitempty"`
-		HasSpoiler      bool               `json:"has_spoiler,omitempty"`
+		Type                  string             `json:"type"`
+		Media                 rawTypes.InputFile `json:"media,omitempty"`
+		Thumbnail             rawTypes.InputFile `json:"thumbnail,omitempty"`
+		Caption               string             `json:"caption,omitempty"`
+		ParseMode             string             `json:"parse_mode,omitempty"`
+		CaptionEntities       []MessageEntity    `json:"caption_entities,omitempty"`
+		ShowCaptionAboveMedia bool               `json:"show_caption_above_media,omitempty"`
+		Width                 int64              `json:"width,omitempty"`
+		Height                int                `json:"height,omitempty"`
+		Duration              int                `json:"duration,omitempty"`
+		HasSpoiler            bool               `json:"has_spoiler,omitempty"`
 	}{
-		Type:            "animation",
-		Media:           entity.Media,
-		Thumbnail:       entity.Thumbnail,
-		Caption:         entity.Caption,
-		ParseMode:       entity.ParseMode,
-		CaptionEntities: entity.CaptionEntities,
-		Width:           entity.Width,
-		Height:          entity.Height,
-		Duration:        entity.Duration,
-		HasSpoiler:      entity.HasSpoiler,
+		Type:                  "animation",
+		Media:                 entity.Media,
+		Thumbnail:             entity.Thumbnail,
+		Caption:               entity.Caption,
+		ParseMode:             entity.ParseMode,
+		CaptionEntities:       entity.CaptionEntities,
+		ShowCaptionAboveMedia: entity.ShowCaptionAboveMedia,
+		Width:                 entity.Width,
+		Height:                entity.Height,
+		Duration:              entity.Duration,
+		HasSpoiler:            entity.HasSpoiler,
 	}
 	return json.Marshal(alias)
 }

@@ -2,27 +2,20 @@
 
 package types
 
-// BACKGROUND_TYPE
-const (
-	TypeBackgroundTypeFill = iota
-	TypeBackgroundTypeWallpaper
-	TypeBackgroundTypePattern
-	TypeBackgroundTypeChatTheme
-)
-
-// CHAT_BOOST_SOURCE
-const (
-	TypeChatBoostSourcePremium = iota
-	TypeChatBoostSourceGiftCode
-	TypeChatBoostSourceGiveaway
-)
-
 // MESSAGE_ORIGIN
 const (
 	TypeMessageOriginUser = iota
 	TypeMessageOriginHiddenUser
 	TypeMessageOriginChat
 	TypeMessageOriginChannel
+)
+
+// BACKGROUND_TYPE
+const (
+	TypeBackgroundTypeFill = iota
+	TypeBackgroundTypeWallpaper
+	TypeBackgroundTypePattern
+	TypeBackgroundTypeChatTheme
 )
 
 // BACKGROUND_FILL
@@ -46,6 +39,13 @@ const (
 const (
 	TypeMessage = iota
 	TypeInaccessibleMessage
+)
+
+// CHAT_BOOST_SOURCE
+const (
+	TypeChatBoostSourcePremium = iota
+	TypeChatBoostSourceGiftCode
+	TypeChatBoostSourceGiveaway
 )
 
 // RETURN_TYPES

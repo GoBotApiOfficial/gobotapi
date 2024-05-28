@@ -22,6 +22,7 @@ type Message struct {
 	Dice                          *Dice                          `json:"dice,omitempty"`
 	Document                      *Document                      `json:"document,omitempty"`
 	EditDate                      int64                          `json:"edit_date,omitempty"`
+	EffectID                      string                         `json:"effect_id,omitempty"`
 	Entities                      []MessageEntity                `json:"entities,omitempty"`
 	ExternalReply                 *ExternalReplyInfo             `json:"external_reply,omitempty"`
 	ForumTopicClosed              *ForumTopicClosed              `json:"forum_topic_closed,omitempty"`
@@ -68,6 +69,7 @@ type Message struct {
 	SenderBoostCount              int                            `json:"sender_boost_count,omitempty"`
 	SenderBusinessBot             *User                          `json:"sender_business_bot,omitempty"`
 	SenderChat                    *Chat                          `json:"sender_chat,omitempty"`
+	ShowCaptionAboveMedia         bool                           `json:"show_caption_above_media,omitempty"`
 	Sticker                       *Sticker                       `json:"sticker,omitempty"`
 	Story                         *Story                         `json:"story,omitempty"`
 	SuccessfulPayment             *SuccessfulPayment             `json:"successful_payment,omitempty"`

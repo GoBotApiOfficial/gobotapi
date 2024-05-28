@@ -19,7 +19,7 @@ type InputInvoiceMessageContent struct {
 	PhotoWidth                int64          `json:"photo_width,omitempty"`
 	Prices                    []LabeledPrice `json:"prices,omitempty"`
 	ProviderData              string         `json:"provider_data,omitempty"`
-	ProviderToken             string         `json:"provider_token"`
+	ProviderToken             string         `json:"provider_token,omitempty"`
 	SendEmailToProvider       bool           `json:"send_email_to_provider,omitempty"`
 	SendPhoneNumberToProvider bool           `json:"send_phone_number_to_provider,omitempty"`
 	SuggestedTipAmounts       []int          `json:"suggested_tip_amounts,omitempty"`

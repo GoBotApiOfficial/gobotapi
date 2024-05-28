@@ -17,6 +17,7 @@ type SendMediaGroup struct {
 	ChatID               any                       `json:"chat_id"`
 	DisableNotification  bool                      `json:"disable_notification,omitempty"`
 	Media                []types.InputMedia        `json:"media,omitempty"`
+	MessageEffectID      string                    `json:"message_effect_id,omitempty"`
 	MessageThreadID      int64                     `json:"message_thread_id,omitempty"`
 	ProtectContent       bool                      `json:"protect_content,omitempty"`
 	ReplyParameters      *types.ReplyParameters    `json:"reply_parameters,omitempty"`

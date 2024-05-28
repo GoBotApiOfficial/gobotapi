@@ -18,6 +18,7 @@ type SendInvoice struct {
 	DisableNotification       bool                        `json:"disable_notification,omitempty"`
 	IsFlexible                bool                        `json:"is_flexible,omitempty"`
 	MaxTipAmount              int                         `json:"max_tip_amount,omitempty"`
+	MessageEffectID           string                      `json:"message_effect_id,omitempty"`
 	MessageThreadID           int64                       `json:"message_thread_id,omitempty"`
 	NeedEmail                 bool                        `json:"need_email,omitempty"`
 	NeedName                  bool                        `json:"need_name,omitempty"`
@@ -31,7 +32,7 @@ type SendInvoice struct {
 	Prices                    []types.LabeledPrice        `json:"prices,omitempty"`
 	ProtectContent            bool                        `json:"protect_content,omitempty"`
 	ProviderData              string                      `json:"provider_data,omitempty"`
-	ProviderToken             string                      `json:"provider_token"`
+	ProviderToken             string                      `json:"provider_token,omitempty"`
 	ReplyMarkup               *types.InlineKeyboardMarkup `json:"reply_markup,omitempty"`
 	ReplyParameters           *types.ReplyParameters      `json:"reply_parameters,omitempty"`
 	SendEmailToProvider       bool                        `json:"send_email_to_provider,omitempty"`

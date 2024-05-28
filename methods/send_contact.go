@@ -17,6 +17,7 @@ type SendContact struct {
 	DisableNotification  bool                   `json:"disable_notification,omitempty"`
 	FirstName            string                 `json:"first_name"`
 	LastName             string                 `json:"last_name,omitempty"`
+	MessageEffectID      string                 `json:"message_effect_id,omitempty"`
 	MessageThreadID      int64                  `json:"message_thread_id,omitempty"`
 	PhoneNumber          string                 `json:"phone_number"`
 	ProtectContent       bool                   `json:"protect_content,omitempty"`

@@ -23,6 +23,7 @@ type SendPoll struct {
 	ExplanationParseMode  string                  `json:"explanation_parse_mode,omitempty"`
 	IsAnonymous           bool                    `json:"is_anonymous,omitempty"`
 	IsClosed              bool                    `json:"is_closed,omitempty"`
+	MessageEffectID       string                  `json:"message_effect_id,omitempty"`
 	MessageThreadID       int64                   `json:"message_thread_id,omitempty"`
 	OpenPeriod            int                     `json:"open_period,omitempty"`
 	Options               []types.InputPollOption `json:"options,omitempty"`

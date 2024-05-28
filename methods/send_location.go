@@ -20,6 +20,7 @@ type SendLocation struct {
 	Latitude             float64                `json:"latitude"`
 	LivePeriod           int                    `json:"live_period,omitempty"`
 	Longitude            float64                `json:"longitude"`
+	MessageEffectID      string                 `json:"message_effect_id,omitempty"`
 	MessageThreadID      int64                  `json:"message_thread_id,omitempty"`
 	ProtectContent       bool                   `json:"protect_content,omitempty"`
 	ProximityAlertRadius int                    `json:"proximity_alert_radius,omitempty"`

@@ -11,52 +11,55 @@ import (
 // By default, this animated MPEG-4 file will be sent by the user with optional caption
 // Alternatively, you can use input_message_content to send a message with the specified content instead of the animation.
 type InlineQueryResultMpeg4Gif struct {
-	Caption             string                `json:"caption,omitempty"`
-	CaptionEntities     []MessageEntity       `json:"caption_entities,omitempty"`
-	ID                  string                `json:"id"`
-	InputMessageContent any                   `json:"input_message_content,omitempty"`
-	Mpeg4Duration       int                   `json:"mpeg4_duration,omitempty"`
-	Mpeg4Height         int                   `json:"mpeg4_height,omitempty"`
-	Mpeg4URL            string                `json:"mpeg4_url"`
-	Mpeg4Width          int64                 `json:"mpeg4_width,omitempty"`
-	ParseMode           string                `json:"parse_mode,omitempty"`
-	ReplyMarkup         *InlineKeyboardMarkup `json:"reply_markup,omitempty"`
-	ThumbnailMimeType   string                `json:"thumbnail_mime_type,omitempty"`
-	ThumbnailURL        string                `json:"thumbnail_url"`
-	Title               string                `json:"title,omitempty"`
+	Caption               string                `json:"caption,omitempty"`
+	CaptionEntities       []MessageEntity       `json:"caption_entities,omitempty"`
+	ID                    string                `json:"id"`
+	InputMessageContent   any                   `json:"input_message_content,omitempty"`
+	Mpeg4Duration         int                   `json:"mpeg4_duration,omitempty"`
+	Mpeg4Height           int                   `json:"mpeg4_height,omitempty"`
+	Mpeg4URL              string                `json:"mpeg4_url"`
+	Mpeg4Width            int64                 `json:"mpeg4_width,omitempty"`
+	ParseMode             string                `json:"parse_mode,omitempty"`
+	ReplyMarkup           *InlineKeyboardMarkup `json:"reply_markup,omitempty"`
+	ShowCaptionAboveMedia bool                  `json:"show_caption_above_media,omitempty"`
+	ThumbnailMimeType     string                `json:"thumbnail_mime_type,omitempty"`
+	ThumbnailURL          string                `json:"thumbnail_url"`
+	Title                 string                `json:"title,omitempty"`
 }
 
 func (entity InlineQueryResultMpeg4Gif) MarshalJSON() ([]byte, error) {
 	alias := struct {
-		Type                string                `json:"type"`
-		ID                  string                `json:"id"`
-		Mpeg4URL            string                `json:"mpeg4_url"`
-		Mpeg4Width          int64                 `json:"mpeg4_width,omitempty"`
-		Mpeg4Height         int                   `json:"mpeg4_height,omitempty"`
-		Mpeg4Duration       int                   `json:"mpeg4_duration,omitempty"`
-		ThumbnailURL        string                `json:"thumbnail_url"`
-		ThumbnailMimeType   string                `json:"thumbnail_mime_type,omitempty"`
-		Title               string                `json:"title,omitempty"`
-		Caption             string                `json:"caption,omitempty"`
-		ParseMode           string                `json:"parse_mode,omitempty"`
-		CaptionEntities     []MessageEntity       `json:"caption_entities,omitempty"`
-		ReplyMarkup         *InlineKeyboardMarkup `json:"reply_markup,omitempty"`
-		InputMessageContent any                   `json:"input_message_content,omitempty"`
+		Type                  string                `json:"type"`
+		ID                    string                `json:"id"`
+		Mpeg4URL              string                `json:"mpeg4_url"`
+		Mpeg4Width            int64                 `json:"mpeg4_width,omitempty"`
+		Mpeg4Height           int                   `json:"mpeg4_height,omitempty"`
+		Mpeg4Duration         int                   `json:"mpeg4_duration,omitempty"`
+		ThumbnailURL          string                `json:"thumbnail_url"`
+		ThumbnailMimeType     string                `json:"thumbnail_mime_type,omitempty"`
+		Title                 string                `json:"title,omitempty"`
+		Caption               string                `json:"caption,omitempty"`
+		ParseMode             string                `json:"parse_mode,omitempty"`
+		CaptionEntities       []MessageEntity       `json:"caption_entities,omitempty"`
+		ShowCaptionAboveMedia bool                  `json:"show_caption_above_media,omitempty"`
+		ReplyMarkup           *InlineKeyboardMarkup `json:"reply_markup,omitempty"`
+		InputMessageContent   any                   `json:"input_message_content,omitempty"`
 	}{
-		Type:                "mpeg4_gif",
-		ID:                  entity.ID,
-		Mpeg4URL:            entity.Mpeg4URL,
-		Mpeg4Width:          entity.Mpeg4Width,
-		Mpeg4Height:         entity.Mpeg4Height,
-		Mpeg4Duration:       entity.Mpeg4Duration,
-		ThumbnailURL:        entity.ThumbnailURL,
-		ThumbnailMimeType:   entity.ThumbnailMimeType,
-		Title:               entity.Title,
-		Caption:             entity.Caption,
-		ParseMode:           entity.ParseMode,
-		CaptionEntities:     entity.CaptionEntities,
-		ReplyMarkup:         entity.ReplyMarkup,
-		InputMessageContent: entity.InputMessageContent,
+		Type:                  "mpeg4_gif",
+		ID:                    entity.ID,
+		Mpeg4URL:              entity.Mpeg4URL,
+		Mpeg4Width:            entity.Mpeg4Width,
+		Mpeg4Height:           entity.Mpeg4Height,
+		Mpeg4Duration:         entity.Mpeg4Duration,
+		ThumbnailURL:          entity.ThumbnailURL,
+		ThumbnailMimeType:     entity.ThumbnailMimeType,
+		Title:                 entity.Title,
+		Caption:               entity.Caption,
+		ParseMode:             entity.ParseMode,
+		CaptionEntities:       entity.CaptionEntities,
+		ShowCaptionAboveMedia: entity.ShowCaptionAboveMedia,
+		ReplyMarkup:           entity.ReplyMarkup,
+		InputMessageContent:   entity.InputMessageContent,
 	}
 	if entity.InputMessageContent != nil {
 		switch entity.InputMessageContent.(type) {

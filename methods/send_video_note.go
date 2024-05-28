@@ -18,6 +18,7 @@ type SendVideoNote struct {
 	DisableNotification  bool                      `json:"disable_notification,omitempty"`
 	Duration             int                       `json:"duration,omitempty"`
 	Length               int                       `json:"length,omitempty"`
+	MessageEffectID      string                    `json:"message_effect_id,omitempty"`
 	MessageThreadID      int64                     `json:"message_thread_id,omitempty"`
 	ProtectContent       bool                      `json:"protect_content,omitempty"`
 	ReplyMarkup          any                       `json:"reply_markup,omitempty"`

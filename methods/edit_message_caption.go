@@ -12,13 +12,14 @@ import (
 // EditMessageCaption Use this method to edit captions of messages
 // On success, if the edited message is not an inline message, the edited Message is returned, otherwise True is returned.
 type EditMessageCaption struct {
-	Caption         string                      `json:"caption,omitempty"`
-	CaptionEntities []types.MessageEntity       `json:"caption_entities,omitempty"`
-	ChatID          any                         `json:"chat_id,omitempty"`
-	InlineMessageID string                      `json:"inline_message_id,omitempty"`
-	MessageID       int64                       `json:"message_id,omitempty"`
-	ParseMode       string                      `json:"parse_mode,omitempty"`
-	ReplyMarkup     *types.InlineKeyboardMarkup `json:"reply_markup,omitempty"`
+	Caption               string                      `json:"caption,omitempty"`
+	CaptionEntities       []types.MessageEntity       `json:"caption_entities,omitempty"`
+	ChatID                any                         `json:"chat_id,omitempty"`
+	InlineMessageID       string                      `json:"inline_message_id,omitempty"`
+	MessageID             int64                       `json:"message_id,omitempty"`
+	ParseMode             string                      `json:"parse_mode,omitempty"`
+	ReplyMarkup           *types.InlineKeyboardMarkup `json:"reply_markup,omitempty"`
+	ShowCaptionAboveMedia bool                        `json:"show_caption_above_media,omitempty"`
 }
 
 func (entity *EditMessageCaption) ProgressCallable() rawTypes.ProgressCallable {
