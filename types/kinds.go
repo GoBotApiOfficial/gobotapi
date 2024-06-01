@@ -2,14 +2,6 @@
 
 package types
 
-// MESSAGE_ORIGIN
-const (
-	TypeMessageOriginUser = iota
-	TypeMessageOriginHiddenUser
-	TypeMessageOriginChat
-	TypeMessageOriginChannel
-)
-
 // BACKGROUND_TYPE
 const (
 	TypeBackgroundTypeFill = iota
@@ -18,11 +10,25 @@ const (
 	TypeBackgroundTypeChatTheme
 )
 
+// MAYBE_INACCESSIBLE_MESSAGE
+const (
+	TypeMessage = iota
+	TypeInaccessibleMessage
+)
+
 // BACKGROUND_FILL
 const (
 	TypeBackgroundFillSolid = iota
 	TypeBackgroundFillGradient
 	TypeBackgroundFillFreeformGradient
+)
+
+// MESSAGE_ORIGIN
+const (
+	TypeMessageOriginUser = iota
+	TypeMessageOriginHiddenUser
+	TypeMessageOriginChat
+	TypeMessageOriginChannel
 )
 
 // CHAT_MEMBER
@@ -33,12 +39,6 @@ const (
 	TypeChatMemberRestricted
 	TypeChatMemberLeft
 	TypeChatMemberBanned
-)
-
-// MAYBE_INACCESSIBLE_MESSAGE
-const (
-	TypeMessage = iota
-	TypeInaccessibleMessage
 )
 
 // CHAT_BOOST_SOURCE

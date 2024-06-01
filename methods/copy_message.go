@@ -15,17 +15,18 @@ import (
 // The method is analogous to the method forwardMessage, but the copied message doesn't have a link to the original message
 // Returns the MessageId of the sent message on success.
 type CopyMessage struct {
-	Caption             string                 `json:"caption,omitempty"`
-	CaptionEntities     []types.MessageEntity  `json:"caption_entities,omitempty"`
-	ChatID              any                    `json:"chat_id"`
-	DisableNotification bool                   `json:"disable_notification,omitempty"`
-	FromChatID          int64                  `json:"from_chat_id"`
-	MessageID           int64                  `json:"message_id"`
-	MessageThreadID     int64                  `json:"message_thread_id,omitempty"`
-	ParseMode           string                 `json:"parse_mode,omitempty"`
-	ProtectContent      bool                   `json:"protect_content,omitempty"`
-	ReplyMarkup         any                    `json:"reply_markup,omitempty"`
-	ReplyParameters     *types.ReplyParameters `json:"reply_parameters,omitempty"`
+	Caption               string                 `json:"caption,omitempty"`
+	CaptionEntities       []types.MessageEntity  `json:"caption_entities,omitempty"`
+	ChatID                any                    `json:"chat_id"`
+	DisableNotification   bool                   `json:"disable_notification,omitempty"`
+	FromChatID            int64                  `json:"from_chat_id"`
+	MessageID             int64                  `json:"message_id"`
+	MessageThreadID       int64                  `json:"message_thread_id,omitempty"`
+	ParseMode             string                 `json:"parse_mode,omitempty"`
+	ProtectContent        bool                   `json:"protect_content,omitempty"`
+	ReplyMarkup           any                    `json:"reply_markup,omitempty"`
+	ReplyParameters       *types.ReplyParameters `json:"reply_parameters,omitempty"`
+	ShowCaptionAboveMedia bool                   `json:"show_caption_above_media,omitempty"`
 }
 
 func (entity *CopyMessage) ProgressCallable() rawTypes.ProgressCallable {
