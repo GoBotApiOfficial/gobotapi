@@ -18,6 +18,10 @@ func HtmlTag(tag string) string {
 		return "tg-spoiler"
 	case "text_link", "text_mention":
 		return "a"
+	case "blockquote":
+		return "blockquote"
+	case "expandable_blockquote":
+		return "expandable_blockquote"
 	default:
 		return ""
 	}

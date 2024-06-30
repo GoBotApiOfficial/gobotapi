@@ -26,6 +26,9 @@ func Parse(data string, entities []types.MessageEntity) string {
 				startTag = fmt.Sprintf("<%s href='%s'>", name, entity.URL)
 			}
 			endTag = fmt.Sprintf("</%s>", name)
+		case "expandable_blockquote":
+			startTag = "<blockquote expandable>"
+			endTag = "</blockquote>"
 		default:
 			startTag = fmt.Sprintf("<%s>", name)
 			endTag = fmt.Sprintf("</%s>", name)
