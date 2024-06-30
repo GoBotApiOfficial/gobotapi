@@ -34,28 +34,16 @@ func (SetGameScore) MethodName() string {
 }
 
 func (SetGameScore) ParseResult(response []byte) (*rawTypes.Result, error) {
-	var x0 struct {
-		Result bool `json:"result"`
+	var x1 struct {
+		Result types.False `json:"result"`
 	}
-	_ = json.Unmarshal(response, &x0)
-	if x0.Result {
-		result := rawTypes.Result{
-			Kind:   types.TypeBoolean,
-			Result: true,
-		}
-		return &result, nil
-	} else {
-		var x1 struct {
-			Result types.Message `json:"result"`
-		}
-		err := json.Unmarshal(response, &x1)
-		if err != nil {
-			return nil, err
-		}
-		result := rawTypes.Result{
-			Kind:   types.TypeMessage,
-			Result: x1.Result,
-		}
-		return &result, nil
+	err := json.Unmarshal(response, &x1)
+	if err != nil {
+		return nil, err
 	}
+	result := rawTypes.Result{
+		Kind:   types.TypeFalse,
+		Result: x1.Result,
+	}
+	return &result, nil
 }

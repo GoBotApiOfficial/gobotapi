@@ -10,8 +10,10 @@ import (
 )
 
 // EditMessageCaption Use this method to edit captions of messages
-// On success, if the edited message is not an inline message, the edited Message is returned, otherwise True is returned.
+// On success, if the edited message is not an inline message, the edited Message is returned, otherwise True is returned
+// Note that business messages that were not sent by the bot and do not contain an inline keyboard can only be edited within 48 hours from the time they were sent.
 type EditMessageCaption struct {
+	BusinessConnectionID  string                      `json:"business_connection_id,omitempty"`
 	Caption               string                      `json:"caption,omitempty"`
 	CaptionEntities       []types.MessageEntity       `json:"caption_entities,omitempty"`
 	ChatID                any                         `json:"chat_id,omitempty"`

@@ -12,10 +12,11 @@ import (
 // StopMessageLiveLocation Use this method to stop updating a live location message before live_period expires
 // On success, if the message is not an inline message, the edited Message is returned, otherwise True is returned.
 type StopMessageLiveLocation struct {
-	ChatID          any                         `json:"chat_id,omitempty"`
-	InlineMessageID string                      `json:"inline_message_id,omitempty"`
-	MessageID       int64                       `json:"message_id,omitempty"`
-	ReplyMarkup     *types.InlineKeyboardMarkup `json:"reply_markup,omitempty"`
+	BusinessConnectionID string                      `json:"business_connection_id,omitempty"`
+	ChatID               any                         `json:"chat_id,omitempty"`
+	InlineMessageID      string                      `json:"inline_message_id,omitempty"`
+	MessageID            int64                       `json:"message_id,omitempty"`
+	ReplyMarkup          *types.InlineKeyboardMarkup `json:"reply_markup,omitempty"`
 }
 
 func (entity *StopMessageLiveLocation) ProgressCallable() rawTypes.ProgressCallable {

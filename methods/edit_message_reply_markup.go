@@ -10,12 +10,14 @@ import (
 )
 
 // EditMessageReplyMarkup Use this method to edit only the reply markup of messages
-// On success, if the edited message is not an inline message, the edited Message is returned, otherwise True is returned.
+// On success, if the edited message is not an inline message, the edited Message is returned, otherwise True is returned
+// Note that business messages that were not sent by the bot and do not contain an inline keyboard can only be edited within 48 hours from the time they were sent.
 type EditMessageReplyMarkup struct {
-	ChatID          any                         `json:"chat_id,omitempty"`
-	InlineMessageID string                      `json:"inline_message_id,omitempty"`
-	MessageID       int64                       `json:"message_id,omitempty"`
-	ReplyMarkup     *types.InlineKeyboardMarkup `json:"reply_markup,omitempty"`
+	BusinessConnectionID string                      `json:"business_connection_id,omitempty"`
+	ChatID               any                         `json:"chat_id,omitempty"`
+	InlineMessageID      string                      `json:"inline_message_id,omitempty"`
+	MessageID            int64                       `json:"message_id,omitempty"`
+	ReplyMarkup          *types.InlineKeyboardMarkup `json:"reply_markup,omitempty"`
 }
 
 func (entity *EditMessageReplyMarkup) ProgressCallable() rawTypes.ProgressCallable {

@@ -12,9 +12,10 @@ import (
 // StopPoll Use this method to stop a poll which was sent by the bot
 // On success, the stopped Poll is returned.
 type StopPoll struct {
-	ChatID      any                         `json:"chat_id"`
-	MessageID   int64                       `json:"message_id"`
-	ReplyMarkup *types.InlineKeyboardMarkup `json:"reply_markup,omitempty"`
+	BusinessConnectionID string                      `json:"business_connection_id,omitempty"`
+	ChatID               any                         `json:"chat_id"`
+	MessageID            int64                       `json:"message_id"`
+	ReplyMarkup          *types.InlineKeyboardMarkup `json:"reply_markup,omitempty"`
 }
 
 func (entity *StopPoll) ProgressCallable() rawTypes.ProgressCallable {

@@ -2,33 +2,18 @@
 
 package types
 
-// BACKGROUND_TYPE
+// CHAT_BOOST_SOURCE
 const (
-	TypeBackgroundTypeFill = iota
-	TypeBackgroundTypeWallpaper
-	TypeBackgroundTypePattern
-	TypeBackgroundTypeChatTheme
+	TypeChatBoostSourcePremium = iota
+	TypeChatBoostSourceGiftCode
+	TypeChatBoostSourceGiveaway
 )
 
-// MAYBE_INACCESSIBLE_MESSAGE
+// REVENUE_WITHDRAWAL_STATE
 const (
-	TypeMessage = iota
-	TypeInaccessibleMessage
-)
-
-// BACKGROUND_FILL
-const (
-	TypeBackgroundFillSolid = iota
-	TypeBackgroundFillGradient
-	TypeBackgroundFillFreeformGradient
-)
-
-// MESSAGE_ORIGIN
-const (
-	TypeMessageOriginUser = iota
-	TypeMessageOriginHiddenUser
-	TypeMessageOriginChat
-	TypeMessageOriginChannel
+	TypeRevenueWithdrawalStatePending = iota
+	TypeRevenueWithdrawalStateSucceeded
+	TypeRevenueWithdrawalStateFailed
 )
 
 // CHAT_MEMBER
@@ -41,11 +26,40 @@ const (
 	TypeChatMemberBanned
 )
 
-// CHAT_BOOST_SOURCE
+// MAYBE_INACCESSIBLE_MESSAGE
 const (
-	TypeChatBoostSourcePremium = iota
-	TypeChatBoostSourceGiftCode
-	TypeChatBoostSourceGiveaway
+	TypeMessage = iota
+	TypeInaccessibleMessage
+)
+
+// TRANSACTION_PARTNER
+const (
+	TypeTransactionPartnerFragment = iota
+	TypeTransactionPartnerUser
+	TypeTransactionPartnerOther
+)
+
+// MESSAGE_ORIGIN
+const (
+	TypeMessageOriginUser = iota
+	TypeMessageOriginHiddenUser
+	TypeMessageOriginChat
+	TypeMessageOriginChannel
+)
+
+// BACKGROUND_TYPE
+const (
+	TypeBackgroundTypeFill = iota
+	TypeBackgroundTypeWallpaper
+	TypeBackgroundTypePattern
+	TypeBackgroundTypeChatTheme
+)
+
+// BACKGROUND_FILL
+const (
+	TypeBackgroundFillSolid = iota
+	TypeBackgroundFillGradient
+	TypeBackgroundFillFreeformGradient
 )
 
 // RETURN_TYPES
@@ -67,6 +81,7 @@ const (
 	TypeChatInviteLink
 	TypeChatMember
 	TypeErrorMessage
+	TypeFalse
 	TypeFile
 	TypeForumTopic
 	TypeInteger
@@ -74,6 +89,7 @@ const (
 	TypeMessageId
 	TypePoll
 	TypeSentWebAppMessage
+	TypeStarTransactions
 	TypeStickerSet
 	TypeString
 	TypeUser
