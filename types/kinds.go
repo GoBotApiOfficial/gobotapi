@@ -2,41 +2,12 @@
 
 package types
 
-// CHAT_BOOST_SOURCE
+// BACKGROUND_TYPE
 const (
-	TypeChatBoostSourcePremium = iota
-	TypeChatBoostSourceGiftCode
-	TypeChatBoostSourceGiveaway
-)
-
-// REVENUE_WITHDRAWAL_STATE
-const (
-	TypeRevenueWithdrawalStatePending = iota
-	TypeRevenueWithdrawalStateSucceeded
-	TypeRevenueWithdrawalStateFailed
-)
-
-// CHAT_MEMBER
-const (
-	TypeChatMemberOwner = iota
-	TypeChatMemberAdministrator
-	TypeChatMemberMember
-	TypeChatMemberRestricted
-	TypeChatMemberLeft
-	TypeChatMemberBanned
-)
-
-// MAYBE_INACCESSIBLE_MESSAGE
-const (
-	TypeMessage = iota
-	TypeInaccessibleMessage
-)
-
-// TRANSACTION_PARTNER
-const (
-	TypeTransactionPartnerFragment = iota
-	TypeTransactionPartnerUser
-	TypeTransactionPartnerOther
+	TypeBackgroundTypeFill = iota
+	TypeBackgroundTypeWallpaper
+	TypeBackgroundTypePattern
+	TypeBackgroundTypeChatTheme
 )
 
 // MESSAGE_ORIGIN
@@ -47,12 +18,11 @@ const (
 	TypeMessageOriginChannel
 )
 
-// BACKGROUND_TYPE
+// TRANSACTION_PARTNER
 const (
-	TypeBackgroundTypeFill = iota
-	TypeBackgroundTypeWallpaper
-	TypeBackgroundTypePattern
-	TypeBackgroundTypeChatTheme
+	TypeTransactionPartnerFragment = iota
+	TypeTransactionPartnerUser
+	TypeTransactionPartnerOther
 )
 
 // BACKGROUND_FILL
@@ -60,6 +30,36 @@ const (
 	TypeBackgroundFillSolid = iota
 	TypeBackgroundFillGradient
 	TypeBackgroundFillFreeformGradient
+)
+
+// REVENUE_WITHDRAWAL_STATE
+const (
+	TypeRevenueWithdrawalStatePending = iota
+	TypeRevenueWithdrawalStateSucceeded
+	TypeRevenueWithdrawalStateFailed
+)
+
+// MAYBE_INACCESSIBLE_MESSAGE
+const (
+	TypeMessage = iota
+	TypeInaccessibleMessage
+)
+
+// CHAT_BOOST_SOURCE
+const (
+	TypeChatBoostSourcePremium = iota
+	TypeChatBoostSourceGiftCode
+	TypeChatBoostSourceGiveaway
+)
+
+// CHAT_MEMBER
+const (
+	TypeChatMemberOwner = iota
+	TypeChatMemberAdministrator
+	TypeChatMemberMember
+	TypeChatMemberRestricted
+	TypeChatMemberLeft
+	TypeChatMemberBanned
 )
 
 // RETURN_TYPES
@@ -81,7 +81,6 @@ const (
 	TypeChatInviteLink
 	TypeChatMember
 	TypeErrorMessage
-	TypeFalse
 	TypeFile
 	TypeForumTopic
 	TypeInteger
