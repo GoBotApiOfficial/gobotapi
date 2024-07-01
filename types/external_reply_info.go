@@ -19,6 +19,7 @@ type ExternalReplyInfo struct {
 	Location           *Location           `json:"location,omitempty"`
 	MessageID          int64               `json:"message_id,omitempty"`
 	Origin             MessageOrigin       `json:"origin"`
+	PaidMedia          *PaidMediaInfo      `json:"paid_media,omitempty"`
 	Photo              []PhotoSize         `json:"photo,omitempty"`
 	Poll               *Poll               `json:"poll,omitempty"`
 	Sticker            *Sticker            `json:"sticker,omitempty"`

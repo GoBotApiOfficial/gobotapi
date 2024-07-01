@@ -9,52 +9,41 @@ import (
 	rawTypes "github.com/GoBotApiOfficial/gobotapi/types/raw"
 )
 
-// SendVideo Use this method to send video files, Telegram clients support MPEG4 videos (other formats may be sent as Document)
-// On success, the sent Message is returned
-// Bots can currently send video files of up to 50 MB in size, this limit may be changed in the future.
-type SendVideo struct {
-	BusinessConnectionID  string                    `json:"business_connection_id,omitempty"`
+// SendPaidMedia Use this method to send paid media to channel chats
+// On success, the sent Message is returned.
+type SendPaidMedia struct {
 	Caption               string                    `json:"caption,omitempty"`
 	CaptionEntities       []types.MessageEntity     `json:"caption_entities,omitempty"`
 	ChatID                any                       `json:"chat_id"`
 	DisableNotification   bool                      `json:"disable_notification,omitempty"`
-	Duration              int                       `json:"duration,omitempty"`
-	HasSpoiler            bool                      `json:"has_spoiler,omitempty"`
-	Height                int                       `json:"height,omitempty"`
-	MessageEffectID       string                    `json:"message_effect_id,omitempty"`
-	MessageThreadID       int64                     `json:"message_thread_id,omitempty"`
+	Media                 []types.InputPaidMedia    `json:"media,omitempty"`
 	ParseMode             string                    `json:"parse_mode,omitempty"`
 	ProtectContent        bool                      `json:"protect_content,omitempty"`
 	ReplyMarkup           any                       `json:"reply_markup,omitempty"`
 	ReplyParameters       *types.ReplyParameters    `json:"reply_parameters,omitempty"`
 	ShowCaptionAboveMedia bool                      `json:"show_caption_above_media,omitempty"`
-	SupportsStreaming     bool                      `json:"supports_streaming,omitempty"`
-	Thumbnail             rawTypes.InputFile        `json:"thumbnail,omitempty"`
-	Video                 rawTypes.InputFile        `json:"video,omitempty"`
-	Width                 int64                     `json:"width,omitempty"`
+	StarCount             int                       `json:"star_count"`
 	Progress              rawTypes.ProgressCallable `json:"-"`
 }
 
-func (entity *SendVideo) ProgressCallable() rawTypes.ProgressCallable {
+func (entity *SendPaidMedia) ProgressCallable() rawTypes.ProgressCallable {
 	return entity.Progress
 }
 
-func (entity *SendVideo) Files() map[string]rawTypes.InputFile {
+func (entity *SendPaidMedia) Files() map[string]rawTypes.InputFile {
 	files := make(map[string]rawTypes.InputFile)
-	switch entity.Thumbnail.(type) {
-	case types.InputBytes:
-		files["thumbnail"] = entity.Thumbnail
-		entity.Thumbnail = types.InputURL("attach://thumbnail")
-	}
-	switch entity.Video.(type) {
-	case types.InputBytes:
-		files["video"] = entity.Video
-		entity.Video = nil
+	for k, v := range entity.Media.(rawTypes.InputMediaFiles).Files() {
+		files[k] = v
+		if k == "thumbnail" {
+			entity.Media.SetAttachmentThumb(k)
+		} else {
+			entity.Media.SetAttachment(k)
+		}
 	}
 	return files
 }
 
-func (entity SendVideo) MarshalJSON() ([]byte, error) {
+func (entity SendPaidMedia) MarshalJSON() ([]byte, error) {
 	if entity.ChatID != nil {
 		switch entity.ChatID.(type) {
 		case int, int64, string:
@@ -71,15 +60,15 @@ func (entity SendVideo) MarshalJSON() ([]byte, error) {
 			return nil, fmt.Errorf("reply_markup: unknown type: %T", entity.ReplyMarkup)
 		}
 	}
-	type x0 SendVideo
+	type x0 SendPaidMedia
 	return json.Marshal((x0)(entity))
 }
 
-func (SendVideo) MethodName() string {
-	return "sendVideo"
+func (SendPaidMedia) MethodName() string {
+	return "sendPaidMedia"
 }
 
-func (SendVideo) ParseResult(response []byte) (*rawTypes.Result, error) {
+func (SendPaidMedia) ParseResult(response []byte) (*rawTypes.Result, error) {
 	var x1 struct {
 		Result types.Message `json:"result"`
 	}

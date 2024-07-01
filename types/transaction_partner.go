@@ -4,10 +4,12 @@ package types
 
 // TransactionPartner This object describes the source of a transaction, or its recipient for outgoing transactions
 // Currently, it can be one of
-//  - TransactionPartnerFragment
 //  - TransactionPartnerUser
+//  - TransactionPartnerFragment
+//  - TransactionPartnerTelegramAds
 //  - TransactionPartnerOther
 type TransactionPartner struct {
+	InvoicePayload  string                  `json:"invoice_payload"`
 	Type            string                  `json:"type"`
 	User            User                    `json:"user"`
 	WithdrawalState *RevenueWithdrawalState `json:"withdrawal_state"`
@@ -15,10 +17,12 @@ type TransactionPartner struct {
 
 func (x TransactionPartner) Kind() int {
 	switch x.Type {
-	case "fragment":
-		return TypeTransactionPartnerFragment
 	case "user":
 		return TypeTransactionPartnerUser
+	case "fragment":
+		return TypeTransactionPartnerFragment
+	case "telegram_ads":
+		return TypeTransactionPartnerTelegramAds
 	case "other":
 		return TypeTransactionPartnerOther
 	default:

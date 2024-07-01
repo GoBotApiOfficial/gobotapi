@@ -2,7 +2,7 @@
 
 package types
 
-// InputPollOption This object contains information about one answer option in a poll to send.
+// InputPollOption This object contains information about one answer option in a poll to be sent.
 type InputPollOption struct {
 	Text          string          `json:"text"`
 	TextEntities  []MessageEntity `json:"text_entities,omitempty"`
