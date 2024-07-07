@@ -64,6 +64,7 @@ type Message struct {
 	Poll                          *Poll                          `json:"poll,omitempty"`
 	ProximityAlertTriggered       *ProximityAlertTriggered       `json:"proximity_alert_triggered,omitempty"`
 	Quote                         *TextQuote                     `json:"quote,omitempty"`
+	RefundedPayment               *RefundedPayment               `json:"refunded_payment,omitempty"`
 	ReplyMarkup                   *InlineKeyboardMarkup          `json:"reply_markup,omitempty"`
 	ReplyToMessage                *Message                       `json:"reply_to_message,omitempty"`
 	ReplyToStory                  *Story                         `json:"reply_to_story,omitempty"`
