@@ -9,6 +9,7 @@ type User struct {
 	CanJoinGroups           bool   `json:"can_join_groups,omitempty"`
 	CanReadAllGroupMessages bool   `json:"can_read_all_group_messages,omitempty"`
 	FirstName               string `json:"first_name"`
+	HasMainWebApp           bool   `json:"has_main_web_app,omitempty"`
 	ID                      int64  `json:"id"`
 	IsBot                   bool   `json:"is_bot"`
 	IsPremium               bool   `json:"is_premium,omitempty"`

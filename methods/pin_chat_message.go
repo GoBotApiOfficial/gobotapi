@@ -13,9 +13,10 @@ import (
 // If the chat is not a private chat, the bot must be an administrator in the chat for this to work and must have the 'can_pin_messages' administrator right in a supergroup or 'can_edit_messages' administrator right in a channel
 // Returns True on success.
 type PinChatMessage struct {
-	ChatID              any   `json:"chat_id"`
-	DisableNotification bool  `json:"disable_notification,omitempty"`
-	MessageID           int64 `json:"message_id"`
+	BusinessConnectionID string `json:"business_connection_id,omitempty"`
+	ChatID               any    `json:"chat_id"`
+	DisableNotification  bool   `json:"disable_notification,omitempty"`
+	MessageID            int64  `json:"message_id"`
 }
 
 func (entity *PinChatMessage) ProgressCallable() rawTypes.ProgressCallable {
