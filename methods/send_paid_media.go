@@ -32,12 +32,18 @@ func (entity *SendPaidMedia) ProgressCallable() rawTypes.ProgressCallable {
 
 func (entity *SendPaidMedia) Files() map[string]rawTypes.InputFile {
 	files := make(map[string]rawTypes.InputFile)
-	for k, v := range entity.Media.(rawTypes.InputMediaFiles).Files() {
-		files[k] = v
-		if k == "thumbnail" {
-			entity.Media.SetAttachmentThumb(k)
-		} else {
-			entity.Media.SetAttachment(k)
+	for i, x0 := range entity.Media {
+		x1 := x0.(rawTypes.InputMediaFiles).Files()
+		for k, v := range x1 {
+			var attachName string
+			if k == "thumbnail" {
+				attachName = fmt.Sprintf("file-%d-thumbnail", i)
+				x0.SetAttachmentThumb(attachName)
+			} else {
+				attachName = fmt.Sprintf("file-%d", i)
+				x0.SetAttachment(attachName)
+			}
+			files[attachName] = v
 		}
 	}
 	return files

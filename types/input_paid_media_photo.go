@@ -2,10 +2,40 @@
 
 package types
 
-import rawTypes "github.com/GoBotApiOfficial/gobotapi/types/raw"
+import (
+	"encoding/json"
+	"fmt"
+	rawTypes "github.com/GoBotApiOfficial/gobotapi/types/raw"
+)
 
 // InputPaidMediaPhoto The paid media to send is a photo.
 type InputPaidMediaPhoto struct {
 	Media rawTypes.InputFile `json:"media,omitempty"`
-	Type  string             `json:"type"`
+}
+
+func (entity *InputPaidMediaPhoto) Files() map[string]rawTypes.InputFile {
+	files := make(map[string]rawTypes.InputFile)
+	switch entity.Media.(type) {
+	case InputBytes:
+		files["photo"] = entity.Media
+	}
+	return files
+}
+
+func (entity *InputPaidMediaPhoto) SetAttachment(attach string) {
+	entity.Media = InputURL(fmt.Sprintf("attach://%s", attach))
+}
+
+func (entity *InputPaidMediaPhoto) SetAttachmentThumb(_ string) {
+}
+
+func (entity InputPaidMediaPhoto) MarshalJSON() ([]byte, error) {
+	alias := struct {
+		Type  string             `json:"type"`
+		Media rawTypes.InputFile `json:"media,omitempty"`
+	}{
+		Type:  "photo",
+		Media: entity.Media,
+	}
+	return json.Marshal(alias)
 }

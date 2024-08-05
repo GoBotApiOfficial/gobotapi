@@ -2,9 +2,23 @@
 
 package types
 
+import "encoding/json"
+
 // MenuButtonWebApp Represents a menu button, which launches a Web App.
 type MenuButtonWebApp struct {
 	Text   string     `json:"text"`
-	Type   string     `json:"type"`
 	WebApp WebAppInfo `json:"web_app"`
+}
+
+func (entity MenuButtonWebApp) MarshalJSON() ([]byte, error) {
+	alias := struct {
+		Type   string     `json:"type"`
+		Text   string     `json:"text"`
+		WebApp WebAppInfo `json:"web_app"`
+	}{
+		Type:   "web_app",
+		Text:   entity.Text,
+		WebApp: entity.WebApp,
+	}
+	return json.Marshal(alias)
 }

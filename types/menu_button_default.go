@@ -2,7 +2,17 @@
 
 package types
 
+import "encoding/json"
+
 // MenuButtonDefault Describes that no specific value for the menu button was set.
 type MenuButtonDefault struct {
-	Type string `json:"type"`
+}
+
+func (entity MenuButtonDefault) MarshalJSON() ([]byte, error) {
+	alias := struct {
+		Type string `json:"type"`
+	}{
+		Type: "default",
+	}
+	return json.Marshal(alias)
 }

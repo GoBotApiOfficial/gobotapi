@@ -2,52 +2,6 @@
 
 package types
 
-// MESSAGE_ORIGIN
-const (
-	TypeMessageOriginUser = iota
-	TypeMessageOriginHiddenUser
-	TypeMessageOriginChat
-	TypeMessageOriginChannel
-)
-
-// MAYBE_INACCESSIBLE_MESSAGE
-const (
-	TypeMessage = iota
-	TypeInaccessibleMessage
-)
-
-// TRANSACTION_PARTNER
-const (
-	TypeTransactionPartnerUser = iota
-	TypeTransactionPartnerFragment
-	TypeTransactionPartnerTelegramAds
-	TypeTransactionPartnerOther
-)
-
-// CHAT_MEMBER
-const (
-	TypeChatMemberOwner = iota
-	TypeChatMemberAdministrator
-	TypeChatMemberMember
-	TypeChatMemberRestricted
-	TypeChatMemberLeft
-	TypeChatMemberBanned
-)
-
-// PAID_MEDIA
-const (
-	TypePaidMediaPreview = iota
-	TypePaidMediaPhoto
-	TypePaidMediaVideo
-)
-
-// CHAT_BOOST_SOURCE
-const (
-	TypeChatBoostSourcePremium = iota
-	TypeChatBoostSourceGiftCode
-	TypeChatBoostSourceGiveaway
-)
-
 // BACKGROUND_TYPE
 const (
 	TypeBackgroundTypeFill = iota
@@ -68,6 +22,52 @@ const (
 	TypeRevenueWithdrawalStatePending = iota
 	TypeRevenueWithdrawalStateSucceeded
 	TypeRevenueWithdrawalStateFailed
+)
+
+// MESSAGE_ORIGIN
+const (
+	TypeMessageOriginUser = iota
+	TypeMessageOriginHiddenUser
+	TypeMessageOriginChat
+	TypeMessageOriginChannel
+)
+
+// CHAT_BOOST_SOURCE
+const (
+	TypeChatBoostSourcePremium = iota
+	TypeChatBoostSourceGiftCode
+	TypeChatBoostSourceGiveaway
+)
+
+// CHAT_MEMBER
+const (
+	TypeChatMemberOwner = iota
+	TypeChatMemberAdministrator
+	TypeChatMemberMember
+	TypeChatMemberRestricted
+	TypeChatMemberLeft
+	TypeChatMemberBanned
+)
+
+// MAYBE_INACCESSIBLE_MESSAGE
+const (
+	TypeMessage = iota
+	TypeInaccessibleMessage
+)
+
+// PAID_MEDIA
+const (
+	TypePaidMediaPreview = iota
+	TypePaidMediaPhoto
+	TypePaidMediaVideo
+)
+
+// TRANSACTION_PARTNER
+const (
+	TypeTransactionPartnerUser = iota
+	TypeTransactionPartnerFragment
+	TypeTransactionPartnerTelegramAds
+	TypeTransactionPartnerOther
 )
 
 // RETURN_TYPES

@@ -2,7 +2,17 @@
 
 package types
 
+import "encoding/json"
+
 // MenuButtonCommands Represents a menu button, which opens the bot's list of commands.
 type MenuButtonCommands struct {
-	Type string `json:"type"`
+}
+
+func (entity MenuButtonCommands) MarshalJSON() ([]byte, error) {
+	alias := struct {
+		Type string `json:"type"`
+	}{
+		Type: "commands",
+	}
+	return json.Marshal(alias)
 }

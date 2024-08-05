@@ -6,4 +6,7 @@ package types
 // Currently, it can be one of
 //  - InputPaidMediaPhoto
 //  - InputPaidMediaVideo
-type InputPaidMedia any
+type InputPaidMedia interface {
+	SetAttachment(string)
+	SetAttachmentThumb(string)
+}
