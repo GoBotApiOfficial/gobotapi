@@ -13,6 +13,7 @@ import (
 type BasicClient struct {
 	BotApiConfig        Config
 	NoUpdates           bool
+	NoNotice            bool
 	DownloadRefreshRate time.Duration
 	AllowedUpdates      []string
 	Beta                bool

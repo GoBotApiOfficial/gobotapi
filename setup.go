@@ -27,5 +27,7 @@ func (ctx *BasicClient) setup() {
 		ctx.DownloadRefreshRate = time.Millisecond * 200
 	}
 	ctx.isRunning = true
-	showNotice()
+	if !ctx.NoNotice {
+		showNotice()
+	}
 }
