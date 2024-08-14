@@ -59,7 +59,7 @@ func (entity ChatFullInfo) MarshalJSON() ([]byte, error) {
 	for _, x0 := range entity.AvailableReactions {
 		if x0 != nil {
 			switch x0.(type) {
-			case ReactionTypeEmoji, ReactionTypeCustomEmoji:
+			case ReactionTypeEmoji, ReactionTypeCustomEmoji, ReactionTypePaid:
 				break
 			default:
 				return nil, fmt.Errorf("available_reactions: unknown type: %T", x0)

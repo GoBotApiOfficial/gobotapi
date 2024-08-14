@@ -9,9 +9,10 @@ import (
 	rawTypes "github.com/GoBotApiOfficial/gobotapi/types/raw"
 )
 
-// SendPaidMedia Use this method to send paid media to channel chats
+// SendPaidMedia Use this method to send paid media
 // On success, the sent Message is returned.
 type SendPaidMedia struct {
+	BusinessConnectionID  string                    `json:"business_connection_id,omitempty"`
 	Caption               string                    `json:"caption,omitempty"`
 	CaptionEntities       []types.MessageEntity     `json:"caption_entities,omitempty"`
 	ChatID                any                       `json:"chat_id"`

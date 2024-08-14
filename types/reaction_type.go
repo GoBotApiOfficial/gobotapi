@@ -6,4 +6,5 @@ package types
 // Currently, it can be one of
 //  - ReactionTypeEmoji
 //  - ReactionTypeCustomEmoji
+//  - ReactionTypePaid
 type ReactionType any

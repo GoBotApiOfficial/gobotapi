@@ -10,6 +10,7 @@ package types
 //  - TransactionPartnerOther
 type TransactionPartner struct {
 	InvoicePayload  string                  `json:"invoice_payload"`
+	PaidMedia       []PaidMedia             `json:"paid_media"`
 	Type            string                  `json:"type"`
 	User            User                    `json:"user"`
 	WithdrawalState *RevenueWithdrawalState `json:"withdrawal_state"`

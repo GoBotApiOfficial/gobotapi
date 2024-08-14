@@ -15,7 +15,7 @@ type ReactionCount struct {
 
 func (entity ReactionCount) MarshalJSON() ([]byte, error) {
 	switch entity.Type.(type) {
-	case ReactionTypeEmoji, ReactionTypeCustomEmoji:
+	case ReactionTypeEmoji, ReactionTypeCustomEmoji, ReactionTypePaid:
 		break
 	default:
 		return nil, fmt.Errorf("type: unknown type: %T", entity.Type)
