@@ -32,10 +32,10 @@ func (entity *SendGame) Files() map[string]rawTypes.InputFile {
 }
 
 func (entity SendGame) MarshalJSON() ([]byte, error) {
-	if reflect.DeepEqual(entity.ReplyParameters, nil) {
+	if reflect.ValueOf(entity.ReplyParameters).IsNil() {
 		entity.ReplyParameters = nil
 	}
-	if reflect.DeepEqual(entity.ReplyMarkup, nil) {
+	if reflect.ValueOf(entity.ReplyMarkup).IsNil() {
 		entity.ReplyMarkup = nil
 	}
 	type x0 SendGame

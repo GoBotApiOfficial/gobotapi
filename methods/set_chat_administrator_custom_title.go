@@ -27,7 +27,7 @@ func (entity *SetChatAdministratorCustomTitle) Files() map[string]rawTypes.Input
 }
 
 func (entity SetChatAdministratorCustomTitle) MarshalJSON() ([]byte, error) {
-	if !reflect.DeepEqual(entity.ChatID, nil) {
+	if !reflect.ValueOf(entity.ChatID).IsNil() {
 		switch entity.ChatID.(type) {
 		case int, int64, string:
 			break

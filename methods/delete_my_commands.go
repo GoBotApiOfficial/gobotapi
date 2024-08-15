@@ -26,7 +26,7 @@ func (entity *DeleteMyCommands) Files() map[string]rawTypes.InputFile {
 }
 
 func (entity DeleteMyCommands) MarshalJSON() ([]byte, error) {
-	if reflect.DeepEqual(entity.Scope, nil) {
+	if reflect.ValueOf(entity.Scope).IsNil() {
 		entity.Scope = nil
 	}
 	type x0 DeleteMyCommands

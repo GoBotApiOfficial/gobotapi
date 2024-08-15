@@ -57,35 +57,35 @@ type ChatFullInfo struct {
 }
 
 func (entity ChatFullInfo) MarshalJSON() ([]byte, error) {
-	if reflect.DeepEqual(entity.Photo, nil) {
+	if reflect.ValueOf(entity.Photo).IsNil() {
 		entity.Photo = nil
 	}
-	if reflect.DeepEqual(entity.Birthdate, nil) {
+	if reflect.ValueOf(entity.Birthdate).IsNil() {
 		entity.Birthdate = nil
 	}
-	if reflect.DeepEqual(entity.BusinessIntro, nil) {
+	if reflect.ValueOf(entity.BusinessIntro).IsNil() {
 		entity.BusinessIntro = nil
 	}
-	if reflect.DeepEqual(entity.BusinessLocation, nil) {
+	if reflect.ValueOf(entity.BusinessLocation).IsNil() {
 		entity.BusinessLocation = nil
 	}
-	if reflect.DeepEqual(entity.BusinessOpeningHours, nil) {
+	if reflect.ValueOf(entity.BusinessOpeningHours).IsNil() {
 		entity.BusinessOpeningHours = nil
 	}
-	if reflect.DeepEqual(entity.PersonalChat, nil) {
+	if reflect.ValueOf(entity.PersonalChat).IsNil() {
 		entity.PersonalChat = nil
 	}
-	if reflect.DeepEqual(entity.PinnedMessage, nil) {
+	if reflect.ValueOf(entity.PinnedMessage).IsNil() {
 		entity.PinnedMessage = nil
 	}
-	if reflect.DeepEqual(entity.Permissions, nil) {
+	if reflect.ValueOf(entity.Permissions).IsNil() {
 		entity.Permissions = nil
 	}
-	if reflect.DeepEqual(entity.Location, nil) {
+	if reflect.ValueOf(entity.Location).IsNil() {
 		entity.Location = nil
 	}
 	for _, x0 := range entity.AvailableReactions {
-		if !reflect.DeepEqual(x0, nil) {
+		if !reflect.ValueOf(x0).IsNil() {
 			switch x0.(type) {
 			case ReactionTypeEmoji, ReactionTypeCustomEmoji, ReactionTypePaid:
 				break

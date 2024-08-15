@@ -52,13 +52,13 @@ func (entity *SendInvoice) Files() map[string]rawTypes.InputFile {
 }
 
 func (entity SendInvoice) MarshalJSON() ([]byte, error) {
-	if reflect.DeepEqual(entity.ReplyParameters, nil) {
+	if reflect.ValueOf(entity.ReplyParameters).IsNil() {
 		entity.ReplyParameters = nil
 	}
-	if reflect.DeepEqual(entity.ReplyMarkup, nil) {
+	if reflect.ValueOf(entity.ReplyMarkup).IsNil() {
 		entity.ReplyMarkup = nil
 	}
-	if !reflect.DeepEqual(entity.ChatID, nil) {
+	if !reflect.ValueOf(entity.ChatID).IsNil() {
 		switch entity.ChatID.(type) {
 		case int, int64, string:
 			break

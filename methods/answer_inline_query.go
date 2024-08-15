@@ -29,7 +29,7 @@ func (entity *AnswerInlineQuery) Files() map[string]rawTypes.InputFile {
 }
 
 func (entity AnswerInlineQuery) MarshalJSON() ([]byte, error) {
-	if reflect.DeepEqual(entity.Button, nil) {
+	if reflect.ValueOf(entity.Button).IsNil() {
 		entity.Button = nil
 	}
 	type x0 AnswerInlineQuery

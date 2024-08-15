@@ -26,7 +26,7 @@ func (entity *SetMyDefaultAdministratorRights) Files() map[string]rawTypes.Input
 }
 
 func (entity SetMyDefaultAdministratorRights) MarshalJSON() ([]byte, error) {
-	if reflect.DeepEqual(entity.Rights, nil) {
+	if reflect.ValueOf(entity.Rights).IsNil() {
 		entity.Rights = nil
 	}
 	type x0 SetMyDefaultAdministratorRights

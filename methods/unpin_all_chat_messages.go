@@ -26,7 +26,7 @@ func (entity *UnpinAllChatMessages) Files() map[string]rawTypes.InputFile {
 }
 
 func (entity UnpinAllChatMessages) MarshalJSON() ([]byte, error) {
-	if !reflect.DeepEqual(entity.ChatID, nil) {
+	if !reflect.ValueOf(entity.ChatID).IsNil() {
 		switch entity.ChatID.(type) {
 		case int, int64, string:
 			break

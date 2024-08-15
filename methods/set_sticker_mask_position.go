@@ -26,7 +26,7 @@ func (entity *SetStickerMaskPosition) Files() map[string]rawTypes.InputFile {
 }
 
 func (entity SetStickerMaskPosition) MarshalJSON() ([]byte, error) {
-	if reflect.DeepEqual(entity.MaskPosition, nil) {
+	if reflect.ValueOf(entity.MaskPosition).IsNil() {
 		entity.MaskPosition = nil
 	}
 	type x0 SetStickerMaskPosition

@@ -35,7 +35,7 @@ func (entity *SetStickerSetThumbnail) Files() map[string]rawTypes.InputFile {
 }
 
 func (entity SetStickerSetThumbnail) MarshalJSON() ([]byte, error) {
-	if reflect.DeepEqual(entity.Thumbnail, nil) {
+	if reflect.ValueOf(entity.Thumbnail).IsNil() {
 		entity.Thumbnail = nil
 	}
 	type x0 SetStickerSetThumbnail

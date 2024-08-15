@@ -41,7 +41,7 @@ func (entity *SetWebhook) Files() map[string]rawTypes.InputFile {
 }
 
 func (entity SetWebhook) MarshalJSON() ([]byte, error) {
-	if reflect.DeepEqual(entity.Certificate, nil) {
+	if reflect.ValueOf(entity.Certificate).IsNil() {
 		entity.Certificate = nil
 	}
 	type x0 SetWebhook

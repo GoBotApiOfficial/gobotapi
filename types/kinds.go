@@ -2,6 +2,12 @@
 
 package types
 
+// MAYBE_INACCESSIBLE_MESSAGE
+const (
+	TypeMessage = iota
+	TypeInaccessibleMessage
+)
+
 // CHAT_MEMBER
 const (
 	TypeChatMemberOwner = iota
@@ -12,20 +18,27 @@ const (
 	TypeChatMemberBanned
 )
 
-// TRANSACTION_PARTNER
-const (
-	TypeTransactionPartnerUser = iota
-	TypeTransactionPartnerFragment
-	TypeTransactionPartnerTelegramAds
-	TypeTransactionPartnerOther
-)
-
 // MESSAGE_ORIGIN
 const (
 	TypeMessageOriginUser = iota
 	TypeMessageOriginHiddenUser
 	TypeMessageOriginChat
 	TypeMessageOriginChannel
+)
+
+// PAID_MEDIA
+const (
+	TypePaidMediaPreview = iota
+	TypePaidMediaPhoto
+	TypePaidMediaVideo
+)
+
+// TRANSACTION_PARTNER
+const (
+	TypeTransactionPartnerUser = iota
+	TypeTransactionPartnerFragment
+	TypeTransactionPartnerTelegramAds
+	TypeTransactionPartnerOther
 )
 
 // BACKGROUND_TYPE
@@ -36,18 +49,11 @@ const (
 	TypeBackgroundTypeChatTheme
 )
 
-// PAID_MEDIA
+// BACKGROUND_FILL
 const (
-	TypePaidMediaPreview = iota
-	TypePaidMediaPhoto
-	TypePaidMediaVideo
-)
-
-// REVENUE_WITHDRAWAL_STATE
-const (
-	TypeRevenueWithdrawalStatePending = iota
-	TypeRevenueWithdrawalStateSucceeded
-	TypeRevenueWithdrawalStateFailed
+	TypeBackgroundFillSolid = iota
+	TypeBackgroundFillGradient
+	TypeBackgroundFillFreeformGradient
 )
 
 // CHAT_BOOST_SOURCE
@@ -57,17 +63,11 @@ const (
 	TypeChatBoostSourceGiveaway
 )
 
-// BACKGROUND_FILL
+// REVENUE_WITHDRAWAL_STATE
 const (
-	TypeBackgroundFillSolid = iota
-	TypeBackgroundFillGradient
-	TypeBackgroundFillFreeformGradient
-)
-
-// MAYBE_INACCESSIBLE_MESSAGE
-const (
-	TypeMessage = iota
-	TypeInaccessibleMessage
+	TypeRevenueWithdrawalStatePending = iota
+	TypeRevenueWithdrawalStateSucceeded
+	TypeRevenueWithdrawalStateFailed
 )
 
 // RETURN_TYPES

@@ -15,7 +15,7 @@ type BotCommandScopeChat struct {
 }
 
 func (entity BotCommandScopeChat) MarshalJSON() ([]byte, error) {
-	if !reflect.DeepEqual(entity.ChatID, nil) {
+	if !reflect.ValueOf(entity.ChatID).IsNil() {
 		switch entity.ChatID.(type) {
 		case int, string:
 			break

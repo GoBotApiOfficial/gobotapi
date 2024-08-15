@@ -25,7 +25,7 @@ func (entity *SetChatMenuButton) Files() map[string]rawTypes.InputFile {
 }
 
 func (entity SetChatMenuButton) MarshalJSON() ([]byte, error) {
-	if reflect.DeepEqual(entity.MenuButton, nil) {
+	if reflect.ValueOf(entity.MenuButton).IsNil() {
 		entity.MenuButton = nil
 	}
 	type x0 SetChatMenuButton

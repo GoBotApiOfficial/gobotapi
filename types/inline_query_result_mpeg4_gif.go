@@ -62,7 +62,7 @@ func (entity InlineQueryResultMpeg4Gif) MarshalJSON() ([]byte, error) {
 		ReplyMarkup:           entity.ReplyMarkup,
 		InputMessageContent:   entity.InputMessageContent,
 	}
-	if !reflect.DeepEqual(entity.InputMessageContent, nil) {
+	if !reflect.ValueOf(entity.InputMessageContent).IsNil() {
 		switch entity.InputMessageContent.(type) {
 		case InputTextMessageContent, InputLocationMessageContent, InputVenueMessageContent, InputContactMessageContent, InputInvoiceMessageContent:
 			break
