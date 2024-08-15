@@ -2,6 +2,20 @@
 
 package types
 
+// BACKGROUND_TYPE
+const (
+	TypeBackgroundTypeFill = iota
+	TypeBackgroundTypeWallpaper
+	TypeBackgroundTypePattern
+	TypeBackgroundTypeChatTheme
+)
+
+// MAYBE_INACCESSIBLE_MESSAGE
+const (
+	TypeMessage = iota
+	TypeInaccessibleMessage
+)
+
 // TRANSACTION_PARTNER
 const (
 	TypeTransactionPartnerUser = iota
@@ -10,10 +24,21 @@ const (
 	TypeTransactionPartnerOther
 )
 
-// MAYBE_INACCESSIBLE_MESSAGE
+// CHAT_BOOST_SOURCE
 const (
-	TypeMessage = iota
-	TypeInaccessibleMessage
+	TypeChatBoostSourcePremium = iota
+	TypeChatBoostSourceGiftCode
+	TypeChatBoostSourceGiveaway
+)
+
+// CHAT_MEMBER
+const (
+	TypeChatMemberOwner = iota
+	TypeChatMemberAdministrator
+	TypeChatMemberMember
+	TypeChatMemberRestricted
+	TypeChatMemberLeft
+	TypeChatMemberBanned
 )
 
 // REVENUE_WITHDRAWAL_STATE
@@ -30,21 +55,12 @@ const (
 	TypeBackgroundFillFreeformGradient
 )
 
-// CHAT_MEMBER
+// MESSAGE_ORIGIN
 const (
-	TypeChatMemberOwner = iota
-	TypeChatMemberAdministrator
-	TypeChatMemberMember
-	TypeChatMemberRestricted
-	TypeChatMemberLeft
-	TypeChatMemberBanned
-)
-
-// CHAT_BOOST_SOURCE
-const (
-	TypeChatBoostSourcePremium = iota
-	TypeChatBoostSourceGiftCode
-	TypeChatBoostSourceGiveaway
+	TypeMessageOriginUser = iota
+	TypeMessageOriginHiddenUser
+	TypeMessageOriginChat
+	TypeMessageOriginChannel
 )
 
 // PAID_MEDIA
@@ -52,22 +68,6 @@ const (
 	TypePaidMediaPreview = iota
 	TypePaidMediaPhoto
 	TypePaidMediaVideo
-)
-
-// BACKGROUND_TYPE
-const (
-	TypeBackgroundTypeFill = iota
-	TypeBackgroundTypeWallpaper
-	TypeBackgroundTypePattern
-	TypeBackgroundTypeChatTheme
-)
-
-// MESSAGE_ORIGIN
-const (
-	TypeMessageOriginUser = iota
-	TypeMessageOriginHiddenUser
-	TypeMessageOriginChat
-	TypeMessageOriginChannel
 )
 
 // RETURN_TYPES

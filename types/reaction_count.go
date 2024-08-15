@@ -5,7 +5,6 @@ package types
 import (
 	"encoding/json"
 	"fmt"
-	"reflect"
 )
 
 // ReactionCount Represents a reaction added to a message along with the number of times it was added.

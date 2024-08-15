@@ -52,20 +52,20 @@ func (entity SendMediaGroup) MarshalJSON() ([]byte, error) {
 	if reflect.DeepEqual(entity.ReplyParameters, nil) {
 		entity.ReplyParameters = nil
 	}
-	if !reflect.DeepEqual(entity.ChatID, nil) {
-		switch entity.ChatID.(type) {
-		case int, int64, string:
-			break
-		default:
-			return nil, fmt.Errorf("chat_id: unknown type: %T", entity.ChatID)
-		}
-	}
 	for _, x0 := range entity.Media {
 		switch x0.(type) {
 		case *types.InputMediaAudio, *types.InputMediaDocument, *types.InputMediaPhoto, *types.InputMediaVideo:
 			break
 		default:
 			return nil, fmt.Errorf("media: unknown type: %T", x0)
+		}
+	}
+	if !reflect.DeepEqual(entity.ChatID, nil) {
+		switch entity.ChatID.(type) {
+		case int, int64, string:
+			break
+		default:
+			return nil, fmt.Errorf("chat_id: unknown type: %T", entity.ChatID)
 		}
 	}
 	type x0 SendMediaGroup
