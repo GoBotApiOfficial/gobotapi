@@ -4,7 +4,6 @@ package methods
 
 import (
 	"encoding/json"
-	"fmt"
 	"github.com/GoBotApiOfficial/gobotapi/types"
 	rawTypes "github.com/GoBotApiOfficial/gobotapi/types/raw"
 	"reflect"
