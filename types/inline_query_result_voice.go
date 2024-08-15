@@ -5,7 +5,6 @@ package types
 import (
 	"encoding/json"
 	"fmt"
-	"reflect"
 )
 
 // InlineQueryResultVoice Represents a link to a voice recording in an .OGG container encoded with OPUS
@@ -47,7 +46,7 @@ func (entity InlineQueryResultVoice) MarshalJSON() ([]byte, error) {
 		ReplyMarkup:         entity.ReplyMarkup,
 		InputMessageContent: entity.InputMessageContent,
 	}
-	if !reflect.ValueOf(entity.InputMessageContent).IsNil() {
+	if entity.InputMessageContent != nil {
 		switch entity.InputMessageContent.(type) {
 		case InputTextMessageContent, InputLocationMessageContent, InputVenueMessageContent, InputContactMessageContent, InputInvoiceMessageContent:
 			break

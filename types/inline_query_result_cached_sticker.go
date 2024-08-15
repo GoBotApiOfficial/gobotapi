@@ -5,7 +5,6 @@ package types
 import (
 	"encoding/json"
 	"fmt"
-	"reflect"
 )
 
 // InlineQueryResultCachedSticker Represents a link to a sticker stored on the Telegram servers
@@ -32,7 +31,7 @@ func (entity InlineQueryResultCachedSticker) MarshalJSON() ([]byte, error) {
 		ReplyMarkup:         entity.ReplyMarkup,
 		InputMessageContent: entity.InputMessageContent,
 	}
-	if !reflect.ValueOf(entity.InputMessageContent).IsNil() {
+	if entity.InputMessageContent != nil {
 		switch entity.InputMessageContent.(type) {
 		case InputTextMessageContent, InputLocationMessageContent, InputVenueMessageContent, InputContactMessageContent, InputInvoiceMessageContent:
 			break

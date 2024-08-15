@@ -5,7 +5,6 @@ package types
 import (
 	"encoding/json"
 	"fmt"
-	"reflect"
 )
 
 // InlineQueryResultMpeg4Gif Represents a link to a video animation (H.264/MPEG-4 AVC video without sound)
@@ -62,7 +61,7 @@ func (entity InlineQueryResultMpeg4Gif) MarshalJSON() ([]byte, error) {
 		ReplyMarkup:           entity.ReplyMarkup,
 		InputMessageContent:   entity.InputMessageContent,
 	}
-	if !reflect.ValueOf(entity.InputMessageContent).IsNil() {
+	if entity.InputMessageContent != nil {
 		switch entity.InputMessageContent.(type) {
 		case InputTextMessageContent, InputLocationMessageContent, InputVenueMessageContent, InputContactMessageContent, InputInvoiceMessageContent:
 			break

@@ -40,13 +40,27 @@ func (entity *SendVenue) Files() map[string]rawTypes.InputFile {
 }
 
 func (entity SendVenue) MarshalJSON() ([]byte, error) {
-	if reflect.ValueOf(entity.ReplyParameters).IsNil() {
+	nilCheck := func(val any) bool {
+		if val == nil {
+			return true
+		}
+		v := reflect.ValueOf(val)
+		k := v.Kind()
+		switch k {
+		case reflect.Chan, reflect.Func, reflect.Map, reflect.Pointer, reflect.UnsafePointer, reflect.Interface, reflect.Slice:
+			return v.IsNil()
+		default:
+			return false
+		}
+	}
+	_ = nilCheck
+	if nilCheck(entity.ReplyParameters) {
 		entity.ReplyParameters = nil
 	}
-	if reflect.ValueOf(entity.ReplyMarkup).IsNil() {
+	if nilCheck(entity.ReplyMarkup) {
 		entity.ReplyMarkup = nil
 	}
-	if !reflect.ValueOf(entity.ChatID).IsNil() {
+	if entity.ChatID != nil {
 		switch entity.ChatID.(type) {
 		case int, int64, string:
 			break
@@ -54,7 +68,7 @@ func (entity SendVenue) MarshalJSON() ([]byte, error) {
 			return nil, fmt.Errorf("chat_id: unknown type: %T", entity.ChatID)
 		}
 	}
-	if !reflect.ValueOf(entity.ReplyMarkup).IsNil() {
+	if entity.ReplyMarkup != nil {
 		switch entity.ReplyMarkup.(type) {
 		case *types.InlineKeyboardMarkup, *types.ReplyKeyboardMarkup, *types.ReplyKeyboardRemove, *types.ForceReply:
 			break

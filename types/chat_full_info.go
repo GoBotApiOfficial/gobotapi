@@ -57,35 +57,49 @@ type ChatFullInfo struct {
 }
 
 func (entity ChatFullInfo) MarshalJSON() ([]byte, error) {
-	if reflect.ValueOf(entity.Photo).IsNil() {
+	nilCheck := func(val any) bool {
+		if val == nil {
+			return true
+		}
+		v := reflect.ValueOf(val)
+		k := v.Kind()
+		switch k {
+		case reflect.Chan, reflect.Func, reflect.Map, reflect.Pointer, reflect.UnsafePointer, reflect.Interface, reflect.Slice:
+			return v.IsNil()
+		default:
+			return false
+		}
+	}
+	_ = nilCheck
+	if nilCheck(entity.Photo) {
 		entity.Photo = nil
 	}
-	if reflect.ValueOf(entity.Birthdate).IsNil() {
+	if nilCheck(entity.Birthdate) {
 		entity.Birthdate = nil
 	}
-	if reflect.ValueOf(entity.BusinessIntro).IsNil() {
+	if nilCheck(entity.BusinessIntro) {
 		entity.BusinessIntro = nil
 	}
-	if reflect.ValueOf(entity.BusinessLocation).IsNil() {
+	if nilCheck(entity.BusinessLocation) {
 		entity.BusinessLocation = nil
 	}
-	if reflect.ValueOf(entity.BusinessOpeningHours).IsNil() {
+	if nilCheck(entity.BusinessOpeningHours) {
 		entity.BusinessOpeningHours = nil
 	}
-	if reflect.ValueOf(entity.PersonalChat).IsNil() {
+	if nilCheck(entity.PersonalChat) {
 		entity.PersonalChat = nil
 	}
-	if reflect.ValueOf(entity.PinnedMessage).IsNil() {
+	if nilCheck(entity.PinnedMessage) {
 		entity.PinnedMessage = nil
 	}
-	if reflect.ValueOf(entity.Permissions).IsNil() {
+	if nilCheck(entity.Permissions) {
 		entity.Permissions = nil
 	}
-	if reflect.ValueOf(entity.Location).IsNil() {
+	if nilCheck(entity.Location) {
 		entity.Location = nil
 	}
 	for _, x0 := range entity.AvailableReactions {
-		if !reflect.ValueOf(x0).IsNil() {
+		if x0 != nil {
 			switch x0.(type) {
 			case ReactionTypeEmoji, ReactionTypeCustomEmoji, ReactionTypePaid:
 				break

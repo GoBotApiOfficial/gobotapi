@@ -5,7 +5,6 @@ package types
 import (
 	"encoding/json"
 	"fmt"
-	"reflect"
 )
 
 // InlineQueryResultLocation Represents a location on a map
@@ -59,7 +58,7 @@ func (entity InlineQueryResultLocation) MarshalJSON() ([]byte, error) {
 		ThumbnailWidth:       entity.ThumbnailWidth,
 		ThumbnailHeight:      entity.ThumbnailHeight,
 	}
-	if !reflect.ValueOf(entity.InputMessageContent).IsNil() {
+	if entity.InputMessageContent != nil {
 		switch entity.InputMessageContent.(type) {
 		case InputTextMessageContent, InputLocationMessageContent, InputVenueMessageContent, InputContactMessageContent, InputInvoiceMessageContent:
 			break

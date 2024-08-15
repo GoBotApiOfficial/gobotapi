@@ -5,6 +5,7 @@ package types
 import (
 	"encoding/json"
 	"fmt"
+	"reflect"
 )
 
 // ReactionCount Represents a reaction added to a message along with the number of times it was added.
@@ -14,6 +15,20 @@ type ReactionCount struct {
 }
 
 func (entity ReactionCount) MarshalJSON() ([]byte, error) {
+	nilCheck := func(val any) bool {
+		if val == nil {
+			return true
+		}
+		v := reflect.ValueOf(val)
+		k := v.Kind()
+		switch k {
+		case reflect.Chan, reflect.Func, reflect.Map, reflect.Pointer, reflect.UnsafePointer, reflect.Interface, reflect.Slice:
+			return v.IsNil()
+		default:
+			return false
+		}
+	}
+	_ = nilCheck
 	switch entity.Type.(type) {
 	case ReactionTypeEmoji, ReactionTypeCustomEmoji, ReactionTypePaid:
 		break

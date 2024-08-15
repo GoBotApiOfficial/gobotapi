@@ -5,7 +5,6 @@ package types
 import (
 	"encoding/json"
 	"fmt"
-	"reflect"
 )
 
 // InlineQueryResultVenue Represents a venue
@@ -62,7 +61,7 @@ func (entity InlineQueryResultVenue) MarshalJSON() ([]byte, error) {
 		ThumbnailWidth:      entity.ThumbnailWidth,
 		ThumbnailHeight:     entity.ThumbnailHeight,
 	}
-	if !reflect.ValueOf(entity.InputMessageContent).IsNil() {
+	if entity.InputMessageContent != nil {
 		switch entity.InputMessageContent.(type) {
 		case InputTextMessageContent, InputLocationMessageContent, InputVenueMessageContent, InputContactMessageContent, InputInvoiceMessageContent:
 			break

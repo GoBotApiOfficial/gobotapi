@@ -5,7 +5,6 @@ package types
 import (
 	"encoding/json"
 	"fmt"
-	"reflect"
 )
 
 // InlineQueryResultCachedGif Represents a link to an animated GIF file stored on the Telegram servers
@@ -47,7 +46,7 @@ func (entity InlineQueryResultCachedGif) MarshalJSON() ([]byte, error) {
 		ReplyMarkup:           entity.ReplyMarkup,
 		InputMessageContent:   entity.InputMessageContent,
 	}
-	if !reflect.ValueOf(entity.InputMessageContent).IsNil() {
+	if entity.InputMessageContent != nil {
 		switch entity.InputMessageContent.(type) {
 		case InputTextMessageContent, InputLocationMessageContent, InputVenueMessageContent, InputContactMessageContent, InputInvoiceMessageContent:
 			break

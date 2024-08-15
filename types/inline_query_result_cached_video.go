@@ -5,7 +5,6 @@ package types
 import (
 	"encoding/json"
 	"fmt"
-	"reflect"
 )
 
 // InlineQueryResultCachedVideo Represents a link to a video file stored on the Telegram servers
@@ -50,7 +49,7 @@ func (entity InlineQueryResultCachedVideo) MarshalJSON() ([]byte, error) {
 		ReplyMarkup:           entity.ReplyMarkup,
 		InputMessageContent:   entity.InputMessageContent,
 	}
-	if !reflect.ValueOf(entity.InputMessageContent).IsNil() {
+	if entity.InputMessageContent != nil {
 		switch entity.InputMessageContent.(type) {
 		case InputTextMessageContent, InputLocationMessageContent, InputVenueMessageContent, InputContactMessageContent, InputInvoiceMessageContent:
 			break

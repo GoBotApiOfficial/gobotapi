@@ -20,19 +20,25 @@ type MessageReactionUpdated struct {
 }
 
 func (entity MessageReactionUpdated) MarshalJSON() ([]byte, error) {
-	if reflect.ValueOf(entity.User).IsNil() {
+	nilCheck := func(val any) bool {
+		if val == nil {
+			return true
+		}
+		v := reflect.ValueOf(val)
+		k := v.Kind()
+		switch k {
+		case reflect.Chan, reflect.Func, reflect.Map, reflect.Pointer, reflect.UnsafePointer, reflect.Interface, reflect.Slice:
+			return v.IsNil()
+		default:
+			return false
+		}
+	}
+	_ = nilCheck
+	if nilCheck(entity.User) {
 		entity.User = nil
 	}
-	if reflect.ValueOf(entity.ActorChat).IsNil() {
+	if nilCheck(entity.ActorChat) {
 		entity.ActorChat = nil
-	}
-	for _, x0 := range entity.NewReaction {
-		switch x0.(type) {
-		case ReactionTypeEmoji, ReactionTypeCustomEmoji, ReactionTypePaid:
-			break
-		default:
-			return nil, fmt.Errorf("new_reaction: unknown type: %T", x0)
-		}
 	}
 	for _, x0 := range entity.OldReaction {
 		switch x0.(type) {
@@ -40,6 +46,14 @@ func (entity MessageReactionUpdated) MarshalJSON() ([]byte, error) {
 			break
 		default:
 			return nil, fmt.Errorf("old_reaction: unknown type: %T", x0)
+		}
+	}
+	for _, x0 := range entity.NewReaction {
+		switch x0.(type) {
+		case ReactionTypeEmoji, ReactionTypeCustomEmoji, ReactionTypePaid:
+			break
+		default:
+			return nil, fmt.Errorf("new_reaction: unknown type: %T", x0)
 		}
 	}
 	type x0 MessageReactionUpdated

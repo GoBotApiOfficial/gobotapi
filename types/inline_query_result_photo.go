@@ -5,7 +5,6 @@ package types
 import (
 	"encoding/json"
 	"fmt"
-	"reflect"
 )
 
 // InlineQueryResultPhoto Represents a link to a photo
@@ -59,7 +58,7 @@ func (entity InlineQueryResultPhoto) MarshalJSON() ([]byte, error) {
 		ReplyMarkup:           entity.ReplyMarkup,
 		InputMessageContent:   entity.InputMessageContent,
 	}
-	if !reflect.ValueOf(entity.InputMessageContent).IsNil() {
+	if entity.InputMessageContent != nil {
 		switch entity.InputMessageContent.(type) {
 		case InputTextMessageContent, InputLocationMessageContent, InputVenueMessageContent, InputContactMessageContent, InputInvoiceMessageContent:
 			break

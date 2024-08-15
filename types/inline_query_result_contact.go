@@ -5,7 +5,6 @@ package types
 import (
 	"encoding/json"
 	"fmt"
-	"reflect"
 )
 
 // InlineQueryResultContact Represents a contact with a phone number
@@ -50,7 +49,7 @@ func (entity InlineQueryResultContact) MarshalJSON() ([]byte, error) {
 		ThumbnailWidth:      entity.ThumbnailWidth,
 		ThumbnailHeight:     entity.ThumbnailHeight,
 	}
-	if !reflect.ValueOf(entity.InputMessageContent).IsNil() {
+	if entity.InputMessageContent != nil {
 		switch entity.InputMessageContent.(type) {
 		case InputTextMessageContent, InputLocationMessageContent, InputVenueMessageContent, InputContactMessageContent, InputInvoiceMessageContent:
 			break
