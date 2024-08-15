@@ -5,6 +5,7 @@ package types
 import (
 	"encoding/json"
 	"fmt"
+	"reflect"
 )
 
 // InlineQueryResultCachedVoice Represents a link to a voice message stored on the Telegram servers

@@ -58,20 +58,20 @@ func (entity SendVideoNote) MarshalJSON() ([]byte, error) {
 	if reflect.DeepEqual(entity.ReplyMarkup, nil) {
 		entity.ReplyMarkup = nil
 	}
-	if !reflect.DeepEqual(entity.ChatID, nil) {
-		switch entity.ChatID.(type) {
-		case int, int64, string:
-			break
-		default:
-			return nil, fmt.Errorf("chat_id: unknown type: %T", entity.ChatID)
-		}
-	}
 	if !reflect.DeepEqual(entity.ReplyMarkup, nil) {
 		switch entity.ReplyMarkup.(type) {
 		case *types.InlineKeyboardMarkup, *types.ReplyKeyboardMarkup, *types.ReplyKeyboardRemove, *types.ForceReply:
 			break
 		default:
 			return nil, fmt.Errorf("reply_markup: unknown type: %T", entity.ReplyMarkup)
+		}
+	}
+	if !reflect.DeepEqual(entity.ChatID, nil) {
+		switch entity.ChatID.(type) {
+		case int, int64, string:
+			break
+		default:
+			return nil, fmt.Errorf("chat_id: unknown type: %T", entity.ChatID)
 		}
 	}
 	type x0 SendVideoNote

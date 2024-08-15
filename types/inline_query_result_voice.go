@@ -5,6 +5,7 @@ package types
 import (
 	"encoding/json"
 	"fmt"
+	"reflect"
 )
 
 // InlineQueryResultVoice Represents a link to a voice recording in an .OGG container encoded with OPUS
