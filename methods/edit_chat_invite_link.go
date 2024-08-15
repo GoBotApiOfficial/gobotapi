@@ -7,6 +7,7 @@ import (
 	"fmt"
 	"github.com/GoBotApiOfficial/gobotapi/types"
 	rawTypes "github.com/GoBotApiOfficial/gobotapi/types/raw"
+	"reflect"
 )
 
 // EditChatInviteLink Use this method to edit a non-primary invite link created by the bot
@@ -30,7 +31,7 @@ func (entity *EditChatInviteLink) Files() map[string]rawTypes.InputFile {
 }
 
 func (entity EditChatInviteLink) MarshalJSON() ([]byte, error) {
-	if entity.ChatID != nil {
+	if !reflect.DeepEqual(entity.ChatID, nil) {
 		switch entity.ChatID.(type) {
 		case int, int64, string:
 			break

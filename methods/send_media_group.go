@@ -7,6 +7,7 @@ import (
 	"fmt"
 	"github.com/GoBotApiOfficial/gobotapi/types"
 	rawTypes "github.com/GoBotApiOfficial/gobotapi/types/raw"
+	"reflect"
 )
 
 // SendMediaGroup Use this method to send a group of photos, videos, documents or audios as an album
@@ -48,7 +49,10 @@ func (entity *SendMediaGroup) Files() map[string]rawTypes.InputFile {
 }
 
 func (entity SendMediaGroup) MarshalJSON() ([]byte, error) {
-	if entity.ChatID != nil {
+	if reflect.DeepEqual(entity.ReplyParameters, nil) {
+		entity.ReplyParameters = nil
+	}
+	if !reflect.DeepEqual(entity.ChatID, nil) {
 		switch entity.ChatID.(type) {
 		case int, int64, string:
 			break

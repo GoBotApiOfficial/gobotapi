@@ -4,8 +4,10 @@ package methods
 
 import (
 	"encoding/json"
+	"fmt"
 	"github.com/GoBotApiOfficial/gobotapi/types"
 	rawTypes "github.com/GoBotApiOfficial/gobotapi/types/raw"
+	"reflect"
 )
 
 // SetChatMenuButton Use this method to change the bot's menu button in a private chat, or the default menu button
@@ -21,6 +23,14 @@ func (entity *SetChatMenuButton) ProgressCallable() rawTypes.ProgressCallable {
 
 func (entity *SetChatMenuButton) Files() map[string]rawTypes.InputFile {
 	return map[string]rawTypes.InputFile{}
+}
+
+func (entity SetChatMenuButton) MarshalJSON() ([]byte, error) {
+	if reflect.DeepEqual(entity.MenuButton, nil) {
+		entity.MenuButton = nil
+	}
+	type x0 SetChatMenuButton
+	return json.Marshal((x0)(entity))
 }
 
 func (SetChatMenuButton) MethodName() string {

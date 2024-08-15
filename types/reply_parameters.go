@@ -5,6 +5,7 @@ package types
 import (
 	"encoding/json"
 	"fmt"
+	"reflect"
 )
 
 // ReplyParameters Describes reply parameters for the message that is being sent.
@@ -19,7 +20,10 @@ type ReplyParameters struct {
 }
 
 func (entity ReplyParameters) MarshalJSON() ([]byte, error) {
-	if entity.ChatID != nil {
+	if reflect.DeepEqual(entity.ChatID, nil) {
+		entity.ChatID = nil
+	}
+	if !reflect.DeepEqual(entity.ChatID, nil) {
 		switch entity.ChatID.(type) {
 		case int, string:
 			break

@@ -7,6 +7,7 @@ import (
 	"fmt"
 	"github.com/GoBotApiOfficial/gobotapi/types"
 	rawTypes "github.com/GoBotApiOfficial/gobotapi/types/raw"
+	"reflect"
 )
 
 // DeleteForumTopic Use this method to delete a forum topic along with all its messages in a forum supergroup chat
@@ -26,7 +27,7 @@ func (entity *DeleteForumTopic) Files() map[string]rawTypes.InputFile {
 }
 
 func (entity DeleteForumTopic) MarshalJSON() ([]byte, error) {
-	if entity.ChatID != nil {
+	if !reflect.DeepEqual(entity.ChatID, nil) {
 		switch entity.ChatID.(type) {
 		case int, int64, string:
 			break

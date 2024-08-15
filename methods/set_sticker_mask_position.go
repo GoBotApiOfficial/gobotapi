@@ -4,8 +4,10 @@ package methods
 
 import (
 	"encoding/json"
+	"fmt"
 	"github.com/GoBotApiOfficial/gobotapi/types"
 	rawTypes "github.com/GoBotApiOfficial/gobotapi/types/raw"
+	"reflect"
 )
 
 // SetStickerMaskPosition Use this method to change the mask position of a mask sticker
@@ -22,6 +24,14 @@ func (entity *SetStickerMaskPosition) ProgressCallable() rawTypes.ProgressCallab
 
 func (entity *SetStickerMaskPosition) Files() map[string]rawTypes.InputFile {
 	return map[string]rawTypes.InputFile{}
+}
+
+func (entity SetStickerMaskPosition) MarshalJSON() ([]byte, error) {
+	if reflect.DeepEqual(entity.MaskPosition, nil) {
+		entity.MaskPosition = nil
+	}
+	type x0 SetStickerMaskPosition
+	return json.Marshal((x0)(entity))
 }
 
 func (SetStickerMaskPosition) MethodName() string {

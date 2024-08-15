@@ -4,8 +4,10 @@ package methods
 
 import (
 	"encoding/json"
+	"fmt"
 	"github.com/GoBotApiOfficial/gobotapi/types"
 	rawTypes "github.com/GoBotApiOfficial/gobotapi/types/raw"
+	"reflect"
 )
 
 // SetMyDefaultAdministratorRights Use this method to change the default administrator rights requested by the bot when it's added as an administrator to groups or channels
@@ -22,6 +24,14 @@ func (entity *SetMyDefaultAdministratorRights) ProgressCallable() rawTypes.Progr
 
 func (entity *SetMyDefaultAdministratorRights) Files() map[string]rawTypes.InputFile {
 	return map[string]rawTypes.InputFile{}
+}
+
+func (entity SetMyDefaultAdministratorRights) MarshalJSON() ([]byte, error) {
+	if reflect.DeepEqual(entity.Rights, nil) {
+		entity.Rights = nil
+	}
+	type x0 SetMyDefaultAdministratorRights
+	return json.Marshal((x0)(entity))
 }
 
 func (SetMyDefaultAdministratorRights) MethodName() string {

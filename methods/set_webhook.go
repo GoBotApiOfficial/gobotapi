@@ -4,8 +4,10 @@ package methods
 
 import (
 	"encoding/json"
+	"fmt"
 	"github.com/GoBotApiOfficial/gobotapi/types"
 	rawTypes "github.com/GoBotApiOfficial/gobotapi/types/raw"
+	"reflect"
 )
 
 // SetWebhook Use this method to specify a URL and receive incoming updates via an outgoing webhook
@@ -37,6 +39,14 @@ func (entity *SetWebhook) Files() map[string]rawTypes.InputFile {
 		entity.Certificate = nil
 	}
 	return files
+}
+
+func (entity SetWebhook) MarshalJSON() ([]byte, error) {
+	if reflect.DeepEqual(entity.Certificate, nil) {
+		entity.Certificate = nil
+	}
+	type x0 SetWebhook
+	return json.Marshal((x0)(entity))
 }
 
 func (SetWebhook) MethodName() string {

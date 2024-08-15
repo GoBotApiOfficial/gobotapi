@@ -7,6 +7,7 @@ import (
 	"fmt"
 	"github.com/GoBotApiOfficial/gobotapi/types"
 	rawTypes "github.com/GoBotApiOfficial/gobotapi/types/raw"
+	"reflect"
 )
 
 // CopyMessages Use this method to copy messages of any kind
@@ -35,7 +36,7 @@ func (entity *CopyMessages) Files() map[string]rawTypes.InputFile {
 }
 
 func (entity CopyMessages) MarshalJSON() ([]byte, error) {
-	if entity.ChatID != nil {
+	if !reflect.DeepEqual(entity.ChatID, nil) {
 		switch entity.ChatID.(type) {
 		case int, int64, string:
 			break

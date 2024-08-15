@@ -4,8 +4,10 @@ package methods
 
 import (
 	"encoding/json"
+	"fmt"
 	"github.com/GoBotApiOfficial/gobotapi/types"
 	rawTypes "github.com/GoBotApiOfficial/gobotapi/types/raw"
+	"reflect"
 )
 
 // SetStickerSetThumbnail Use this method to set the thumbnail of a regular or mask sticker set
@@ -31,6 +33,14 @@ func (entity *SetStickerSetThumbnail) Files() map[string]rawTypes.InputFile {
 		entity.Thumbnail = types.InputURL("attach://thumbnail")
 	}
 	return files
+}
+
+func (entity SetStickerSetThumbnail) MarshalJSON() ([]byte, error) {
+	if reflect.DeepEqual(entity.Thumbnail, nil) {
+		entity.Thumbnail = nil
+	}
+	type x0 SetStickerSetThumbnail
+	return json.Marshal((x0)(entity))
 }
 
 func (SetStickerSetThumbnail) MethodName() string {

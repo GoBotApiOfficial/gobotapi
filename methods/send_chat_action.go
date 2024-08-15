@@ -7,6 +7,7 @@ import (
 	"fmt"
 	"github.com/GoBotApiOfficial/gobotapi/types"
 	rawTypes "github.com/GoBotApiOfficial/gobotapi/types/raw"
+	"reflect"
 )
 
 // SendChatAction Use this method when you need to tell the user that something is happening on the bot's side
@@ -29,7 +30,7 @@ func (entity *SendChatAction) Files() map[string]rawTypes.InputFile {
 }
 
 func (entity SendChatAction) MarshalJSON() ([]byte, error) {
-	if entity.ChatID != nil {
+	if !reflect.DeepEqual(entity.ChatID, nil) {
 		switch entity.ChatID.(type) {
 		case int, int64, string:
 			break

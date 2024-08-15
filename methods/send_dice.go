@@ -7,6 +7,7 @@ import (
 	"fmt"
 	"github.com/GoBotApiOfficial/gobotapi/types"
 	rawTypes "github.com/GoBotApiOfficial/gobotapi/types/raw"
+	"reflect"
 )
 
 // SendDice Use this method to send an animated emoji that will display a random value
@@ -32,20 +33,26 @@ func (entity *SendDice) Files() map[string]rawTypes.InputFile {
 }
 
 func (entity SendDice) MarshalJSON() ([]byte, error) {
-	if entity.ChatID != nil {
-		switch entity.ChatID.(type) {
-		case int, int64, string:
-			break
-		default:
-			return nil, fmt.Errorf("chat_id: unknown type: %T", entity.ChatID)
-		}
+	if reflect.DeepEqual(entity.ReplyParameters, nil) {
+		entity.ReplyParameters = nil
 	}
-	if entity.ReplyMarkup != nil {
+	if reflect.DeepEqual(entity.ReplyMarkup, nil) {
+		entity.ReplyMarkup = nil
+	}
+	if !reflect.DeepEqual(entity.ReplyMarkup, nil) {
 		switch entity.ReplyMarkup.(type) {
 		case *types.InlineKeyboardMarkup, *types.ReplyKeyboardMarkup, *types.ReplyKeyboardRemove, *types.ForceReply:
 			break
 		default:
 			return nil, fmt.Errorf("reply_markup: unknown type: %T", entity.ReplyMarkup)
+		}
+	}
+	if !reflect.DeepEqual(entity.ChatID, nil) {
+		switch entity.ChatID.(type) {
+		case int, int64, string:
+			break
+		default:
+			return nil, fmt.Errorf("chat_id: unknown type: %T", entity.ChatID)
 		}
 	}
 	type x0 SendDice

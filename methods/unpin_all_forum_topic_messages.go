@@ -7,6 +7,7 @@ import (
 	"fmt"
 	"github.com/GoBotApiOfficial/gobotapi/types"
 	rawTypes "github.com/GoBotApiOfficial/gobotapi/types/raw"
+	"reflect"
 )
 
 // UnpinAllForumTopicMessages Use this method to clear the list of pinned messages in a forum topic
@@ -26,7 +27,7 @@ func (entity *UnpinAllForumTopicMessages) Files() map[string]rawTypes.InputFile 
 }
 
 func (entity UnpinAllForumTopicMessages) MarshalJSON() ([]byte, error) {
-	if entity.ChatID != nil {
+	if !reflect.DeepEqual(entity.ChatID, nil) {
 		switch entity.ChatID.(type) {
 		case int, int64, string:
 			break

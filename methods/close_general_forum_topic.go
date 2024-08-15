@@ -7,6 +7,7 @@ import (
 	"fmt"
 	"github.com/GoBotApiOfficial/gobotapi/types"
 	rawTypes "github.com/GoBotApiOfficial/gobotapi/types/raw"
+	"reflect"
 )
 
 // CloseGeneralForumTopic Use this method to close an open 'General' topic in a forum supergroup chat
@@ -25,7 +26,7 @@ func (entity *CloseGeneralForumTopic) Files() map[string]rawTypes.InputFile {
 }
 
 func (entity CloseGeneralForumTopic) MarshalJSON() ([]byte, error) {
-	if entity.ChatID != nil {
+	if !reflect.DeepEqual(entity.ChatID, nil) {
 		switch entity.ChatID.(type) {
 		case int, int64, string:
 			break

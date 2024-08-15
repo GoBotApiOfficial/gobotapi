@@ -5,6 +5,7 @@ package types
 import (
 	"encoding/json"
 	"fmt"
+	"reflect"
 )
 
 // BotCommandScopeChatMember Represents the scope of bot commands, covering a specific member of a group or supergroup chat.
@@ -15,7 +16,7 @@ type BotCommandScopeChatMember struct {
 }
 
 func (entity BotCommandScopeChatMember) MarshalJSON() ([]byte, error) {
-	if entity.ChatID != nil {
+	if !reflect.DeepEqual(entity.ChatID, nil) {
 		switch entity.ChatID.(type) {
 		case int, string:
 			break

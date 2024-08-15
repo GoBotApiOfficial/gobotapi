@@ -7,6 +7,7 @@ import (
 	"fmt"
 	"github.com/GoBotApiOfficial/gobotapi/types"
 	rawTypes "github.com/GoBotApiOfficial/gobotapi/types/raw"
+	"reflect"
 )
 
 // SendAnimation Use this method to send animation files (GIF or H.264/MPEG-4 AVC video without sound)
@@ -54,7 +55,16 @@ func (entity *SendAnimation) Files() map[string]rawTypes.InputFile {
 }
 
 func (entity SendAnimation) MarshalJSON() ([]byte, error) {
-	if entity.ChatID != nil {
+	if reflect.DeepEqual(entity.Thumbnail, nil) {
+		entity.Thumbnail = nil
+	}
+	if reflect.DeepEqual(entity.ReplyParameters, nil) {
+		entity.ReplyParameters = nil
+	}
+	if reflect.DeepEqual(entity.ReplyMarkup, nil) {
+		entity.ReplyMarkup = nil
+	}
+	if !reflect.DeepEqual(entity.ChatID, nil) {
 		switch entity.ChatID.(type) {
 		case int, int64, string:
 			break
@@ -62,7 +72,7 @@ func (entity SendAnimation) MarshalJSON() ([]byte, error) {
 			return nil, fmt.Errorf("chat_id: unknown type: %T", entity.ChatID)
 		}
 	}
-	if entity.ReplyMarkup != nil {
+	if !reflect.DeepEqual(entity.ReplyMarkup, nil) {
 		switch entity.ReplyMarkup.(type) {
 		case *types.InlineKeyboardMarkup, *types.ReplyKeyboardMarkup, *types.ReplyKeyboardRemove, *types.ForceReply:
 			break

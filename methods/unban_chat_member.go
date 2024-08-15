@@ -7,6 +7,7 @@ import (
 	"fmt"
 	"github.com/GoBotApiOfficial/gobotapi/types"
 	rawTypes "github.com/GoBotApiOfficial/gobotapi/types/raw"
+	"reflect"
 )
 
 // UnbanChatMember Use this method to unban a previously banned user in a supergroup or channel
@@ -31,7 +32,7 @@ func (entity *UnbanChatMember) Files() map[string]rawTypes.InputFile {
 }
 
 func (entity UnbanChatMember) MarshalJSON() ([]byte, error) {
-	if entity.ChatID != nil {
+	if !reflect.DeepEqual(entity.ChatID, nil) {
 		switch entity.ChatID.(type) {
 		case int, int64, string:
 			break

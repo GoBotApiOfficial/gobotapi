@@ -59,7 +59,7 @@ func (entity InlineQueryResultDocument) MarshalJSON() ([]byte, error) {
 		ThumbnailWidth:      entity.ThumbnailWidth,
 		ThumbnailHeight:     entity.ThumbnailHeight,
 	}
-	if entity.InputMessageContent != nil {
+	if !reflect.DeepEqual(entity.InputMessageContent, nil) {
 		switch entity.InputMessageContent.(type) {
 		case InputTextMessageContent, InputLocationMessageContent, InputVenueMessageContent, InputContactMessageContent, InputInvoiceMessageContent:
 			break

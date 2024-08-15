@@ -7,6 +7,7 @@ import (
 	"fmt"
 	"github.com/GoBotApiOfficial/gobotapi/types"
 	rawTypes "github.com/GoBotApiOfficial/gobotapi/types/raw"
+	"reflect"
 )
 
 // SetChatStickerSet Use this method to set a new group sticker set for a supergroup
@@ -27,7 +28,7 @@ func (entity *SetChatStickerSet) Files() map[string]rawTypes.InputFile {
 }
 
 func (entity SetChatStickerSet) MarshalJSON() ([]byte, error) {
-	if entity.ChatID != nil {
+	if !reflect.DeepEqual(entity.ChatID, nil) {
 		switch entity.ChatID.(type) {
 		case int, int64, string:
 			break

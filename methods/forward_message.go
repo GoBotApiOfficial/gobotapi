@@ -7,6 +7,7 @@ import (
 	"fmt"
 	"github.com/GoBotApiOfficial/gobotapi/types"
 	rawTypes "github.com/GoBotApiOfficial/gobotapi/types/raw"
+	"reflect"
 )
 
 // ForwardMessage Use this method to forward messages of any kind
@@ -30,7 +31,7 @@ func (entity *ForwardMessage) Files() map[string]rawTypes.InputFile {
 }
 
 func (entity ForwardMessage) MarshalJSON() ([]byte, error) {
-	if entity.ChatID != nil {
+	if !reflect.DeepEqual(entity.ChatID, nil) {
 		switch entity.ChatID.(type) {
 		case int, int64, string:
 			break

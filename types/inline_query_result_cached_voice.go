@@ -43,7 +43,7 @@ func (entity InlineQueryResultCachedVoice) MarshalJSON() ([]byte, error) {
 		ReplyMarkup:         entity.ReplyMarkup,
 		InputMessageContent: entity.InputMessageContent,
 	}
-	if entity.InputMessageContent != nil {
+	if !reflect.DeepEqual(entity.InputMessageContent, nil) {
 		switch entity.InputMessageContent.(type) {
 		case InputTextMessageContent, InputLocationMessageContent, InputVenueMessageContent, InputContactMessageContent, InputInvoiceMessageContent:
 			break

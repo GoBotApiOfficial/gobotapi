@@ -7,6 +7,7 @@ import (
 	"fmt"
 	"github.com/GoBotApiOfficial/gobotapi/types"
 	rawTypes "github.com/GoBotApiOfficial/gobotapi/types/raw"
+	"reflect"
 )
 
 // BanChatMember Use this method to ban a user in a group, a supergroup or a channel
@@ -29,7 +30,7 @@ func (entity *BanChatMember) Files() map[string]rawTypes.InputFile {
 }
 
 func (entity BanChatMember) MarshalJSON() ([]byte, error) {
-	if entity.ChatID != nil {
+	if !reflect.DeepEqual(entity.ChatID, nil) {
 		switch entity.ChatID.(type) {
 		case int, int64, string:
 			break

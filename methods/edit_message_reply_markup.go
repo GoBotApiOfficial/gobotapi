@@ -7,6 +7,7 @@ import (
 	"fmt"
 	"github.com/GoBotApiOfficial/gobotapi/types"
 	rawTypes "github.com/GoBotApiOfficial/gobotapi/types/raw"
+	"reflect"
 )
 
 // EditMessageReplyMarkup Use this method to edit only the reply markup of messages
@@ -29,7 +30,13 @@ func (entity *EditMessageReplyMarkup) Files() map[string]rawTypes.InputFile {
 }
 
 func (entity EditMessageReplyMarkup) MarshalJSON() ([]byte, error) {
-	if entity.ChatID != nil {
+	if reflect.DeepEqual(entity.ChatID, nil) {
+		entity.ChatID = nil
+	}
+	if reflect.DeepEqual(entity.ReplyMarkup, nil) {
+		entity.ReplyMarkup = nil
+	}
+	if !reflect.DeepEqual(entity.ChatID, nil) {
 		switch entity.ChatID.(type) {
 		case int, int64, string:
 			break

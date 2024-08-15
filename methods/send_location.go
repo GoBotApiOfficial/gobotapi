@@ -7,6 +7,7 @@ import (
 	"fmt"
 	"github.com/GoBotApiOfficial/gobotapi/types"
 	rawTypes "github.com/GoBotApiOfficial/gobotapi/types/raw"
+	"reflect"
 )
 
 // SendLocation Use this method to send point on the map
@@ -37,7 +38,13 @@ func (entity *SendLocation) Files() map[string]rawTypes.InputFile {
 }
 
 func (entity SendLocation) MarshalJSON() ([]byte, error) {
-	if entity.ReplyMarkup != nil {
+	if reflect.DeepEqual(entity.ReplyParameters, nil) {
+		entity.ReplyParameters = nil
+	}
+	if reflect.DeepEqual(entity.ReplyMarkup, nil) {
+		entity.ReplyMarkup = nil
+	}
+	if !reflect.DeepEqual(entity.ReplyMarkup, nil) {
 		switch entity.ReplyMarkup.(type) {
 		case *types.InlineKeyboardMarkup, *types.ReplyKeyboardMarkup, *types.ReplyKeyboardRemove, *types.ForceReply:
 			break
@@ -45,7 +52,7 @@ func (entity SendLocation) MarshalJSON() ([]byte, error) {
 			return nil, fmt.Errorf("reply_markup: unknown type: %T", entity.ReplyMarkup)
 		}
 	}
-	if entity.ChatID != nil {
+	if !reflect.DeepEqual(entity.ChatID, nil) {
 		switch entity.ChatID.(type) {
 		case int, int64, string:
 			break

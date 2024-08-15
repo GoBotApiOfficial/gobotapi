@@ -7,6 +7,7 @@ import (
 	"fmt"
 	"github.com/GoBotApiOfficial/gobotapi/types"
 	rawTypes "github.com/GoBotApiOfficial/gobotapi/types/raw"
+	"reflect"
 )
 
 // CreateChatSubscriptionInviteLink Use this method to create a subscription invite link for a channel chat
@@ -29,7 +30,7 @@ func (entity *CreateChatSubscriptionInviteLink) Files() map[string]rawTypes.Inpu
 }
 
 func (entity CreateChatSubscriptionInviteLink) MarshalJSON() ([]byte, error) {
-	if entity.ChatID != nil {
+	if !reflect.DeepEqual(entity.ChatID, nil) {
 		switch entity.ChatID.(type) {
 		case int, int64, string:
 			break

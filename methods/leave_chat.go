@@ -7,6 +7,7 @@ import (
 	"fmt"
 	"github.com/GoBotApiOfficial/gobotapi/types"
 	rawTypes "github.com/GoBotApiOfficial/gobotapi/types/raw"
+	"reflect"
 )
 
 // LeaveChat Use this method for your bot to leave a group, supergroup or channel
@@ -24,7 +25,7 @@ func (entity *LeaveChat) Files() map[string]rawTypes.InputFile {
 }
 
 func (entity LeaveChat) MarshalJSON() ([]byte, error) {
-	if entity.ChatID != nil {
+	if !reflect.DeepEqual(entity.ChatID, nil) {
 		switch entity.ChatID.(type) {
 		case int, int64, string:
 			break

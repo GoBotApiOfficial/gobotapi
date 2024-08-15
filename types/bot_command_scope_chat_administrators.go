@@ -5,6 +5,7 @@ package types
 import (
 	"encoding/json"
 	"fmt"
+	"reflect"
 )
 
 // BotCommandScopeChatAdministrators Represents the scope of bot commands, covering all administrators of a specific group or supergroup chat.
@@ -14,7 +15,7 @@ type BotCommandScopeChatAdministrators struct {
 }
 
 func (entity BotCommandScopeChatAdministrators) MarshalJSON() ([]byte, error) {
-	if entity.ChatID != nil {
+	if !reflect.DeepEqual(entity.ChatID, nil) {
 		switch entity.ChatID.(type) {
 		case int, string:
 			break

@@ -7,6 +7,7 @@ import (
 	"fmt"
 	"github.com/GoBotApiOfficial/gobotapi/types"
 	rawTypes "github.com/GoBotApiOfficial/gobotapi/types/raw"
+	"reflect"
 )
 
 // ExportChatInviteLink Use this method to generate a new primary invite link for a chat; any previously generated primary link is revoked
@@ -25,7 +26,7 @@ func (entity *ExportChatInviteLink) Files() map[string]rawTypes.InputFile {
 }
 
 func (entity ExportChatInviteLink) MarshalJSON() ([]byte, error) {
-	if entity.ChatID != nil {
+	if !reflect.DeepEqual(entity.ChatID, nil) {
 		switch entity.ChatID.(type) {
 		case int, int64, string:
 			break

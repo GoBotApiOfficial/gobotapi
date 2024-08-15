@@ -5,6 +5,7 @@ package types
 import (
 	"encoding/json"
 	"fmt"
+	"reflect"
 )
 
 // BotCommandScopeChat Represents the scope of bot commands, covering a specific chat.
@@ -14,7 +15,7 @@ type BotCommandScopeChat struct {
 }
 
 func (entity BotCommandScopeChat) MarshalJSON() ([]byte, error) {
-	if entity.ChatID != nil {
+	if !reflect.DeepEqual(entity.ChatID, nil) {
 		switch entity.ChatID.(type) {
 		case int, string:
 			break

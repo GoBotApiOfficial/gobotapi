@@ -4,8 +4,10 @@ package methods
 
 import (
 	"encoding/json"
+	"fmt"
 	"github.com/GoBotApiOfficial/gobotapi/types"
 	rawTypes "github.com/GoBotApiOfficial/gobotapi/types/raw"
+	"reflect"
 )
 
 // SendGame Use this method to send a game
@@ -28,6 +30,17 @@ func (entity *SendGame) ProgressCallable() rawTypes.ProgressCallable {
 
 func (entity *SendGame) Files() map[string]rawTypes.InputFile {
 	return map[string]rawTypes.InputFile{}
+}
+
+func (entity SendGame) MarshalJSON() ([]byte, error) {
+	if reflect.DeepEqual(entity.ReplyParameters, nil) {
+		entity.ReplyParameters = nil
+	}
+	if reflect.DeepEqual(entity.ReplyMarkup, nil) {
+		entity.ReplyMarkup = nil
+	}
+	type x0 SendGame
+	return json.Marshal((x0)(entity))
 }
 
 func (SendGame) MethodName() string {

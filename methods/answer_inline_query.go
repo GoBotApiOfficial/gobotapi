@@ -4,8 +4,10 @@ package methods
 
 import (
 	"encoding/json"
+	"fmt"
 	"github.com/GoBotApiOfficial/gobotapi/types"
 	rawTypes "github.com/GoBotApiOfficial/gobotapi/types/raw"
+	"reflect"
 )
 
 // AnswerInlineQuery Use this method to send answers to an inline query
@@ -25,6 +27,14 @@ func (entity *AnswerInlineQuery) ProgressCallable() rawTypes.ProgressCallable {
 
 func (entity *AnswerInlineQuery) Files() map[string]rawTypes.InputFile {
 	return map[string]rawTypes.InputFile{}
+}
+
+func (entity AnswerInlineQuery) MarshalJSON() ([]byte, error) {
+	if reflect.DeepEqual(entity.Button, nil) {
+		entity.Button = nil
+	}
+	type x0 AnswerInlineQuery
+	return json.Marshal((x0)(entity))
 }
 
 func (AnswerInlineQuery) MethodName() string {

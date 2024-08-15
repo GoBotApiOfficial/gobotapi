@@ -5,6 +5,7 @@ package types
 import (
 	"encoding/json"
 	"fmt"
+	"reflect"
 )
 
 // ChatFullInfo This object contains full information about a chat.
@@ -56,8 +57,35 @@ type ChatFullInfo struct {
 }
 
 func (entity ChatFullInfo) MarshalJSON() ([]byte, error) {
+	if reflect.DeepEqual(entity.Photo, nil) {
+		entity.Photo = nil
+	}
+	if reflect.DeepEqual(entity.Birthdate, nil) {
+		entity.Birthdate = nil
+	}
+	if reflect.DeepEqual(entity.BusinessIntro, nil) {
+		entity.BusinessIntro = nil
+	}
+	if reflect.DeepEqual(entity.BusinessLocation, nil) {
+		entity.BusinessLocation = nil
+	}
+	if reflect.DeepEqual(entity.BusinessOpeningHours, nil) {
+		entity.BusinessOpeningHours = nil
+	}
+	if reflect.DeepEqual(entity.PersonalChat, nil) {
+		entity.PersonalChat = nil
+	}
+	if reflect.DeepEqual(entity.PinnedMessage, nil) {
+		entity.PinnedMessage = nil
+	}
+	if reflect.DeepEqual(entity.Permissions, nil) {
+		entity.Permissions = nil
+	}
+	if reflect.DeepEqual(entity.Location, nil) {
+		entity.Location = nil
+	}
 	for _, x0 := range entity.AvailableReactions {
-		if x0 != nil {
+		if !reflect.DeepEqual(x0, nil) {
 			switch x0.(type) {
 			case ReactionTypeEmoji, ReactionTypeCustomEmoji, ReactionTypePaid:
 				break

@@ -7,6 +7,7 @@ import (
 	"fmt"
 	"github.com/GoBotApiOfficial/gobotapi/types"
 	rawTypes "github.com/GoBotApiOfficial/gobotapi/types/raw"
+	"reflect"
 )
 
 // CreateChatInviteLink Use this method to create an additional invite link for a chat
@@ -30,7 +31,7 @@ func (entity *CreateChatInviteLink) Files() map[string]rawTypes.InputFile {
 }
 
 func (entity CreateChatInviteLink) MarshalJSON() ([]byte, error) {
-	if entity.ChatID != nil {
+	if !reflect.DeepEqual(entity.ChatID, nil) {
 		switch entity.ChatID.(type) {
 		case int, int64, string:
 			break

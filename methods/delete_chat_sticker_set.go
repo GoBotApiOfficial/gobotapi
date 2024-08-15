@@ -7,6 +7,7 @@ import (
 	"fmt"
 	"github.com/GoBotApiOfficial/gobotapi/types"
 	rawTypes "github.com/GoBotApiOfficial/gobotapi/types/raw"
+	"reflect"
 )
 
 // DeleteChatStickerSet Use this method to delete a group sticker set from a supergroup
@@ -26,7 +27,7 @@ func (entity *DeleteChatStickerSet) Files() map[string]rawTypes.InputFile {
 }
 
 func (entity DeleteChatStickerSet) MarshalJSON() ([]byte, error) {
-	if entity.ChatID != nil {
+	if !reflect.DeepEqual(entity.ChatID, nil) {
 		switch entity.ChatID.(type) {
 		case int, int64, string:
 			break

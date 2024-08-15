@@ -7,6 +7,7 @@ import (
 	"fmt"
 	"github.com/GoBotApiOfficial/gobotapi/types"
 	rawTypes "github.com/GoBotApiOfficial/gobotapi/types/raw"
+	"reflect"
 )
 
 // PinChatMessage Use this method to add a message to the list of pinned messages in a chat
@@ -28,7 +29,7 @@ func (entity *PinChatMessage) Files() map[string]rawTypes.InputFile {
 }
 
 func (entity PinChatMessage) MarshalJSON() ([]byte, error) {
-	if entity.ChatID != nil {
+	if !reflect.DeepEqual(entity.ChatID, nil) {
 		switch entity.ChatID.(type) {
 		case int, int64, string:
 			break

@@ -7,6 +7,7 @@ import (
 	"fmt"
 	"github.com/GoBotApiOfficial/gobotapi/types"
 	rawTypes "github.com/GoBotApiOfficial/gobotapi/types/raw"
+	"reflect"
 )
 
 // DeleteChatPhoto Use this method to delete a chat photo
@@ -26,7 +27,7 @@ func (entity *DeleteChatPhoto) Files() map[string]rawTypes.InputFile {
 }
 
 func (entity DeleteChatPhoto) MarshalJSON() ([]byte, error) {
-	if entity.ChatID != nil {
+	if !reflect.DeepEqual(entity.ChatID, nil) {
 		switch entity.ChatID.(type) {
 		case int, int64, string:
 			break

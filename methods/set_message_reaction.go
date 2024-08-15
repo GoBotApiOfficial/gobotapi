@@ -7,6 +7,7 @@ import (
 	"fmt"
 	"github.com/GoBotApiOfficial/gobotapi/types"
 	rawTypes "github.com/GoBotApiOfficial/gobotapi/types/raw"
+	"reflect"
 )
 
 // SetMessageReaction Use this method to change the chosen reactions on a message
@@ -30,7 +31,7 @@ func (entity *SetMessageReaction) Files() map[string]rawTypes.InputFile {
 }
 
 func (entity SetMessageReaction) MarshalJSON() ([]byte, error) {
-	if entity.ChatID != nil {
+	if !reflect.DeepEqual(entity.ChatID, nil) {
 		switch entity.ChatID.(type) {
 		case int, int64, string:
 			break

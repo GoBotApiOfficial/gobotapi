@@ -7,6 +7,7 @@ import (
 	"fmt"
 	"github.com/GoBotApiOfficial/gobotapi/types"
 	rawTypes "github.com/GoBotApiOfficial/gobotapi/types/raw"
+	"reflect"
 )
 
 // EditMessageMedia Use this method to edit animation, audio, document, photo, or video messages
@@ -42,7 +43,13 @@ func (entity *EditMessageMedia) Files() map[string]rawTypes.InputFile {
 }
 
 func (entity EditMessageMedia) MarshalJSON() ([]byte, error) {
-	if entity.ChatID != nil {
+	if reflect.DeepEqual(entity.ChatID, nil) {
+		entity.ChatID = nil
+	}
+	if reflect.DeepEqual(entity.ReplyMarkup, nil) {
+		entity.ReplyMarkup = nil
+	}
+	if !reflect.DeepEqual(entity.ChatID, nil) {
 		switch entity.ChatID.(type) {
 		case int, int64, string:
 			break

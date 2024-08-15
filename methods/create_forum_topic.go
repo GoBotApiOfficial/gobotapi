@@ -7,6 +7,7 @@ import (
 	"fmt"
 	"github.com/GoBotApiOfficial/gobotapi/types"
 	rawTypes "github.com/GoBotApiOfficial/gobotapi/types/raw"
+	"reflect"
 )
 
 // CreateForumTopic Use this method to create a topic in a forum supergroup chat
@@ -28,7 +29,7 @@ func (entity *CreateForumTopic) Files() map[string]rawTypes.InputFile {
 }
 
 func (entity CreateForumTopic) MarshalJSON() ([]byte, error) {
-	if entity.ChatID != nil {
+	if !reflect.DeepEqual(entity.ChatID, nil) {
 		switch entity.ChatID.(type) {
 		case int, int64, string:
 			break

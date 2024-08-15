@@ -4,8 +4,10 @@ package methods
 
 import (
 	"encoding/json"
+	"fmt"
 	"github.com/GoBotApiOfficial/gobotapi/types"
 	rawTypes "github.com/GoBotApiOfficial/gobotapi/types/raw"
+	"reflect"
 )
 
 // SetMyCommands Use this method to change the list of the bot's commands
@@ -23,6 +25,14 @@ func (entity *SetMyCommands) ProgressCallable() rawTypes.ProgressCallable {
 
 func (entity *SetMyCommands) Files() map[string]rawTypes.InputFile {
 	return map[string]rawTypes.InputFile{}
+}
+
+func (entity SetMyCommands) MarshalJSON() ([]byte, error) {
+	if reflect.DeepEqual(entity.Scope, nil) {
+		entity.Scope = nil
+	}
+	type x0 SetMyCommands
+	return json.Marshal((x0)(entity))
 }
 
 func (SetMyCommands) MethodName() string {

@@ -7,6 +7,7 @@ import (
 	"fmt"
 	"github.com/GoBotApiOfficial/gobotapi/types"
 	rawTypes "github.com/GoBotApiOfficial/gobotapi/types/raw"
+	"reflect"
 )
 
 // EditMessageText Use this method to edit text and game messages
@@ -33,7 +34,16 @@ func (entity *EditMessageText) Files() map[string]rawTypes.InputFile {
 }
 
 func (entity EditMessageText) MarshalJSON() ([]byte, error) {
-	if entity.ChatID != nil {
+	if reflect.DeepEqual(entity.ChatID, nil) {
+		entity.ChatID = nil
+	}
+	if reflect.DeepEqual(entity.LinkPreviewOptions, nil) {
+		entity.LinkPreviewOptions = nil
+	}
+	if reflect.DeepEqual(entity.ReplyMarkup, nil) {
+		entity.ReplyMarkup = nil
+	}
+	if !reflect.DeepEqual(entity.ChatID, nil) {
 		switch entity.ChatID.(type) {
 		case int, int64, string:
 			break

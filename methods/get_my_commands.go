@@ -4,8 +4,10 @@ package methods
 
 import (
 	"encoding/json"
+	"fmt"
 	"github.com/GoBotApiOfficial/gobotapi/types"
 	rawTypes "github.com/GoBotApiOfficial/gobotapi/types/raw"
+	"reflect"
 )
 
 // GetMyCommands Use this method to get the current list of the bot's commands for the given scope and user language
@@ -22,6 +24,14 @@ func (entity *GetMyCommands) ProgressCallable() rawTypes.ProgressCallable {
 
 func (entity *GetMyCommands) Files() map[string]rawTypes.InputFile {
 	return map[string]rawTypes.InputFile{}
+}
+
+func (entity GetMyCommands) MarshalJSON() ([]byte, error) {
+	if reflect.DeepEqual(entity.Scope, nil) {
+		entity.Scope = nil
+	}
+	type x0 GetMyCommands
+	return json.Marshal((x0)(entity))
 }
 
 func (GetMyCommands) MethodName() string {

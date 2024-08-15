@@ -7,6 +7,7 @@ import (
 	"fmt"
 	"github.com/GoBotApiOfficial/gobotapi/types"
 	rawTypes "github.com/GoBotApiOfficial/gobotapi/types/raw"
+	"reflect"
 )
 
 // GetUserChatBoosts Use this method to get the list of boosts added to a chat by a user
@@ -26,7 +27,7 @@ func (entity *GetUserChatBoosts) Files() map[string]rawTypes.InputFile {
 }
 
 func (entity GetUserChatBoosts) MarshalJSON() ([]byte, error) {
-	if entity.ChatID != nil {
+	if !reflect.DeepEqual(entity.ChatID, nil) {
 		switch entity.ChatID.(type) {
 		case int, int64, string:
 			break

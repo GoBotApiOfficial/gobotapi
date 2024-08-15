@@ -7,6 +7,7 @@ import (
 	"fmt"
 	"github.com/GoBotApiOfficial/gobotapi/types"
 	rawTypes "github.com/GoBotApiOfficial/gobotapi/types/raw"
+	"reflect"
 )
 
 // GetChatMemberCount Use this method to get the number of members in a chat
@@ -24,7 +25,7 @@ func (entity *GetChatMemberCount) Files() map[string]rawTypes.InputFile {
 }
 
 func (entity GetChatMemberCount) MarshalJSON() ([]byte, error) {
-	if entity.ChatID != nil {
+	if !reflect.DeepEqual(entity.ChatID, nil) {
 		switch entity.ChatID.(type) {
 		case int, int64, string:
 			break

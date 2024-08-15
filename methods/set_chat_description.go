@@ -7,6 +7,7 @@ import (
 	"fmt"
 	"github.com/GoBotApiOfficial/gobotapi/types"
 	rawTypes "github.com/GoBotApiOfficial/gobotapi/types/raw"
+	"reflect"
 )
 
 // SetChatDescription Use this method to change the description of a group, a supergroup or a channel
@@ -26,7 +27,7 @@ func (entity *SetChatDescription) Files() map[string]rawTypes.InputFile {
 }
 
 func (entity SetChatDescription) MarshalJSON() ([]byte, error) {
-	if entity.ChatID != nil {
+	if !reflect.DeepEqual(entity.ChatID, nil) {
 		switch entity.ChatID.(type) {
 		case int, int64, string:
 			break

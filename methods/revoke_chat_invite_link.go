@@ -7,6 +7,7 @@ import (
 	"fmt"
 	"github.com/GoBotApiOfficial/gobotapi/types"
 	rawTypes "github.com/GoBotApiOfficial/gobotapi/types/raw"
+	"reflect"
 )
 
 // RevokeChatInviteLink Use this method to revoke an invite link created by the bot
@@ -27,7 +28,7 @@ func (entity *RevokeChatInviteLink) Files() map[string]rawTypes.InputFile {
 }
 
 func (entity RevokeChatInviteLink) MarshalJSON() ([]byte, error) {
-	if entity.ChatID != nil {
+	if !reflect.DeepEqual(entity.ChatID, nil) {
 		switch entity.ChatID.(type) {
 		case int, int64, string:
 			break
