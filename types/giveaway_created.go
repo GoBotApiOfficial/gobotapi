@@ -2,6 +2,7 @@
 
 package types
 
-// GiveawayCreated Represents a service message about the creation of a scheduled giveaway
-// Currently holds no information.
-type GiveawayCreated any
+// GiveawayCreated Represents a service message about the creation of a scheduled giveaway.
+type GiveawayCreated struct {
+	PrizeStarCount int `json:"prize_star_count,omitempty"`
+}

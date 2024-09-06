@@ -10,6 +10,7 @@ type Giveaway struct {
 	OnlyNewMembers                bool     `json:"only_new_members,omitempty"`
 	PremiumSubscriptionMonthCount int      `json:"premium_subscription_month_count,omitempty"`
 	PrizeDescription              string   `json:"prize_description,omitempty"`
+	PrizeStarCount                int      `json:"prize_star_count,omitempty"`
 	WinnerCount                   int      `json:"winner_count"`
 	WinnersSelectionDate          int64    `json:"winners_selection_date"`
 }

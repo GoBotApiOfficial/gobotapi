@@ -10,6 +10,7 @@ package types
 type ChatBoostSource struct {
 	GiveawayMessageID int64  `json:"giveaway_message_id"`
 	IsUnclaimed       bool   `json:"is_unclaimed"`
+	PrizeStarCount    int    `json:"prize_star_count"`
 	Source            string `json:"source"`
 	User              User   `json:"user"`
 }

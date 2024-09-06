@@ -13,4 +13,6 @@ type ChatInviteLink struct {
 	MemberLimit             int    `json:"member_limit,omitempty"`
 	Name                    string `json:"name,omitempty"`
 	PendingJoinRequestCount int    `json:"pending_join_request_count,omitempty"`
+	SubscriptionPeriod      int    `json:"subscription_period,omitempty"`
+	SubscriptionPrice       int    `json:"subscription_price,omitempty"`
 }

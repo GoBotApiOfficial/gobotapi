@@ -120,6 +120,13 @@ func (ctx *BasicClient) handleUpdate(user *types.User, token string, update type
 			}, x0)
 		}
 	}
+	if update.PurchasedPaidMedia != nil {
+		for _, x0 := range ctx.handlers["purchased_paid_media"] {
+			ctx.concurrencyManager.Enqueue(func(x ...any) {
+				x[0].(func(*Client, types.PaidMediaPurchased))(client, *update.PurchasedPaidMedia)
+			}, x0)
+		}
+	}
 	if update.Poll != nil {
 		for _, x0 := range ctx.handlers["poll"] {
 			ctx.concurrencyManager.Enqueue(func(x ...any) {

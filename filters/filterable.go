@@ -17,6 +17,7 @@ type Filterable interface {
 		types.Message |
 		types.MessageReactionCountUpdated |
 		types.MessageReactionUpdated |
+		types.PaidMediaPurchased |
 		types.PreCheckoutQuery |
 		types.ShippingQuery
 }

@@ -116,6 +116,13 @@ func (ctx *BasicClient) OnPreCheckoutQuery(handler func(client *Client, update t
 	ctx.handlers["pre_checkout_query"] = append(ctx.handlers["pre_checkout_query"], handler)
 }
 
+func (ctx *BasicClient) OnPurchasedPaidMedia(handler func(client *Client, update types.PaidMediaPurchased)) {
+	if ctx.handlers == nil {
+		ctx.handlers = make(map[string][]any)
+	}
+	ctx.handlers["purchased_paid_media"] = append(ctx.handlers["purchased_paid_media"], handler)
+}
+
 func (ctx *BasicClient) OnPoll(handler func(client *Client, update types.Poll)) {
 	if ctx.handlers == nil {
 		ctx.handlers = make(map[string][]any)

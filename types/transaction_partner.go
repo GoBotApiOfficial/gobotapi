@@ -9,11 +9,12 @@ package types
 //  - TransactionPartnerTelegramAds
 //  - TransactionPartnerOther
 type TransactionPartner struct {
-	InvoicePayload  string                  `json:"invoice_payload"`
-	PaidMedia       []PaidMedia             `json:"paid_media"`
-	Type            string                  `json:"type"`
-	User            User                    `json:"user"`
-	WithdrawalState *RevenueWithdrawalState `json:"withdrawal_state"`
+	InvoicePayload   string                  `json:"invoice_payload"`
+	PaidMedia        []PaidMedia             `json:"paid_media"`
+	PaidMediaPayload string                  `json:"paid_media_payload"`
+	Type             string                  `json:"type"`
+	User             User                    `json:"user"`
+	WithdrawalState  *RevenueWithdrawalState `json:"withdrawal_state"`
 }
 
 func (x TransactionPartner) Kind() int {

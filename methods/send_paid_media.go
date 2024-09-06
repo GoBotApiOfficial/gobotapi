@@ -20,6 +20,7 @@ type SendPaidMedia struct {
 	DisableNotification   bool                      `json:"disable_notification,omitempty"`
 	Media                 []types.InputPaidMedia    `json:"media,omitempty"`
 	ParseMode             string                    `json:"parse_mode,omitempty"`
+	Payload               string                    `json:"payload,omitempty"`
 	ProtectContent        bool                      `json:"protect_content,omitempty"`
 	ReplyMarkup           any                       `json:"reply_markup,omitempty"`
 	ReplyParameters       *types.ReplyParameters    `json:"reply_parameters,omitempty"`

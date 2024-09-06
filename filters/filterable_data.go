@@ -55,6 +55,9 @@ func filterableData(client *gobotapi.Client, filterable any) *DataFilter {
 		x := filterable.(types.MessageReactionUpdated)
 		dataResult.Chat = &x.Chat
 		dataResult.Date = &x.Date
+	case types.PaidMediaPurchased:
+		x := filterable.(types.PaidMediaPurchased)
+		dataResult.From = &x.From
 	case types.PreCheckoutQuery:
 		x := filterable.(types.PreCheckoutQuery)
 		dataResult.From = &x.From
