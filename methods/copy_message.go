@@ -16,6 +16,7 @@ import (
 // The method is analogous to the method forwardMessage, but the copied message doesn't have a link to the original message
 // Returns the MessageId of the sent message on success.
 type CopyMessage struct {
+	AllowPaidBroadcast    bool                   `json:"allow_paid_broadcast,omitempty"`
 	Caption               string                 `json:"caption,omitempty"`
 	CaptionEntities       []types.MessageEntity  `json:"caption_entities,omitempty"`
 	ChatID                any                    `json:"chat_id"`
@@ -59,20 +60,20 @@ func (entity CopyMessage) MarshalJSON() ([]byte, error) {
 	if nilCheck(entity.ReplyMarkup) {
 		entity.ReplyMarkup = nil
 	}
-	if entity.ReplyMarkup != nil {
-		switch entity.ReplyMarkup.(type) {
-		case *types.InlineKeyboardMarkup, *types.ReplyKeyboardMarkup, *types.ReplyKeyboardRemove, *types.ForceReply:
-			break
-		default:
-			return nil, fmt.Errorf("reply_markup: unknown type: %T", entity.ReplyMarkup)
-		}
-	}
 	if entity.ChatID != nil {
 		switch entity.ChatID.(type) {
 		case int, int64, string:
 			break
 		default:
 			return nil, fmt.Errorf("chat_id: unknown type: %T", entity.ChatID)
+		}
+	}
+	if entity.ReplyMarkup != nil {
+		switch entity.ReplyMarkup.(type) {
+		case *types.InlineKeyboardMarkup, *types.ReplyKeyboardMarkup, *types.ReplyKeyboardRemove, *types.ForceReply:
+			break
+		default:
+			return nil, fmt.Errorf("reply_markup: unknown type: %T", entity.ReplyMarkup)
 		}
 	}
 	type x0 CopyMessage

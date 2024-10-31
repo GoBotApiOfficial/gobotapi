@@ -14,6 +14,7 @@ import (
 // On success, the sent Message is returned
 // Bots can currently send animation files of up to 50 MB in size, this limit may be changed in the future.
 type SendAnimation struct {
+	AllowPaidBroadcast    bool                      `json:"allow_paid_broadcast,omitempty"`
 	Animation             rawTypes.InputFile        `json:"animation,omitempty"`
 	BusinessConnectionID  string                    `json:"business_connection_id,omitempty"`
 	Caption               string                    `json:"caption,omitempty"`

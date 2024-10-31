@@ -13,6 +13,7 @@ import (
 // SendPhoto Use this method to send photos
 // On success, the sent Message is returned.
 type SendPhoto struct {
+	AllowPaidBroadcast    bool                      `json:"allow_paid_broadcast,omitempty"`
 	BusinessConnectionID  string                    `json:"business_connection_id,omitempty"`
 	Caption               string                    `json:"caption,omitempty"`
 	CaptionEntities       []types.MessageEntity     `json:"caption_entities,omitempty"`

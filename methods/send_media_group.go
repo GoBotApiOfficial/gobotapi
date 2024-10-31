@@ -14,6 +14,7 @@ import (
 // Documents and audio files can be only grouped in an album with messages of the same type
 // On success, an array of Messages that were sent is returned.
 type SendMediaGroup struct {
+	AllowPaidBroadcast   bool                      `json:"allow_paid_broadcast,omitempty"`
 	BusinessConnectionID string                    `json:"business_connection_id,omitempty"`
 	ChatID               any                       `json:"chat_id"`
 	DisableNotification  bool                      `json:"disable_notification,omitempty"`

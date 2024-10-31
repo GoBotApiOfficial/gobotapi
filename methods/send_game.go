@@ -12,6 +12,7 @@ import (
 // SendGame Use this method to send a game
 // On success, the sent Message is returned.
 type SendGame struct {
+	AllowPaidBroadcast   bool                        `json:"allow_paid_broadcast,omitempty"`
 	BusinessConnectionID string                      `json:"business_connection_id,omitempty"`
 	ChatID               int64                       `json:"chat_id"`
 	DisableNotification  bool                        `json:"disable_notification,omitempty"`

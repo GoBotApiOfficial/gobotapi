@@ -13,6 +13,7 @@ import (
 // SendPoll Use this method to send a native poll
 // On success, the sent Message is returned.
 type SendPoll struct {
+	AllowPaidBroadcast    bool                    `json:"allow_paid_broadcast,omitempty"`
 	AllowsMultipleAnswers bool                    `json:"allows_multiple_answers,omitempty"`
 	BusinessConnectionID  string                  `json:"business_connection_id,omitempty"`
 	ChatID                any                     `json:"chat_id"`

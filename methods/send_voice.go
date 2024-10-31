@@ -15,6 +15,7 @@ import (
 // On success, the sent Message is returned
 // Bots can currently send voice messages of up to 50 MB in size, this limit may be changed in the future.
 type SendVoice struct {
+	AllowPaidBroadcast   bool                      `json:"allow_paid_broadcast,omitempty"`
 	BusinessConnectionID string                    `json:"business_connection_id,omitempty"`
 	Caption              string                    `json:"caption,omitempty"`
 	CaptionEntities      []types.MessageEntity     `json:"caption_entities,omitempty"`

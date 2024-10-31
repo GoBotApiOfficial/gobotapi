@@ -13,6 +13,7 @@ import (
 // SendMessage Use this method to send text messages
 // On success, the sent Message is returned.
 type SendMessage struct {
+	AllowPaidBroadcast   bool                      `json:"allow_paid_broadcast,omitempty"`
 	BusinessConnectionID string                    `json:"business_connection_id,omitempty"`
 	ChatID               any                       `json:"chat_id"`
 	DisableNotification  bool                      `json:"disable_notification,omitempty"`

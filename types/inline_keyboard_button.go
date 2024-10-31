@@ -7,6 +7,7 @@ package types
 type InlineKeyboardButton struct {
 	CallbackData                 string                       `json:"callback_data,omitempty"`
 	CallbackGame                 *CallbackGame                `json:"callback_game,omitempty"`
+	CopyText                     *CopyTextButton              `json:"copy_text,omitempty"`
 	LoginURL                     *LoginUrl                    `json:"login_url,omitempty"`
 	Pay                          bool                         `json:"pay,omitempty"`
 	SwitchInlineQuery            string                       `json:"switch_inline_query,omitempty"`

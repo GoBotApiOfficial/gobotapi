@@ -13,6 +13,7 @@ import (
 // SendInvoice Use this method to send invoices
 // On success, the sent Message is returned.
 type SendInvoice struct {
+	AllowPaidBroadcast        bool                        `json:"allow_paid_broadcast,omitempty"`
 	ChatID                    any                         `json:"chat_id"`
 	Currency                  string                      `json:"currency"`
 	Description               string                      `json:"description"`

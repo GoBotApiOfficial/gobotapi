@@ -16,6 +16,7 @@ import (
 // Bots can currently send audio files of up to 50 MB in size, this limit may be changed in the future.
 // For sending voice messages, use the sendVoice method instead.
 type SendAudio struct {
+	AllowPaidBroadcast   bool                      `json:"allow_paid_broadcast,omitempty"`
 	Audio                rawTypes.InputFile        `json:"audio,omitempty"`
 	BusinessConnectionID string                    `json:"business_connection_id,omitempty"`
 	Caption              string                    `json:"caption,omitempty"`
