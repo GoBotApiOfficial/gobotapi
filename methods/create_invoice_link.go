@@ -11,6 +11,7 @@ import (
 // CreateInvoiceLink Use this method to create a link for an invoice
 // Returns the created invoice link as String on success.
 type CreateInvoiceLink struct {
+	BusinessConnectionID      string               `json:"business_connection_id,omitempty"`
 	Currency                  string               `json:"currency"`
 	Description               string               `json:"description"`
 	IsFlexible                bool                 `json:"is_flexible,omitempty"`
@@ -29,6 +30,7 @@ type CreateInvoiceLink struct {
 	ProviderToken             string               `json:"provider_token,omitempty"`
 	SendEmailToProvider       bool                 `json:"send_email_to_provider,omitempty"`
 	SendPhoneNumberToProvider bool                 `json:"send_phone_number_to_provider,omitempty"`
+	SubscriptionPeriod        int                  `json:"subscription_period,omitempty"`
 	SuggestedTipAmounts       []int                `json:"suggested_tip_amounts,omitempty"`
 	Title                     string               `json:"title"`
 }

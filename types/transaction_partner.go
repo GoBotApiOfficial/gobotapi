@@ -10,13 +10,15 @@ package types
 //  - TransactionPartnerTelegramApi
 //  - TransactionPartnerOther
 type TransactionPartner struct {
-	InvoicePayload   string                  `json:"invoice_payload"`
-	PaidMedia        []PaidMedia             `json:"paid_media"`
-	PaidMediaPayload string                  `json:"paid_media_payload"`
-	RequestCount     int                     `json:"request_count"`
-	Type             string                  `json:"type"`
-	User             User                    `json:"user"`
-	WithdrawalState  *RevenueWithdrawalState `json:"withdrawal_state"`
+	Gift               string                  `json:"gift"`
+	InvoicePayload     string                  `json:"invoice_payload"`
+	PaidMedia          []PaidMedia             `json:"paid_media"`
+	PaidMediaPayload   string                  `json:"paid_media_payload"`
+	RequestCount       int                     `json:"request_count"`
+	SubscriptionPeriod int                     `json:"subscription_period"`
+	Type               string                  `json:"type"`
+	User               User                    `json:"user"`
+	WithdrawalState    *RevenueWithdrawalState `json:"withdrawal_state"`
 }
 
 func (x TransactionPartner) Kind() int {
