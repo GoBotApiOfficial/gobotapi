@@ -5,16 +5,20 @@ package types
 // TransactionPartner This object describes the source of a transaction, or its recipient for outgoing transactions
 // Currently, it can be one of
 //  - TransactionPartnerUser
+//  - TransactionPartnerAffiliateProgram
 //  - TransactionPartnerFragment
 //  - TransactionPartnerTelegramAds
 //  - TransactionPartnerTelegramApi
 //  - TransactionPartnerOther
 type TransactionPartner struct {
-	Gift               string                  `json:"gift"`
+	Affiliate          *AffiliateInfo          `json:"affiliate"`
+	CommissionPerMille int                     `json:"commission_per_mille"`
+	Gift               *Gift                   `json:"gift"`
 	InvoicePayload     string                  `json:"invoice_payload"`
 	PaidMedia          []PaidMedia             `json:"paid_media"`
 	PaidMediaPayload   string                  `json:"paid_media_payload"`
 	RequestCount       int                     `json:"request_count"`
+	SponsorUser        *User                   `json:"sponsor_user"`
 	SubscriptionPeriod int                     `json:"subscription_period"`
 	Type               string                  `json:"type"`
 	User               User                    `json:"user"`
@@ -25,6 +29,8 @@ func (x TransactionPartner) Kind() int {
 	switch x.Type {
 	case "user":
 		return TypeTransactionPartnerUser
+	case "affiliate_program":
+		return TypeTransactionPartnerAffiliateProgram
 	case "fragment":
 		return TypeTransactionPartnerFragment
 	case "telegram_ads":

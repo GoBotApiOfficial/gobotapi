@@ -4,9 +4,10 @@ package types
 
 // StarTransaction Describes a Telegram Star transaction.
 type StarTransaction struct {
-	Amount   int                 `json:"amount"`
-	Date     int64               `json:"date"`
-	ID       string              `json:"id"`
-	Receiver *TransactionPartner `json:"receiver,omitempty"`
-	Source   *TransactionPartner `json:"source,omitempty"`
+	Amount         int                 `json:"amount"`
+	Date           int64               `json:"date"`
+	ID             string              `json:"id"`
+	NanostarAmount int                 `json:"nanostar_amount,omitempty"`
+	Receiver       *TransactionPartner `json:"receiver,omitempty"`
+	Source         *TransactionPartner `json:"source,omitempty"`
 }
