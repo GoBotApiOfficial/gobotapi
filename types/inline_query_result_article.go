@@ -10,7 +10,6 @@ import (
 // InlineQueryResultArticle Represents a link to an article or web page.
 type InlineQueryResultArticle struct {
 	Description         string                `json:"description,omitempty"`
-	HideURL             bool                  `json:"hide_url,omitempty"`
 	ID                  string                `json:"id"`
 	InputMessageContent any                   `json:"input_message_content"`
 	ReplyMarkup         *InlineKeyboardMarkup `json:"reply_markup,omitempty"`
@@ -29,7 +28,6 @@ func (entity InlineQueryResultArticle) MarshalJSON() ([]byte, error) {
 		InputMessageContent any                   `json:"input_message_content"`
 		ReplyMarkup         *InlineKeyboardMarkup `json:"reply_markup,omitempty"`
 		URL                 string                `json:"url,omitempty"`
-		HideURL             bool                  `json:"hide_url,omitempty"`
 		Description         string                `json:"description,omitempty"`
 		ThumbnailURL        string                `json:"thumbnail_url,omitempty"`
 		ThumbnailWidth      int64                 `json:"thumbnail_width,omitempty"`
@@ -41,7 +39,6 @@ func (entity InlineQueryResultArticle) MarshalJSON() ([]byte, error) {
 		InputMessageContent: entity.InputMessageContent,
 		ReplyMarkup:         entity.ReplyMarkup,
 		URL:                 entity.URL,
-		HideURL:             entity.HideURL,
 		Description:         entity.Description,
 		ThumbnailURL:        entity.ThumbnailURL,
 		ThumbnailWidth:      entity.ThumbnailWidth,

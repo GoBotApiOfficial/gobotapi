@@ -13,6 +13,7 @@ import (
 // Returns True on success.
 type SendGift struct {
 	GiftID        string                `json:"gift_id"`
+	PayForUpgrade bool                  `json:"pay_for_upgrade,omitempty"`
 	Text          string                `json:"text,omitempty"`
 	TextEntities  []types.MessageEntity `json:"text_entities,omitempty"`
 	TextParseMode string                `json:"text_parse_mode,omitempty"`
