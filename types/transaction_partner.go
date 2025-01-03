@@ -4,12 +4,12 @@ package types
 
 // TransactionPartner This object describes the source of a transaction, or its recipient for outgoing transactions
 // Currently, it can be one of
-//  - TransactionPartnerUser
-//  - TransactionPartnerAffiliateProgram
-//  - TransactionPartnerFragment
-//  - TransactionPartnerTelegramAds
-//  - TransactionPartnerTelegramApi
-//  - TransactionPartnerOther
+//   - TransactionPartnerUser
+//   - TransactionPartnerAffiliateProgram
+//   - TransactionPartnerFragment
+//   - TransactionPartnerTelegramAds
+//   - TransactionPartnerTelegramApi
+//   - TransactionPartnerOther
 type TransactionPartner struct {
 	Affiliate          *AffiliateInfo          `json:"affiliate"`
 	CommissionPerMille int                     `json:"commission_per_mille"`

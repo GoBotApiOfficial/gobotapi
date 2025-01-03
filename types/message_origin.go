@@ -4,10 +4,10 @@ package types
 
 // MessageOrigin This object describes the origin of a message
 // It can be one of
-//  - MessageOriginUser
-//  - MessageOriginHiddenUser
-//  - MessageOriginChat
-//  - MessageOriginChannel
+//   - MessageOriginUser
+//   - MessageOriginHiddenUser
+//   - MessageOriginChat
+//   - MessageOriginChannel
 type MessageOrigin struct {
 	AuthorSignature string `json:"author_signature"`
 	Chat            Chat   `json:"chat"`

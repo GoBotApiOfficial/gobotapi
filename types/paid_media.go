@@ -4,9 +4,9 @@ package types
 
 // PaidMedia This object describes paid media
 // Currently, it can be one of
-//  - PaidMediaPreview
-//  - PaidMediaPhoto
-//  - PaidMediaVideo
+//   - PaidMediaPreview
+//   - PaidMediaPhoto
+//   - PaidMediaVideo
 type PaidMedia struct {
 	Duration int         `json:"duration"`
 	Height   int         `json:"height"`

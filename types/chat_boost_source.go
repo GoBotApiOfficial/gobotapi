@@ -4,9 +4,9 @@ package types
 
 // ChatBoostSource This object describes the source of a chat boost
 // It can be one of
-//  - ChatBoostSourcePremium
-//  - ChatBoostSourceGiftCode
-//  - ChatBoostSourceGiveaway
+//   - ChatBoostSourcePremium
+//   - ChatBoostSourceGiftCode
+//   - ChatBoostSourceGiveaway
 type ChatBoostSource struct {
 	GiveawayMessageID int64  `json:"giveaway_message_id"`
 	IsUnclaimed       bool   `json:"is_unclaimed"`

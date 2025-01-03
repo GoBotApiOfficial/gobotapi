@@ -4,11 +4,11 @@ package types
 
 // InputMedia Represents the content of a media message to be sent
 // It should be one of
-//  - InputMediaAnimation
-//  - InputMediaDocument
-//  - InputMediaAudio
-//  - InputMediaPhoto
-//  - InputMediaVideo
+//   - InputMediaAnimation
+//   - InputMediaDocument
+//   - InputMediaAudio
+//   - InputMediaPhoto
+//   - InputMediaVideo
 type InputMedia interface {
 	SetAttachment(string)
 	SetAttachmentThumb(string)

@@ -4,9 +4,9 @@ package types
 
 // RevenueWithdrawalState This object describes the state of a revenue withdrawal operation
 // Currently, it can be one of
-//  - RevenueWithdrawalStatePending
-//  - RevenueWithdrawalStateSucceeded
-//  - RevenueWithdrawalStateFailed
+//   - RevenueWithdrawalStatePending
+//   - RevenueWithdrawalStateSucceeded
+//   - RevenueWithdrawalStateFailed
 type RevenueWithdrawalState struct {
 	Date int64  `json:"date"`
 	Type string `json:"type"`

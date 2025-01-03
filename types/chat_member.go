@@ -4,12 +4,12 @@ package types
 
 // ChatMember This object contains information about one member of a chat
 // Currently, the following 6 types of chat members are supported:
-//  - ChatMemberOwner
-//  - ChatMemberAdministrator
-//  - ChatMemberMember
-//  - ChatMemberRestricted
-//  - ChatMemberLeft
-//  - ChatMemberBanned
+//   - ChatMemberOwner
+//   - ChatMemberAdministrator
+//   - ChatMemberMember
+//   - ChatMemberRestricted
+//   - ChatMemberLeft
+//   - ChatMemberBanned
 type ChatMember struct {
 	CanAddWebPagePreviews bool   `json:"can_add_web_page_previews"`
 	CanBeEdited           bool   `json:"can_be_edited"`

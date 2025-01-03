@@ -4,10 +4,10 @@ package types
 
 // BackgroundType This object describes the type of a background
 // Currently, it can be one of
-//  - BackgroundTypeFill
-//  - BackgroundTypeWallpaper
-//  - BackgroundTypePattern
-//  - BackgroundTypeChatTheme
+//   - BackgroundTypeFill
+//   - BackgroundTypeWallpaper
+//   - BackgroundTypePattern
+//   - BackgroundTypeChatTheme
 type BackgroundType struct {
 	DarkThemeDimming int            `json:"dark_theme_dimming"`
 	Document         Document       `json:"document"`
