@@ -8,7 +8,7 @@ import (
 	rawTypes "github.com/GoBotApiOfficial/gobotapi/types/raw"
 )
 
-// GetAvailableGifts Returns the list of gifts that can be sent by the bot to users
+// GetAvailableGifts Returns the list of gifts that can be sent by the bot to users and channel chats
 // Requires no parameters
 // Returns a Gifts object.
 type GetAvailableGifts struct{}

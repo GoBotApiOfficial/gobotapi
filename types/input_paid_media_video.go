@@ -10,11 +10,13 @@ import (
 
 // InputPaidMediaVideo The paid media to send is a video.
 type InputPaidMediaVideo struct {
+	Cover             string             `json:"cover,omitempty"`
 	Duration          int                `json:"duration,omitempty"`
 	Height            int                `json:"height,omitempty"`
 	Media             rawTypes.InputFile `json:"media,omitempty"`
+	StartTimestamp    int                `json:"start_timestamp,omitempty"`
 	SupportsStreaming bool               `json:"supports_streaming,omitempty"`
-	Thumbnail         rawTypes.InputFile `json:"thumbnail,omitempty"`
+	Thumbnail         string             `json:"thumbnail,omitempty"`
 	Width             int64              `json:"width,omitempty"`
 }
 
@@ -23,10 +25,6 @@ func (entity *InputPaidMediaVideo) Files() map[string]rawTypes.InputFile {
 	switch entity.Media.(type) {
 	case InputBytes:
 		files["video"] = entity.Media
-	}
-	switch entity.Thumbnail.(type) {
-	case InputBytes:
-		files["thumbnail"] = entity.Thumbnail
 	}
 	return files
 }
@@ -43,7 +41,9 @@ func (entity InputPaidMediaVideo) MarshalJSON() ([]byte, error) {
 	alias := struct {
 		Type              string             `json:"type"`
 		Media             rawTypes.InputFile `json:"media,omitempty"`
-		Thumbnail         rawTypes.InputFile `json:"thumbnail,omitempty"`
+		Thumbnail         string             `json:"thumbnail,omitempty"`
+		Cover             string             `json:"cover,omitempty"`
+		StartTimestamp    int                `json:"start_timestamp,omitempty"`
 		Width             int64              `json:"width,omitempty"`
 		Height            int                `json:"height,omitempty"`
 		Duration          int                `json:"duration,omitempty"`
@@ -52,6 +52,8 @@ func (entity InputPaidMediaVideo) MarshalJSON() ([]byte, error) {
 		Type:              "video",
 		Media:             entity.Media,
 		Thumbnail:         entity.Thumbnail,
+		Cover:             entity.Cover,
+		StartTimestamp:    entity.StartTimestamp,
 		Width:             entity.Width,
 		Height:            entity.Height,
 		Duration:          entity.Duration,

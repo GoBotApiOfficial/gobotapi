@@ -29,6 +29,7 @@ type CopyMessage struct {
 	ReplyMarkup           any                    `json:"reply_markup,omitempty"`
 	ReplyParameters       *types.ReplyParameters `json:"reply_parameters,omitempty"`
 	ShowCaptionAboveMedia bool                   `json:"show_caption_above_media,omitempty"`
+	VideoStartTimestamp   int64                  `json:"video_start_timestamp,omitempty"`
 }
 
 func (entity *CopyMessage) ProgressCallable() rawTypes.ProgressCallable {

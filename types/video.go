@@ -4,13 +4,15 @@ package types
 
 // Video Represents a video file.
 type Video struct {
-	Duration     int        `json:"duration"`
-	FileID       string     `json:"file_id"`
-	FileName     string     `json:"file_name,omitempty"`
-	FileSize     int        `json:"file_size,omitempty"`
-	FileUniqueID string     `json:"file_unique_id"`
-	Height       int        `json:"height"`
-	MimeType     string     `json:"mime_type,omitempty"`
-	Thumbnail    *PhotoSize `json:"thumbnail,omitempty"`
-	Width        int64      `json:"width"`
+	Cover          []PhotoSize `json:"cover,omitempty"`
+	Duration       int         `json:"duration"`
+	FileID         string      `json:"file_id"`
+	FileName       string      `json:"file_name,omitempty"`
+	FileSize       int         `json:"file_size,omitempty"`
+	FileUniqueID   string      `json:"file_unique_id"`
+	Height         int         `json:"height"`
+	MimeType       string      `json:"mime_type,omitempty"`
+	StartTimestamp int         `json:"start_timestamp,omitempty"`
+	Thumbnail      *PhotoSize  `json:"thumbnail,omitempty"`
+	Width          int64       `json:"width"`
 }

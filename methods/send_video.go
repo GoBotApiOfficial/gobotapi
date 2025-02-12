@@ -19,6 +19,7 @@ type SendVideo struct {
 	Caption               string                    `json:"caption,omitempty"`
 	CaptionEntities       []types.MessageEntity     `json:"caption_entities,omitempty"`
 	ChatID                any                       `json:"chat_id"`
+	Cover                 rawTypes.InputFile        `json:"cover,omitempty"`
 	DisableNotification   bool                      `json:"disable_notification,omitempty"`
 	Duration              int                       `json:"duration,omitempty"`
 	HasSpoiler            bool                      `json:"has_spoiler,omitempty"`
@@ -30,6 +31,7 @@ type SendVideo struct {
 	ReplyMarkup           any                       `json:"reply_markup,omitempty"`
 	ReplyParameters       *types.ReplyParameters    `json:"reply_parameters,omitempty"`
 	ShowCaptionAboveMedia bool                      `json:"show_caption_above_media,omitempty"`
+	StartTimestamp        int                       `json:"start_timestamp,omitempty"`
 	SupportsStreaming     bool                      `json:"supports_streaming,omitempty"`
 	Thumbnail             rawTypes.InputFile        `json:"thumbnail,omitempty"`
 	Video                 rawTypes.InputFile        `json:"video,omitempty"`
@@ -43,6 +45,11 @@ func (entity *SendVideo) ProgressCallable() rawTypes.ProgressCallable {
 
 func (entity *SendVideo) Files() map[string]rawTypes.InputFile {
 	files := make(map[string]rawTypes.InputFile)
+	switch entity.Cover.(type) {
+	case types.InputBytes:
+		files["cover"] = entity.Cover
+		entity.Cover = nil
+	}
 	switch entity.Thumbnail.(type) {
 	case types.InputBytes:
 		files["thumbnail"] = entity.Thumbnail
@@ -73,6 +80,9 @@ func (entity SendVideo) MarshalJSON() ([]byte, error) {
 	_ = nilCheck
 	if nilCheck(entity.Thumbnail) {
 		entity.Thumbnail = nil
+	}
+	if nilCheck(entity.Cover) {
+		entity.Cover = nil
 	}
 	if nilCheck(entity.ReplyParameters) {
 		entity.ReplyParameters = nil

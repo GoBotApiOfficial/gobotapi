@@ -2,6 +2,14 @@
 
 package types
 
+// MESSAGE_ORIGIN
+const (
+	TypeMessageOriginUser = iota
+	TypeMessageOriginHiddenUser
+	TypeMessageOriginChat
+	TypeMessageOriginChannel
+)
+
 // BACKGROUND_TYPE
 const (
 	TypeBackgroundTypeFill = iota
@@ -23,16 +31,17 @@ const (
 	TypeInaccessibleMessage
 )
 
-// PAID_MEDIA
+// BACKGROUND_FILL
 const (
-	TypePaidMediaPreview = iota
-	TypePaidMediaPhoto
-	TypePaidMediaVideo
+	TypeBackgroundFillSolid = iota
+	TypeBackgroundFillGradient
+	TypeBackgroundFillFreeformGradient
 )
 
 // TRANSACTION_PARTNER
 const (
 	TypeTransactionPartnerUser = iota
+	TypeTransactionPartnerChat
 	TypeTransactionPartnerAffiliateProgram
 	TypeTransactionPartnerFragment
 	TypeTransactionPartnerTelegramAds
@@ -50,26 +59,18 @@ const (
 	TypeChatMemberBanned
 )
 
+// PAID_MEDIA
+const (
+	TypePaidMediaPreview = iota
+	TypePaidMediaPhoto
+	TypePaidMediaVideo
+)
+
 // REVENUE_WITHDRAWAL_STATE
 const (
 	TypeRevenueWithdrawalStatePending = iota
 	TypeRevenueWithdrawalStateSucceeded
 	TypeRevenueWithdrawalStateFailed
-)
-
-// MESSAGE_ORIGIN
-const (
-	TypeMessageOriginUser = iota
-	TypeMessageOriginHiddenUser
-	TypeMessageOriginChat
-	TypeMessageOriginChannel
-)
-
-// BACKGROUND_FILL
-const (
-	TypeBackgroundFillSolid = iota
-	TypeBackgroundFillGradient
-	TypeBackgroundFillFreeformGradient
 )
 
 // RETURN_TYPES

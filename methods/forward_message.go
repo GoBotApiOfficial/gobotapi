@@ -20,6 +20,7 @@ type ForwardMessage struct {
 	MessageID           int64 `json:"message_id"`
 	MessageThreadID     int64 `json:"message_thread_id,omitempty"`
 	ProtectContent      bool  `json:"protect_content,omitempty"`
+	VideoStartTimestamp int64 `json:"video_start_timestamp,omitempty"`
 }
 
 func (entity *ForwardMessage) ProgressCallable() rawTypes.ProgressCallable {
