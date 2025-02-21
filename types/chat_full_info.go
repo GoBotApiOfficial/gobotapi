@@ -19,6 +19,7 @@ type ChatFullInfo struct {
 	BusinessIntro                      *BusinessIntro        `json:"business_intro,omitempty"`
 	BusinessLocation                   *BusinessLocation     `json:"business_location,omitempty"`
 	BusinessOpeningHours               *BusinessOpeningHours `json:"business_opening_hours,omitempty"`
+	CanSendGift                        bool                  `json:"can_send_gift,omitempty"`
 	CanSendPaidMedia                   bool                  `json:"can_send_paid_media,omitempty"`
 	CanSetStickerSet                   bool                  `json:"can_set_sticker_set,omitempty"`
 	CustomEmojiStickerSetName          string                `json:"custom_emoji_sticker_set_name,omitempty"`
