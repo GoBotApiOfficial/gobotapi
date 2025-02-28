@@ -16,7 +16,7 @@ type InputPaidMediaVideo struct {
 	Media             rawTypes.InputFile `json:"media,omitempty"`
 	StartTimestamp    int                `json:"start_timestamp,omitempty"`
 	SupportsStreaming bool               `json:"supports_streaming,omitempty"`
-	Thumbnail         string             `json:"thumbnail,omitempty"`
+	Thumbnail         rawTypes.InputFile `json:"thumbnail,omitempty,omitempty"`
 	Width             int64              `json:"width,omitempty"`
 }
 
@@ -25,6 +25,10 @@ func (entity *InputPaidMediaVideo) Files() map[string]rawTypes.InputFile {
 	switch entity.Media.(type) {
 	case InputBytes:
 		files["video"] = entity.Media
+	}
+	switch entity.Thumbnail.(type) {
+	case InputBytes:
+		files["thumbnail"] = entity.Thumbnail
 	}
 	return files
 }
@@ -41,7 +45,7 @@ func (entity InputPaidMediaVideo) MarshalJSON() ([]byte, error) {
 	alias := struct {
 		Type              string             `json:"type"`
 		Media             rawTypes.InputFile `json:"media,omitempty"`
-		Thumbnail         string             `json:"thumbnail,omitempty"`
+		Thumbnail         rawTypes.InputFile `json:"thumbnail,omitempty"`
 		Cover             string             `json:"cover,omitempty"`
 		StartTimestamp    int                `json:"start_timestamp,omitempty"`
 		Width             int64              `json:"width,omitempty"`

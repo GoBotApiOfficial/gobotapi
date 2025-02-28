@@ -15,7 +15,7 @@ type InputMediaDocument struct {
 	DisableContentTypeDetection bool               `json:"disable_content_type_detection,omitempty"`
 	Media                       rawTypes.InputFile `json:"media,omitempty"`
 	ParseMode                   string             `json:"parse_mode,omitempty"`
-	Thumbnail                   string             `json:"thumbnail,omitempty"`
+	Thumbnail                   rawTypes.InputFile `json:"thumbnail,omitempty,omitempty"`
 }
 
 func (entity *InputMediaDocument) Files() map[string]rawTypes.InputFile {
@@ -23,6 +23,10 @@ func (entity *InputMediaDocument) Files() map[string]rawTypes.InputFile {
 	switch entity.Media.(type) {
 	case InputBytes:
 		files["document"] = entity.Media
+	}
+	switch entity.Thumbnail.(type) {
+	case InputBytes:
+		files["thumbnail"] = entity.Thumbnail
 	}
 	return files
 }
@@ -39,7 +43,7 @@ func (entity InputMediaDocument) MarshalJSON() ([]byte, error) {
 	alias := struct {
 		Type                        string             `json:"type"`
 		Media                       rawTypes.InputFile `json:"media,omitempty"`
-		Thumbnail                   string             `json:"thumbnail,omitempty"`
+		Thumbnail                   rawTypes.InputFile `json:"thumbnail,omitempty"`
 		Caption                     string             `json:"caption,omitempty"`
 		ParseMode                   string             `json:"parse_mode,omitempty"`
 		CaptionEntities             []MessageEntity    `json:"caption_entities,omitempty"`

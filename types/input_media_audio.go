@@ -16,7 +16,7 @@ type InputMediaAudio struct {
 	Media           rawTypes.InputFile `json:"media,omitempty"`
 	ParseMode       string             `json:"parse_mode,omitempty"`
 	Performer       string             `json:"performer,omitempty"`
-	Thumbnail       string             `json:"thumbnail,omitempty"`
+	Thumbnail       rawTypes.InputFile `json:"thumbnail,omitempty,omitempty"`
 	Title           string             `json:"title,omitempty"`
 }
 
@@ -25,6 +25,10 @@ func (entity *InputMediaAudio) Files() map[string]rawTypes.InputFile {
 	switch entity.Media.(type) {
 	case InputBytes:
 		files["audio"] = entity.Media
+	}
+	switch entity.Thumbnail.(type) {
+	case InputBytes:
+		files["thumbnail"] = entity.Thumbnail
 	}
 	return files
 }
@@ -41,7 +45,7 @@ func (entity InputMediaAudio) MarshalJSON() ([]byte, error) {
 	alias := struct {
 		Type            string             `json:"type"`
 		Media           rawTypes.InputFile `json:"media,omitempty"`
-		Thumbnail       string             `json:"thumbnail,omitempty"`
+		Thumbnail       rawTypes.InputFile `json:"thumbnail,omitempty"`
 		Caption         string             `json:"caption,omitempty"`
 		ParseMode       string             `json:"parse_mode,omitempty"`
 		CaptionEntities []MessageEntity    `json:"caption_entities,omitempty"`
