@@ -11,6 +11,7 @@ import (
 // ChatFullInfo This object contains full information about a chat.
 type ChatFullInfo struct {
 	AccentColorID                      int64                 `json:"accent_color_id"`
+	AcceptedGiftTypes                  AcceptedGiftTypes     `json:"accepted_gift_types"`
 	ActiveUsernames                    []string              `json:"active_usernames,omitempty"`
 	AvailableReactions                 []ReactionType        `json:"available_reactions,omitempty"`
 	BackgroundCustomEmojiID            string                `json:"background_custom_emoji_id,omitempty"`
@@ -19,7 +20,6 @@ type ChatFullInfo struct {
 	BusinessIntro                      *BusinessIntro        `json:"business_intro,omitempty"`
 	BusinessLocation                   *BusinessLocation     `json:"business_location,omitempty"`
 	BusinessOpeningHours               *BusinessOpeningHours `json:"business_opening_hours,omitempty"`
-	CanSendGift                        bool                  `json:"can_send_gift,omitempty"`
 	CanSendPaidMedia                   bool                  `json:"can_send_paid_media,omitempty"`
 	CanSetStickerSet                   bool                  `json:"can_set_sticker_set,omitempty"`
 	CustomEmojiStickerSetName          string                `json:"custom_emoji_sticker_set_name,omitempty"`

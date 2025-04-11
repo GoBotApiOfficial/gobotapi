@@ -2,13 +2,11 @@
 
 package types
 
-import rawTypes "github.com/GoBotApiOfficial/gobotapi/types/raw"
-
 // InputSticker This object describes a sticker to be added to a sticker set.
 type InputSticker struct {
-	EmojiList    []string           `json:"emoji_list,omitempty"`
-	Format       string             `json:"format"`
-	Keywords     []string           `json:"keywords,omitempty"`
-	MaskPosition *MaskPosition      `json:"mask_position,omitempty"`
-	Sticker      rawTypes.InputFile `json:"sticker,omitempty"`
+	EmojiList    []string      `json:"emoji_list,omitempty"`
+	Format       string        `json:"format"`
+	Keywords     []string      `json:"keywords,omitempty"`
+	MaskPosition *MaskPosition `json:"mask_position,omitempty"`
+	Sticker      string        `json:"sticker"`
 }

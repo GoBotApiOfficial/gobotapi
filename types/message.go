@@ -34,6 +34,7 @@ type Message struct {
 	Game                          *Game                          `json:"game,omitempty"`
 	GeneralForumTopicHidden       *GeneralForumTopicHidden       `json:"general_forum_topic_hidden,omitempty"`
 	GeneralForumTopicUnhidden     *GeneralForumTopicUnhidden     `json:"general_forum_topic_unhidden,omitempty"`
+	Gift                          *GiftInfo                      `json:"gift,omitempty"`
 	Giveaway                      *Giveaway                      `json:"giveaway,omitempty"`
 	GiveawayCompleted             *GiveawayCompleted             `json:"giveaway_completed,omitempty"`
 	GiveawayCreated               *GiveawayCreated               `json:"giveaway_created,omitempty"`
@@ -58,6 +59,8 @@ type Message struct {
 	NewChatPhoto                  []PhotoSize                    `json:"new_chat_photo,omitempty"`
 	NewChatTitle                  string                         `json:"new_chat_title,omitempty"`
 	PaidMedia                     *PaidMediaInfo                 `json:"paid_media,omitempty"`
+	PaidMessagePriceChanged       *PaidMessagePriceChanged       `json:"paid_message_price_changed,omitempty"`
+	PaidStarCount                 int64                          `json:"paid_star_count,omitempty"`
 	PassportData                  *PassportData                  `json:"passport_data,omitempty"`
 	Photo                         []PhotoSize                    `json:"photo,omitempty"`
 	PinnedMessage                 *MaybeInaccessibleMessage      `json:"pinned_message,omitempty"`
@@ -77,6 +80,7 @@ type Message struct {
 	SuccessfulPayment             *SuccessfulPayment             `json:"successful_payment,omitempty"`
 	SupergroupChatCreated         bool                           `json:"supergroup_chat_created,omitempty"`
 	Text                          string                         `json:"text,omitempty"`
+	UniqueGift                    *UniqueGiftInfo                `json:"unique_gift,omitempty"`
 	UsersShared                   *UsersShared                   `json:"users_shared,omitempty"`
 	Venue                         *Venue                         `json:"venue,omitempty"`
 	ViaBot                        *User                          `json:"via_bot,omitempty"`

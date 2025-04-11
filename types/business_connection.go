@@ -4,10 +4,10 @@ package types
 
 // BusinessConnection Describes the connection of the bot with a business account.
 type BusinessConnection struct {
-	CanReply   bool   `json:"can_reply"`
-	Date       int64  `json:"date"`
-	ID         string `json:"id"`
-	IsEnabled  bool   `json:"is_enabled"`
-	User       User   `json:"user"`
-	UserChatID int64  `json:"user_chat_id"`
+	Date       int64              `json:"date"`
+	ID         string             `json:"id"`
+	IsEnabled  bool               `json:"is_enabled"`
+	Rights     *BusinessBotRights `json:"rights,omitempty"`
+	User       User               `json:"user"`
+	UserChatID int64              `json:"user_chat_id"`
 }

@@ -2,18 +2,26 @@
 
 package types
 
-// BACKGROUND_FILL
+// STORY_AREA_TYPE
 const (
-	TypeBackgroundFillSolid = iota
-	TypeBackgroundFillGradient
-	TypeBackgroundFillFreeformGradient
+	TypeStoryAreaTypeLocation = iota
+	TypeStoryAreaTypeSuggestedReaction
+	TypeStoryAreaTypeLink
+	TypeStoryAreaTypeWeather
+	TypeStoryAreaTypeUniqueGift
 )
 
-// PAID_MEDIA
+// REVENUE_WITHDRAWAL_STATE
 const (
-	TypePaidMediaPreview = iota
-	TypePaidMediaPhoto
-	TypePaidMediaVideo
+	TypeRevenueWithdrawalStatePending = iota
+	TypeRevenueWithdrawalStateSucceeded
+	TypeRevenueWithdrawalStateFailed
+)
+
+// OWNED_GIFT
+const (
+	TypeOwnedGiftRegular = iota
+	TypeOwnedGiftUnique
 )
 
 // MESSAGE_ORIGIN
@@ -24,30 +32,6 @@ const (
 	TypeMessageOriginChannel
 )
 
-// BACKGROUND_TYPE
-const (
-	TypeBackgroundTypeFill = iota
-	TypeBackgroundTypeWallpaper
-	TypeBackgroundTypePattern
-	TypeBackgroundTypeChatTheme
-)
-
-// CHAT_MEMBER
-const (
-	TypeChatMemberOwner = iota
-	TypeChatMemberAdministrator
-	TypeChatMemberMember
-	TypeChatMemberRestricted
-	TypeChatMemberLeft
-	TypeChatMemberBanned
-)
-
-// MAYBE_INACCESSIBLE_MESSAGE
-const (
-	TypeMessage = iota
-	TypeInaccessibleMessage
-)
-
 // CHAT_BOOST_SOURCE
 const (
 	TypeChatBoostSourcePremium = iota
@@ -55,11 +39,17 @@ const (
 	TypeChatBoostSourceGiveaway
 )
 
-// REVENUE_WITHDRAWAL_STATE
+// BACKGROUND_FILL
 const (
-	TypeRevenueWithdrawalStatePending = iota
-	TypeRevenueWithdrawalStateSucceeded
-	TypeRevenueWithdrawalStateFailed
+	TypeBackgroundFillSolid = iota
+	TypeBackgroundFillGradient
+	TypeBackgroundFillFreeformGradient
+)
+
+// MAYBE_INACCESSIBLE_MESSAGE
+const (
+	TypeMessage = iota
+	TypeInaccessibleMessage
 )
 
 // TRANSACTION_PARTNER
@@ -71,6 +61,31 @@ const (
 	TypeTransactionPartnerTelegramAds
 	TypeTransactionPartnerTelegramApi
 	TypeTransactionPartnerOther
+)
+
+// BACKGROUND_TYPE
+const (
+	TypeBackgroundTypeFill = iota
+	TypeBackgroundTypeWallpaper
+	TypeBackgroundTypePattern
+	TypeBackgroundTypeChatTheme
+)
+
+// PAID_MEDIA
+const (
+	TypePaidMediaPreview = iota
+	TypePaidMediaPhoto
+	TypePaidMediaVideo
+)
+
+// CHAT_MEMBER
+const (
+	TypeChatMemberOwner = iota
+	TypeChatMemberAdministrator
+	TypeChatMemberMember
+	TypeChatMemberRestricted
+	TypeChatMemberLeft
+	TypeChatMemberBanned
 )
 
 // RETURN_TYPES
@@ -98,11 +113,14 @@ const (
 	TypeInteger
 	TypeMenuButton
 	TypeMessageId
+	TypeOwnedGifts
 	TypePoll
 	TypePreparedInlineMessage
 	TypeSentWebAppMessage
+	TypeStarAmount
 	TypeStarTransactions
 	TypeStickerSet
+	TypeStory
 	TypeString
 	TypeUser
 	TypeUserChatBoosts

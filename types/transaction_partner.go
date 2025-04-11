@@ -12,19 +12,21 @@ package types
 //   - TransactionPartnerTelegramApi
 //   - TransactionPartnerOther
 type TransactionPartner struct {
-	Affiliate          *AffiliateInfo          `json:"affiliate"`
-	Chat               Chat                    `json:"chat"`
-	CommissionPerMille int                     `json:"commission_per_mille"`
-	Gift               *Gift                   `json:"gift"`
-	InvoicePayload     string                  `json:"invoice_payload"`
-	PaidMedia          []PaidMedia             `json:"paid_media"`
-	PaidMediaPayload   string                  `json:"paid_media_payload"`
-	RequestCount       int                     `json:"request_count"`
-	SponsorUser        *User                   `json:"sponsor_user"`
-	SubscriptionPeriod int                     `json:"subscription_period"`
-	Type               string                  `json:"type"`
-	User               User                    `json:"user"`
-	WithdrawalState    *RevenueWithdrawalState `json:"withdrawal_state"`
+	Affiliate                   *AffiliateInfo          `json:"affiliate"`
+	Chat                        Chat                    `json:"chat"`
+	CommissionPerMille          int                     `json:"commission_per_mille"`
+	Gift                        *Gift                   `json:"gift"`
+	InvoicePayload              string                  `json:"invoice_payload"`
+	PaidMedia                   []PaidMedia             `json:"paid_media"`
+	PaidMediaPayload            string                  `json:"paid_media_payload"`
+	PremiumSubscriptionDuration int                     `json:"premium_subscription_duration"`
+	RequestCount                int                     `json:"request_count"`
+	SponsorUser                 *User                   `json:"sponsor_user"`
+	SubscriptionPeriod          int                     `json:"subscription_period"`
+	TransactionType             string                  `json:"transaction_type"`
+	Type                        string                  `json:"type"`
+	User                        User                    `json:"user"`
+	WithdrawalState             *RevenueWithdrawalState `json:"withdrawal_state"`
 }
 
 func (x TransactionPartner) Kind() int {
