@@ -2,13 +2,24 @@
 
 package types
 
-// STORY_AREA_TYPE
+// PAID_MEDIA
 const (
-	TypeStoryAreaTypeLocation = iota
-	TypeStoryAreaTypeSuggestedReaction
-	TypeStoryAreaTypeLink
-	TypeStoryAreaTypeWeather
-	TypeStoryAreaTypeUniqueGift
+	TypePaidMediaPreview = iota
+	TypePaidMediaPhoto
+	TypePaidMediaVideo
+)
+
+// OWNED_GIFT
+const (
+	TypeOwnedGiftRegular = iota
+	TypeOwnedGiftUnique
+)
+
+// BACKGROUND_FILL
+const (
+	TypeBackgroundFillSolid = iota
+	TypeBackgroundFillGradient
+	TypeBackgroundFillFreeformGradient
 )
 
 // REVENUE_WITHDRAWAL_STATE
@@ -16,12 +27,6 @@ const (
 	TypeRevenueWithdrawalStatePending = iota
 	TypeRevenueWithdrawalStateSucceeded
 	TypeRevenueWithdrawalStateFailed
-)
-
-// OWNED_GIFT
-const (
-	TypeOwnedGiftRegular = iota
-	TypeOwnedGiftUnique
 )
 
 // MESSAGE_ORIGIN
@@ -32,6 +37,22 @@ const (
 	TypeMessageOriginChannel
 )
 
+// MAYBE_INACCESSIBLE_MESSAGE
+const (
+	TypeMessage = iota
+	TypeInaccessibleMessage
+)
+
+// CHAT_MEMBER
+const (
+	TypeChatMemberOwner = iota
+	TypeChatMemberAdministrator
+	TypeChatMemberMember
+	TypeChatMemberRestricted
+	TypeChatMemberLeft
+	TypeChatMemberBanned
+)
+
 // CHAT_BOOST_SOURCE
 const (
 	TypeChatBoostSourcePremium = iota
@@ -39,17 +60,21 @@ const (
 	TypeChatBoostSourceGiveaway
 )
 
-// BACKGROUND_FILL
+// STORY_AREA_TYPE
 const (
-	TypeBackgroundFillSolid = iota
-	TypeBackgroundFillGradient
-	TypeBackgroundFillFreeformGradient
+	TypeStoryAreaTypeLocation = iota
+	TypeStoryAreaTypeSuggestedReaction
+	TypeStoryAreaTypeLink
+	TypeStoryAreaTypeWeather
+	TypeStoryAreaTypeUniqueGift
 )
 
-// MAYBE_INACCESSIBLE_MESSAGE
+// BACKGROUND_TYPE
 const (
-	TypeMessage = iota
-	TypeInaccessibleMessage
+	TypeBackgroundTypeFill = iota
+	TypeBackgroundTypeWallpaper
+	TypeBackgroundTypePattern
+	TypeBackgroundTypeChatTheme
 )
 
 // TRANSACTION_PARTNER
@@ -61,31 +86,6 @@ const (
 	TypeTransactionPartnerTelegramAds
 	TypeTransactionPartnerTelegramApi
 	TypeTransactionPartnerOther
-)
-
-// BACKGROUND_TYPE
-const (
-	TypeBackgroundTypeFill = iota
-	TypeBackgroundTypeWallpaper
-	TypeBackgroundTypePattern
-	TypeBackgroundTypeChatTheme
-)
-
-// PAID_MEDIA
-const (
-	TypePaidMediaPreview = iota
-	TypePaidMediaPhoto
-	TypePaidMediaVideo
-)
-
-// CHAT_MEMBER
-const (
-	TypeChatMemberOwner = iota
-	TypeChatMemberAdministrator
-	TypeChatMemberMember
-	TypeChatMemberRestricted
-	TypeChatMemberLeft
-	TypeChatMemberBanned
 )
 
 // RETURN_TYPES
