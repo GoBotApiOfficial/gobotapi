@@ -7,6 +7,7 @@ type ExternalReplyInfo struct {
 	Animation          *Animation          `json:"animation,omitempty"`
 	Audio              *Audio              `json:"audio,omitempty"`
 	Chat               *Chat               `json:"chat,omitempty"`
+	Checklist          *Checklist          `json:"checklist,omitempty"`
 	Contact            *Contact            `json:"contact,omitempty"`
 	Dice               *Dice               `json:"dice,omitempty"`
 	Document           *Document           `json:"document,omitempty"`

@@ -7,7 +7,7 @@ type BusinessBotRights struct {
 	CanChangeGiftSettings      bool `json:"can_change_gift_settings,omitempty"`
 	CanConvertGiftsToStars     bool `json:"can_convert_gifts_to_stars,omitempty"`
 	CanDeleteAllMessages       bool `json:"can_delete_all_messages,omitempty"`
-	CanDeleteOutgoingMessages  bool `json:"can_delete_outgoing_messages,omitempty"`
+	CanDeleteSentMessages      bool `json:"can_delete_sent_messages,omitempty"`
 	CanEditBio                 bool `json:"can_edit_bio,omitempty"`
 	CanEditName                bool `json:"can_edit_name,omitempty"`
 	CanEditProfilePhoto        bool `json:"can_edit_profile_photo,omitempty"`

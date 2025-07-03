@@ -2,45 +2,11 @@
 
 package types
 
-// PAID_MEDIA
-const (
-	TypePaidMediaPreview = iota
-	TypePaidMediaPhoto
-	TypePaidMediaVideo
-)
-
-// OWNED_GIFT
-const (
-	TypeOwnedGiftRegular = iota
-	TypeOwnedGiftUnique
-)
-
 // BACKGROUND_FILL
 const (
 	TypeBackgroundFillSolid = iota
 	TypeBackgroundFillGradient
 	TypeBackgroundFillFreeformGradient
-)
-
-// REVENUE_WITHDRAWAL_STATE
-const (
-	TypeRevenueWithdrawalStatePending = iota
-	TypeRevenueWithdrawalStateSucceeded
-	TypeRevenueWithdrawalStateFailed
-)
-
-// MESSAGE_ORIGIN
-const (
-	TypeMessageOriginUser = iota
-	TypeMessageOriginHiddenUser
-	TypeMessageOriginChat
-	TypeMessageOriginChannel
-)
-
-// MAYBE_INACCESSIBLE_MESSAGE
-const (
-	TypeMessage = iota
-	TypeInaccessibleMessage
 )
 
 // CHAT_MEMBER
@@ -53,28 +19,10 @@ const (
 	TypeChatMemberBanned
 )
 
-// CHAT_BOOST_SOURCE
+// OWNED_GIFT
 const (
-	TypeChatBoostSourcePremium = iota
-	TypeChatBoostSourceGiftCode
-	TypeChatBoostSourceGiveaway
-)
-
-// STORY_AREA_TYPE
-const (
-	TypeStoryAreaTypeLocation = iota
-	TypeStoryAreaTypeSuggestedReaction
-	TypeStoryAreaTypeLink
-	TypeStoryAreaTypeWeather
-	TypeStoryAreaTypeUniqueGift
-)
-
-// BACKGROUND_TYPE
-const (
-	TypeBackgroundTypeFill = iota
-	TypeBackgroundTypeWallpaper
-	TypeBackgroundTypePattern
-	TypeBackgroundTypeChatTheme
+	TypeOwnedGiftRegular = iota
+	TypeOwnedGiftUnique
 )
 
 // TRANSACTION_PARTNER
@@ -86,6 +34,58 @@ const (
 	TypeTransactionPartnerTelegramAds
 	TypeTransactionPartnerTelegramApi
 	TypeTransactionPartnerOther
+)
+
+// REVENUE_WITHDRAWAL_STATE
+const (
+	TypeRevenueWithdrawalStatePending = iota
+	TypeRevenueWithdrawalStateSucceeded
+	TypeRevenueWithdrawalStateFailed
+)
+
+// MAYBE_INACCESSIBLE_MESSAGE
+const (
+	TypeMessage = iota
+	TypeInaccessibleMessage
+)
+
+// PAID_MEDIA
+const (
+	TypePaidMediaPreview = iota
+	TypePaidMediaPhoto
+	TypePaidMediaVideo
+)
+
+// STORY_AREA_TYPE
+const (
+	TypeStoryAreaTypeLocation = iota
+	TypeStoryAreaTypeSuggestedReaction
+	TypeStoryAreaTypeLink
+	TypeStoryAreaTypeWeather
+	TypeStoryAreaTypeUniqueGift
+)
+
+// MESSAGE_ORIGIN
+const (
+	TypeMessageOriginUser = iota
+	TypeMessageOriginHiddenUser
+	TypeMessageOriginChat
+	TypeMessageOriginChannel
+)
+
+// CHAT_BOOST_SOURCE
+const (
+	TypeChatBoostSourcePremium = iota
+	TypeChatBoostSourceGiftCode
+	TypeChatBoostSourceGiveaway
+)
+
+// BACKGROUND_TYPE
+const (
+	TypeBackgroundTypeFill = iota
+	TypeBackgroundTypeWallpaper
+	TypeBackgroundTypePattern
+	TypeBackgroundTypeChatTheme
 )
 
 // RETURN_TYPES

@@ -9,7 +9,7 @@ import (
 )
 
 // DeleteBusinessMessages Delete messages on behalf of a business account
-// Requires the can_delete_outgoing_messages business bot right to delete messages sent by the bot itself, or the can_delete_all_messages business bot right to delete any message
+// Requires the can_delete_sent_messages business bot right to delete messages sent by the bot itself, or the can_delete_all_messages business bot right to delete any message
 // Returns True on success.
 type DeleteBusinessMessages struct {
 	BusinessConnectionID string  `json:"business_connection_id"`
