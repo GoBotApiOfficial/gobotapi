@@ -14,7 +14,7 @@ func (entity InputStoryContentPhoto) MarshalJSON() ([]byte, error) {
 		Type  string `json:"type"`
 		Photo string `json:"photo"`
 	}{
-		Type:  "“photo”",
+		Type:  "photo",
 		Photo: entity.Photo,
 	}
 	return json.Marshal(alias)

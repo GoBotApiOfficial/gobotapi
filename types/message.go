@@ -15,11 +15,15 @@ type Message struct {
 	Chat                          Chat                           `json:"chat"`
 	ChatBackgroundSet             *ChatBackground                `json:"chat_background_set,omitempty"`
 	ChatShared                    *ChatShared                    `json:"chat_shared,omitempty"`
+	Checklist                     *Checklist                     `json:"checklist,omitempty"`
+	ChecklistTasksAdded           *ChecklistTasksAdded           `json:"checklist_tasks_added,omitempty"`
+	ChecklistTasksDone            *ChecklistTasksDone            `json:"checklist_tasks_done,omitempty"`
 	ConnectedWebsite              string                         `json:"connected_website,omitempty"`
 	Contact                       *Contact                       `json:"contact,omitempty"`
 	Date                          int64                          `json:"date"`
 	DeleteChatPhoto               bool                           `json:"delete_chat_photo,omitempty"`
 	Dice                          *Dice                          `json:"dice,omitempty"`
+	DirectMessagePriceChanged     *DirectMessagePriceChanged     `json:"direct_message_price_changed,omitempty"`
 	Document                      *Document                      `json:"document,omitempty"`
 	EditDate                      int64                          `json:"edit_date,omitempty"`
 	EffectID                      string                         `json:"effect_id,omitempty"`

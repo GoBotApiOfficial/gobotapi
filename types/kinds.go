@@ -2,31 +2,15 @@
 
 package types
 
-// PAID_MEDIA
+// TRANSACTION_PARTNER
 const (
-	TypePaidMediaPreview = iota
-	TypePaidMediaPhoto
-	TypePaidMediaVideo
-)
-
-// OWNED_GIFT
-const (
-	TypeOwnedGiftRegular = iota
-	TypeOwnedGiftUnique
-)
-
-// BACKGROUND_FILL
-const (
-	TypeBackgroundFillSolid = iota
-	TypeBackgroundFillGradient
-	TypeBackgroundFillFreeformGradient
-)
-
-// REVENUE_WITHDRAWAL_STATE
-const (
-	TypeRevenueWithdrawalStatePending = iota
-	TypeRevenueWithdrawalStateSucceeded
-	TypeRevenueWithdrawalStateFailed
+	TypeTransactionPartnerUser = iota
+	TypeTransactionPartnerChat
+	TypeTransactionPartnerAffiliateProgram
+	TypeTransactionPartnerFragment
+	TypeTransactionPartnerTelegramAds
+	TypeTransactionPartnerTelegramApi
+	TypeTransactionPartnerOther
 )
 
 // MESSAGE_ORIGIN
@@ -37,10 +21,41 @@ const (
 	TypeMessageOriginChannel
 )
 
+// PAID_MEDIA
+const (
+	TypePaidMediaPreview = iota
+	TypePaidMediaPhoto
+	TypePaidMediaVideo
+)
+
+// STORY_AREA_TYPE
+const (
+	TypeStoryAreaTypeLocation = iota
+	TypeStoryAreaTypeSuggestedReaction
+	TypeStoryAreaTypeLink
+	TypeStoryAreaTypeWeather
+	TypeStoryAreaTypeUniqueGift
+)
+
 // MAYBE_INACCESSIBLE_MESSAGE
 const (
 	TypeMessage = iota
 	TypeInaccessibleMessage
+)
+
+// REVENUE_WITHDRAWAL_STATE
+const (
+	TypeRevenueWithdrawalStatePending = iota
+	TypeRevenueWithdrawalStateSucceeded
+	TypeRevenueWithdrawalStateFailed
+)
+
+// BACKGROUND_TYPE
+const (
+	TypeBackgroundTypeFill = iota
+	TypeBackgroundTypeWallpaper
+	TypeBackgroundTypePattern
+	TypeBackgroundTypeChatTheme
 )
 
 // CHAT_MEMBER
@@ -53,39 +68,24 @@ const (
 	TypeChatMemberBanned
 )
 
+// BACKGROUND_FILL
+const (
+	TypeBackgroundFillSolid = iota
+	TypeBackgroundFillGradient
+	TypeBackgroundFillFreeformGradient
+)
+
+// OWNED_GIFT
+const (
+	TypeOwnedGiftRegular = iota
+	TypeOwnedGiftUnique
+)
+
 // CHAT_BOOST_SOURCE
 const (
 	TypeChatBoostSourcePremium = iota
 	TypeChatBoostSourceGiftCode
 	TypeChatBoostSourceGiveaway
-)
-
-// STORY_AREA_TYPE
-const (
-	TypeStoryAreaTypeLocation = iota
-	TypeStoryAreaTypeSuggestedReaction
-	TypeStoryAreaTypeLink
-	TypeStoryAreaTypeWeather
-	TypeStoryAreaTypeUniqueGift
-)
-
-// BACKGROUND_TYPE
-const (
-	TypeBackgroundTypeFill = iota
-	TypeBackgroundTypeWallpaper
-	TypeBackgroundTypePattern
-	TypeBackgroundTypeChatTheme
-)
-
-// TRANSACTION_PARTNER
-const (
-	TypeTransactionPartnerUser = iota
-	TypeTransactionPartnerChat
-	TypeTransactionPartnerAffiliateProgram
-	TypeTransactionPartnerFragment
-	TypeTransactionPartnerTelegramAds
-	TypeTransactionPartnerTelegramApi
-	TypeTransactionPartnerOther
 )
 
 // RETURN_TYPES

@@ -14,6 +14,7 @@ type OwnedGift struct {
 	Gift                    Gift            `json:"gift"`
 	IsPrivate               bool            `json:"is_private"`
 	IsSaved                 bool            `json:"is_saved"`
+	NextTransferDate        int64           `json:"next_transfer_date"`
 	OwnedGiftID             string          `json:"owned_gift_id"`
 	PrepaidUpgradeStarCount int64           `json:"prepaid_upgrade_star_count"`
 	SendDate                int64           `json:"send_date"`

@@ -20,7 +20,7 @@ func (entity InputStoryContentVideo) MarshalJSON() ([]byte, error) {
 		CoverFrameTimestamp float64 `json:"cover_frame_timestamp,omitempty"`
 		IsAnimation         bool    `json:"is_animation,omitempty"`
 	}{
-		Type:                "“video”",
+		Type:                "video",
 		Video:               entity.Video,
 		Duration:            entity.Duration,
 		CoverFrameTimestamp: entity.CoverFrameTimestamp,
