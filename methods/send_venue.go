@@ -13,23 +13,25 @@ import (
 // SendVenue Use this method to send information about a venue
 // On success, the sent Message is returned.
 type SendVenue struct {
-	Address              string                 `json:"address"`
-	AllowPaidBroadcast   bool                   `json:"allow_paid_broadcast,omitempty"`
-	BusinessConnectionID string                 `json:"business_connection_id,omitempty"`
-	ChatID               any                    `json:"chat_id"`
-	DisableNotification  bool                   `json:"disable_notification,omitempty"`
-	FoursquareID         string                 `json:"foursquare_id,omitempty"`
-	FoursquareType       string                 `json:"foursquare_type,omitempty"`
-	GooglePlaceID        string                 `json:"google_place_id,omitempty"`
-	GooglePlaceType      string                 `json:"google_place_type,omitempty"`
-	Latitude             float64                `json:"latitude"`
-	Longitude            float64                `json:"longitude"`
-	MessageEffectID      string                 `json:"message_effect_id,omitempty"`
-	MessageThreadID      int64                  `json:"message_thread_id,omitempty"`
-	ProtectContent       bool                   `json:"protect_content,omitempty"`
-	ReplyMarkup          any                    `json:"reply_markup,omitempty"`
-	ReplyParameters      *types.ReplyParameters `json:"reply_parameters,omitempty"`
-	Title                string                 `json:"title"`
+	Address                 string                         `json:"address"`
+	AllowPaidBroadcast      bool                           `json:"allow_paid_broadcast,omitempty"`
+	BusinessConnectionID    string                         `json:"business_connection_id,omitempty"`
+	ChatID                  any                            `json:"chat_id"`
+	DirectMessagesTopicID   int64                          `json:"direct_messages_topic_id,omitempty"`
+	DisableNotification     bool                           `json:"disable_notification,omitempty"`
+	FoursquareID            string                         `json:"foursquare_id,omitempty"`
+	FoursquareType          string                         `json:"foursquare_type,omitempty"`
+	GooglePlaceID           string                         `json:"google_place_id,omitempty"`
+	GooglePlaceType         string                         `json:"google_place_type,omitempty"`
+	Latitude                float64                        `json:"latitude"`
+	Longitude               float64                        `json:"longitude"`
+	MessageEffectID         string                         `json:"message_effect_id,omitempty"`
+	MessageThreadID         int64                          `json:"message_thread_id,omitempty"`
+	ProtectContent          bool                           `json:"protect_content,omitempty"`
+	ReplyMarkup             any                            `json:"reply_markup,omitempty"`
+	ReplyParameters         *types.ReplyParameters         `json:"reply_parameters,omitempty"`
+	SuggestedPostParameters *types.SuggestedPostParameters `json:"suggested_post_parameters,omitempty"`
+	Title                   string                         `json:"title"`
 }
 
 func (entity *SendVenue) ProgressCallable() rawTypes.ProgressCallable {
@@ -55,6 +57,9 @@ func (entity SendVenue) MarshalJSON() ([]byte, error) {
 		}
 	}
 	_ = nilCheck
+	if nilCheck(entity.SuggestedPostParameters) {
+		entity.SuggestedPostParameters = nil
+	}
 	if nilCheck(entity.ReplyParameters) {
 		entity.ReplyParameters = nil
 	}

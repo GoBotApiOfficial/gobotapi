@@ -18,13 +18,14 @@ import (
 // Album grouping is kept for copied messages
 // On success, an array of MessageId of the sent messages is returned.
 type CopyMessages struct {
-	ChatID              any     `json:"chat_id"`
-	DisableNotification bool    `json:"disable_notification,omitempty"`
-	FromChatID          int64   `json:"from_chat_id"`
-	MessageIDs          []int64 `json:"message_ids,omitempty"`
-	MessageThreadID     int64   `json:"message_thread_id,omitempty"`
-	ProtectContent      bool    `json:"protect_content,omitempty"`
-	RemoveCaption       bool    `json:"remove_caption,omitempty"`
+	ChatID                any     `json:"chat_id"`
+	DirectMessagesTopicID int64   `json:"direct_messages_topic_id,omitempty"`
+	DisableNotification   bool    `json:"disable_notification,omitempty"`
+	FromChatID            int64   `json:"from_chat_id"`
+	MessageIDs            []int64 `json:"message_ids,omitempty"`
+	MessageThreadID       int64   `json:"message_thread_id,omitempty"`
+	ProtectContent        bool    `json:"protect_content,omitempty"`
+	RemoveCaption         bool    `json:"remove_caption,omitempty"`
 }
 
 func (entity *CopyMessages) ProgressCallable() rawTypes.ProgressCallable {

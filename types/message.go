@@ -24,6 +24,7 @@ type Message struct {
 	DeleteChatPhoto               bool                           `json:"delete_chat_photo,omitempty"`
 	Dice                          *Dice                          `json:"dice,omitempty"`
 	DirectMessagePriceChanged     *DirectMessagePriceChanged     `json:"direct_message_price_changed,omitempty"`
+	DirectMessagesTopic           *DirectMessagesTopic           `json:"direct_messages_topic,omitempty"`
 	Document                      *Document                      `json:"document,omitempty"`
 	EditDate                      int64                          `json:"edit_date,omitempty"`
 	EffectID                      string                         `json:"effect_id,omitempty"`
@@ -49,6 +50,7 @@ type Message struct {
 	Invoice                       *Invoice                       `json:"invoice,omitempty"`
 	IsAutomaticForward            bool                           `json:"is_automatic_forward,omitempty"`
 	IsFromOffline                 bool                           `json:"is_from_offline,omitempty"`
+	IsPaidPost                    bool                           `json:"is_paid_post,omitempty"`
 	IsTopicMessage                bool                           `json:"is_topic_message,omitempty"`
 	LeftChatMember                *User                          `json:"left_chat_member,omitempty"`
 	LinkPreviewOptions            *LinkPreviewOptions            `json:"link_preview_options,omitempty"`
@@ -73,6 +75,7 @@ type Message struct {
 	Quote                         *TextQuote                     `json:"quote,omitempty"`
 	RefundedPayment               *RefundedPayment               `json:"refunded_payment,omitempty"`
 	ReplyMarkup                   *InlineKeyboardMarkup          `json:"reply_markup,omitempty"`
+	ReplyToChecklistTaskID        int64                          `json:"reply_to_checklist_task_id,omitempty"`
 	ReplyToMessage                *Message                       `json:"reply_to_message,omitempty"`
 	ReplyToStory                  *Story                         `json:"reply_to_story,omitempty"`
 	SenderBoostCount              int                            `json:"sender_boost_count,omitempty"`
@@ -82,6 +85,12 @@ type Message struct {
 	Sticker                       *Sticker                       `json:"sticker,omitempty"`
 	Story                         *Story                         `json:"story,omitempty"`
 	SuccessfulPayment             *SuccessfulPayment             `json:"successful_payment,omitempty"`
+	SuggestedPostApprovalFailed   *SuggestedPostApprovalFailed   `json:"suggested_post_approval_failed,omitempty"`
+	SuggestedPostApproved         *SuggestedPostApproved         `json:"suggested_post_approved,omitempty"`
+	SuggestedPostDeclined         *SuggestedPostDeclined         `json:"suggested_post_declined,omitempty"`
+	SuggestedPostInfo             *SuggestedPostInfo             `json:"suggested_post_info,omitempty"`
+	SuggestedPostPaid             *SuggestedPostPaid             `json:"suggested_post_paid,omitempty"`
+	SuggestedPostRefunded         *SuggestedPostRefunded         `json:"suggested_post_refunded,omitempty"`
 	SupergroupChatCreated         bool                           `json:"supergroup_chat_created,omitempty"`
 	Text                          string                         `json:"text,omitempty"`
 	UniqueGift                    *UniqueGiftInfo                `json:"unique_gift,omitempty"`

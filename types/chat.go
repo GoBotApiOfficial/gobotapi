@@ -4,11 +4,12 @@ package types
 
 // Chat Represents a chat.
 type Chat struct {
-	FirstName string `json:"first_name,omitempty"`
-	ID        int64  `json:"id"`
-	IsForum   bool   `json:"is_forum,omitempty"`
-	LastName  string `json:"last_name,omitempty"`
-	Title     string `json:"title,omitempty"`
-	Type      string `json:"type"`
-	Username  string `json:"username,omitempty"`
+	FirstName        string `json:"first_name,omitempty"`
+	ID               int64  `json:"id"`
+	IsDirectMessages bool   `json:"is_direct_messages,omitempty"`
+	IsForum          bool   `json:"is_forum,omitempty"`
+	LastName         string `json:"last_name,omitempty"`
+	Title            string `json:"title,omitempty"`
+	Type             string `json:"type"`
+	Username         string `json:"username,omitempty"`
 }

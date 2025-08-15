@@ -16,24 +16,26 @@ import (
 // Bots can currently send audio files of up to 50 MB in size, this limit may be changed in the future.
 // For sending voice messages, use the sendVoice method instead.
 type SendAudio struct {
-	AllowPaidBroadcast   bool                      `json:"allow_paid_broadcast,omitempty"`
-	Audio                rawTypes.InputFile        `json:"audio,omitempty"`
-	BusinessConnectionID string                    `json:"business_connection_id,omitempty"`
-	Caption              string                    `json:"caption,omitempty"`
-	CaptionEntities      []types.MessageEntity     `json:"caption_entities,omitempty"`
-	ChatID               any                       `json:"chat_id"`
-	DisableNotification  bool                      `json:"disable_notification,omitempty"`
-	Duration             int                       `json:"duration,omitempty"`
-	MessageEffectID      string                    `json:"message_effect_id,omitempty"`
-	MessageThreadID      int64                     `json:"message_thread_id,omitempty"`
-	ParseMode            string                    `json:"parse_mode,omitempty"`
-	Performer            string                    `json:"performer,omitempty"`
-	ProtectContent       bool                      `json:"protect_content,omitempty"`
-	ReplyMarkup          any                       `json:"reply_markup,omitempty"`
-	ReplyParameters      *types.ReplyParameters    `json:"reply_parameters,omitempty"`
-	Thumbnail            rawTypes.InputFile        `json:"thumbnail,omitempty"`
-	Title                string                    `json:"title,omitempty"`
-	Progress             rawTypes.ProgressCallable `json:"-"`
+	AllowPaidBroadcast      bool                           `json:"allow_paid_broadcast,omitempty"`
+	Audio                   rawTypes.InputFile             `json:"audio,omitempty"`
+	BusinessConnectionID    string                         `json:"business_connection_id,omitempty"`
+	Caption                 string                         `json:"caption,omitempty"`
+	CaptionEntities         []types.MessageEntity          `json:"caption_entities,omitempty"`
+	ChatID                  any                            `json:"chat_id"`
+	DirectMessagesTopicID   int64                          `json:"direct_messages_topic_id,omitempty"`
+	DisableNotification     bool                           `json:"disable_notification,omitempty"`
+	Duration                int                            `json:"duration,omitempty"`
+	MessageEffectID         string                         `json:"message_effect_id,omitempty"`
+	MessageThreadID         int64                          `json:"message_thread_id,omitempty"`
+	ParseMode               string                         `json:"parse_mode,omitempty"`
+	Performer               string                         `json:"performer,omitempty"`
+	ProtectContent          bool                           `json:"protect_content,omitempty"`
+	ReplyMarkup             any                            `json:"reply_markup,omitempty"`
+	ReplyParameters         *types.ReplyParameters         `json:"reply_parameters,omitempty"`
+	SuggestedPostParameters *types.SuggestedPostParameters `json:"suggested_post_parameters,omitempty"`
+	Thumbnail               rawTypes.InputFile             `json:"thumbnail,omitempty"`
+	Title                   string                         `json:"title,omitempty"`
+	Progress                rawTypes.ProgressCallable      `json:"-"`
 }
 
 func (entity *SendAudio) ProgressCallable() rawTypes.ProgressCallable {
@@ -72,6 +74,9 @@ func (entity SendAudio) MarshalJSON() ([]byte, error) {
 	_ = nilCheck
 	if nilCheck(entity.Thumbnail) {
 		entity.Thumbnail = nil
+	}
+	if nilCheck(entity.SuggestedPostParameters) {
+		entity.SuggestedPostParameters = nil
 	}
 	if nilCheck(entity.ReplyParameters) {
 		entity.ReplyParameters = nil

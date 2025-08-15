@@ -13,19 +13,21 @@ import (
 // SendMessage Use this method to send text messages
 // On success, the sent Message is returned.
 type SendMessage struct {
-	AllowPaidBroadcast   bool                      `json:"allow_paid_broadcast,omitempty"`
-	BusinessConnectionID string                    `json:"business_connection_id,omitempty"`
-	ChatID               any                       `json:"chat_id"`
-	DisableNotification  bool                      `json:"disable_notification,omitempty"`
-	Entities             []types.MessageEntity     `json:"entities,omitempty"`
-	LinkPreviewOptions   *types.LinkPreviewOptions `json:"link_preview_options,omitempty"`
-	MessageEffectID      string                    `json:"message_effect_id,omitempty"`
-	MessageThreadID      int64                     `json:"message_thread_id,omitempty"`
-	ParseMode            string                    `json:"parse_mode,omitempty"`
-	ProtectContent       bool                      `json:"protect_content,omitempty"`
-	ReplyMarkup          any                       `json:"reply_markup,omitempty"`
-	ReplyParameters      *types.ReplyParameters    `json:"reply_parameters,omitempty"`
-	Text                 string                    `json:"text"`
+	AllowPaidBroadcast      bool                           `json:"allow_paid_broadcast,omitempty"`
+	BusinessConnectionID    string                         `json:"business_connection_id,omitempty"`
+	ChatID                  any                            `json:"chat_id"`
+	DirectMessagesTopicID   int64                          `json:"direct_messages_topic_id,omitempty"`
+	DisableNotification     bool                           `json:"disable_notification,omitempty"`
+	Entities                []types.MessageEntity          `json:"entities,omitempty"`
+	LinkPreviewOptions      *types.LinkPreviewOptions      `json:"link_preview_options,omitempty"`
+	MessageEffectID         string                         `json:"message_effect_id,omitempty"`
+	MessageThreadID         int64                          `json:"message_thread_id,omitempty"`
+	ParseMode               string                         `json:"parse_mode,omitempty"`
+	ProtectContent          bool                           `json:"protect_content,omitempty"`
+	ReplyMarkup             any                            `json:"reply_markup,omitempty"`
+	ReplyParameters         *types.ReplyParameters         `json:"reply_parameters,omitempty"`
+	SuggestedPostParameters *types.SuggestedPostParameters `json:"suggested_post_parameters,omitempty"`
+	Text                    string                         `json:"text"`
 }
 
 func (entity *SendMessage) ProgressCallable() rawTypes.ProgressCallable {
@@ -53,6 +55,9 @@ func (entity SendMessage) MarshalJSON() ([]byte, error) {
 	_ = nilCheck
 	if nilCheck(entity.LinkPreviewOptions) {
 		entity.LinkPreviewOptions = nil
+	}
+	if nilCheck(entity.SuggestedPostParameters) {
+		entity.SuggestedPostParameters = nil
 	}
 	if nilCheck(entity.ReplyParameters) {
 		entity.ReplyParameters = nil

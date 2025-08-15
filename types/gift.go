@@ -5,6 +5,7 @@ package types
 // Gift Represents a gift that can be sent by the bot.
 type Gift struct {
 	ID               string  `json:"id"`
+	PublisherChat    *Chat   `json:"publisher_chat,omitempty"`
 	RemainingCount   int     `json:"remaining_count,omitempty"`
 	StarCount        int     `json:"star_count"`
 	Sticker          Sticker `json:"sticker"`

@@ -13,35 +13,37 @@ import (
 // SendInvoice Use this method to send invoices
 // On success, the sent Message is returned.
 type SendInvoice struct {
-	AllowPaidBroadcast        bool                        `json:"allow_paid_broadcast,omitempty"`
-	ChatID                    any                         `json:"chat_id"`
-	Currency                  string                      `json:"currency"`
-	Description               string                      `json:"description"`
-	DisableNotification       bool                        `json:"disable_notification,omitempty"`
-	IsFlexible                bool                        `json:"is_flexible,omitempty"`
-	MaxTipAmount              int                         `json:"max_tip_amount,omitempty"`
-	MessageEffectID           string                      `json:"message_effect_id,omitempty"`
-	MessageThreadID           int64                       `json:"message_thread_id,omitempty"`
-	NeedEmail                 bool                        `json:"need_email,omitempty"`
-	NeedName                  bool                        `json:"need_name,omitempty"`
-	NeedPhoneNumber           bool                        `json:"need_phone_number,omitempty"`
-	NeedShippingAddress       bool                        `json:"need_shipping_address,omitempty"`
-	Payload                   string                      `json:"payload"`
-	PhotoHeight               int                         `json:"photo_height,omitempty"`
-	PhotoSize                 int                         `json:"photo_size,omitempty"`
-	PhotoURL                  string                      `json:"photo_url,omitempty"`
-	PhotoWidth                int64                       `json:"photo_width,omitempty"`
-	Prices                    []types.LabeledPrice        `json:"prices,omitempty"`
-	ProtectContent            bool                        `json:"protect_content,omitempty"`
-	ProviderData              string                      `json:"provider_data,omitempty"`
-	ProviderToken             string                      `json:"provider_token,omitempty"`
-	ReplyMarkup               *types.InlineKeyboardMarkup `json:"reply_markup,omitempty"`
-	ReplyParameters           *types.ReplyParameters      `json:"reply_parameters,omitempty"`
-	SendEmailToProvider       bool                        `json:"send_email_to_provider,omitempty"`
-	SendPhoneNumberToProvider bool                        `json:"send_phone_number_to_provider,omitempty"`
-	StartParameter            string                      `json:"start_parameter,omitempty"`
-	SuggestedTipAmounts       []int                       `json:"suggested_tip_amounts,omitempty"`
-	Title                     string                      `json:"title"`
+	AllowPaidBroadcast        bool                           `json:"allow_paid_broadcast,omitempty"`
+	ChatID                    any                            `json:"chat_id"`
+	Currency                  string                         `json:"currency"`
+	Description               string                         `json:"description"`
+	DirectMessagesTopicID     int64                          `json:"direct_messages_topic_id,omitempty"`
+	DisableNotification       bool                           `json:"disable_notification,omitempty"`
+	IsFlexible                bool                           `json:"is_flexible,omitempty"`
+	MaxTipAmount              int                            `json:"max_tip_amount,omitempty"`
+	MessageEffectID           string                         `json:"message_effect_id,omitempty"`
+	MessageThreadID           int64                          `json:"message_thread_id,omitempty"`
+	NeedEmail                 bool                           `json:"need_email,omitempty"`
+	NeedName                  bool                           `json:"need_name,omitempty"`
+	NeedPhoneNumber           bool                           `json:"need_phone_number,omitempty"`
+	NeedShippingAddress       bool                           `json:"need_shipping_address,omitempty"`
+	Payload                   string                         `json:"payload"`
+	PhotoHeight               int                            `json:"photo_height,omitempty"`
+	PhotoSize                 int                            `json:"photo_size,omitempty"`
+	PhotoURL                  string                         `json:"photo_url,omitempty"`
+	PhotoWidth                int64                          `json:"photo_width,omitempty"`
+	Prices                    []types.LabeledPrice           `json:"prices,omitempty"`
+	ProtectContent            bool                           `json:"protect_content,omitempty"`
+	ProviderData              string                         `json:"provider_data,omitempty"`
+	ProviderToken             string                         `json:"provider_token,omitempty"`
+	ReplyMarkup               *types.InlineKeyboardMarkup    `json:"reply_markup,omitempty"`
+	ReplyParameters           *types.ReplyParameters         `json:"reply_parameters,omitempty"`
+	SendEmailToProvider       bool                           `json:"send_email_to_provider,omitempty"`
+	SendPhoneNumberToProvider bool                           `json:"send_phone_number_to_provider,omitempty"`
+	StartParameter            string                         `json:"start_parameter,omitempty"`
+	SuggestedPostParameters   *types.SuggestedPostParameters `json:"suggested_post_parameters,omitempty"`
+	SuggestedTipAmounts       []int                          `json:"suggested_tip_amounts,omitempty"`
+	Title                     string                         `json:"title"`
 }
 
 func (entity *SendInvoice) ProgressCallable() rawTypes.ProgressCallable {
@@ -67,6 +69,9 @@ func (entity SendInvoice) MarshalJSON() ([]byte, error) {
 		}
 	}
 	_ = nilCheck
+	if nilCheck(entity.SuggestedPostParameters) {
+		entity.SuggestedPostParameters = nil
+	}
 	if nilCheck(entity.ReplyParameters) {
 		entity.ReplyParameters = nil
 	}

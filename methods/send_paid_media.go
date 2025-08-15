@@ -13,21 +13,24 @@ import (
 // SendPaidMedia Use this method to send paid media
 // On success, the sent Message is returned.
 type SendPaidMedia struct {
-	AllowPaidBroadcast    bool                      `json:"allow_paid_broadcast,omitempty"`
-	BusinessConnectionID  string                    `json:"business_connection_id,omitempty"`
-	Caption               string                    `json:"caption,omitempty"`
-	CaptionEntities       []types.MessageEntity     `json:"caption_entities,omitempty"`
-	ChatID                any                       `json:"chat_id"`
-	DisableNotification   bool                      `json:"disable_notification,omitempty"`
-	Media                 []types.InputPaidMedia    `json:"media,omitempty"`
-	ParseMode             string                    `json:"parse_mode,omitempty"`
-	Payload               string                    `json:"payload,omitempty"`
-	ProtectContent        bool                      `json:"protect_content,omitempty"`
-	ReplyMarkup           any                       `json:"reply_markup,omitempty"`
-	ReplyParameters       *types.ReplyParameters    `json:"reply_parameters,omitempty"`
-	ShowCaptionAboveMedia bool                      `json:"show_caption_above_media,omitempty"`
-	StarCount             int                       `json:"star_count"`
-	Progress              rawTypes.ProgressCallable `json:"-"`
+	AllowPaidBroadcast      bool                           `json:"allow_paid_broadcast,omitempty"`
+	BusinessConnectionID    string                         `json:"business_connection_id,omitempty"`
+	Caption                 string                         `json:"caption,omitempty"`
+	CaptionEntities         []types.MessageEntity          `json:"caption_entities,omitempty"`
+	ChatID                  any                            `json:"chat_id"`
+	DirectMessagesTopicID   int64                          `json:"direct_messages_topic_id,omitempty"`
+	DisableNotification     bool                           `json:"disable_notification,omitempty"`
+	Media                   []types.InputPaidMedia         `json:"media,omitempty"`
+	MessageThreadID         int64                          `json:"message_thread_id,omitempty"`
+	ParseMode               string                         `json:"parse_mode,omitempty"`
+	Payload                 string                         `json:"payload,omitempty"`
+	ProtectContent          bool                           `json:"protect_content,omitempty"`
+	ReplyMarkup             any                            `json:"reply_markup,omitempty"`
+	ReplyParameters         *types.ReplyParameters         `json:"reply_parameters,omitempty"`
+	ShowCaptionAboveMedia   bool                           `json:"show_caption_above_media,omitempty"`
+	StarCount               int                            `json:"star_count"`
+	SuggestedPostParameters *types.SuggestedPostParameters `json:"suggested_post_parameters,omitempty"`
+	Progress                rawTypes.ProgressCallable      `json:"-"`
 }
 
 func (entity *SendPaidMedia) ProgressCallable() rawTypes.ProgressCallable {
@@ -68,6 +71,9 @@ func (entity SendPaidMedia) MarshalJSON() ([]byte, error) {
 		}
 	}
 	_ = nilCheck
+	if nilCheck(entity.SuggestedPostParameters) {
+		entity.SuggestedPostParameters = nil
+	}
 	if nilCheck(entity.ReplyParameters) {
 		entity.ReplyParameters = nil
 	}

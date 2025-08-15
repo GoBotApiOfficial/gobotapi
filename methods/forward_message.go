@@ -14,13 +14,15 @@ import (
 // Service messages and messages with protected content can't be forwarded
 // On success, the sent Message is returned.
 type ForwardMessage struct {
-	ChatID              any   `json:"chat_id"`
-	DisableNotification bool  `json:"disable_notification,omitempty"`
-	FromChatID          int64 `json:"from_chat_id"`
-	MessageID           int64 `json:"message_id"`
-	MessageThreadID     int64 `json:"message_thread_id,omitempty"`
-	ProtectContent      bool  `json:"protect_content,omitempty"`
-	VideoStartTimestamp int64 `json:"video_start_timestamp,omitempty"`
+	ChatID                  any                            `json:"chat_id"`
+	DirectMessagesTopicID   int64                          `json:"direct_messages_topic_id,omitempty"`
+	DisableNotification     bool                           `json:"disable_notification,omitempty"`
+	FromChatID              int64                          `json:"from_chat_id"`
+	MessageID               int64                          `json:"message_id"`
+	MessageThreadID         int64                          `json:"message_thread_id,omitempty"`
+	ProtectContent          bool                           `json:"protect_content,omitempty"`
+	SuggestedPostParameters *types.SuggestedPostParameters `json:"suggested_post_parameters,omitempty"`
+	VideoStartTimestamp     int64                          `json:"video_start_timestamp,omitempty"`
 }
 
 func (entity *ForwardMessage) ProgressCallable() rawTypes.ProgressCallable {
@@ -46,6 +48,9 @@ func (entity ForwardMessage) MarshalJSON() ([]byte, error) {
 		}
 	}
 	_ = nilCheck
+	if nilCheck(entity.SuggestedPostParameters) {
+		entity.SuggestedPostParameters = nil
+	}
 	if entity.ChatID != nil {
 		switch entity.ChatID.(type) {
 		case int, int64, string:

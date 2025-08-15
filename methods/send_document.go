@@ -14,22 +14,24 @@ import (
 // On success, the sent Message is returned
 // Bots can currently send files of any type of up to 50 MB in size, this limit may be changed in the future.
 type SendDocument struct {
-	AllowPaidBroadcast          bool                      `json:"allow_paid_broadcast,omitempty"`
-	BusinessConnectionID        string                    `json:"business_connection_id,omitempty"`
-	Caption                     string                    `json:"caption,omitempty"`
-	CaptionEntities             []types.MessageEntity     `json:"caption_entities,omitempty"`
-	ChatID                      any                       `json:"chat_id"`
-	DisableContentTypeDetection bool                      `json:"disable_content_type_detection,omitempty"`
-	DisableNotification         bool                      `json:"disable_notification,omitempty"`
-	Document                    rawTypes.InputFile        `json:"document,omitempty"`
-	MessageEffectID             string                    `json:"message_effect_id,omitempty"`
-	MessageThreadID             int64                     `json:"message_thread_id,omitempty"`
-	ParseMode                   string                    `json:"parse_mode,omitempty"`
-	ProtectContent              bool                      `json:"protect_content,omitempty"`
-	ReplyMarkup                 any                       `json:"reply_markup,omitempty"`
-	ReplyParameters             *types.ReplyParameters    `json:"reply_parameters,omitempty"`
-	Thumbnail                   rawTypes.InputFile        `json:"thumbnail,omitempty"`
-	Progress                    rawTypes.ProgressCallable `json:"-"`
+	AllowPaidBroadcast          bool                           `json:"allow_paid_broadcast,omitempty"`
+	BusinessConnectionID        string                         `json:"business_connection_id,omitempty"`
+	Caption                     string                         `json:"caption,omitempty"`
+	CaptionEntities             []types.MessageEntity          `json:"caption_entities,omitempty"`
+	ChatID                      any                            `json:"chat_id"`
+	DirectMessagesTopicID       int64                          `json:"direct_messages_topic_id,omitempty"`
+	DisableContentTypeDetection bool                           `json:"disable_content_type_detection,omitempty"`
+	DisableNotification         bool                           `json:"disable_notification,omitempty"`
+	Document                    rawTypes.InputFile             `json:"document,omitempty"`
+	MessageEffectID             string                         `json:"message_effect_id,omitempty"`
+	MessageThreadID             int64                          `json:"message_thread_id,omitempty"`
+	ParseMode                   string                         `json:"parse_mode,omitempty"`
+	ProtectContent              bool                           `json:"protect_content,omitempty"`
+	ReplyMarkup                 any                            `json:"reply_markup,omitempty"`
+	ReplyParameters             *types.ReplyParameters         `json:"reply_parameters,omitempty"`
+	SuggestedPostParameters     *types.SuggestedPostParameters `json:"suggested_post_parameters,omitempty"`
+	Thumbnail                   rawTypes.InputFile             `json:"thumbnail,omitempty"`
+	Progress                    rawTypes.ProgressCallable      `json:"-"`
 }
 
 func (entity *SendDocument) ProgressCallable() rawTypes.ProgressCallable {
@@ -68,6 +70,9 @@ func (entity SendDocument) MarshalJSON() ([]byte, error) {
 	_ = nilCheck
 	if nilCheck(entity.Thumbnail) {
 		entity.Thumbnail = nil
+	}
+	if nilCheck(entity.SuggestedPostParameters) {
+		entity.SuggestedPostParameters = nil
 	}
 	if nilCheck(entity.ReplyParameters) {
 		entity.ReplyParameters = nil

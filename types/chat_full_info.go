@@ -35,6 +35,7 @@ type ChatFullInfo struct {
 	HasVisibleHistory                  bool                  `json:"has_visible_history,omitempty"`
 	ID                                 int64                 `json:"id"`
 	InviteLink                         string                `json:"invite_link,omitempty"`
+	IsDirectMessages                   bool                  `json:"is_direct_messages,omitempty"`
 	IsForum                            bool                  `json:"is_forum,omitempty"`
 	JoinByRequest                      bool                  `json:"join_by_request,omitempty"`
 	JoinToSendMessages                 bool                  `json:"join_to_send_messages,omitempty"`
@@ -43,6 +44,7 @@ type ChatFullInfo struct {
 	Location                           *ChatLocation         `json:"location,omitempty"`
 	MaxReactionCount                   int                   `json:"max_reaction_count"`
 	MessageAutoDeleteTime              int                   `json:"message_auto_delete_time,omitempty"`
+	ParentChat                         *Chat                 `json:"parent_chat,omitempty"`
 	Permissions                        *ChatPermissions      `json:"permissions,omitempty"`
 	PersonalChat                       *Chat                 `json:"personal_chat,omitempty"`
 	Photo                              *ChatPhoto            `json:"photo,omitempty"`
@@ -89,6 +91,9 @@ func (entity ChatFullInfo) MarshalJSON() ([]byte, error) {
 	}
 	if nilCheck(entity.PersonalChat) {
 		entity.PersonalChat = nil
+	}
+	if nilCheck(entity.ParentChat) {
+		entity.ParentChat = nil
 	}
 	if nilCheck(entity.PinnedMessage) {
 		entity.PinnedMessage = nil

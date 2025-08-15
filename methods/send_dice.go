@@ -13,16 +13,18 @@ import (
 // SendDice Use this method to send an animated emoji that will display a random value
 // On success, the sent Message is returned.
 type SendDice struct {
-	AllowPaidBroadcast   bool                   `json:"allow_paid_broadcast,omitempty"`
-	BusinessConnectionID string                 `json:"business_connection_id,omitempty"`
-	ChatID               any                    `json:"chat_id"`
-	DisableNotification  bool                   `json:"disable_notification,omitempty"`
-	Emoji                string                 `json:"emoji,omitempty"`
-	MessageEffectID      string                 `json:"message_effect_id,omitempty"`
-	MessageThreadID      int64                  `json:"message_thread_id,omitempty"`
-	ProtectContent       bool                   `json:"protect_content,omitempty"`
-	ReplyMarkup          any                    `json:"reply_markup,omitempty"`
-	ReplyParameters      *types.ReplyParameters `json:"reply_parameters,omitempty"`
+	AllowPaidBroadcast      bool                           `json:"allow_paid_broadcast,omitempty"`
+	BusinessConnectionID    string                         `json:"business_connection_id,omitempty"`
+	ChatID                  any                            `json:"chat_id"`
+	DirectMessagesTopicID   int64                          `json:"direct_messages_topic_id,omitempty"`
+	DisableNotification     bool                           `json:"disable_notification,omitempty"`
+	Emoji                   string                         `json:"emoji,omitempty"`
+	MessageEffectID         string                         `json:"message_effect_id,omitempty"`
+	MessageThreadID         int64                          `json:"message_thread_id,omitempty"`
+	ProtectContent          bool                           `json:"protect_content,omitempty"`
+	ReplyMarkup             any                            `json:"reply_markup,omitempty"`
+	ReplyParameters         *types.ReplyParameters         `json:"reply_parameters,omitempty"`
+	SuggestedPostParameters *types.SuggestedPostParameters `json:"suggested_post_parameters,omitempty"`
 }
 
 func (entity *SendDice) ProgressCallable() rawTypes.ProgressCallable {
@@ -48,6 +50,9 @@ func (entity SendDice) MarshalJSON() ([]byte, error) {
 		}
 	}
 	_ = nilCheck
+	if nilCheck(entity.SuggestedPostParameters) {
+		entity.SuggestedPostParameters = nil
+	}
 	if nilCheck(entity.ReplyParameters) {
 		entity.ReplyParameters = nil
 	}

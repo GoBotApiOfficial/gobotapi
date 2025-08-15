@@ -14,20 +14,22 @@ import (
 // Use this method to send video messages
 // On success, the sent Message is returned.
 type SendVideoNote struct {
-	AllowPaidBroadcast   bool                      `json:"allow_paid_broadcast,omitempty"`
-	BusinessConnectionID string                    `json:"business_connection_id,omitempty"`
-	ChatID               any                       `json:"chat_id"`
-	DisableNotification  bool                      `json:"disable_notification,omitempty"`
-	Duration             int                       `json:"duration,omitempty"`
-	Length               int                       `json:"length,omitempty"`
-	MessageEffectID      string                    `json:"message_effect_id,omitempty"`
-	MessageThreadID      int64                     `json:"message_thread_id,omitempty"`
-	ProtectContent       bool                      `json:"protect_content,omitempty"`
-	ReplyMarkup          any                       `json:"reply_markup,omitempty"`
-	ReplyParameters      *types.ReplyParameters    `json:"reply_parameters,omitempty"`
-	Thumbnail            rawTypes.InputFile        `json:"thumbnail,omitempty"`
-	VideoNote            rawTypes.InputFile        `json:"video_note,omitempty"`
-	Progress             rawTypes.ProgressCallable `json:"-"`
+	AllowPaidBroadcast      bool                           `json:"allow_paid_broadcast,omitempty"`
+	BusinessConnectionID    string                         `json:"business_connection_id,omitempty"`
+	ChatID                  any                            `json:"chat_id"`
+	DirectMessagesTopicID   int64                          `json:"direct_messages_topic_id,omitempty"`
+	DisableNotification     bool                           `json:"disable_notification,omitempty"`
+	Duration                int                            `json:"duration,omitempty"`
+	Length                  int                            `json:"length,omitempty"`
+	MessageEffectID         string                         `json:"message_effect_id,omitempty"`
+	MessageThreadID         int64                          `json:"message_thread_id,omitempty"`
+	ProtectContent          bool                           `json:"protect_content,omitempty"`
+	ReplyMarkup             any                            `json:"reply_markup,omitempty"`
+	ReplyParameters         *types.ReplyParameters         `json:"reply_parameters,omitempty"`
+	SuggestedPostParameters *types.SuggestedPostParameters `json:"suggested_post_parameters,omitempty"`
+	Thumbnail               rawTypes.InputFile             `json:"thumbnail,omitempty"`
+	VideoNote               rawTypes.InputFile             `json:"video_note,omitempty"`
+	Progress                rawTypes.ProgressCallable      `json:"-"`
 }
 
 func (entity *SendVideoNote) ProgressCallable() rawTypes.ProgressCallable {
@@ -67,19 +69,14 @@ func (entity SendVideoNote) MarshalJSON() ([]byte, error) {
 	if nilCheck(entity.Thumbnail) {
 		entity.Thumbnail = nil
 	}
+	if nilCheck(entity.SuggestedPostParameters) {
+		entity.SuggestedPostParameters = nil
+	}
 	if nilCheck(entity.ReplyParameters) {
 		entity.ReplyParameters = nil
 	}
 	if nilCheck(entity.ReplyMarkup) {
 		entity.ReplyMarkup = nil
-	}
-	if entity.ChatID != nil {
-		switch entity.ChatID.(type) {
-		case int, int64, string:
-			break
-		default:
-			return nil, fmt.Errorf("chat_id: unknown type: %T", entity.ChatID)
-		}
 	}
 	if entity.ReplyMarkup != nil {
 		switch entity.ReplyMarkup.(type) {
@@ -87,6 +84,14 @@ func (entity SendVideoNote) MarshalJSON() ([]byte, error) {
 			break
 		default:
 			return nil, fmt.Errorf("reply_markup: unknown type: %T", entity.ReplyMarkup)
+		}
+	}
+	if entity.ChatID != nil {
+		switch entity.ChatID.(type) {
+		case int, int64, string:
+			break
+		default:
+			return nil, fmt.Errorf("chat_id: unknown type: %T", entity.ChatID)
 		}
 	}
 	type x0 SendVideoNote

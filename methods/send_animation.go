@@ -14,26 +14,28 @@ import (
 // On success, the sent Message is returned
 // Bots can currently send animation files of up to 50 MB in size, this limit may be changed in the future.
 type SendAnimation struct {
-	AllowPaidBroadcast    bool                      `json:"allow_paid_broadcast,omitempty"`
-	Animation             rawTypes.InputFile        `json:"animation,omitempty"`
-	BusinessConnectionID  string                    `json:"business_connection_id,omitempty"`
-	Caption               string                    `json:"caption,omitempty"`
-	CaptionEntities       []types.MessageEntity     `json:"caption_entities,omitempty"`
-	ChatID                any                       `json:"chat_id"`
-	DisableNotification   bool                      `json:"disable_notification,omitempty"`
-	Duration              int                       `json:"duration,omitempty"`
-	HasSpoiler            bool                      `json:"has_spoiler,omitempty"`
-	Height                int                       `json:"height,omitempty"`
-	MessageEffectID       string                    `json:"message_effect_id,omitempty"`
-	MessageThreadID       int64                     `json:"message_thread_id,omitempty"`
-	ParseMode             string                    `json:"parse_mode,omitempty"`
-	ProtectContent        bool                      `json:"protect_content,omitempty"`
-	ReplyMarkup           any                       `json:"reply_markup,omitempty"`
-	ReplyParameters       *types.ReplyParameters    `json:"reply_parameters,omitempty"`
-	ShowCaptionAboveMedia bool                      `json:"show_caption_above_media,omitempty"`
-	Thumbnail             rawTypes.InputFile        `json:"thumbnail,omitempty"`
-	Width                 int64                     `json:"width,omitempty"`
-	Progress              rawTypes.ProgressCallable `json:"-"`
+	AllowPaidBroadcast      bool                           `json:"allow_paid_broadcast,omitempty"`
+	Animation               rawTypes.InputFile             `json:"animation,omitempty"`
+	BusinessConnectionID    string                         `json:"business_connection_id,omitempty"`
+	Caption                 string                         `json:"caption,omitempty"`
+	CaptionEntities         []types.MessageEntity          `json:"caption_entities,omitempty"`
+	ChatID                  any                            `json:"chat_id"`
+	DirectMessagesTopicID   int64                          `json:"direct_messages_topic_id,omitempty"`
+	DisableNotification     bool                           `json:"disable_notification,omitempty"`
+	Duration                int                            `json:"duration,omitempty"`
+	HasSpoiler              bool                           `json:"has_spoiler,omitempty"`
+	Height                  int                            `json:"height,omitempty"`
+	MessageEffectID         string                         `json:"message_effect_id,omitempty"`
+	MessageThreadID         int64                          `json:"message_thread_id,omitempty"`
+	ParseMode               string                         `json:"parse_mode,omitempty"`
+	ProtectContent          bool                           `json:"protect_content,omitempty"`
+	ReplyMarkup             any                            `json:"reply_markup,omitempty"`
+	ReplyParameters         *types.ReplyParameters         `json:"reply_parameters,omitempty"`
+	ShowCaptionAboveMedia   bool                           `json:"show_caption_above_media,omitempty"`
+	SuggestedPostParameters *types.SuggestedPostParameters `json:"suggested_post_parameters,omitempty"`
+	Thumbnail               rawTypes.InputFile             `json:"thumbnail,omitempty"`
+	Width                   int64                          `json:"width,omitempty"`
+	Progress                rawTypes.ProgressCallable      `json:"-"`
 }
 
 func (entity *SendAnimation) ProgressCallable() rawTypes.ProgressCallable {
@@ -72,6 +74,9 @@ func (entity SendAnimation) MarshalJSON() ([]byte, error) {
 	_ = nilCheck
 	if nilCheck(entity.Thumbnail) {
 		entity.Thumbnail = nil
+	}
+	if nilCheck(entity.SuggestedPostParameters) {
+		entity.SuggestedPostParameters = nil
 	}
 	if nilCheck(entity.ReplyParameters) {
 		entity.ReplyParameters = nil

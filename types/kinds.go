@@ -2,30 +2,12 @@
 
 package types
 
-// TRANSACTION_PARTNER
-const (
-	TypeTransactionPartnerUser = iota
-	TypeTransactionPartnerChat
-	TypeTransactionPartnerAffiliateProgram
-	TypeTransactionPartnerFragment
-	TypeTransactionPartnerTelegramAds
-	TypeTransactionPartnerTelegramApi
-	TypeTransactionPartnerOther
-)
-
 // MESSAGE_ORIGIN
 const (
 	TypeMessageOriginUser = iota
 	TypeMessageOriginHiddenUser
 	TypeMessageOriginChat
 	TypeMessageOriginChannel
-)
-
-// PAID_MEDIA
-const (
-	TypePaidMediaPreview = iota
-	TypePaidMediaPhoto
-	TypePaidMediaVideo
 )
 
 // STORY_AREA_TYPE
@@ -37,17 +19,11 @@ const (
 	TypeStoryAreaTypeUniqueGift
 )
 
-// MAYBE_INACCESSIBLE_MESSAGE
+// CHAT_BOOST_SOURCE
 const (
-	TypeMessage = iota
-	TypeInaccessibleMessage
-)
-
-// REVENUE_WITHDRAWAL_STATE
-const (
-	TypeRevenueWithdrawalStatePending = iota
-	TypeRevenueWithdrawalStateSucceeded
-	TypeRevenueWithdrawalStateFailed
+	TypeChatBoostSourcePremium = iota
+	TypeChatBoostSourceGiftCode
+	TypeChatBoostSourceGiveaway
 )
 
 // BACKGROUND_TYPE
@@ -56,6 +32,24 @@ const (
 	TypeBackgroundTypeWallpaper
 	TypeBackgroundTypePattern
 	TypeBackgroundTypeChatTheme
+)
+
+// TRANSACTION_PARTNER
+const (
+	TypeTransactionPartnerUser = iota
+	TypeTransactionPartnerChat
+	TypeTransactionPartnerAffiliateProgram
+	TypeTransactionPartnerFragment
+	TypeTransactionPartnerTelegramAds
+	TypeTransactionPartnerTelegramApi
+	TypeTransactionPartnerOther
+)
+
+// BACKGROUND_FILL
+const (
+	TypeBackgroundFillSolid = iota
+	TypeBackgroundFillGradient
+	TypeBackgroundFillFreeformGradient
 )
 
 // CHAT_MEMBER
@@ -68,24 +62,30 @@ const (
 	TypeChatMemberBanned
 )
 
-// BACKGROUND_FILL
+// MAYBE_INACCESSIBLE_MESSAGE
 const (
-	TypeBackgroundFillSolid = iota
-	TypeBackgroundFillGradient
-	TypeBackgroundFillFreeformGradient
+	TypeMessage = iota
+	TypeInaccessibleMessage
+)
+
+// PAID_MEDIA
+const (
+	TypePaidMediaPreview = iota
+	TypePaidMediaPhoto
+	TypePaidMediaVideo
+)
+
+// REVENUE_WITHDRAWAL_STATE
+const (
+	TypeRevenueWithdrawalStatePending = iota
+	TypeRevenueWithdrawalStateSucceeded
+	TypeRevenueWithdrawalStateFailed
 )
 
 // OWNED_GIFT
 const (
 	TypeOwnedGiftRegular = iota
 	TypeOwnedGiftUnique
-)
-
-// CHAT_BOOST_SOURCE
-const (
-	TypeChatBoostSourcePremium = iota
-	TypeChatBoostSourceGiftCode
-	TypeChatBoostSourceGiveaway
 )
 
 // RETURN_TYPES

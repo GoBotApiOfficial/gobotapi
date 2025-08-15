@@ -13,19 +13,21 @@ import (
 // SendContact Use this method to send phone contacts
 // On success, the sent Message is returned.
 type SendContact struct {
-	AllowPaidBroadcast   bool                   `json:"allow_paid_broadcast,omitempty"`
-	BusinessConnectionID string                 `json:"business_connection_id,omitempty"`
-	ChatID               any                    `json:"chat_id"`
-	DisableNotification  bool                   `json:"disable_notification,omitempty"`
-	FirstName            string                 `json:"first_name"`
-	LastName             string                 `json:"last_name,omitempty"`
-	MessageEffectID      string                 `json:"message_effect_id,omitempty"`
-	MessageThreadID      int64                  `json:"message_thread_id,omitempty"`
-	PhoneNumber          string                 `json:"phone_number"`
-	ProtectContent       bool                   `json:"protect_content,omitempty"`
-	ReplyMarkup          any                    `json:"reply_markup,omitempty"`
-	ReplyParameters      *types.ReplyParameters `json:"reply_parameters,omitempty"`
-	Vcard                string                 `json:"vcard,omitempty"`
+	AllowPaidBroadcast      bool                           `json:"allow_paid_broadcast,omitempty"`
+	BusinessConnectionID    string                         `json:"business_connection_id,omitempty"`
+	ChatID                  any                            `json:"chat_id"`
+	DirectMessagesTopicID   int64                          `json:"direct_messages_topic_id,omitempty"`
+	DisableNotification     bool                           `json:"disable_notification,omitempty"`
+	FirstName               string                         `json:"first_name"`
+	LastName                string                         `json:"last_name,omitempty"`
+	MessageEffectID         string                         `json:"message_effect_id,omitempty"`
+	MessageThreadID         int64                          `json:"message_thread_id,omitempty"`
+	PhoneNumber             string                         `json:"phone_number"`
+	ProtectContent          bool                           `json:"protect_content,omitempty"`
+	ReplyMarkup             any                            `json:"reply_markup,omitempty"`
+	ReplyParameters         *types.ReplyParameters         `json:"reply_parameters,omitempty"`
+	SuggestedPostParameters *types.SuggestedPostParameters `json:"suggested_post_parameters,omitempty"`
+	Vcard                   string                         `json:"vcard,omitempty"`
 }
 
 func (entity *SendContact) ProgressCallable() rawTypes.ProgressCallable {
@@ -51,6 +53,9 @@ func (entity SendContact) MarshalJSON() ([]byte, error) {
 		}
 	}
 	_ = nilCheck
+	if nilCheck(entity.SuggestedPostParameters) {
+		entity.SuggestedPostParameters = nil
+	}
 	if nilCheck(entity.ReplyParameters) {
 		entity.ReplyParameters = nil
 	}

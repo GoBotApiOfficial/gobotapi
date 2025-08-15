@@ -12,18 +12,19 @@ import (
 
 // SendMediaGroup Use this method to send a group of photos, videos, documents or audios as an album
 // Documents and audio files can be only grouped in an album with messages of the same type
-// On success, an array of Messages that were sent is returned.
+// On success, an array of Message objects that were sent is returned.
 type SendMediaGroup struct {
-	AllowPaidBroadcast   bool                      `json:"allow_paid_broadcast,omitempty"`
-	BusinessConnectionID string                    `json:"business_connection_id,omitempty"`
-	ChatID               any                       `json:"chat_id"`
-	DisableNotification  bool                      `json:"disable_notification,omitempty"`
-	Media                []types.InputMedia        `json:"media,omitempty"`
-	MessageEffectID      string                    `json:"message_effect_id,omitempty"`
-	MessageThreadID      int64                     `json:"message_thread_id,omitempty"`
-	ProtectContent       bool                      `json:"protect_content,omitempty"`
-	ReplyParameters      *types.ReplyParameters    `json:"reply_parameters,omitempty"`
-	Progress             rawTypes.ProgressCallable `json:"-"`
+	AllowPaidBroadcast    bool                      `json:"allow_paid_broadcast,omitempty"`
+	BusinessConnectionID  string                    `json:"business_connection_id,omitempty"`
+	ChatID                any                       `json:"chat_id"`
+	DirectMessagesTopicID int64                     `json:"direct_messages_topic_id,omitempty"`
+	DisableNotification   bool                      `json:"disable_notification,omitempty"`
+	Media                 []types.InputMedia        `json:"media,omitempty"`
+	MessageEffectID       string                    `json:"message_effect_id,omitempty"`
+	MessageThreadID       int64                     `json:"message_thread_id,omitempty"`
+	ProtectContent        bool                      `json:"protect_content,omitempty"`
+	ReplyParameters       *types.ReplyParameters    `json:"reply_parameters,omitempty"`
+	Progress              rawTypes.ProgressCallable `json:"-"`
 }
 
 func (entity *SendMediaGroup) ProgressCallable() rawTypes.ProgressCallable {

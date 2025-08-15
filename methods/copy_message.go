@@ -16,20 +16,22 @@ import (
 // The method is analogous to the method forwardMessage, but the copied message doesn't have a link to the original message
 // Returns the MessageId of the sent message on success.
 type CopyMessage struct {
-	AllowPaidBroadcast    bool                   `json:"allow_paid_broadcast,omitempty"`
-	Caption               string                 `json:"caption,omitempty"`
-	CaptionEntities       []types.MessageEntity  `json:"caption_entities,omitempty"`
-	ChatID                any                    `json:"chat_id"`
-	DisableNotification   bool                   `json:"disable_notification,omitempty"`
-	FromChatID            int64                  `json:"from_chat_id"`
-	MessageID             int64                  `json:"message_id"`
-	MessageThreadID       int64                  `json:"message_thread_id,omitempty"`
-	ParseMode             string                 `json:"parse_mode,omitempty"`
-	ProtectContent        bool                   `json:"protect_content,omitempty"`
-	ReplyMarkup           any                    `json:"reply_markup,omitempty"`
-	ReplyParameters       *types.ReplyParameters `json:"reply_parameters,omitempty"`
-	ShowCaptionAboveMedia bool                   `json:"show_caption_above_media,omitempty"`
-	VideoStartTimestamp   int64                  `json:"video_start_timestamp,omitempty"`
+	AllowPaidBroadcast      bool                           `json:"allow_paid_broadcast,omitempty"`
+	Caption                 string                         `json:"caption,omitempty"`
+	CaptionEntities         []types.MessageEntity          `json:"caption_entities,omitempty"`
+	ChatID                  any                            `json:"chat_id"`
+	DirectMessagesTopicID   int64                          `json:"direct_messages_topic_id,omitempty"`
+	DisableNotification     bool                           `json:"disable_notification,omitempty"`
+	FromChatID              int64                          `json:"from_chat_id"`
+	MessageID               int64                          `json:"message_id"`
+	MessageThreadID         int64                          `json:"message_thread_id,omitempty"`
+	ParseMode               string                         `json:"parse_mode,omitempty"`
+	ProtectContent          bool                           `json:"protect_content,omitempty"`
+	ReplyMarkup             any                            `json:"reply_markup,omitempty"`
+	ReplyParameters         *types.ReplyParameters         `json:"reply_parameters,omitempty"`
+	ShowCaptionAboveMedia   bool                           `json:"show_caption_above_media,omitempty"`
+	SuggestedPostParameters *types.SuggestedPostParameters `json:"suggested_post_parameters,omitempty"`
+	VideoStartTimestamp     int64                          `json:"video_start_timestamp,omitempty"`
 }
 
 func (entity *CopyMessage) ProgressCallable() rawTypes.ProgressCallable {
@@ -55,19 +57,14 @@ func (entity CopyMessage) MarshalJSON() ([]byte, error) {
 		}
 	}
 	_ = nilCheck
+	if nilCheck(entity.SuggestedPostParameters) {
+		entity.SuggestedPostParameters = nil
+	}
 	if nilCheck(entity.ReplyParameters) {
 		entity.ReplyParameters = nil
 	}
 	if nilCheck(entity.ReplyMarkup) {
 		entity.ReplyMarkup = nil
-	}
-	if entity.ChatID != nil {
-		switch entity.ChatID.(type) {
-		case int, int64, string:
-			break
-		default:
-			return nil, fmt.Errorf("chat_id: unknown type: %T", entity.ChatID)
-		}
 	}
 	if entity.ReplyMarkup != nil {
 		switch entity.ReplyMarkup.(type) {
@@ -75,6 +72,14 @@ func (entity CopyMessage) MarshalJSON() ([]byte, error) {
 			break
 		default:
 			return nil, fmt.Errorf("reply_markup: unknown type: %T", entity.ReplyMarkup)
+		}
+	}
+	if entity.ChatID != nil {
+		switch entity.ChatID.(type) {
+		case int, int64, string:
+			break
+		default:
+			return nil, fmt.Errorf("chat_id: unknown type: %T", entity.ChatID)
 		}
 	}
 	type x0 CopyMessage
