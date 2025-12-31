@@ -4,6 +4,7 @@ package types
 
 // ChecklistTask Describes a task in a checklist.
 type ChecklistTask struct {
+	CompletedByChat *Chat           `json:"completed_by_chat,omitempty"`
 	CompletedByUser *User           `json:"completed_by_user,omitempty"`
 	CompletionDate  int64           `json:"completion_date,omitempty"`
 	ID              int64           `json:"id"`

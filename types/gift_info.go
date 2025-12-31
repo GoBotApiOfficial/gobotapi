@@ -9,7 +9,9 @@ type GiftInfo struct {
 	Entities                []MessageEntity `json:"entities,omitempty"`
 	Gift                    Gift            `json:"gift"`
 	IsPrivate               bool            `json:"is_private,omitempty"`
+	IsUpgradeSeparate       bool            `json:"is_upgrade_separate,omitempty"`
 	OwnedGiftID             string          `json:"owned_gift_id,omitempty"`
 	PrepaidUpgradeStarCount int64           `json:"prepaid_upgrade_star_count,omitempty"`
 	Text                    string          `json:"text,omitempty"`
+	UniqueGiftNumber        int             `json:"unique_gift_number,omitempty"`
 }

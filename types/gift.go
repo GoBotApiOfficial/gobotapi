@@ -4,11 +4,17 @@ package types
 
 // Gift Represents a gift that can be sent by the bot.
 type Gift struct {
-	ID               string  `json:"id"`
-	PublisherChat    *Chat   `json:"publisher_chat,omitempty"`
-	RemainingCount   int     `json:"remaining_count,omitempty"`
-	StarCount        int     `json:"star_count"`
-	Sticker          Sticker `json:"sticker"`
-	TotalCount       int     `json:"total_count,omitempty"`
-	UpgradeStarCount int     `json:"upgrade_star_count,omitempty"`
+	Background             *GiftBackground `json:"background,omitempty"`
+	HasColors              bool            `json:"has_colors,omitempty"`
+	ID                     string          `json:"id"`
+	IsPremium              bool            `json:"is_premium,omitempty"`
+	PersonalRemainingCount int             `json:"personal_remaining_count,omitempty"`
+	PersonalTotalCount     int             `json:"personal_total_count,omitempty"`
+	PublisherChat          *Chat           `json:"publisher_chat,omitempty"`
+	RemainingCount         int             `json:"remaining_count,omitempty"`
+	StarCount              int             `json:"star_count"`
+	Sticker                Sticker         `json:"sticker"`
+	TotalCount             int             `json:"total_count,omitempty"`
+	UniqueGiftVariantCount int             `json:"unique_gift_variant_count,omitempty"`
+	UpgradeStarCount       int             `json:"upgrade_star_count,omitempty"`
 }

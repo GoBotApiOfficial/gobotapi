@@ -4,6 +4,7 @@ package types
 
 // AcceptedGiftTypes This object describes the types of gifts that can be gifted to a user or a chat.
 type AcceptedGiftTypes struct {
+	GiftsFromChannels   bool `json:"gifts_from_channels"`
 	LimitedGifts        bool `json:"limited_gifts"`
 	PremiumSubscription bool `json:"premium_subscription"`
 	UniqueGifts         bool `json:"unique_gifts"`

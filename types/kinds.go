@@ -2,36 +2,27 @@
 
 package types
 
-// MESSAGE_ORIGIN
-const (
-	TypeMessageOriginUser = iota
-	TypeMessageOriginHiddenUser
-	TypeMessageOriginChat
-	TypeMessageOriginChannel
-)
-
-// STORY_AREA_TYPE
-const (
-	TypeStoryAreaTypeLocation = iota
-	TypeStoryAreaTypeSuggestedReaction
-	TypeStoryAreaTypeLink
-	TypeStoryAreaTypeWeather
-	TypeStoryAreaTypeUniqueGift
-)
-
-// CHAT_BOOST_SOURCE
-const (
-	TypeChatBoostSourcePremium = iota
-	TypeChatBoostSourceGiftCode
-	TypeChatBoostSourceGiveaway
-)
-
 // BACKGROUND_TYPE
 const (
 	TypeBackgroundTypeFill = iota
 	TypeBackgroundTypeWallpaper
 	TypeBackgroundTypePattern
 	TypeBackgroundTypeChatTheme
+)
+
+// PAID_MEDIA
+const (
+	TypePaidMediaPreview = iota
+	TypePaidMediaPhoto
+	TypePaidMediaVideo
+)
+
+// MESSAGE_ORIGIN
+const (
+	TypeMessageOriginUser = iota
+	TypeMessageOriginHiddenUser
+	TypeMessageOriginChat
+	TypeMessageOriginChannel
 )
 
 // TRANSACTION_PARTNER
@@ -52,6 +43,26 @@ const (
 	TypeBackgroundFillFreeformGradient
 )
 
+// MAYBE_INACCESSIBLE_MESSAGE
+const (
+	TypeMessage = iota
+	TypeInaccessibleMessage
+)
+
+// REVENUE_WITHDRAWAL_STATE
+const (
+	TypeRevenueWithdrawalStatePending = iota
+	TypeRevenueWithdrawalStateSucceeded
+	TypeRevenueWithdrawalStateFailed
+)
+
+// CHAT_BOOST_SOURCE
+const (
+	TypeChatBoostSourcePremium = iota
+	TypeChatBoostSourceGiftCode
+	TypeChatBoostSourceGiveaway
+)
+
 // CHAT_MEMBER
 const (
 	TypeChatMemberOwner = iota
@@ -62,30 +73,19 @@ const (
 	TypeChatMemberBanned
 )
 
-// MAYBE_INACCESSIBLE_MESSAGE
-const (
-	TypeMessage = iota
-	TypeInaccessibleMessage
-)
-
-// PAID_MEDIA
-const (
-	TypePaidMediaPreview = iota
-	TypePaidMediaPhoto
-	TypePaidMediaVideo
-)
-
-// REVENUE_WITHDRAWAL_STATE
-const (
-	TypeRevenueWithdrawalStatePending = iota
-	TypeRevenueWithdrawalStateSucceeded
-	TypeRevenueWithdrawalStateFailed
-)
-
 // OWNED_GIFT
 const (
 	TypeOwnedGiftRegular = iota
 	TypeOwnedGiftUnique
+)
+
+// STORY_AREA_TYPE
+const (
+	TypeStoryAreaTypeLocation = iota
+	TypeStoryAreaTypeSuggestedReaction
+	TypeStoryAreaTypeLink
+	TypeStoryAreaTypeWeather
+	TypeStoryAreaTypeUniqueGift
 )
 
 // RETURN_TYPES

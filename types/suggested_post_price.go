@@ -2,7 +2,7 @@
 
 package types
 
-// SuggestedPostPrice Desribes price of a suggested post.
+// SuggestedPostPrice Describes the price of a suggested post.
 type SuggestedPostPrice struct {
 	Amount   int    `json:"amount"`
 	Currency string `json:"currency"`

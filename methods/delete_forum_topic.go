@@ -10,8 +10,8 @@ import (
 	"reflect"
 )
 
-// DeleteForumTopic Use this method to delete a forum topic along with all its messages in a forum supergroup chat
-// The bot must be an administrator in the chat for this to work and must have the can_delete_messages administrator rights
+// DeleteForumTopic Use this method to delete a forum topic along with all its messages in a forum supergroup chat or a private chat with a user
+// In the case of a supergroup chat the bot must be an administrator in the chat for this to work and must have the can_delete_messages administrator rights
 // Returns True on success.
 type DeleteForumTopic struct {
 	ChatID          any   `json:"chat_id"`

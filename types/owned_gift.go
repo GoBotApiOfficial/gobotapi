@@ -14,6 +14,7 @@ type OwnedGift struct {
 	Gift                    Gift            `json:"gift"`
 	IsPrivate               bool            `json:"is_private"`
 	IsSaved                 bool            `json:"is_saved"`
+	IsUpgradeSeparate       bool            `json:"is_upgrade_separate"`
 	NextTransferDate        int64           `json:"next_transfer_date"`
 	OwnedGiftID             string          `json:"owned_gift_id"`
 	PrepaidUpgradeStarCount int64           `json:"prepaid_upgrade_star_count"`
@@ -22,6 +23,7 @@ type OwnedGift struct {
 	Text                    string          `json:"text"`
 	TransferStarCount       int             `json:"transfer_star_count"`
 	Type                    string          `json:"type"`
+	UniqueGiftNumber        int             `json:"unique_gift_number"`
 	WasRefunded             bool            `json:"was_refunded"`
 }
 
