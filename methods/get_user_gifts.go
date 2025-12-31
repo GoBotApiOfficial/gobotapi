@@ -8,36 +8,33 @@ import (
 	rawTypes "github.com/GoBotApiOfficial/gobotapi/types/raw"
 )
 
-// GetBusinessAccountGifts Returns the gifts received and owned by a managed business account
-// Requires the can_view_gifts_and_stars business bot right
+// GetUserGifts Returns the gifts owned and hosted by a user
 // Returns OwnedGifts on success.
-type GetBusinessAccountGifts struct {
-	BusinessConnectionID        string `json:"business_connection_id"`
+type GetUserGifts struct {
 	ExcludeFromBlockchain       bool   `json:"exclude_from_blockchain,omitempty"`
 	ExcludeLimitedNonUpgradable bool   `json:"exclude_limited_non_upgradable,omitempty"`
 	ExcludeLimitedUpgradable    bool   `json:"exclude_limited_upgradable,omitempty"`
-	ExcludeSaved                bool   `json:"exclude_saved,omitempty"`
 	ExcludeUnique               bool   `json:"exclude_unique,omitempty"`
 	ExcludeUnlimited            bool   `json:"exclude_unlimited,omitempty"`
-	ExcludeUnsaved              bool   `json:"exclude_unsaved,omitempty"`
 	Limit                       int    `json:"limit,omitempty"`
 	Offset                      string `json:"offset,omitempty"`
 	SortByPrice                 bool   `json:"sort_by_price,omitempty"`
+	UserID                      int64  `json:"user_id"`
 }
 
-func (entity *GetBusinessAccountGifts) ProgressCallable() rawTypes.ProgressCallable {
+func (entity *GetUserGifts) ProgressCallable() rawTypes.ProgressCallable {
 	return nil
 }
 
-func (entity *GetBusinessAccountGifts) Files() map[string]rawTypes.InputFile {
+func (entity *GetUserGifts) Files() map[string]rawTypes.InputFile {
 	return map[string]rawTypes.InputFile{}
 }
 
-func (GetBusinessAccountGifts) MethodName() string {
-	return "getBusinessAccountGifts"
+func (GetUserGifts) MethodName() string {
+	return "getUserGifts"
 }
 
-func (GetBusinessAccountGifts) ParseResult(response []byte) (*rawTypes.Result, error) {
+func (GetUserGifts) ParseResult(response []byte) (*rawTypes.Result, error) {
 	var x1 struct {
 		Result types.OwnedGifts `json:"result"`
 	}

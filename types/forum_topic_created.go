@@ -6,5 +6,6 @@ package types
 type ForumTopicCreated struct {
 	IconColor         int    `json:"icon_color"`
 	IconCustomEmojiID string `json:"icon_custom_emoji_id,omitempty"`
+	IsNameImplicit    bool   `json:"is_name_implicit,omitempty"`
 	Name              string `json:"name"`
 }

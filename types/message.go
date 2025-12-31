@@ -40,6 +40,7 @@ type Message struct {
 	GeneralForumTopicHidden       *GeneralForumTopicHidden       `json:"general_forum_topic_hidden,omitempty"`
 	GeneralForumTopicUnhidden     *GeneralForumTopicUnhidden     `json:"general_forum_topic_unhidden,omitempty"`
 	Gift                          *GiftInfo                      `json:"gift,omitempty"`
+	GiftUpgradeSent               *GiftInfo                      `json:"gift_upgrade_sent,omitempty"`
 	Giveaway                      *Giveaway                      `json:"giveaway,omitempty"`
 	GiveawayCompleted             *GiveawayCompleted             `json:"giveaway_completed,omitempty"`
 	GiveawayCreated               *GiveawayCreated               `json:"giveaway_created,omitempty"`

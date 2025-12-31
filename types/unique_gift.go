@@ -4,11 +4,15 @@ package types
 
 // UniqueGift This object describes a unique gift that was upgraded from a regular gift.
 type UniqueGift struct {
-	Backdrop      UniqueGiftBackdrop `json:"backdrop"`
-	BaseName      string             `json:"base_name"`
-	Model         UniqueGiftModel    `json:"model"`
-	Name          string             `json:"name"`
-	Number        int                `json:"number"`
-	PublisherChat *Chat              `json:"publisher_chat,omitempty"`
-	Symbol        UniqueGiftSymbol   `json:"symbol"`
+	Backdrop         UniqueGiftBackdrop `json:"backdrop"`
+	BaseName         string             `json:"base_name"`
+	Colors           *UniqueGiftColors  `json:"colors,omitempty"`
+	GiftID           string             `json:"gift_id"`
+	IsFromBlockchain bool               `json:"is_from_blockchain,omitempty"`
+	IsPremium        bool               `json:"is_premium,omitempty"`
+	Model            UniqueGiftModel    `json:"model"`
+	Name             string             `json:"name"`
+	Number           int                `json:"number"`
+	PublisherChat    *Chat              `json:"publisher_chat,omitempty"`
+	Symbol           UniqueGiftSymbol   `json:"symbol"`
 }

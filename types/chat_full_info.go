@@ -44,6 +44,7 @@ type ChatFullInfo struct {
 	Location                           *ChatLocation         `json:"location,omitempty"`
 	MaxReactionCount                   int                   `json:"max_reaction_count"`
 	MessageAutoDeleteTime              int                   `json:"message_auto_delete_time,omitempty"`
+	PaidMessageStarCount               int64                 `json:"paid_message_star_count,omitempty"`
 	ParentChat                         *Chat                 `json:"parent_chat,omitempty"`
 	Permissions                        *ChatPermissions      `json:"permissions,omitempty"`
 	PersonalChat                       *Chat                 `json:"personal_chat,omitempty"`
@@ -51,10 +52,12 @@ type ChatFullInfo struct {
 	PinnedMessage                      *Message              `json:"pinned_message,omitempty"`
 	ProfileAccentColorID               int64                 `json:"profile_accent_color_id,omitempty"`
 	ProfileBackgroundCustomEmojiID     string                `json:"profile_background_custom_emoji_id,omitempty"`
+	Rating                             *UserRating           `json:"rating,omitempty"`
 	SlowModeDelay                      int                   `json:"slow_mode_delay,omitempty"`
 	StickerSetName                     string                `json:"sticker_set_name,omitempty"`
 	Title                              string                `json:"title,omitempty"`
 	Type                               string                `json:"type"`
+	UniqueGiftColors                   *UniqueGiftColors     `json:"unique_gift_colors,omitempty"`
 	UnrestrictBoostCount               int                   `json:"unrestrict_boost_count,omitempty"`
 	Username                           string                `json:"username,omitempty"`
 }
@@ -103,6 +106,12 @@ func (entity ChatFullInfo) MarshalJSON() ([]byte, error) {
 	}
 	if nilCheck(entity.Location) {
 		entity.Location = nil
+	}
+	if nilCheck(entity.Rating) {
+		entity.Rating = nil
+	}
+	if nilCheck(entity.UniqueGiftColors) {
+		entity.UniqueGiftColors = nil
 	}
 	for _, x0 := range entity.AvailableReactions {
 		if x0 != nil {

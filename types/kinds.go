@@ -2,38 +2,6 @@
 
 package types
 
-// MESSAGE_ORIGIN
-const (
-	TypeMessageOriginUser = iota
-	TypeMessageOriginHiddenUser
-	TypeMessageOriginChat
-	TypeMessageOriginChannel
-)
-
-// STORY_AREA_TYPE
-const (
-	TypeStoryAreaTypeLocation = iota
-	TypeStoryAreaTypeSuggestedReaction
-	TypeStoryAreaTypeLink
-	TypeStoryAreaTypeWeather
-	TypeStoryAreaTypeUniqueGift
-)
-
-// CHAT_BOOST_SOURCE
-const (
-	TypeChatBoostSourcePremium = iota
-	TypeChatBoostSourceGiftCode
-	TypeChatBoostSourceGiveaway
-)
-
-// BACKGROUND_TYPE
-const (
-	TypeBackgroundTypeFill = iota
-	TypeBackgroundTypeWallpaper
-	TypeBackgroundTypePattern
-	TypeBackgroundTypeChatTheme
-)
-
 // TRANSACTION_PARTNER
 const (
 	TypeTransactionPartnerUser = iota
@@ -45,11 +13,10 @@ const (
 	TypeTransactionPartnerOther
 )
 
-// BACKGROUND_FILL
+// OWNED_GIFT
 const (
-	TypeBackgroundFillSolid = iota
-	TypeBackgroundFillGradient
-	TypeBackgroundFillFreeformGradient
+	TypeOwnedGiftRegular = iota
+	TypeOwnedGiftUnique
 )
 
 // CHAT_MEMBER
@@ -62,10 +29,19 @@ const (
 	TypeChatMemberBanned
 )
 
-// MAYBE_INACCESSIBLE_MESSAGE
+// BACKGROUND_TYPE
 const (
-	TypeMessage = iota
-	TypeInaccessibleMessage
+	TypeBackgroundTypeFill = iota
+	TypeBackgroundTypeWallpaper
+	TypeBackgroundTypePattern
+	TypeBackgroundTypeChatTheme
+)
+
+// BACKGROUND_FILL
+const (
+	TypeBackgroundFillSolid = iota
+	TypeBackgroundFillGradient
+	TypeBackgroundFillFreeformGradient
 )
 
 // PAID_MEDIA
@@ -75,6 +51,15 @@ const (
 	TypePaidMediaVideo
 )
 
+// STORY_AREA_TYPE
+const (
+	TypeStoryAreaTypeLocation = iota
+	TypeStoryAreaTypeSuggestedReaction
+	TypeStoryAreaTypeLink
+	TypeStoryAreaTypeWeather
+	TypeStoryAreaTypeUniqueGift
+)
+
 // REVENUE_WITHDRAWAL_STATE
 const (
 	TypeRevenueWithdrawalStatePending = iota
@@ -82,10 +67,25 @@ const (
 	TypeRevenueWithdrawalStateFailed
 )
 
-// OWNED_GIFT
+// CHAT_BOOST_SOURCE
 const (
-	TypeOwnedGiftRegular = iota
-	TypeOwnedGiftUnique
+	TypeChatBoostSourcePremium = iota
+	TypeChatBoostSourceGiftCode
+	TypeChatBoostSourceGiveaway
+)
+
+// MAYBE_INACCESSIBLE_MESSAGE
+const (
+	TypeMessage = iota
+	TypeInaccessibleMessage
+)
+
+// MESSAGE_ORIGIN
+const (
+	TypeMessageOriginUser = iota
+	TypeMessageOriginHiddenUser
+	TypeMessageOriginChat
+	TypeMessageOriginChannel
 )
 
 // RETURN_TYPES
