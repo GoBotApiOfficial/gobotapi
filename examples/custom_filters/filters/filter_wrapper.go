@@ -12,6 +12,8 @@ func FilterWrapper(client GenericClient) *Wrapper {
 
 	// Listen for user was promoted or demoted in a chat
 	client.OnChatMember(func(_ *gobotapi.Client, update types.ChatMemberUpdated) {
+		wrapper.mutex.Lock()
+		defer wrapper.mutex.Unlock()
 		if wrapper.listUsers[update.Chat.ID] == nil {
 			wrapper.listUsers[update.Chat.ID] = make(map[int64]*types.ChatMember)
 		}
@@ -21,6 +23,8 @@ func FilterWrapper(client GenericClient) *Wrapper {
 	// Listen for users that left the chat
 	client.OnMessage(func(_ *gobotapi.Client, update types.Message) {
 		if update.LeftChatMember != nil {
+			wrapper.mutex.Lock()
+			defer wrapper.mutex.Unlock()
 			delete(wrapper.listUsers[update.Chat.ID], update.LeftChatMember.ID)
 		}
 	})
