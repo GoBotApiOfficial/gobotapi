@@ -2,21 +2,20 @@
 
 package types
 
-// TRANSACTION_PARTNER
+// BACKGROUND_TYPE
 const (
-	TypeTransactionPartnerUser = iota
-	TypeTransactionPartnerChat
-	TypeTransactionPartnerAffiliateProgram
-	TypeTransactionPartnerFragment
-	TypeTransactionPartnerTelegramAds
-	TypeTransactionPartnerTelegramApi
-	TypeTransactionPartnerOther
+	TypeBackgroundTypeFill = iota
+	TypeBackgroundTypeWallpaper
+	TypeBackgroundTypePattern
+	TypeBackgroundTypeChatTheme
 )
 
-// OWNED_GIFT
+// MESSAGE_ORIGIN
 const (
-	TypeOwnedGiftRegular = iota
-	TypeOwnedGiftUnique
+	TypeMessageOriginUser = iota
+	TypeMessageOriginHiddenUser
+	TypeMessageOriginChat
+	TypeMessageOriginChannel
 )
 
 // CHAT_MEMBER
@@ -29,26 +28,11 @@ const (
 	TypeChatMemberBanned
 )
 
-// BACKGROUND_TYPE
+// REVENUE_WITHDRAWAL_STATE
 const (
-	TypeBackgroundTypeFill = iota
-	TypeBackgroundTypeWallpaper
-	TypeBackgroundTypePattern
-	TypeBackgroundTypeChatTheme
-)
-
-// BACKGROUND_FILL
-const (
-	TypeBackgroundFillSolid = iota
-	TypeBackgroundFillGradient
-	TypeBackgroundFillFreeformGradient
-)
-
-// PAID_MEDIA
-const (
-	TypePaidMediaPreview = iota
-	TypePaidMediaPhoto
-	TypePaidMediaVideo
+	TypeRevenueWithdrawalStatePending = iota
+	TypeRevenueWithdrawalStateSucceeded
+	TypeRevenueWithdrawalStateFailed
 )
 
 // STORY_AREA_TYPE
@@ -60,11 +44,28 @@ const (
 	TypeStoryAreaTypeUniqueGift
 )
 
-// REVENUE_WITHDRAWAL_STATE
+// OWNED_GIFT
 const (
-	TypeRevenueWithdrawalStatePending = iota
-	TypeRevenueWithdrawalStateSucceeded
-	TypeRevenueWithdrawalStateFailed
+	TypeOwnedGiftRegular = iota
+	TypeOwnedGiftUnique
+)
+
+// TRANSACTION_PARTNER
+const (
+	TypeTransactionPartnerUser = iota
+	TypeTransactionPartnerChat
+	TypeTransactionPartnerAffiliateProgram
+	TypeTransactionPartnerFragment
+	TypeTransactionPartnerTelegramAds
+	TypeTransactionPartnerTelegramApi
+	TypeTransactionPartnerOther
+)
+
+// BACKGROUND_FILL
+const (
+	TypeBackgroundFillSolid = iota
+	TypeBackgroundFillGradient
+	TypeBackgroundFillFreeformGradient
 )
 
 // CHAT_BOOST_SOURCE
@@ -74,18 +75,17 @@ const (
 	TypeChatBoostSourceGiveaway
 )
 
+// PAID_MEDIA
+const (
+	TypePaidMediaPreview = iota
+	TypePaidMediaPhoto
+	TypePaidMediaVideo
+)
+
 // MAYBE_INACCESSIBLE_MESSAGE
 const (
 	TypeMessage = iota
 	TypeInaccessibleMessage
-)
-
-// MESSAGE_ORIGIN
-const (
-	TypeMessageOriginUser = iota
-	TypeMessageOriginHiddenUser
-	TypeMessageOriginChat
-	TypeMessageOriginChannel
 )
 
 // RETURN_TYPES
