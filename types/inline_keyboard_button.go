@@ -3,13 +3,15 @@
 package types
 
 // InlineKeyboardButton Represents one button of an inline keyboard
-// Exactly one of the optional fields must be used to specify type of the button.
+// Exactly one of the fields other than text, icon_custom_emoji_id, and style must be used to specify the type of the button.
 type InlineKeyboardButton struct {
 	CallbackData                 string                       `json:"callback_data,omitempty"`
 	CallbackGame                 *CallbackGame                `json:"callback_game,omitempty"`
 	CopyText                     *CopyTextButton              `json:"copy_text,omitempty"`
+	IconCustomEmojiID            string                       `json:"icon_custom_emoji_id,omitempty"`
 	LoginURL                     *LoginUrl                    `json:"login_url,omitempty"`
 	Pay                          bool                         `json:"pay,omitempty"`
+	Style                        string                       `json:"style,omitempty"`
 	SwitchInlineQuery            string                       `json:"switch_inline_query,omitempty"`
 	SwitchInlineQueryChosenChat  *SwitchInlineQueryChosenChat `json:"switch_inline_query_chosen_chat,omitempty"`
 	SwitchInlineQueryCurrentChat string                       `json:"switch_inline_query_current_chat,omitempty"`

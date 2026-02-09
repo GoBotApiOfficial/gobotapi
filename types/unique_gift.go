@@ -8,6 +8,7 @@ type UniqueGift struct {
 	BaseName         string             `json:"base_name"`
 	Colors           *UniqueGiftColors  `json:"colors,omitempty"`
 	GiftID           string             `json:"gift_id"`
+	IsBurned         bool               `json:"is_burned,omitempty"`
 	IsFromBlockchain bool               `json:"is_from_blockchain,omitempty"`
 	IsPremium        bool               `json:"is_premium,omitempty"`
 	Model            UniqueGiftModel    `json:"model"`

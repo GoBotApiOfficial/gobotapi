@@ -5,6 +5,7 @@ package types
 // UniqueGiftModel This object describes the model of a unique gift.
 type UniqueGiftModel struct {
 	Name           string  `json:"name"`
+	Rarity         string  `json:"rarity,omitempty"`
 	RarityPerMille int     `json:"rarity_per_mille"`
 	Sticker        Sticker `json:"sticker"`
 }

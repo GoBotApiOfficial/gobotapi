@@ -27,6 +27,7 @@ type ChatFullInfo struct {
 	EmojiStatusCustomEmojiID           string                `json:"emoji_status_custom_emoji_id,omitempty"`
 	EmojiStatusExpirationDate          int64                 `json:"emoji_status_expiration_date,omitempty"`
 	FirstName                          string                `json:"first_name,omitempty"`
+	FirstProfileAudio                  *Audio                `json:"first_profile_audio,omitempty"`
 	HasAggressiveAntiSpamEnabled       bool                  `json:"has_aggressive_anti_spam_enabled,omitempty"`
 	HasHiddenMembers                   bool                  `json:"has_hidden_members,omitempty"`
 	HasPrivateForwards                 bool                  `json:"has_private_forwards,omitempty"`
@@ -109,6 +110,9 @@ func (entity ChatFullInfo) MarshalJSON() ([]byte, error) {
 	}
 	if nilCheck(entity.Rating) {
 		entity.Rating = nil
+	}
+	if nilCheck(entity.FirstProfileAudio) {
+		entity.FirstProfileAudio = nil
 	}
 	if nilCheck(entity.UniqueGiftColors) {
 		entity.UniqueGiftColors = nil

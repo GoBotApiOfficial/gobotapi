@@ -14,6 +14,8 @@ type Message struct {
 	ChannelChatCreated            bool                           `json:"channel_chat_created,omitempty"`
 	Chat                          Chat                           `json:"chat"`
 	ChatBackgroundSet             *ChatBackground                `json:"chat_background_set,omitempty"`
+	ChatOwnerChanged              *ChatOwnerChanged              `json:"chat_owner_changed,omitempty"`
+	ChatOwnerLeft                 *ChatOwnerLeft                 `json:"chat_owner_left,omitempty"`
 	ChatShared                    *ChatShared                    `json:"chat_shared,omitempty"`
 	Checklist                     *Checklist                     `json:"checklist,omitempty"`
 	ChecklistTasksAdded           *ChecklistTasksAdded           `json:"checklist_tasks_added,omitempty"`
