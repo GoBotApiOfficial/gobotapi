@@ -84,6 +84,7 @@ type Message struct {
 	SenderBoostCount              int                            `json:"sender_boost_count,omitempty"`
 	SenderBusinessBot             *User                          `json:"sender_business_bot,omitempty"`
 	SenderChat                    *Chat                          `json:"sender_chat,omitempty"`
+	SenderTag                     string                         `json:"sender_tag,omitempty"`
 	ShowCaptionAboveMedia         bool                           `json:"show_caption_above_media,omitempty"`
 	Sticker                       *Sticker                       `json:"sticker,omitempty"`
 	Story                         *Story                         `json:"story,omitempty"`

@@ -18,9 +18,11 @@ type ChatMember struct {
 	CanDeleteStories        bool   `json:"can_delete_stories"`
 	CanEditMessages         bool   `json:"can_edit_messages"`
 	CanEditStories          bool   `json:"can_edit_stories"`
+	CanEditTag              bool   `json:"can_edit_tag"`
 	CanInviteUsers          bool   `json:"can_invite_users"`
 	CanManageChat           bool   `json:"can_manage_chat"`
 	CanManageDirectMessages bool   `json:"can_manage_direct_messages"`
+	CanManageTags           bool   `json:"can_manage_tags"`
 	CanManageTopics         bool   `json:"can_manage_topics"`
 	CanManageVideoChats     bool   `json:"can_manage_video_chats"`
 	CanPinMessages          bool   `json:"can_pin_messages"`
@@ -41,6 +43,7 @@ type ChatMember struct {
 	IsAnonymous             bool   `json:"is_anonymous"`
 	IsMember                bool   `json:"is_member"`
 	Status                  string `json:"status"`
+	Tag                     string `json:"tag"`
 	UntilDate               int64  `json:"until_date"`
 	User                    User   `json:"user"`
 }

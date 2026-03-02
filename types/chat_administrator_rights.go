@@ -12,6 +12,7 @@ type ChatAdministratorRights struct {
 	CanInviteUsers          bool `json:"can_invite_users"`
 	CanManageChat           bool `json:"can_manage_chat"`
 	CanManageDirectMessages bool `json:"can_manage_direct_messages,omitempty"`
+	CanManageTags           bool `json:"can_manage_tags,omitempty"`
 	CanManageTopics         bool `json:"can_manage_topics,omitempty"`
 	CanManageVideoChats     bool `json:"can_manage_video_chats"`
 	CanPinMessages          bool `json:"can_pin_messages,omitempty"`

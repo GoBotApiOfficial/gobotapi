@@ -8,7 +8,7 @@ import (
 	rawTypes "github.com/GoBotApiOfficial/gobotapi/types/raw"
 )
 
-// SendMessageDraft Use this method to stream a partial message to a user while the message is being generated; supported only for bots with forum topic mode enabled
+// SendMessageDraft Use this method to stream a partial message to a user while the message is being generated
 // Returns True on success.
 type SendMessageDraft struct {
 	ChatID          int64                 `json:"chat_id"`
