@@ -5,8 +5,11 @@ package types
 // Poll This object contains information about a poll.
 type Poll struct {
 	AllowsMultipleAnswers bool            `json:"allows_multiple_answers"`
+	AllowsRevoting        bool            `json:"allows_revoting"`
 	CloseDate             int64           `json:"close_date,omitempty"`
-	CorrectOptionID       int64           `json:"correct_option_id,omitempty"`
+	CorrectOptionIDs      []int64         `json:"correct_option_ids,omitempty"`
+	Description           string          `json:"description,omitempty"`
+	DescriptionEntities   []MessageEntity `json:"description_entities,omitempty"`
 	Explanation           string          `json:"explanation,omitempty"`
 	ExplanationEntities   []MessageEntity `json:"explanation_entities,omitempty"`
 	ID                    string          `json:"id"`

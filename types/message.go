@@ -58,6 +58,7 @@ type Message struct {
 	LeftChatMember                *User                          `json:"left_chat_member,omitempty"`
 	LinkPreviewOptions            *LinkPreviewOptions            `json:"link_preview_options,omitempty"`
 	Location                      *Location                      `json:"location,omitempty"`
+	ManagedBotCreated             *ManagedBotCreated             `json:"managed_bot_created,omitempty"`
 	MediaGroupID                  string                         `json:"media_group_id,omitempty"`
 	MessageAutoDeleteTimerChanged *MessageAutoDeleteTimerChanged `json:"message_auto_delete_timer_changed,omitempty"`
 	MessageID                     int64                          `json:"message_id"`
@@ -74,12 +75,15 @@ type Message struct {
 	Photo                         []PhotoSize                    `json:"photo,omitempty"`
 	PinnedMessage                 *MaybeInaccessibleMessage      `json:"pinned_message,omitempty"`
 	Poll                          *Poll                          `json:"poll,omitempty"`
+	PollOptionAdded               *PollOptionAdded               `json:"poll_option_added,omitempty"`
+	PollOptionDeleted             *PollOptionDeleted             `json:"poll_option_deleted,omitempty"`
 	ProximityAlertTriggered       *ProximityAlertTriggered       `json:"proximity_alert_triggered,omitempty"`
 	Quote                         *TextQuote                     `json:"quote,omitempty"`
 	RefundedPayment               *RefundedPayment               `json:"refunded_payment,omitempty"`
 	ReplyMarkup                   *InlineKeyboardMarkup          `json:"reply_markup,omitempty"`
 	ReplyToChecklistTaskID        int64                          `json:"reply_to_checklist_task_id,omitempty"`
 	ReplyToMessage                *Message                       `json:"reply_to_message,omitempty"`
+	ReplyToPollOptionID           string                         `json:"reply_to_poll_option_id,omitempty"`
 	ReplyToStory                  *Story                         `json:"reply_to_story,omitempty"`
 	SenderBoostCount              int                            `json:"sender_boost_count,omitempty"`
 	SenderBusinessBot             *User                          `json:"sender_business_bot,omitempty"`

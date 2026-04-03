@@ -171,3 +171,10 @@ func (ctx *BasicClient) OnRemovedChatBoost(handler func(client *Client, update t
 	}
 	ctx.handlers["removed_chat_boost"] = append(ctx.handlers["removed_chat_boost"], handler)
 }
+
+func (ctx *BasicClient) OnManagedBot(handler func(client *Client, update types.ManagedBotUpdated)) {
+	if ctx.handlers == nil {
+		ctx.handlers = make(map[string][]any)
+	}
+	ctx.handlers["managed_bot"] = append(ctx.handlers["managed_bot"], handler)
+}

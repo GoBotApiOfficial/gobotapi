@@ -14,6 +14,7 @@ type ReplyParameters struct {
 	ChatID                   any             `json:"chat_id,omitempty"`
 	ChecklistTaskID          int64           `json:"checklist_task_id,omitempty"`
 	MessageID                int64           `json:"message_id"`
+	PollOptionID             string          `json:"poll_option_id,omitempty"`
 	Quote                    string          `json:"quote,omitempty"`
 	QuoteEntities            []MessageEntity `json:"quote_entities,omitempty"`
 	QuoteParseMode           string          `json:"quote_parse_mode,omitempty"`

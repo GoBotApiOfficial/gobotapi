@@ -176,4 +176,11 @@ func (ctx *BasicClient) handleUpdate(user *types.User, token string, update type
 			}, x0)
 		}
 	}
+	if update.ManagedBot != nil {
+		for _, x0 := range ctx.handlers["managed_bot"] {
+			ctx.concurrencyManager.Enqueue(func(x ...any) {
+				x[0].(func(*Client, types.ManagedBotUpdated))(client, *update.ManagedBot)
+			}, x0)
+		}
+	}
 }

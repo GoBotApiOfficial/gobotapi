@@ -6,13 +6,14 @@ package types
 // At most one of the fields other than text, icon_custom_emoji_id, and style must be used to specify the type of the button
 // For simple text buttons, String can be used instead of this object to specify the button text.
 type KeyboardButton struct {
-	IconCustomEmojiID string                      `json:"icon_custom_emoji_id,omitempty"`
-	RequestChat       *KeyboardButtonRequestChat  `json:"request_chat,omitempty"`
-	RequestContact    bool                        `json:"request_contact,omitempty"`
-	RequestLocation   bool                        `json:"request_location,omitempty"`
-	RequestPoll       *KeyboardButtonPollType     `json:"request_poll,omitempty"`
-	RequestUsers      *KeyboardButtonRequestUsers `json:"request_users,omitempty"`
-	Style             string                      `json:"style,omitempty"`
-	Text              string                      `json:"text"`
-	WebApp            *WebAppInfo                 `json:"web_app,omitempty"`
+	IconCustomEmojiID string                           `json:"icon_custom_emoji_id,omitempty"`
+	RequestChat       *KeyboardButtonRequestChat       `json:"request_chat,omitempty"`
+	RequestContact    bool                             `json:"request_contact,omitempty"`
+	RequestLocation   bool                             `json:"request_location,omitempty"`
+	RequestManagedBot *KeyboardButtonRequestManagedBot `json:"request_managed_bot,omitempty"`
+	RequestPoll       *KeyboardButtonPollType          `json:"request_poll,omitempty"`
+	RequestUsers      *KeyboardButtonRequestUsers      `json:"request_users,omitempty"`
+	Style             string                           `json:"style,omitempty"`
+	Text              string                           `json:"text"`
+	WebApp            *WebAppInfo                      `json:"web_app,omitempty"`
 }

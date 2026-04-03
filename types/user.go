@@ -8,6 +8,7 @@ type User struct {
 	AllowsUsersToCreateTopics bool   `json:"allows_users_to_create_topics,omitempty"`
 	CanConnectToBusiness      bool   `json:"can_connect_to_business,omitempty"`
 	CanJoinGroups             bool   `json:"can_join_groups,omitempty"`
+	CanManageBots             bool   `json:"can_manage_bots,omitempty"`
 	CanReadAllGroupMessages   bool   `json:"can_read_all_group_messages,omitempty"`
 	FirstName                 string `json:"first_name"`
 	HasMainWebApp             bool   `json:"has_main_web_app,omitempty"`

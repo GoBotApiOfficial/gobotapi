@@ -17,6 +17,7 @@ type Update struct {
 	EditedChannelPost       *Message                     `json:"edited_channel_post,omitempty"`
 	EditedMessage           *Message                     `json:"edited_message,omitempty"`
 	InlineQuery             *InlineQuery                 `json:"inline_query,omitempty"`
+	ManagedBot              *ManagedBotUpdated           `json:"managed_bot,omitempty"`
 	Message                 *Message                     `json:"message,omitempty"`
 	MessageReaction         *MessageReactionUpdated      `json:"message_reaction,omitempty"`
 	MessageReactionCount    *MessageReactionCountUpdated `json:"message_reaction_count,omitempty"`

@@ -4,6 +4,10 @@ package types
 
 // PollOption This object contains information about one answer option in a poll.
 type PollOption struct {
+	AddedByChat  *Chat           `json:"added_by_chat,omitempty"`
+	AddedByUser  *User           `json:"added_by_user,omitempty"`
+	AdditionDate int64           `json:"addition_date,omitempty"`
+	PersistentID string          `json:"persistent_id"`
 	Text         string          `json:"text"`
 	TextEntities []MessageEntity `json:"text_entities,omitempty"`
 	VoterCount   int             `json:"voter_count"`

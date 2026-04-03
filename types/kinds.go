@@ -2,37 +2,6 @@
 
 package types
 
-// BACKGROUND_TYPE
-const (
-	TypeBackgroundTypeFill = iota
-	TypeBackgroundTypeWallpaper
-	TypeBackgroundTypePattern
-	TypeBackgroundTypeChatTheme
-)
-
-// MAYBE_INACCESSIBLE_MESSAGE
-const (
-	TypeMessage = iota
-	TypeInaccessibleMessage
-)
-
-// BACKGROUND_FILL
-const (
-	TypeBackgroundFillSolid = iota
-	TypeBackgroundFillGradient
-	TypeBackgroundFillFreeformGradient
-)
-
-// CHAT_MEMBER
-const (
-	TypeChatMemberOwner = iota
-	TypeChatMemberAdministrator
-	TypeChatMemberMember
-	TypeChatMemberRestricted
-	TypeChatMemberLeft
-	TypeChatMemberBanned
-)
-
 // PAID_MEDIA
 const (
 	TypePaidMediaPreview = iota
@@ -47,13 +16,44 @@ const (
 	TypeRevenueWithdrawalStateFailed
 )
 
-// STORY_AREA_TYPE
+// MESSAGE_ORIGIN
 const (
-	TypeStoryAreaTypeLocation = iota
-	TypeStoryAreaTypeSuggestedReaction
-	TypeStoryAreaTypeLink
-	TypeStoryAreaTypeWeather
-	TypeStoryAreaTypeUniqueGift
+	TypeMessageOriginUser = iota
+	TypeMessageOriginHiddenUser
+	TypeMessageOriginChat
+	TypeMessageOriginChannel
+)
+
+// BACKGROUND_FILL
+const (
+	TypeBackgroundFillSolid = iota
+	TypeBackgroundFillGradient
+	TypeBackgroundFillFreeformGradient
+)
+
+// BACKGROUND_TYPE
+const (
+	TypeBackgroundTypeFill = iota
+	TypeBackgroundTypeWallpaper
+	TypeBackgroundTypePattern
+	TypeBackgroundTypeChatTheme
+)
+
+// CHAT_MEMBER
+const (
+	TypeChatMemberOwner = iota
+	TypeChatMemberAdministrator
+	TypeChatMemberMember
+	TypeChatMemberRestricted
+	TypeChatMemberLeft
+	TypeChatMemberBanned
+)
+
+// CHAT_BOOST_SOURCE
+const (
+	TypeChatBoostSourcePremium = iota
+	TypeChatBoostSourceGiftCode
+	TypeChatBoostSourceGiveaway
 )
 
 // TRANSACTION_PARTNER
@@ -67,19 +67,19 @@ const (
 	TypeTransactionPartnerOther
 )
 
-// MESSAGE_ORIGIN
+// STORY_AREA_TYPE
 const (
-	TypeMessageOriginUser = iota
-	TypeMessageOriginHiddenUser
-	TypeMessageOriginChat
-	TypeMessageOriginChannel
+	TypeStoryAreaTypeLocation = iota
+	TypeStoryAreaTypeSuggestedReaction
+	TypeStoryAreaTypeLink
+	TypeStoryAreaTypeWeather
+	TypeStoryAreaTypeUniqueGift
 )
 
-// CHAT_BOOST_SOURCE
+// MAYBE_INACCESSIBLE_MESSAGE
 const (
-	TypeChatBoostSourcePremium = iota
-	TypeChatBoostSourceGiftCode
-	TypeChatBoostSourceGiveaway
+	TypeMessage = iota
+	TypeInaccessibleMessage
 )
 
 // OWNED_GIFT
@@ -116,6 +116,7 @@ const (
 	TypeOwnedGifts
 	TypePoll
 	TypePreparedInlineMessage
+	TypePreparedKeyboardButton
 	TypeSentWebAppMessage
 	TypeStarAmount
 	TypeStarTransactions
