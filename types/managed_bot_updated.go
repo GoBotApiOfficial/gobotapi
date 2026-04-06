@@ -2,7 +2,7 @@
 
 package types
 
-// ManagedBotUpdated This object contains information about the creation or token update of a bot that is managed by the current bot.
+// ManagedBotUpdated This object contains information about the creation, token update, or owner update of a bot that is managed by the current bot.
 type ManagedBotUpdated struct {
 	Bot  User `json:"bot"`
 	User User `json:"user"`

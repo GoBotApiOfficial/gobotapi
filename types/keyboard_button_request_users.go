@@ -4,7 +4,7 @@ package types
 
 // KeyboardButtonRequestUsers This object defines the criteria used to request suitable users
 // Information about the selected users will be shared with the bot when the corresponding button is pressed
-// More about requesting users В»
+// More about requesting users »
 type KeyboardButtonRequestUsers struct {
 	MaxQuantity     int   `json:"max_quantity,omitempty"`
 	RequestID       int64 `json:"request_id"`

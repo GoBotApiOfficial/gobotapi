@@ -22,6 +22,10 @@ func HtmlTag(tag string) string {
 		return "blockquote"
 	case "expandable_blockquote":
 		return "expandable_blockquote"
+	case "custom_emoji":
+		return "tg-emoji"
+	case "date_time":
+		return "tg-time"
 	default:
 		return ""
 	}

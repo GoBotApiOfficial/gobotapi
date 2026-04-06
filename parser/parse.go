@@ -29,6 +29,16 @@ func Parse(data string, entities []types.MessageEntity) string {
 		case "expandable_blockquote":
 			startTag = "<blockquote expandable>"
 			endTag = "</blockquote>"
+		case "tg-emoji":
+			startTag = fmt.Sprintf("<%s emoji-id=\"%s\">", name, entity.CustomEmojiID)
+			endTag = fmt.Sprintf("</%s>", name)
+		case "tg-time":
+			startTag = fmt.Sprintf("<%s unix=\"%d\"", name, entity.UnixTime)
+			if entity.DateTimeFormat != "" {
+				startTag = fmt.Sprintf("%s format=\"%s\"", startTag, entity.DateTimeFormat)
+			}
+			startTag += ">"
+			endTag = fmt.Sprintf("</%s>", name)
 		default:
 			startTag = fmt.Sprintf("<%s>", name)
 			endTag = fmt.Sprintf("</%s>", name)

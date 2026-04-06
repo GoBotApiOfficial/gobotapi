@@ -2,11 +2,15 @@
 
 package types
 
-// PAID_MEDIA
+// TRANSACTION_PARTNER
 const (
-	TypePaidMediaPreview = iota
-	TypePaidMediaPhoto
-	TypePaidMediaVideo
+	TypeTransactionPartnerUser = iota
+	TypeTransactionPartnerChat
+	TypeTransactionPartnerAffiliateProgram
+	TypeTransactionPartnerFragment
+	TypeTransactionPartnerTelegramAds
+	TypeTransactionPartnerTelegramApi
+	TypeTransactionPartnerOther
 )
 
 // REVENUE_WITHDRAWAL_STATE
@@ -14,6 +18,32 @@ const (
 	TypeRevenueWithdrawalStatePending = iota
 	TypeRevenueWithdrawalStateSucceeded
 	TypeRevenueWithdrawalStateFailed
+)
+
+// STORY_AREA_TYPE
+const (
+	TypeStoryAreaTypeLocation = iota
+	TypeStoryAreaTypeSuggestedReaction
+	TypeStoryAreaTypeLink
+	TypeStoryAreaTypeWeather
+	TypeStoryAreaTypeUniqueGift
+)
+
+// CHAT_MEMBER
+const (
+	TypeChatMemberOwner = iota
+	TypeChatMemberAdministrator
+	TypeChatMemberMember
+	TypeChatMemberRestricted
+	TypeChatMemberLeft
+	TypeChatMemberBanned
+)
+
+// CHAT_BOOST_SOURCE
+const (
+	TypeChatBoostSourcePremium = iota
+	TypeChatBoostSourceGiftCode
+	TypeChatBoostSourceGiveaway
 )
 
 // MESSAGE_ORIGIN
@@ -39,43 +69,6 @@ const (
 	TypeBackgroundTypeChatTheme
 )
 
-// CHAT_MEMBER
-const (
-	TypeChatMemberOwner = iota
-	TypeChatMemberAdministrator
-	TypeChatMemberMember
-	TypeChatMemberRestricted
-	TypeChatMemberLeft
-	TypeChatMemberBanned
-)
-
-// CHAT_BOOST_SOURCE
-const (
-	TypeChatBoostSourcePremium = iota
-	TypeChatBoostSourceGiftCode
-	TypeChatBoostSourceGiveaway
-)
-
-// TRANSACTION_PARTNER
-const (
-	TypeTransactionPartnerUser = iota
-	TypeTransactionPartnerChat
-	TypeTransactionPartnerAffiliateProgram
-	TypeTransactionPartnerFragment
-	TypeTransactionPartnerTelegramAds
-	TypeTransactionPartnerTelegramApi
-	TypeTransactionPartnerOther
-)
-
-// STORY_AREA_TYPE
-const (
-	TypeStoryAreaTypeLocation = iota
-	TypeStoryAreaTypeSuggestedReaction
-	TypeStoryAreaTypeLink
-	TypeStoryAreaTypeWeather
-	TypeStoryAreaTypeUniqueGift
-)
-
 // MAYBE_INACCESSIBLE_MESSAGE
 const (
 	TypeMessage = iota
@@ -86,6 +79,13 @@ const (
 const (
 	TypeOwnedGiftRegular = iota
 	TypeOwnedGiftUnique
+)
+
+// PAID_MEDIA
+const (
+	TypePaidMediaPreview = iota
+	TypePaidMediaPhoto
+	TypePaidMediaVideo
 )
 
 // RETURN_TYPES
