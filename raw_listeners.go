@@ -67,6 +67,13 @@ func (ctx *BasicClient) OnDeletedBusinessMessages(handler func(client *Client, u
 	ctx.handlers["deleted_business_messages"] = append(ctx.handlers["deleted_business_messages"], handler)
 }
 
+func (ctx *BasicClient) OnGuestMessage(handler func(client *Client, update types.Message)) {
+	if ctx.handlers == nil {
+		ctx.handlers = make(map[string][]any)
+	}
+	ctx.handlers["guest_message"] = append(ctx.handlers["guest_message"], handler)
+}
+
 func (ctx *BasicClient) OnMessageReaction(handler func(client *Client, update types.MessageReactionUpdated)) {
 	if ctx.handlers == nil {
 		ctx.handlers = make(map[string][]any)

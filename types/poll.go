@@ -8,13 +8,17 @@ type Poll struct {
 	AllowsRevoting        bool            `json:"allows_revoting"`
 	CloseDate             int64           `json:"close_date,omitempty"`
 	CorrectOptionIDs      []int64         `json:"correct_option_ids,omitempty"`
+	CountryCodes          []string        `json:"country_codes,omitempty"`
 	Description           string          `json:"description,omitempty"`
 	DescriptionEntities   []MessageEntity `json:"description_entities,omitempty"`
 	Explanation           string          `json:"explanation,omitempty"`
 	ExplanationEntities   []MessageEntity `json:"explanation_entities,omitempty"`
+	ExplanationMedia      *PollMedia      `json:"explanation_media,omitempty"`
 	ID                    string          `json:"id"`
 	IsAnonymous           bool            `json:"is_anonymous"`
 	IsClosed              bool            `json:"is_closed"`
+	Media                 *PollMedia      `json:"media,omitempty"`
+	MembersOnly           bool            `json:"members_only"`
 	OpenPeriod            int             `json:"open_period,omitempty"`
 	Options               []PollOption    `json:"options,omitempty"`
 	Question              string          `json:"question"`

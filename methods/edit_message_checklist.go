@@ -4,6 +4,7 @@ package methods
 
 import (
 	"encoding/json"
+	"fmt"
 	"github.com/GoBotApiOfficial/gobotapi/types"
 	rawTypes "github.com/GoBotApiOfficial/gobotapi/types/raw"
 	"reflect"
@@ -13,7 +14,7 @@ import (
 // On success, the edited Message is returned.
 type EditMessageChecklist struct {
 	BusinessConnectionID string                      `json:"business_connection_id"`
-	ChatID               int64                       `json:"chat_id"`
+	ChatID               any                         `json:"chat_id"`
 	Checklist            types.InputChecklist        `json:"checklist"`
 	MessageID            int64                       `json:"message_id"`
 	ReplyMarkup          *types.InlineKeyboardMarkup `json:"reply_markup,omitempty"`
@@ -44,6 +45,14 @@ func (entity EditMessageChecklist) MarshalJSON() ([]byte, error) {
 	_ = nilCheck
 	if nilCheck(entity.ReplyMarkup) {
 		entity.ReplyMarkup = nil
+	}
+	if entity.ChatID != nil {
+		switch entity.ChatID.(type) {
+		case int, int64, string:
+			break
+		default:
+			return nil, fmt.Errorf("chat_id: unknown type: %T", entity.ChatID)
+		}
 	}
 	type x0 EditMessageChecklist
 	return json.Marshal((x0)(entity))

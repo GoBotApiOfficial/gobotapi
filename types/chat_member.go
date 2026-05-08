@@ -29,6 +29,7 @@ type ChatMember struct {
 	CanPostMessages         bool   `json:"can_post_messages"`
 	CanPostStories          bool   `json:"can_post_stories"`
 	CanPromoteMembers       bool   `json:"can_promote_members"`
+	CanReactToMessages      bool   `json:"can_react_to_messages"`
 	CanRestrictMembers      bool   `json:"can_restrict_members"`
 	CanSendAudios           bool   `json:"can_send_audios"`
 	CanSendDocuments        bool   `json:"can_send_documents"`

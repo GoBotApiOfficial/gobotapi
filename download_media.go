@@ -18,6 +18,9 @@ func (ctx *Client) DownloadMedia(message types.Message, filePath string, progres
 	if message.Document != nil {
 		return ctx.DownloadFile(message.Document.FileID, filePath, progress)
 	}
+	if message.LivePhoto != nil {
+		return ctx.DownloadFile(message.LivePhoto.FileID, filePath, progress)
+	}
 	if len(message.Photo) > 0 {
 		var bestQuality types.PhotoSize
 		for _, file := range message.Photo {

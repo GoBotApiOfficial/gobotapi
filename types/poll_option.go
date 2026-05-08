@@ -7,6 +7,7 @@ type PollOption struct {
 	AddedByChat  *Chat           `json:"added_by_chat,omitempty"`
 	AddedByUser  *User           `json:"added_by_user,omitempty"`
 	AdditionDate int64           `json:"addition_date,omitempty"`
+	Media        *PollMedia      `json:"media,omitempty"`
 	PersistentID string          `json:"persistent_id"`
 	Text         string          `json:"text"`
 	TextEntities []MessageEntity `json:"text_entities,omitempty"`

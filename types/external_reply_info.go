@@ -17,6 +17,7 @@ type ExternalReplyInfo struct {
 	HasMediaSpoiler    bool                `json:"has_media_spoiler,omitempty"`
 	Invoice            *Invoice            `json:"invoice,omitempty"`
 	LinkPreviewOptions *LinkPreviewOptions `json:"link_preview_options,omitempty"`
+	LivePhoto          *LivePhoto          `json:"live_photo,omitempty"`
 	Location           *Location           `json:"location,omitempty"`
 	MessageID          int64               `json:"message_id,omitempty"`
 	Origin             MessageOrigin       `json:"origin"`

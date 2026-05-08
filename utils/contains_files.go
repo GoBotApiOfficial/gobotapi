@@ -8,6 +8,7 @@ func ContainsFiles(message types.Message) bool {
 	return message.Animation != nil ||
 		message.Audio != nil ||
 		message.Document != nil ||
+		message.LivePhoto != nil ||
 		len(message.Photo) > 0 ||
 		message.Sticker != nil ||
 		message.Video != nil ||

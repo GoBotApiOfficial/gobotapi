@@ -4,24 +4,28 @@ package types
 
 // PaidMedia This object describes paid media
 // Currently, it can be one of
-//   - PaidMediaPreview
+//   - PaidMediaLivePhoto
 //   - PaidMediaPhoto
+//   - PaidMediaPreview
 //   - PaidMediaVideo
 type PaidMedia struct {
-	Duration int         `json:"duration"`
-	Height   int         `json:"height"`
-	Photo    []PhotoSize `json:"photo"`
-	Type     string      `json:"type"`
-	Video    Video       `json:"video"`
-	Width    int64       `json:"width"`
+	Duration  int         `json:"duration"`
+	Height    int         `json:"height"`
+	LivePhoto LivePhoto   `json:"live_photo"`
+	Photo     []PhotoSize `json:"photo"`
+	Type      string      `json:"type"`
+	Video     Video       `json:"video"`
+	Width     int64       `json:"width"`
 }
 
 func (x PaidMedia) Kind() int {
 	switch x.Type {
-	case "preview":
-		return TypePaidMediaPreview
+	case "live_photo":
+		return TypePaidMediaLivePhoto
 	case "photo":
 		return TypePaidMediaPhoto
+	case "preview":
+		return TypePaidMediaPreview
 	case "video":
 		return TypePaidMediaVideo
 	default:

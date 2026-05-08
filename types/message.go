@@ -48,6 +48,9 @@ type Message struct {
 	GiveawayCreated               *GiveawayCreated               `json:"giveaway_created,omitempty"`
 	GiveawayWinners               *GiveawayWinners               `json:"giveaway_winners,omitempty"`
 	GroupChatCreated              bool                           `json:"group_chat_created,omitempty"`
+	GuestBotCallerChat            *Chat                          `json:"guest_bot_caller_chat,omitempty"`
+	GuestBotCallerUser            *User                          `json:"guest_bot_caller_user,omitempty"`
+	GuestQueryID                  string                         `json:"guest_query_id,omitempty"`
 	HasMediaSpoiler               bool                           `json:"has_media_spoiler,omitempty"`
 	HasProtectedContent           bool                           `json:"has_protected_content,omitempty"`
 	Invoice                       *Invoice                       `json:"invoice,omitempty"`
@@ -57,6 +60,7 @@ type Message struct {
 	IsTopicMessage                bool                           `json:"is_topic_message,omitempty"`
 	LeftChatMember                *User                          `json:"left_chat_member,omitempty"`
 	LinkPreviewOptions            *LinkPreviewOptions            `json:"link_preview_options,omitempty"`
+	LivePhoto                     *LivePhoto                     `json:"live_photo,omitempty"`
 	Location                      *Location                      `json:"location,omitempty"`
 	ManagedBotCreated             *ManagedBotCreated             `json:"managed_bot_created,omitempty"`
 	MediaGroupID                  string                         `json:"media_group_id,omitempty"`

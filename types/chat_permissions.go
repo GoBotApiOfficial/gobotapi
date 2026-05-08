@@ -10,6 +10,7 @@ type ChatPermissions struct {
 	CanInviteUsers        bool `json:"can_invite_users,omitempty"`
 	CanManageTopics       bool `json:"can_manage_topics,omitempty"`
 	CanPinMessages        bool `json:"can_pin_messages,omitempty"`
+	CanReactToMessages    bool `json:"can_react_to_messages,omitempty"`
 	CanSendAudios         bool `json:"can_send_audios,omitempty"`
 	CanSendDocuments      bool `json:"can_send_documents,omitempty"`
 	CanSendMessages       bool `json:"can_send_messages,omitempty"`

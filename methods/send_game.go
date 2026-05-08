@@ -4,6 +4,7 @@ package methods
 
 import (
 	"encoding/json"
+	"fmt"
 	"github.com/GoBotApiOfficial/gobotapi/types"
 	rawTypes "github.com/GoBotApiOfficial/gobotapi/types/raw"
 	"reflect"
@@ -14,7 +15,7 @@ import (
 type SendGame struct {
 	AllowPaidBroadcast   bool                        `json:"allow_paid_broadcast,omitempty"`
 	BusinessConnectionID string                      `json:"business_connection_id,omitempty"`
-	ChatID               int64                       `json:"chat_id"`
+	ChatID               any                         `json:"chat_id"`
 	DisableNotification  bool                        `json:"disable_notification,omitempty"`
 	GameShortName        string                      `json:"game_short_name"`
 	MessageEffectID      string                      `json:"message_effect_id,omitempty"`
@@ -52,6 +53,14 @@ func (entity SendGame) MarshalJSON() ([]byte, error) {
 	}
 	if nilCheck(entity.ReplyMarkup) {
 		entity.ReplyMarkup = nil
+	}
+	if entity.ChatID != nil {
+		switch entity.ChatID.(type) {
+		case int, int64, string:
+			break
+		default:
+			return nil, fmt.Errorf("chat_id: unknown type: %T", entity.ChatID)
+		}
 	}
 	type x0 SendGame
 	return json.Marshal((x0)(entity))

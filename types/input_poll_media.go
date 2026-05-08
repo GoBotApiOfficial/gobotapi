@@ -2,15 +2,17 @@
 
 package types
 
-// InputMedia Represents the content of a media message to be sent
+// InputPollMedia Represents the content of a poll description or a quiz explanation to be sent
 // It should be one of
 //   - InputMediaAnimation
 //   - InputMediaAudio
 //   - InputMediaDocument
 //   - InputMediaLivePhoto
+//   - InputMediaLocation
 //   - InputMediaPhoto
+//   - InputMediaVenue
 //   - InputMediaVideo
-type InputMedia interface {
+type InputPollMedia interface {
 	SetAttachment(string)
 	SetAttachmentThumb(string)
 }

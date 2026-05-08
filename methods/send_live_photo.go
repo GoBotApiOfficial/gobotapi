@@ -10,9 +10,9 @@ import (
 	"reflect"
 )
 
-// SendPaidMedia Use this method to send paid media
+// SendLivePhoto Use this method to send live photos
 // On success, the sent Message is returned.
-type SendPaidMedia struct {
+type SendLivePhoto struct {
 	AllowPaidBroadcast      bool                           `json:"allow_paid_broadcast,omitempty"`
 	BusinessConnectionID    string                         `json:"business_connection_id,omitempty"`
 	Caption                 string                         `json:"caption,omitempty"`
@@ -20,43 +20,40 @@ type SendPaidMedia struct {
 	ChatID                  any                            `json:"chat_id"`
 	DirectMessagesTopicID   int64                          `json:"direct_messages_topic_id,omitempty"`
 	DisableNotification     bool                           `json:"disable_notification,omitempty"`
-	Media                   []types.InputPaidMedia         `json:"media,omitempty"`
+	HasSpoiler              bool                           `json:"has_spoiler,omitempty"`
+	LivePhoto               rawTypes.InputFile             `json:"live_photo,omitempty"`
+	MessageEffectID         string                         `json:"message_effect_id,omitempty"`
 	MessageThreadID         int64                          `json:"message_thread_id,omitempty"`
 	ParseMode               string                         `json:"parse_mode,omitempty"`
-	Payload                 string                         `json:"payload,omitempty"`
+	Photo                   rawTypes.InputFile             `json:"photo,omitempty"`
 	ProtectContent          bool                           `json:"protect_content,omitempty"`
 	ReplyMarkup             any                            `json:"reply_markup,omitempty"`
 	ReplyParameters         *types.ReplyParameters         `json:"reply_parameters,omitempty"`
 	ShowCaptionAboveMedia   bool                           `json:"show_caption_above_media,omitempty"`
-	StarCount               int                            `json:"star_count"`
 	SuggestedPostParameters *types.SuggestedPostParameters `json:"suggested_post_parameters,omitempty"`
 	Progress                rawTypes.ProgressCallable      `json:"-"`
 }
 
-func (entity *SendPaidMedia) ProgressCallable() rawTypes.ProgressCallable {
+func (entity *SendLivePhoto) ProgressCallable() rawTypes.ProgressCallable {
 	return entity.Progress
 }
 
-func (entity *SendPaidMedia) Files() map[string]rawTypes.InputFile {
+func (entity *SendLivePhoto) Files() map[string]rawTypes.InputFile {
 	files := make(map[string]rawTypes.InputFile)
-	for i, x0 := range entity.Media {
-		x1 := x0.(rawTypes.InputMediaFiles).Files()
-		for k, v := range x1 {
-			var attachName string
-			if k == "thumbnail" {
-				attachName = fmt.Sprintf("file-%d-thumbnail", i)
-				x0.SetAttachmentThumb(attachName)
-			} else {
-				attachName = fmt.Sprintf("file-%d", i)
-				x0.SetAttachment(attachName)
-			}
-			files[attachName] = v
-		}
+	switch entity.LivePhoto.(type) {
+	case types.InputBytes:
+		files["live_photo"] = entity.LivePhoto
+		entity.LivePhoto = nil
+	}
+	switch entity.Photo.(type) {
+	case types.InputBytes:
+		files["photo"] = entity.Photo
+		entity.Photo = nil
 	}
 	return files
 }
 
-func (entity SendPaidMedia) MarshalJSON() ([]byte, error) {
+func (entity SendLivePhoto) MarshalJSON() ([]byte, error) {
 	nilCheck := func(val any) bool {
 		if val == nil {
 			return true
@@ -80,14 +77,6 @@ func (entity SendPaidMedia) MarshalJSON() ([]byte, error) {
 	if nilCheck(entity.ReplyMarkup) {
 		entity.ReplyMarkup = nil
 	}
-	if entity.ChatID != nil {
-		switch entity.ChatID.(type) {
-		case int, int64, string:
-			break
-		default:
-			return nil, fmt.Errorf("chat_id: unknown type: %T", entity.ChatID)
-		}
-	}
 	if entity.ReplyMarkup != nil {
 		switch entity.ReplyMarkup.(type) {
 		case *types.InlineKeyboardMarkup, *types.ReplyKeyboardMarkup, *types.ReplyKeyboardRemove, *types.ForceReply:
@@ -96,15 +85,23 @@ func (entity SendPaidMedia) MarshalJSON() ([]byte, error) {
 			return nil, fmt.Errorf("reply_markup: unknown type: %T", entity.ReplyMarkup)
 		}
 	}
-	type x0 SendPaidMedia
+	if entity.ChatID != nil {
+		switch entity.ChatID.(type) {
+		case int, int64, string:
+			break
+		default:
+			return nil, fmt.Errorf("chat_id: unknown type: %T", entity.ChatID)
+		}
+	}
+	type x0 SendLivePhoto
 	return json.Marshal((x0)(entity))
 }
 
-func (SendPaidMedia) MethodName() string {
-	return "sendPaidMedia"
+func (SendLivePhoto) MethodName() string {
+	return "sendLivePhoto"
 }
 
-func (SendPaidMedia) ParseResult(response []byte) (*rawTypes.Result, error) {
+func (SendLivePhoto) ParseResult(response []byte) (*rawTypes.Result, error) {
 	var x1 struct {
 		Result types.Message `json:"result"`
 	}

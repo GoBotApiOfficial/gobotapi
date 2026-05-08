@@ -4,6 +4,7 @@ package types
 
 // InputPaidMedia This object describes the paid media to be sent
 // Currently, it can be one of
+//   - InputPaidMediaLivePhoto
 //   - InputPaidMediaPhoto
 //   - InputPaidMediaVideo
 type InputPaidMedia interface {

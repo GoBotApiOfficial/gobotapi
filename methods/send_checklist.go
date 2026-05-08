@@ -4,6 +4,7 @@ package methods
 
 import (
 	"encoding/json"
+	"fmt"
 	"github.com/GoBotApiOfficial/gobotapi/types"
 	rawTypes "github.com/GoBotApiOfficial/gobotapi/types/raw"
 	"reflect"
@@ -13,7 +14,7 @@ import (
 // On success, the sent Message is returned.
 type SendChecklist struct {
 	BusinessConnectionID string                      `json:"business_connection_id"`
-	ChatID               int64                       `json:"chat_id"`
+	ChatID               any                         `json:"chat_id"`
 	Checklist            types.InputChecklist        `json:"checklist"`
 	DisableNotification  bool                        `json:"disable_notification,omitempty"`
 	MessageEffectID      string                      `json:"message_effect_id,omitempty"`
@@ -50,6 +51,14 @@ func (entity SendChecklist) MarshalJSON() ([]byte, error) {
 	}
 	if nilCheck(entity.ReplyMarkup) {
 		entity.ReplyMarkup = nil
+	}
+	if entity.ChatID != nil {
+		switch entity.ChatID.(type) {
+		case int, int64, string:
+			break
+		default:
+			return nil, fmt.Errorf("chat_id: unknown type: %T", entity.ChatID)
+		}
 	}
 	type x0 SendChecklist
 	return json.Marshal((x0)(entity))

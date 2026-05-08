@@ -2,22 +2,12 @@
 
 package types
 
-// TRANSACTION_PARTNER
+// PAID_MEDIA
 const (
-	TypeTransactionPartnerUser = iota
-	TypeTransactionPartnerChat
-	TypeTransactionPartnerAffiliateProgram
-	TypeTransactionPartnerFragment
-	TypeTransactionPartnerTelegramAds
-	TypeTransactionPartnerTelegramApi
-	TypeTransactionPartnerOther
-)
-
-// REVENUE_WITHDRAWAL_STATE
-const (
-	TypeRevenueWithdrawalStatePending = iota
-	TypeRevenueWithdrawalStateSucceeded
-	TypeRevenueWithdrawalStateFailed
+	TypePaidMediaLivePhoto = iota
+	TypePaidMediaPhoto
+	TypePaidMediaPreview
+	TypePaidMediaVideo
 )
 
 // STORY_AREA_TYPE
@@ -27,6 +17,20 @@ const (
 	TypeStoryAreaTypeLink
 	TypeStoryAreaTypeWeather
 	TypeStoryAreaTypeUniqueGift
+)
+
+// BACKGROUND_FILL
+const (
+	TypeBackgroundFillSolid = iota
+	TypeBackgroundFillGradient
+	TypeBackgroundFillFreeformGradient
+)
+
+// REVENUE_WITHDRAWAL_STATE
+const (
+	TypeRevenueWithdrawalStatePending = iota
+	TypeRevenueWithdrawalStateSucceeded
+	TypeRevenueWithdrawalStateFailed
 )
 
 // CHAT_MEMBER
@@ -39,26 +43,21 @@ const (
 	TypeChatMemberBanned
 )
 
-// CHAT_BOOST_SOURCE
+// OWNED_GIFT
 const (
-	TypeChatBoostSourcePremium = iota
-	TypeChatBoostSourceGiftCode
-	TypeChatBoostSourceGiveaway
+	TypeOwnedGiftRegular = iota
+	TypeOwnedGiftUnique
 )
 
-// MESSAGE_ORIGIN
+// TRANSACTION_PARTNER
 const (
-	TypeMessageOriginUser = iota
-	TypeMessageOriginHiddenUser
-	TypeMessageOriginChat
-	TypeMessageOriginChannel
-)
-
-// BACKGROUND_FILL
-const (
-	TypeBackgroundFillSolid = iota
-	TypeBackgroundFillGradient
-	TypeBackgroundFillFreeformGradient
+	TypeTransactionPartnerUser = iota
+	TypeTransactionPartnerChat
+	TypeTransactionPartnerAffiliateProgram
+	TypeTransactionPartnerFragment
+	TypeTransactionPartnerTelegramAds
+	TypeTransactionPartnerTelegramApi
+	TypeTransactionPartnerOther
 )
 
 // BACKGROUND_TYPE
@@ -69,23 +68,25 @@ const (
 	TypeBackgroundTypeChatTheme
 )
 
+// MESSAGE_ORIGIN
+const (
+	TypeMessageOriginUser = iota
+	TypeMessageOriginHiddenUser
+	TypeMessageOriginChat
+	TypeMessageOriginChannel
+)
+
+// CHAT_BOOST_SOURCE
+const (
+	TypeChatBoostSourcePremium = iota
+	TypeChatBoostSourceGiftCode
+	TypeChatBoostSourceGiveaway
+)
+
 // MAYBE_INACCESSIBLE_MESSAGE
 const (
 	TypeMessage = iota
 	TypeInaccessibleMessage
-)
-
-// OWNED_GIFT
-const (
-	TypeOwnedGiftRegular = iota
-	TypeOwnedGiftUnique
-)
-
-// PAID_MEDIA
-const (
-	TypePaidMediaPreview = iota
-	TypePaidMediaPhoto
-	TypePaidMediaVideo
 )
 
 // RETURN_TYPES
@@ -98,6 +99,7 @@ const (
 	TypeArrayOfSticker
 	TypeArrayOfUpdate
 	TypeBoolean
+	TypeBotAccessSettings
 	TypeBotDescription
 	TypeBotName
 	TypeBotShortDescription
@@ -117,6 +119,7 @@ const (
 	TypePoll
 	TypePreparedInlineMessage
 	TypePreparedKeyboardButton
+	TypeSentGuestMessage
 	TypeSentWebAppMessage
 	TypeStarAmount
 	TypeStarTransactions

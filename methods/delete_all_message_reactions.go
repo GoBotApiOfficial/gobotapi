@@ -10,22 +10,24 @@ import (
 	"reflect"
 )
 
-// GetChatAdministrators Use this method to get a list of administrators in a chat
-// Returns an Array of ChatMember objects.
-type GetChatAdministrators struct {
-	ChatID     any  `json:"chat_id"`
-	ReturnBots bool `json:"return_bots,omitempty"`
+// DeleteAllMessageReactions Use this method to remove up to 10000 recent reactions in a group or a supergroup chat added by a given user or chat
+// The bot must have the 'can_delete_messages' administrator right in the chat
+// Returns True on success.
+type DeleteAllMessageReactions struct {
+	ActorChatID int64 `json:"actor_chat_id,omitempty"`
+	ChatID      any   `json:"chat_id"`
+	UserID      int64 `json:"user_id,omitempty"`
 }
 
-func (entity *GetChatAdministrators) ProgressCallable() rawTypes.ProgressCallable {
+func (entity *DeleteAllMessageReactions) ProgressCallable() rawTypes.ProgressCallable {
 	return nil
 }
 
-func (entity *GetChatAdministrators) Files() map[string]rawTypes.InputFile {
+func (entity *DeleteAllMessageReactions) Files() map[string]rawTypes.InputFile {
 	return map[string]rawTypes.InputFile{}
 }
 
-func (entity GetChatAdministrators) MarshalJSON() ([]byte, error) {
+func (entity DeleteAllMessageReactions) MarshalJSON() ([]byte, error) {
 	nilCheck := func(val any) bool {
 		if val == nil {
 			return true
@@ -48,24 +50,24 @@ func (entity GetChatAdministrators) MarshalJSON() ([]byte, error) {
 			return nil, fmt.Errorf("chat_id: unknown type: %T", entity.ChatID)
 		}
 	}
-	type x0 GetChatAdministrators
+	type x0 DeleteAllMessageReactions
 	return json.Marshal((x0)(entity))
 }
 
-func (GetChatAdministrators) MethodName() string {
-	return "getChatAdministrators"
+func (DeleteAllMessageReactions) MethodName() string {
+	return "deleteAllMessageReactions"
 }
 
-func (GetChatAdministrators) ParseResult(response []byte) (*rawTypes.Result, error) {
+func (DeleteAllMessageReactions) ParseResult(response []byte) (*rawTypes.Result, error) {
 	var x1 struct {
-		Result []types.ChatMember `json:"result"`
+		Result bool `json:"result"`
 	}
 	err := json.Unmarshal(response, &x1)
 	if err != nil {
 		return nil, err
 	}
 	result := rawTypes.Result{
-		Kind:   types.TypeArrayOfChatMember,
+		Kind:   types.TypeBoolean,
 		Result: x1.Result,
 	}
 	return &result, nil

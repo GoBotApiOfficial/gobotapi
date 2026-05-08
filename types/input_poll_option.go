@@ -2,9 +2,46 @@
 
 package types
 
+import (
+	"encoding/json"
+	"fmt"
+	"reflect"
+)
+
 // InputPollOption This object contains information about one answer option in a poll to be sent.
 type InputPollOption struct {
+	Media         any             `json:"media"`
 	Text          string          `json:"text"`
 	TextEntities  []MessageEntity `json:"text_entities,omitempty"`
 	TextParseMode string          `json:"text_parse_mode,omitempty"`
+}
+
+func (entity InputPollOption) MarshalJSON() ([]byte, error) {
+	nilCheck := func(val any) bool {
+		if val == nil {
+			return true
+		}
+		v := reflect.ValueOf(val)
+		k := v.Kind()
+		switch k {
+		case reflect.Chan, reflect.Func, reflect.Map, reflect.Pointer, reflect.UnsafePointer, reflect.Interface, reflect.Slice:
+			return v.IsNil()
+		default:
+			return false
+		}
+	}
+	_ = nilCheck
+	if nilCheck(entity.Media) {
+		entity.Media = nil
+	}
+	if entity.Media != nil {
+		switch entity.Media.(type) {
+		case InputMediaAnimation, InputMediaLivePhoto, InputMediaLocation, InputMediaPhoto, InputMediaSticker, InputMediaVenue, InputMediaVideo:
+			break
+		default:
+			return nil, fmt.Errorf("media: unknown type: %T", entity.Media)
+		}
+	}
+	type x0 InputPollOption
+	return json.Marshal((x0)(entity))
 }

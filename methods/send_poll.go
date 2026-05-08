@@ -13,44 +13,58 @@ import (
 // SendPoll Use this method to send a native poll
 // On success, the sent Message is returned.
 type SendPoll struct {
-	AllowAddingOptions     bool                    `json:"allow_adding_options,omitempty"`
-	AllowPaidBroadcast     bool                    `json:"allow_paid_broadcast,omitempty"`
-	AllowsMultipleAnswers  bool                    `json:"allows_multiple_answers,omitempty"`
-	AllowsRevoting         bool                    `json:"allows_revoting,omitempty"`
-	BusinessConnectionID   string                  `json:"business_connection_id,omitempty"`
-	ChatID                 any                     `json:"chat_id"`
-	CloseDate              int64                   `json:"close_date,omitempty"`
-	CorrectOptionIDs       []int64                 `json:"correct_option_ids,omitempty"`
-	Description            string                  `json:"description,omitempty"`
-	DescriptionEntities    []types.MessageEntity   `json:"description_entities,omitempty"`
-	DescriptionParseMode   string                  `json:"description_parse_mode,omitempty"`
-	DisableNotification    bool                    `json:"disable_notification,omitempty"`
-	Explanation            string                  `json:"explanation,omitempty"`
-	ExplanationEntities    []types.MessageEntity   `json:"explanation_entities,omitempty"`
-	ExplanationParseMode   string                  `json:"explanation_parse_mode,omitempty"`
-	HideResultsUntilCloses bool                    `json:"hide_results_until_closes,omitempty"`
-	IsAnonymous            bool                    `json:"is_anonymous,omitempty"`
-	IsClosed               bool                    `json:"is_closed,omitempty"`
-	MessageEffectID        string                  `json:"message_effect_id,omitempty"`
-	MessageThreadID        int64                   `json:"message_thread_id,omitempty"`
-	OpenPeriod             int                     `json:"open_period,omitempty"`
-	Options                []types.InputPollOption `json:"options,omitempty"`
-	ProtectContent         bool                    `json:"protect_content,omitempty"`
-	Question               string                  `json:"question"`
-	QuestionEntities       []types.MessageEntity   `json:"question_entities,omitempty"`
-	QuestionParseMode      string                  `json:"question_parse_mode,omitempty"`
-	ReplyMarkup            any                     `json:"reply_markup,omitempty"`
-	ReplyParameters        *types.ReplyParameters  `json:"reply_parameters,omitempty"`
-	ShuffleOptions         bool                    `json:"shuffle_options,omitempty"`
-	Type                   string                  `json:"type,omitempty"`
+	AllowAddingOptions     bool                      `json:"allow_adding_options,omitempty"`
+	AllowPaidBroadcast     bool                      `json:"allow_paid_broadcast,omitempty"`
+	AllowsMultipleAnswers  bool                      `json:"allows_multiple_answers,omitempty"`
+	AllowsRevoting         bool                      `json:"allows_revoting,omitempty"`
+	BusinessConnectionID   string                    `json:"business_connection_id,omitempty"`
+	ChatID                 any                       `json:"chat_id"`
+	CloseDate              int64                     `json:"close_date,omitempty"`
+	CorrectOptionIDs       []int64                   `json:"correct_option_ids,omitempty"`
+	CountryCodes           []string                  `json:"country_codes,omitempty"`
+	Description            string                    `json:"description,omitempty"`
+	DescriptionEntities    []types.MessageEntity     `json:"description_entities,omitempty"`
+	DescriptionParseMode   string                    `json:"description_parse_mode,omitempty"`
+	DisableNotification    bool                      `json:"disable_notification,omitempty"`
+	Explanation            string                    `json:"explanation,omitempty"`
+	ExplanationEntities    []types.MessageEntity     `json:"explanation_entities,omitempty"`
+	ExplanationMedia       types.InputPollMedia      `json:"explanation_media"`
+	ExplanationParseMode   string                    `json:"explanation_parse_mode,omitempty"`
+	HideResultsUntilCloses bool                      `json:"hide_results_until_closes,omitempty"`
+	IsAnonymous            bool                      `json:"is_anonymous,omitempty"`
+	IsClosed               bool                      `json:"is_closed,omitempty"`
+	Media                  types.InputPollMedia      `json:"media"`
+	MembersOnly            bool                      `json:"members_only,omitempty"`
+	MessageEffectID        string                    `json:"message_effect_id,omitempty"`
+	MessageThreadID        int64                     `json:"message_thread_id,omitempty"`
+	OpenPeriod             int                       `json:"open_period,omitempty"`
+	Options                []types.InputPollOption   `json:"options,omitempty"`
+	ProtectContent         bool                      `json:"protect_content,omitempty"`
+	Question               string                    `json:"question"`
+	QuestionEntities       []types.MessageEntity     `json:"question_entities,omitempty"`
+	QuestionParseMode      string                    `json:"question_parse_mode,omitempty"`
+	ReplyMarkup            any                       `json:"reply_markup,omitempty"`
+	ReplyParameters        *types.ReplyParameters    `json:"reply_parameters,omitempty"`
+	ShuffleOptions         bool                      `json:"shuffle_options,omitempty"`
+	Type                   string                    `json:"type,omitempty"`
+	Progress               rawTypes.ProgressCallable `json:"-"`
 }
 
 func (entity *SendPoll) ProgressCallable() rawTypes.ProgressCallable {
-	return nil
+	return entity.Progress
 }
 
 func (entity *SendPoll) Files() map[string]rawTypes.InputFile {
-	return map[string]rawTypes.InputFile{}
+	files := make(map[string]rawTypes.InputFile)
+	for k, v := range entity.Media.(rawTypes.InputMediaFiles).Files() {
+		files[k] = v
+		if k == "thumbnail" {
+			entity.Media.SetAttachmentThumb(k)
+		} else {
+			entity.Media.SetAttachment(k)
+		}
+	}
+	return files
 }
 
 func (entity SendPoll) MarshalJSON() ([]byte, error) {
@@ -68,6 +82,12 @@ func (entity SendPoll) MarshalJSON() ([]byte, error) {
 		}
 	}
 	_ = nilCheck
+	if nilCheck(entity.ExplanationMedia) {
+		entity.ExplanationMedia = nil
+	}
+	if nilCheck(entity.Media) {
+		entity.Media = nil
+	}
 	if nilCheck(entity.ReplyParameters) {
 		entity.ReplyParameters = nil
 	}

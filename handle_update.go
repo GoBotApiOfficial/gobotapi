@@ -71,6 +71,13 @@ func (ctx *BasicClient) handleUpdate(user *types.User, token string, update type
 			}, x0)
 		}
 	}
+	if update.GuestMessage != nil {
+		for _, x0 := range ctx.handlers["guest_message"] {
+			ctx.concurrencyManager.Enqueue(func(x ...any) {
+				x[0].(func(*Client, types.Message))(client, *update.GuestMessage)
+			}, x0)
+		}
+	}
 	if update.MessageReaction != nil {
 		for _, x0 := range ctx.handlers["message_reaction"] {
 			ctx.concurrencyManager.Enqueue(func(x ...any) {

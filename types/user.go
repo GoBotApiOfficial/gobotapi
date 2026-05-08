@@ -18,6 +18,7 @@ type User struct {
 	IsPremium                 bool   `json:"is_premium,omitempty"`
 	LanguageCode              string `json:"language_code,omitempty"`
 	LastName                  string `json:"last_name,omitempty"`
+	SupportsGuestQueries      bool   `json:"supports_guest_queries,omitempty"`
 	SupportsInlineQueries     bool   `json:"supports_inline_queries,omitempty"`
 	Username                  string `json:"username,omitempty"`
 }

@@ -2,7 +2,7 @@
 
 package types
 
-// Update Represents an incoming update.At most one of the optional parameters can be present in any given update.
+// Update Represents an incoming update.At most one of the optional fields can be present in any given update.
 type Update struct {
 	BusinessConnection      *BusinessConnection          `json:"business_connection,omitempty"`
 	BusinessMessage         *Message                     `json:"business_message,omitempty"`
@@ -16,6 +16,7 @@ type Update struct {
 	EditedBusinessMessage   *Message                     `json:"edited_business_message,omitempty"`
 	EditedChannelPost       *Message                     `json:"edited_channel_post,omitempty"`
 	EditedMessage           *Message                     `json:"edited_message,omitempty"`
+	GuestMessage            *Message                     `json:"guest_message,omitempty"`
 	InlineQuery             *InlineQuery                 `json:"inline_query,omitempty"`
 	ManagedBot              *ManagedBotUpdated           `json:"managed_bot,omitempty"`
 	Message                 *Message                     `json:"message,omitempty"`
