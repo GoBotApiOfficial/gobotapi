@@ -4,7 +4,6 @@ package types
 
 import (
 	"encoding/json"
-	"fmt"
 	rawTypes "github.com/GoBotApiOfficial/gobotapi/types/raw"
 )
 
@@ -20,8 +19,7 @@ func (entity *InputMediaLocation) Files() map[string]rawTypes.InputFile {
 	return files
 }
 
-func (entity *InputMediaLocation) SetAttachment(attach string) {
-	entity.Media = InputURL(fmt.Sprintf("attach://%s", attach))
+func (entity *InputMediaLocation) SetAttachment(_ string) {
 }
 
 func (entity *InputMediaLocation) SetAttachmentThumb(_ string) {
