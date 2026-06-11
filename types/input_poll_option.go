@@ -36,7 +36,7 @@ func (entity InputPollOption) MarshalJSON() ([]byte, error) {
 	}
 	if entity.Media != nil {
 		switch entity.Media.(type) {
-		case InputMediaAnimation, InputMediaLivePhoto, InputMediaLocation, InputMediaPhoto, InputMediaSticker, InputMediaVenue, InputMediaVideo:
+		case InputMediaAnimation, InputMediaLink, InputMediaLivePhoto, InputMediaLocation, InputMediaPhoto, InputMediaSticker, InputMediaVenue, InputMediaVideo:
 			break
 		default:
 			return nil, fmt.Errorf("media: unknown type: %T", entity.Media)

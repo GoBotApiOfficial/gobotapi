@@ -89,6 +89,7 @@ type Message struct {
 	ReplyToMessage                *Message                       `json:"reply_to_message,omitempty"`
 	ReplyToPollOptionID           string                         `json:"reply_to_poll_option_id,omitempty"`
 	ReplyToStory                  *Story                         `json:"reply_to_story,omitempty"`
+	RichMessage                   *RichMessage                   `json:"rich_message,omitempty"`
 	SenderBoostCount              int                            `json:"sender_boost_count,omitempty"`
 	SenderBusinessBot             *User                          `json:"sender_business_bot,omitempty"`
 	SenderChat                    *Chat                          `json:"sender_chat,omitempty"`

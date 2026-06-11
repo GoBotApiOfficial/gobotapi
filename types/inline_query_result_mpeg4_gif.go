@@ -63,7 +63,7 @@ func (entity InlineQueryResultMpeg4Gif) MarshalJSON() ([]byte, error) {
 	}
 	if entity.InputMessageContent != nil {
 		switch entity.InputMessageContent.(type) {
-		case InputTextMessageContent, InputLocationMessageContent, InputVenueMessageContent, InputContactMessageContent, InputInvoiceMessageContent:
+		case InputTextMessageContent, InputRichMessageContent, InputLocationMessageContent, InputVenueMessageContent, InputContactMessageContent, InputInvoiceMessageContent:
 			break
 		default:
 			return nil, fmt.Errorf("input_message_content: unknown type: %T", entity.InputMessageContent)

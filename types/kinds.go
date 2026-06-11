@@ -2,6 +2,25 @@
 
 package types
 
+// PAID_MEDIA
+const (
+	TypePaidMediaLivePhoto = iota
+	TypePaidMediaPhoto
+	TypePaidMediaPreview
+	TypePaidMediaVideo
+)
+
+// TRANSACTION_PARTNER
+const (
+	TypeTransactionPartnerUser = iota
+	TypeTransactionPartnerChat
+	TypeTransactionPartnerAffiliateProgram
+	TypeTransactionPartnerFragment
+	TypeTransactionPartnerTelegramAds
+	TypeTransactionPartnerTelegramApi
+	TypeTransactionPartnerOther
+)
+
 // REVENUE_WITHDRAWAL_STATE
 const (
 	TypeRevenueWithdrawalStatePending = iota
@@ -19,39 +38,23 @@ const (
 	TypeChatMemberBanned
 )
 
-// OWNED_GIFT
-const (
-	TypeOwnedGiftRegular = iota
-	TypeOwnedGiftUnique
-)
-
-// CHAT_BOOST_SOURCE
-const (
-	TypeChatBoostSourcePremium = iota
-	TypeChatBoostSourceGiftCode
-	TypeChatBoostSourceGiveaway
-)
-
-// BACKGROUND_TYPE
-const (
-	TypeBackgroundTypeFill = iota
-	TypeBackgroundTypeWallpaper
-	TypeBackgroundTypePattern
-	TypeBackgroundTypeChatTheme
-)
-
 // MAYBE_INACCESSIBLE_MESSAGE
 const (
 	TypeMessage = iota
 	TypeInaccessibleMessage
 )
 
-// MESSAGE_ORIGIN
+// BACKGROUND_FILL
 const (
-	TypeMessageOriginUser = iota
-	TypeMessageOriginHiddenUser
-	TypeMessageOriginChat
-	TypeMessageOriginChannel
+	TypeBackgroundFillSolid = iota
+	TypeBackgroundFillGradient
+	TypeBackgroundFillFreeformGradient
+)
+
+// OWNED_GIFT
+const (
+	TypeOwnedGiftRegular = iota
+	TypeOwnedGiftUnique
 )
 
 // STORY_AREA_TYPE
@@ -63,30 +66,81 @@ const (
 	TypeStoryAreaTypeUniqueGift
 )
 
-// TRANSACTION_PARTNER
+// MESSAGE_ORIGIN
 const (
-	TypeTransactionPartnerUser = iota
-	TypeTransactionPartnerChat
-	TypeTransactionPartnerAffiliateProgram
-	TypeTransactionPartnerFragment
-	TypeTransactionPartnerTelegramAds
-	TypeTransactionPartnerTelegramApi
-	TypeTransactionPartnerOther
+	TypeMessageOriginUser = iota
+	TypeMessageOriginHiddenUser
+	TypeMessageOriginChat
+	TypeMessageOriginChannel
 )
 
-// PAID_MEDIA
+// RICH_TEXT
 const (
-	TypePaidMediaLivePhoto = iota
-	TypePaidMediaPhoto
-	TypePaidMediaPreview
-	TypePaidMediaVideo
+	TypeRichTextBold = iota
+	TypeRichTextItalic
+	TypeRichTextUnderline
+	TypeRichTextStrikethrough
+	TypeRichTextSpoiler
+	TypeRichTextDateTime
+	TypeRichTextTextMention
+	TypeRichTextSubscript
+	TypeRichTextSuperscript
+	TypeRichTextMarked
+	TypeRichTextCode
+	TypeRichTextCustomEmoji
+	TypeRichTextMathematicalExpression
+	TypeRichTextUrl
+	TypeRichTextEmailAddress
+	TypeRichTextPhoneNumber
+	TypeRichTextBankCardNumber
+	TypeRichTextMention
+	TypeRichTextHashtag
+	TypeRichTextCashtag
+	TypeRichTextBotCommand
+	TypeRichTextAnchor
+	TypeRichTextAnchorLink
+	TypeRichTextReference
+	TypeRichTextReferenceLink
 )
 
-// BACKGROUND_FILL
+// CHAT_BOOST_SOURCE
 const (
-	TypeBackgroundFillSolid = iota
-	TypeBackgroundFillGradient
-	TypeBackgroundFillFreeformGradient
+	TypeChatBoostSourcePremium = iota
+	TypeChatBoostSourceGiftCode
+	TypeChatBoostSourceGiveaway
+)
+
+// RICH_BLOCK
+const (
+	TypeRichBlockParagraph = iota
+	TypeRichBlockSectionHeading
+	TypeRichBlockPreformatted
+	TypeRichBlockFooter
+	TypeRichBlockDivider
+	TypeRichBlockMathematicalExpression
+	TypeRichBlockAnchor
+	TypeRichBlockList
+	TypeRichBlockBlockQuotation
+	TypeRichBlockPullQuotation
+	TypeRichBlockCollage
+	TypeRichBlockSlideshow
+	TypeRichBlockTable
+	TypeRichBlockDetails
+	TypeRichBlockMap
+	TypeRichBlockAnimation
+	TypeRichBlockAudio
+	TypeRichBlockPhoto
+	TypeRichBlockVideo
+	TypeRichBlockVoiceNote
+	TypeRichBlockThinking
+)
+
+// BACKGROUND_TYPE
+const (
+	TypeBackgroundTypeFill = iota
+	TypeBackgroundTypeWallpaper
+	TypeBackgroundTypePattern
+	TypeBackgroundTypeChatTheme
 )
 
 // RETURN_TYPES

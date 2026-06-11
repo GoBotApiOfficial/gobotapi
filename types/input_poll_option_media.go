@@ -5,6 +5,7 @@ package types
 // InputPollOptionMedia Represents the content of a poll option to be sent
 // It should be one of
 //   - InputMediaAnimation
+//   - InputMediaLink
 //   - InputMediaLivePhoto
 //   - InputMediaLocation
 //   - InputMediaPhoto

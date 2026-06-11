@@ -10,54 +10,33 @@ import (
 	"reflect"
 )
 
-// SendAudio Use this method to send audio files, if you want Telegram clients to display them in the music player
-// Your audio must be in the .MP3 or .M4A format
-// On success, the sent Message is returned
-// Bots can currently send audio files of up to 50 MB in size, this limit may be changed in the future.
-// For sending voice messages, use the sendVoice method instead.
-type SendAudio struct {
+// SendRichMessage Use this method to send rich messages
+// If the message contains a block with a media element, then the bot must have the right to send the media to the chat
+// On success, the sent Message is returned.
+type SendRichMessage struct {
 	AllowPaidBroadcast      bool                           `json:"allow_paid_broadcast,omitempty"`
-	Audio                   rawTypes.InputFile             `json:"audio,omitempty"`
 	BusinessConnectionID    string                         `json:"business_connection_id,omitempty"`
-	Caption                 string                         `json:"caption,omitempty"`
-	CaptionEntities         []types.MessageEntity          `json:"caption_entities,omitempty"`
 	ChatID                  any                            `json:"chat_id"`
 	DirectMessagesTopicID   int64                          `json:"direct_messages_topic_id,omitempty"`
 	DisableNotification     bool                           `json:"disable_notification,omitempty"`
-	Duration                int                            `json:"duration,omitempty"`
 	MessageEffectID         string                         `json:"message_effect_id,omitempty"`
 	MessageThreadID         int64                          `json:"message_thread_id,omitempty"`
-	ParseMode               string                         `json:"parse_mode,omitempty"`
-	Performer               string                         `json:"performer,omitempty"`
 	ProtectContent          bool                           `json:"protect_content,omitempty"`
 	ReplyMarkup             any                            `json:"reply_markup,omitempty"`
 	ReplyParameters         *types.ReplyParameters         `json:"reply_parameters,omitempty"`
+	RichMessage             types.InputRichMessage         `json:"rich_message"`
 	SuggestedPostParameters *types.SuggestedPostParameters `json:"suggested_post_parameters,omitempty"`
-	Thumbnail               rawTypes.InputFile             `json:"thumbnail,omitempty"`
-	Title                   string                         `json:"title,omitempty"`
-	Progress                rawTypes.ProgressCallable      `json:"-"`
 }
 
-func (entity *SendAudio) ProgressCallable() rawTypes.ProgressCallable {
-	return entity.Progress
+func (entity *SendRichMessage) ProgressCallable() rawTypes.ProgressCallable {
+	return nil
 }
 
-func (entity *SendAudio) Files() map[string]rawTypes.InputFile {
-	files := make(map[string]rawTypes.InputFile)
-	switch entity.Audio.(type) {
-	case types.InputBytes:
-		files["audio"] = entity.Audio
-		entity.Audio = nil
-	}
-	switch entity.Thumbnail.(type) {
-	case types.InputBytes:
-		files["thumbnail"] = entity.Thumbnail
-		entity.Thumbnail = types.InputURL("attach://thumbnail")
-	}
-	return files
+func (entity *SendRichMessage) Files() map[string]rawTypes.InputFile {
+	return map[string]rawTypes.InputFile{}
 }
 
-func (entity SendAudio) MarshalJSON() ([]byte, error) {
+func (entity SendRichMessage) MarshalJSON() ([]byte, error) {
 	nilCheck := func(val any) bool {
 		if val == nil {
 			return true
@@ -72,9 +51,6 @@ func (entity SendAudio) MarshalJSON() ([]byte, error) {
 		}
 	}
 	_ = nilCheck
-	if nilCheck(entity.Thumbnail) {
-		entity.Thumbnail = nil
-	}
 	if nilCheck(entity.SuggestedPostParameters) {
 		entity.SuggestedPostParameters = nil
 	}
@@ -100,15 +76,15 @@ func (entity SendAudio) MarshalJSON() ([]byte, error) {
 			return nil, fmt.Errorf("reply_markup: unknown type: %T", entity.ReplyMarkup)
 		}
 	}
-	type x0 SendAudio
+	type x0 SendRichMessage
 	return json.Marshal((x0)(entity))
 }
 
-func (SendAudio) MethodName() string {
-	return "sendAudio"
+func (SendRichMessage) MethodName() string {
+	return "sendRichMessage"
 }
 
-func (SendAudio) ParseResult(response []byte) (*rawTypes.Result, error) {
+func (SendRichMessage) ParseResult(response []byte) (*rawTypes.Result, error) {
 	var x1 struct {
 		Result types.Message `json:"result"`
 	}

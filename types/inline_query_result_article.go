@@ -45,7 +45,7 @@ func (entity InlineQueryResultArticle) MarshalJSON() ([]byte, error) {
 		ThumbnailHeight:     entity.ThumbnailHeight,
 	}
 	switch entity.InputMessageContent.(type) {
-	case InputTextMessageContent, InputLocationMessageContent, InputVenueMessageContent, InputContactMessageContent, InputInvoiceMessageContent:
+	case InputTextMessageContent, InputRichMessageContent, InputLocationMessageContent, InputVenueMessageContent, InputContactMessageContent, InputInvoiceMessageContent:
 		break
 	default:
 		return nil, fmt.Errorf("input_message_content: unknown type: %T", entity.InputMessageContent)

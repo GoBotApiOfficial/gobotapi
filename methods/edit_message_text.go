@@ -10,7 +10,7 @@ import (
 	"reflect"
 )
 
-// EditMessageText Use this method to edit text and game messages
+// EditMessageText Use this method to edit text, rich and game messages
 // On success, if the edited message is not an inline message, the edited Message is returned, otherwise True is returned
 // Note that business messages that were not sent by the bot and do not contain an inline keyboard can only be edited within 48 hours from the time they were sent.
 type EditMessageText struct {
@@ -22,7 +22,8 @@ type EditMessageText struct {
 	MessageID            int64                       `json:"message_id,omitempty"`
 	ParseMode            string                      `json:"parse_mode,omitempty"`
 	ReplyMarkup          *types.InlineKeyboardMarkup `json:"reply_markup,omitempty"`
-	Text                 string                      `json:"text"`
+	RichMessage          *types.InputRichMessage     `json:"rich_message,omitempty"`
+	Text                 string                      `json:"text,omitempty"`
 }
 
 func (entity *EditMessageText) ProgressCallable() rawTypes.ProgressCallable {
@@ -53,6 +54,9 @@ func (entity EditMessageText) MarshalJSON() ([]byte, error) {
 	}
 	if nilCheck(entity.LinkPreviewOptions) {
 		entity.LinkPreviewOptions = nil
+	}
+	if nilCheck(entity.RichMessage) {
+		entity.RichMessage = nil
 	}
 	if nilCheck(entity.ReplyMarkup) {
 		entity.ReplyMarkup = nil
