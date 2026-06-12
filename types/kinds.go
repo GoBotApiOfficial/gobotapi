@@ -2,6 +2,44 @@
 
 package types
 
+// BACKGROUND_FILL
+const (
+	TypeBackgroundFillSolid = iota
+	TypeBackgroundFillGradient
+	TypeBackgroundFillFreeformGradient
+)
+
+// BACKGROUND_TYPE
+const (
+	TypeBackgroundTypeFill = iota
+	TypeBackgroundTypeWallpaper
+	TypeBackgroundTypePattern
+	TypeBackgroundTypeChatTheme
+)
+
+// CHAT_BOOST_SOURCE
+const (
+	TypeChatBoostSourcePremium = iota
+	TypeChatBoostSourceGiftCode
+	TypeChatBoostSourceGiveaway
+)
+
+// CHAT_MEMBER
+const (
+	TypeChatMemberOwner = iota
+	TypeChatMemberAdministrator
+	TypeChatMemberMember
+	TypeChatMemberRestricted
+	TypeChatMemberLeft
+	TypeChatMemberBanned
+)
+
+// MAYBE_INACCESSIBLE_MESSAGE
+const (
+	TypeMessage = iota
+	TypeInaccessibleMessage
+)
+
 // MESSAGE_ORIGIN
 const (
 	TypeMessageOriginUser = iota
@@ -10,47 +48,18 @@ const (
 	TypeMessageOriginChannel
 )
 
+// OWNED_GIFT
+const (
+	TypeOwnedGiftRegular = iota
+	TypeOwnedGiftUnique
+)
+
 // PAID_MEDIA
 const (
 	TypePaidMediaLivePhoto = iota
 	TypePaidMediaPhoto
 	TypePaidMediaPreview
 	TypePaidMediaVideo
-)
-
-// RICH_TEXT
-const (
-	TypeRichTextBold = iota
-	TypeRichTextItalic
-	TypeRichTextUnderline
-	TypeRichTextStrikethrough
-	TypeRichTextSpoiler
-	TypeRichTextDateTime
-	TypeRichTextTextMention
-	TypeRichTextSubscript
-	TypeRichTextSuperscript
-	TypeRichTextMarked
-	TypeRichTextCode
-	TypeRichTextCustomEmoji
-	TypeRichTextMathematicalExpression
-	TypeRichTextUrl
-	TypeRichTextEmailAddress
-	TypeRichTextPhoneNumber
-	TypeRichTextBankCardNumber
-	TypeRichTextMention
-	TypeRichTextHashtag
-	TypeRichTextCashtag
-	TypeRichTextBotCommand
-	TypeRichTextAnchor
-	TypeRichTextAnchorLink
-	TypeRichTextReference
-	TypeRichTextReferenceLink
-)
-
-// MAYBE_INACCESSIBLE_MESSAGE
-const (
-	TypeMessage = iota
-	TypeInaccessibleMessage
 )
 
 // REVENUE_WITHDRAWAL_STATE
@@ -85,6 +94,35 @@ const (
 	TypeRichBlockThinking
 )
 
+// RICH_TEXT
+const (
+	TypeRichTextBold = iota
+	TypeRichTextItalic
+	TypeRichTextUnderline
+	TypeRichTextStrikethrough
+	TypeRichTextSpoiler
+	TypeRichTextDateTime
+	TypeRichTextTextMention
+	TypeRichTextSubscript
+	TypeRichTextSuperscript
+	TypeRichTextMarked
+	TypeRichTextCode
+	TypeRichTextCustomEmoji
+	TypeRichTextMathematicalExpression
+	TypeRichTextUrl
+	TypeRichTextEmailAddress
+	TypeRichTextPhoneNumber
+	TypeRichTextBankCardNumber
+	TypeRichTextMention
+	TypeRichTextHashtag
+	TypeRichTextCashtag
+	TypeRichTextBotCommand
+	TypeRichTextAnchor
+	TypeRichTextAnchorLink
+	TypeRichTextReference
+	TypeRichTextReferenceLink
+)
+
 // STORY_AREA_TYPE
 const (
 	TypeStoryAreaTypeLocation = iota
@@ -92,13 +130,6 @@ const (
 	TypeStoryAreaTypeLink
 	TypeStoryAreaTypeWeather
 	TypeStoryAreaTypeUniqueGift
-)
-
-// CHAT_BOOST_SOURCE
-const (
-	TypeChatBoostSourcePremium = iota
-	TypeChatBoostSourceGiftCode
-	TypeChatBoostSourceGiveaway
 )
 
 // TRANSACTION_PARTNER
@@ -110,37 +141,6 @@ const (
 	TypeTransactionPartnerTelegramAds
 	TypeTransactionPartnerTelegramApi
 	TypeTransactionPartnerOther
-)
-
-// BACKGROUND_FILL
-const (
-	TypeBackgroundFillSolid = iota
-	TypeBackgroundFillGradient
-	TypeBackgroundFillFreeformGradient
-)
-
-// BACKGROUND_TYPE
-const (
-	TypeBackgroundTypeFill = iota
-	TypeBackgroundTypeWallpaper
-	TypeBackgroundTypePattern
-	TypeBackgroundTypeChatTheme
-)
-
-// OWNED_GIFT
-const (
-	TypeOwnedGiftRegular = iota
-	TypeOwnedGiftUnique
-)
-
-// CHAT_MEMBER
-const (
-	TypeChatMemberOwner = iota
-	TypeChatMemberAdministrator
-	TypeChatMemberMember
-	TypeChatMemberRestricted
-	TypeChatMemberLeft
-	TypeChatMemberBanned
 )
 
 // RETURN_TYPES
