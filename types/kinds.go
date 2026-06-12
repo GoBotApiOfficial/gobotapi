@@ -2,76 +2,20 @@
 
 package types
 
-// PAID_MEDIA
-const (
-	TypePaidMediaLivePhoto = iota
-	TypePaidMediaPhoto
-	TypePaidMediaPreview
-	TypePaidMediaVideo
-)
-
-// TRANSACTION_PARTNER
-const (
-	TypeTransactionPartnerUser = iota
-	TypeTransactionPartnerChat
-	TypeTransactionPartnerAffiliateProgram
-	TypeTransactionPartnerFragment
-	TypeTransactionPartnerTelegramAds
-	TypeTransactionPartnerTelegramApi
-	TypeTransactionPartnerOther
-)
-
-// REVENUE_WITHDRAWAL_STATE
-const (
-	TypeRevenueWithdrawalStatePending = iota
-	TypeRevenueWithdrawalStateSucceeded
-	TypeRevenueWithdrawalStateFailed
-)
-
-// CHAT_MEMBER
-const (
-	TypeChatMemberOwner = iota
-	TypeChatMemberAdministrator
-	TypeChatMemberMember
-	TypeChatMemberRestricted
-	TypeChatMemberLeft
-	TypeChatMemberBanned
-)
-
-// MAYBE_INACCESSIBLE_MESSAGE
-const (
-	TypeMessage = iota
-	TypeInaccessibleMessage
-)
-
-// BACKGROUND_FILL
-const (
-	TypeBackgroundFillSolid = iota
-	TypeBackgroundFillGradient
-	TypeBackgroundFillFreeformGradient
-)
-
-// OWNED_GIFT
-const (
-	TypeOwnedGiftRegular = iota
-	TypeOwnedGiftUnique
-)
-
-// STORY_AREA_TYPE
-const (
-	TypeStoryAreaTypeLocation = iota
-	TypeStoryAreaTypeSuggestedReaction
-	TypeStoryAreaTypeLink
-	TypeStoryAreaTypeWeather
-	TypeStoryAreaTypeUniqueGift
-)
-
 // MESSAGE_ORIGIN
 const (
 	TypeMessageOriginUser = iota
 	TypeMessageOriginHiddenUser
 	TypeMessageOriginChat
 	TypeMessageOriginChannel
+)
+
+// PAID_MEDIA
+const (
+	TypePaidMediaLivePhoto = iota
+	TypePaidMediaPhoto
+	TypePaidMediaPreview
+	TypePaidMediaVideo
 )
 
 // RICH_TEXT
@@ -103,11 +47,17 @@ const (
 	TypeRichTextReferenceLink
 )
 
-// CHAT_BOOST_SOURCE
+// MAYBE_INACCESSIBLE_MESSAGE
 const (
-	TypeChatBoostSourcePremium = iota
-	TypeChatBoostSourceGiftCode
-	TypeChatBoostSourceGiveaway
+	TypeMessage = iota
+	TypeInaccessibleMessage
+)
+
+// REVENUE_WITHDRAWAL_STATE
+const (
+	TypeRevenueWithdrawalStatePending = iota
+	TypeRevenueWithdrawalStateSucceeded
+	TypeRevenueWithdrawalStateFailed
 )
 
 // RICH_BLOCK
@@ -135,12 +85,62 @@ const (
 	TypeRichBlockThinking
 )
 
+// STORY_AREA_TYPE
+const (
+	TypeStoryAreaTypeLocation = iota
+	TypeStoryAreaTypeSuggestedReaction
+	TypeStoryAreaTypeLink
+	TypeStoryAreaTypeWeather
+	TypeStoryAreaTypeUniqueGift
+)
+
+// CHAT_BOOST_SOURCE
+const (
+	TypeChatBoostSourcePremium = iota
+	TypeChatBoostSourceGiftCode
+	TypeChatBoostSourceGiveaway
+)
+
+// TRANSACTION_PARTNER
+const (
+	TypeTransactionPartnerUser = iota
+	TypeTransactionPartnerChat
+	TypeTransactionPartnerAffiliateProgram
+	TypeTransactionPartnerFragment
+	TypeTransactionPartnerTelegramAds
+	TypeTransactionPartnerTelegramApi
+	TypeTransactionPartnerOther
+)
+
+// BACKGROUND_FILL
+const (
+	TypeBackgroundFillSolid = iota
+	TypeBackgroundFillGradient
+	TypeBackgroundFillFreeformGradient
+)
+
 // BACKGROUND_TYPE
 const (
 	TypeBackgroundTypeFill = iota
 	TypeBackgroundTypeWallpaper
 	TypeBackgroundTypePattern
 	TypeBackgroundTypeChatTheme
+)
+
+// OWNED_GIFT
+const (
+	TypeOwnedGiftRegular = iota
+	TypeOwnedGiftUnique
+)
+
+// CHAT_MEMBER
+const (
+	TypeChatMemberOwner = iota
+	TypeChatMemberAdministrator
+	TypeChatMemberMember
+	TypeChatMemberRestricted
+	TypeChatMemberLeft
+	TypeChatMemberBanned
 )
 
 // RETURN_TYPES

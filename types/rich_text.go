@@ -30,25 +30,25 @@ package types
 //   - RichTextReference
 //   - RichTextReferenceLink
 type RichText struct {
-	AlternativeText string   `json:"alternative_text"`
-	AnchorName      string   `json:"anchor_name"`
-	BankCardNumber  string   `json:"bank_card_number"`
-	BotCommand      string   `json:"bot_command"`
-	Cashtag         string   `json:"cashtag"`
-	CustomEmojiID   string   `json:"custom_emoji_id"`
-	DateTimeFormat  string   `json:"date_time_format"`
-	EmailAddress    string   `json:"email_address"`
-	Expression      string   `json:"expression"`
-	Hashtag         string   `json:"hashtag"`
-	Name            string   `json:"name"`
-	PhoneNumber     string   `json:"phone_number"`
-	ReferenceName   string   `json:"reference_name"`
-	Text            RichText `json:"text"`
-	Type            string   `json:"type"`
-	UnixTime        int      `json:"unix_time"`
-	URL             string   `json:"url"`
-	User            User     `json:"user"`
-	Username        string   `json:"username"`
+	AlternativeText string    `json:"alternative_text"`
+	AnchorName      string    `json:"anchor_name"`
+	BankCardNumber  string    `json:"bank_card_number"`
+	BotCommand      string    `json:"bot_command"`
+	Cashtag         string    `json:"cashtag"`
+	CustomEmojiID   string    `json:"custom_emoji_id"`
+	DateTimeFormat  string    `json:"date_time_format"`
+	EmailAddress    string    `json:"email_address"`
+	Expression      string    `json:"expression"`
+	Hashtag         string    `json:"hashtag"`
+	Name            string    `json:"name"`
+	PhoneNumber     string    `json:"phone_number"`
+	ReferenceName   string    `json:"reference_name"`
+	Text            *RichText `json:"text"`
+	Type            string    `json:"type"`
+	UnixTime        int       `json:"unix_time"`
+	URL             string    `json:"url"`
+	User            User      `json:"user"`
+	Username        string    `json:"username"`
 }
 
 func (x RichText) Kind() int {
