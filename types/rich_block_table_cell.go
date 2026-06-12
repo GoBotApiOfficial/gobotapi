@@ -2,12 +2,38 @@
 
 package types
 
+import "encoding/json"
+
 // RichBlockTableCell Cell in a table.
 type RichBlockTableCell struct {
-	Align    string    `json:"align"`
-	Colspan  int       `json:"colspan,omitempty"`
-	IsHeader bool      `json:"is_header,omitempty"`
-	Rowspan  int       `json:"rowspan,omitempty"`
-	Text     *RichText `json:"text,omitempty"`
-	Valign   string    `json:"valign"`
+	Align    string        `json:"align"`
+	Colspan  int           `json:"colspan,omitempty"`
+	IsHeader bool          `json:"is_header,omitempty"`
+	Rowspan  int           `json:"rowspan,omitempty"`
+	Text     RichTextValue `json:"text,omitempty"`
+	Valign   string        `json:"valign"`
+}
+
+func (entity *RichBlockTableCell) UnmarshalJSON(data []byte) error {
+	var alias struct {
+		Align    string          `json:"align"`
+		Colspan  int             `json:"colspan,omitempty"`
+		IsHeader bool            `json:"is_header,omitempty"`
+		Rowspan  int             `json:"rowspan,omitempty"`
+		Text     json.RawMessage `json:"text,omitempty"`
+		Valign   string          `json:"valign"`
+	}
+	if err := json.Unmarshal(data, &alias); err != nil {
+		return err
+	}
+	var err error
+	entity.Align = alias.Align
+	entity.Colspan = alias.Colspan
+	entity.IsHeader = alias.IsHeader
+	entity.Rowspan = alias.Rowspan
+	if entity.Text, err = ParseRichTextValue(alias.Text); err != nil {
+		return err
+	}
+	entity.Valign = alias.Valign
+	return nil
 }

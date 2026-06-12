@@ -2,8 +2,28 @@
 
 package types
 
+import "encoding/json"
+
 // RichBlockCaption Caption of a rich formatted block.
 type RichBlockCaption struct {
-	Credit *RichText `json:"credit,omitempty"`
-	Text   RichText  `json:"text"`
+	Credit RichTextValue `json:"credit,omitempty"`
+	Text   RichTextValue `json:"text"`
+}
+
+func (entity *RichBlockCaption) UnmarshalJSON(data []byte) error {
+	var alias struct {
+		Credit json.RawMessage `json:"credit,omitempty"`
+		Text   json.RawMessage `json:"text"`
+	}
+	if err := json.Unmarshal(data, &alias); err != nil {
+		return err
+	}
+	var err error
+	if entity.Credit, err = ParseRichTextValue(alias.Credit); err != nil {
+		return err
+	}
+	if entity.Text, err = ParseRichTextValue(alias.Text); err != nil {
+		return err
+	}
+	return nil
 }

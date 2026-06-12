@@ -2,6 +2,8 @@
 
 package types
 
+import "encoding/json"
+
 // RichBlock Represents a block in a rich formatted message
 // Currently, it can be any of the following types:
 //   - RichBlockParagraph
@@ -31,7 +33,7 @@ type RichBlock struct {
 	Blocks     []RichBlock            `json:"blocks"`
 	Caption    *RichBlockCaption      `json:"caption"`
 	Cells      [][]RichBlockTableCell `json:"cells"`
-	Credit     *RichText              `json:"credit"`
+	Credit     RichTextValue          `json:"credit"`
 	Expression string                 `json:"expression"`
 	HasSpoiler bool                   `json:"has_spoiler"`
 	Height     int                    `json:"height"`
@@ -44,8 +46,8 @@ type RichBlock struct {
 	Name       string                 `json:"name"`
 	Photo      []PhotoSize            `json:"photo"`
 	Size       int                    `json:"size"`
-	Summary    RichText               `json:"summary"`
-	Text       RichText               `json:"text"`
+	Summary    RichTextValue          `json:"summary"`
+	Text       RichTextValue          `json:"text"`
 	Type       string                 `json:"type"`
 	Video      Video                  `json:"video"`
 	VoiceNote  Voice                  `json:"voice_note"`
@@ -100,4 +102,70 @@ func (x RichBlock) Kind() int {
 	default:
 		return -1
 	}
+}
+
+func (entity *RichBlock) UnmarshalJSON(data []byte) error {
+	var alias struct {
+		Animation  Animation              `json:"animation"`
+		Audio      Audio                  `json:"audio"`
+		Blocks     []RichBlock            `json:"blocks"`
+		Caption    *RichBlockCaption      `json:"caption"`
+		Cells      [][]RichBlockTableCell `json:"cells"`
+		Credit     json.RawMessage        `json:"credit"`
+		Expression string                 `json:"expression"`
+		HasSpoiler bool                   `json:"has_spoiler"`
+		Height     int                    `json:"height"`
+		IsBordered bool                   `json:"is_bordered"`
+		IsOpen     bool                   `json:"is_open"`
+		IsStriped  bool                   `json:"is_striped"`
+		Items      []RichBlockListItem    `json:"items"`
+		Language   string                 `json:"language"`
+		Location   Location               `json:"location"`
+		Name       string                 `json:"name"`
+		Photo      []PhotoSize            `json:"photo"`
+		Size       int                    `json:"size"`
+		Summary    json.RawMessage        `json:"summary"`
+		Text       json.RawMessage        `json:"text"`
+		Type       string                 `json:"type"`
+		Video      Video                  `json:"video"`
+		VoiceNote  Voice                  `json:"voice_note"`
+		Width      int64                  `json:"width"`
+		Zoom       int                    `json:"zoom"`
+	}
+	if err := json.Unmarshal(data, &alias); err != nil {
+		return err
+	}
+	var err error
+	entity.Animation = alias.Animation
+	entity.Audio = alias.Audio
+	entity.Blocks = alias.Blocks
+	entity.Caption = alias.Caption
+	entity.Cells = alias.Cells
+	if entity.Credit, err = ParseRichTextValue(alias.Credit); err != nil {
+		return err
+	}
+	entity.Expression = alias.Expression
+	entity.HasSpoiler = alias.HasSpoiler
+	entity.Height = alias.Height
+	entity.IsBordered = alias.IsBordered
+	entity.IsOpen = alias.IsOpen
+	entity.IsStriped = alias.IsStriped
+	entity.Items = alias.Items
+	entity.Language = alias.Language
+	entity.Location = alias.Location
+	entity.Name = alias.Name
+	entity.Photo = alias.Photo
+	entity.Size = alias.Size
+	if entity.Summary, err = ParseRichTextValue(alias.Summary); err != nil {
+		return err
+	}
+	if entity.Text, err = ParseRichTextValue(alias.Text); err != nil {
+		return err
+	}
+	entity.Type = alias.Type
+	entity.Video = alias.Video
+	entity.VoiceNote = alias.VoiceNote
+	entity.Width = alias.Width
+	entity.Zoom = alias.Zoom
+	return nil
 }

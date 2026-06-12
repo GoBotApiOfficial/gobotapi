@@ -121,6 +121,8 @@ const (
 	TypeRichTextAnchorLink
 	TypeRichTextReference
 	TypeRichTextReferenceLink
+	TypeRichTextPlain
+	TypeRichTextArray
 )
 
 // STORY_AREA_TYPE
