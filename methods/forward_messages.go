@@ -14,7 +14,7 @@ import (
 // If some of the specified messages can't be found or forwarded, they are skipped
 // Service messages and messages with protected content can't be forwarded
 // Album grouping is kept for forwarded messages
-// On success, an array of MessageId of the sent messages is returned.
+// On success, an Array of MessageId of the sent messages is returned.
 type ForwardMessages struct {
 	ChatID                any     `json:"chat_id"`
 	DirectMessagesTopicID int64   `json:"direct_messages_topic_id,omitempty"`

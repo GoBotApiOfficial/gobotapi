@@ -16,6 +16,7 @@ type SendVenue struct {
 	Address                 string                         `json:"address"`
 	AllowPaidBroadcast      bool                           `json:"allow_paid_broadcast,omitempty"`
 	BusinessConnectionID    string                         `json:"business_connection_id,omitempty"`
+	CallbackQueryID         string                         `json:"callback_query_id,omitempty"`
 	ChatID                  any                            `json:"chat_id"`
 	DirectMessagesTopicID   int64                          `json:"direct_messages_topic_id,omitempty"`
 	DisableNotification     bool                           `json:"disable_notification,omitempty"`
@@ -28,6 +29,7 @@ type SendVenue struct {
 	MessageEffectID         string                         `json:"message_effect_id,omitempty"`
 	MessageThreadID         int64                          `json:"message_thread_id,omitempty"`
 	ProtectContent          bool                           `json:"protect_content,omitempty"`
+	ReceiverUserID          int64                          `json:"receiver_user_id,omitempty"`
 	ReplyMarkup             any                            `json:"reply_markup,omitempty"`
 	ReplyParameters         *types.ReplyParameters         `json:"reply_parameters,omitempty"`
 	SuggestedPostParameters *types.SuggestedPostParameters `json:"suggested_post_parameters,omitempty"`

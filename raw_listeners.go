@@ -185,3 +185,10 @@ func (ctx *BasicClient) OnManagedBot(handler func(client *Client, update types.M
 	}
 	ctx.handlers["managed_bot"] = append(ctx.handlers["managed_bot"], handler)
 }
+
+func (ctx *BasicClient) OnSubscription(handler func(client *Client, update types.BotSubscriptionUpdated)) {
+	if ctx.handlers == nil {
+		ctx.handlers = make(map[string][]any)
+	}
+	ctx.handlers["subscription"] = append(ctx.handlers["subscription"], handler)
+}

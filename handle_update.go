@@ -190,4 +190,11 @@ func (ctx *BasicClient) handleUpdate(user *types.User, token string, update type
 			}, x0)
 		}
 	}
+	if update.Subscription != nil {
+		for _, x0 := range ctx.handlers["subscription"] {
+			ctx.concurrencyManager.Enqueue(func(x ...any) {
+				x[0].(func(*Client, types.BotSubscriptionUpdated))(client, *update.Subscription)
+			}, x0)
+		}
+	}
 }

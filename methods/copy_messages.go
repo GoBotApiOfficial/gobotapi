@@ -16,7 +16,7 @@ import (
 // A quiz poll can be copied only if the value of the field correct_option_id is known to the bot
 // The method is analogous to the method forwardMessages, but the copied messages don't have a link to the original message
 // Album grouping is kept for copied messages
-// On success, an array of MessageId of the sent messages is returned.
+// On success, an Array of MessageId of the sent messages is returned.
 type CopyMessages struct {
 	ChatID                any     `json:"chat_id"`
 	DirectMessagesTopicID int64   `json:"direct_messages_topic_id,omitempty"`

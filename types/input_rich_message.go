@@ -2,11 +2,48 @@
 
 package types
 
+import (
+	"encoding/json"
+	"fmt"
+	"reflect"
+)
+
 // InputRichMessage Describes a rich message to be sent
-// Exactly one of the fields html or markdown must be used.
+// Exactly one of the fields html, markdown, or blocks must be used.
 type InputRichMessage struct {
-	Html                string `json:"html,omitempty"`
-	IsRtl               bool   `json:"is_rtl,omitempty"`
-	Markdown            string `json:"markdown,omitempty"`
-	SkipEntityDetection bool   `json:"skip_entity_detection,omitempty"`
+	Blocks              []InputRichBlock        `json:"blocks,omitempty"`
+	Html                string                  `json:"html,omitempty"`
+	IsRtl               bool                    `json:"is_rtl,omitempty"`
+	Markdown            string                  `json:"markdown,omitempty"`
+	Media               []InputRichMessageMedia `json:"media,omitempty"`
+	SkipEntityDetection bool                    `json:"skip_entity_detection,omitempty"`
+}
+
+func (entity InputRichMessage) MarshalJSON() ([]byte, error) {
+	nilCheck := func(val any) bool {
+		if val == nil {
+			return true
+		}
+		v := reflect.ValueOf(val)
+		k := v.Kind()
+		switch k {
+		case reflect.Chan, reflect.Func, reflect.Map, reflect.Pointer, reflect.UnsafePointer, reflect.Interface, reflect.Slice:
+			return v.IsNil()
+		default:
+			return false
+		}
+	}
+	_ = nilCheck
+	for _, x0 := range entity.Blocks {
+		if x0 != nil {
+			switch x0.(type) {
+			case InputRichBlockParagraph, InputRichBlockSectionHeading, InputRichBlockPreformatted, InputRichBlockFooter, InputRichBlockDivider, InputRichBlockMathematicalExpression, InputRichBlockAnchor, InputRichBlockList, InputRichBlockBlockQuotation, InputRichBlockPullQuotation, InputRichBlockCollage, InputRichBlockSlideshow, InputRichBlockTable, InputRichBlockDetails, InputRichBlockMap, InputRichBlockAnimation, InputRichBlockAudio, InputRichBlockPhoto, InputRichBlockVideo, InputRichBlockVoiceNote, InputRichBlockThinking:
+				break
+			default:
+				return nil, fmt.Errorf("blocks: unknown type: %T", x0)
+			}
+		}
+	}
+	type x0 InputRichMessage
+	return json.Marshal((x0)(entity))
 }

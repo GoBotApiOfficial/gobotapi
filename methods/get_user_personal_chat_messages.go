@@ -9,7 +9,7 @@ import (
 )
 
 // GetUserPersonalChatMessages Use this method to get the last messages from the personal chat (i.e., the chat currently added to their profile) of a given user
-// On success, an array of Message objects is returned.
+// On success, an Array of Message objects is returned.
 type GetUserPersonalChatMessages struct {
 	Limit  int   `json:"limit"`
 	UserID int64 `json:"user_id"`

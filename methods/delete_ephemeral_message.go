@@ -10,21 +10,24 @@ import (
 	"reflect"
 )
 
-// GetChatMemberCount Use this method to get the number of members in a chat
-// Returns Integer on success.
-type GetChatMemberCount struct {
-	ChatID any `json:"chat_id"`
+// DeleteEphemeralMessage Use this method to delete an ephemeral message
+// Note that it is not guaranteed that the user will receive the message deletion event, especially if they are offline
+// Returns True on success.
+type DeleteEphemeralMessage struct {
+	ChatID             any   `json:"chat_id"`
+	EphemeralMessageID int64 `json:"ephemeral_message_id"`
+	ReceiverUserID     int64 `json:"receiver_user_id"`
 }
 
-func (entity *GetChatMemberCount) ProgressCallable() rawTypes.ProgressCallable {
+func (entity *DeleteEphemeralMessage) ProgressCallable() rawTypes.ProgressCallable {
 	return nil
 }
 
-func (entity *GetChatMemberCount) Files() map[string]rawTypes.InputFile {
+func (entity *DeleteEphemeralMessage) Files() map[string]rawTypes.InputFile {
 	return map[string]rawTypes.InputFile{}
 }
 
-func (entity GetChatMemberCount) MarshalJSON() ([]byte, error) {
+func (entity DeleteEphemeralMessage) MarshalJSON() ([]byte, error) {
 	nilCheck := func(val any) bool {
 		if val == nil {
 			return true
@@ -47,24 +50,24 @@ func (entity GetChatMemberCount) MarshalJSON() ([]byte, error) {
 			return nil, fmt.Errorf("chat_id: unknown type: %T", entity.ChatID)
 		}
 	}
-	type x0 GetChatMemberCount
+	type x0 DeleteEphemeralMessage
 	return json.Marshal((x0)(entity))
 }
 
-func (GetChatMemberCount) MethodName() string {
-	return "getChatMemberCount"
+func (DeleteEphemeralMessage) MethodName() string {
+	return "deleteEphemeralMessage"
 }
 
-func (GetChatMemberCount) ParseResult(response []byte) (*rawTypes.Result, error) {
+func (DeleteEphemeralMessage) ParseResult(response []byte) (*rawTypes.Result, error) {
 	var x1 struct {
-		Result int `json:"result"`
+		Result bool `json:"result"`
 	}
 	err := json.Unmarshal(response, &x1)
 	if err != nil {
 		return nil, err
 	}
 	result := rawTypes.Result{
-		Kind:   types.TypeInteger,
+		Kind:   types.TypeBoolean,
 		Result: x1.Result,
 	}
 	return &result, nil

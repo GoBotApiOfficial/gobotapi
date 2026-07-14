@@ -17,6 +17,7 @@ type SendAnimation struct {
 	AllowPaidBroadcast      bool                           `json:"allow_paid_broadcast,omitempty"`
 	Animation               rawTypes.InputFile             `json:"animation,omitempty"`
 	BusinessConnectionID    string                         `json:"business_connection_id,omitempty"`
+	CallbackQueryID         string                         `json:"callback_query_id,omitempty"`
 	Caption                 string                         `json:"caption,omitempty"`
 	CaptionEntities         []types.MessageEntity          `json:"caption_entities,omitempty"`
 	ChatID                  any                            `json:"chat_id"`
@@ -29,6 +30,7 @@ type SendAnimation struct {
 	MessageThreadID         int64                          `json:"message_thread_id,omitempty"`
 	ParseMode               string                         `json:"parse_mode,omitempty"`
 	ProtectContent          bool                           `json:"protect_content,omitempty"`
+	ReceiverUserID          int64                          `json:"receiver_user_id,omitempty"`
 	ReplyMarkup             any                            `json:"reply_markup,omitempty"`
 	ReplyParameters         *types.ReplyParameters         `json:"reply_parameters,omitempty"`
 	ShowCaptionAboveMedia   bool                           `json:"show_caption_above_media,omitempty"`

@@ -22,6 +22,7 @@ type ChatFullInfo struct {
 	BusinessOpeningHours               *BusinessOpeningHours `json:"business_opening_hours,omitempty"`
 	CanSendPaidMedia                   bool                  `json:"can_send_paid_media,omitempty"`
 	CanSetStickerSet                   bool                  `json:"can_set_sticker_set,omitempty"`
+	Community                          *Community            `json:"community,omitempty"`
 	CustomEmojiStickerSetName          string                `json:"custom_emoji_sticker_set_name,omitempty"`
 	Description                        string                `json:"description,omitempty"`
 	EmojiStatusCustomEmojiID           string                `json:"emoji_status_custom_emoji_id,omitempty"`
@@ -120,6 +121,9 @@ func (entity ChatFullInfo) MarshalJSON() ([]byte, error) {
 	}
 	if nilCheck(entity.GuardBot) {
 		entity.GuardBot = nil
+	}
+	if nilCheck(entity.Community) {
+		entity.Community = nil
 	}
 	for _, x0 := range entity.AvailableReactions {
 		if x0 != nil {

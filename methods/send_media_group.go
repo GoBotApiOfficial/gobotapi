@@ -12,7 +12,7 @@ import (
 
 // SendMediaGroup Use this method to send a group of photos, live photos, videos, documents or audios as an album
 // Documents and audio files can be only grouped in an album with messages of the same type
-// On success, an array of Message objects that were sent is returned.
+// On success, an Array of Message objects that were sent is returned.
 type SendMediaGroup struct {
 	AllowPaidBroadcast    bool                      `json:"allow_paid_broadcast,omitempty"`
 	BusinessConnectionID  string                    `json:"business_connection_id,omitempty"`

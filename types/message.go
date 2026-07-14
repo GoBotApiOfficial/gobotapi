@@ -20,6 +20,8 @@ type Message struct {
 	Checklist                     *Checklist                     `json:"checklist,omitempty"`
 	ChecklistTasksAdded           *ChecklistTasksAdded           `json:"checklist_tasks_added,omitempty"`
 	ChecklistTasksDone            *ChecklistTasksDone            `json:"checklist_tasks_done,omitempty"`
+	CommunityChatAdded            *CommunityChatAdded            `json:"community_chat_added,omitempty"`
+	CommunityChatRemoved          *CommunityChatRemoved          `json:"community_chat_removed,omitempty"`
 	ConnectedWebsite              string                         `json:"connected_website,omitempty"`
 	Contact                       *Contact                       `json:"contact,omitempty"`
 	Date                          int64                          `json:"date"`
@@ -31,6 +33,7 @@ type Message struct {
 	EditDate                      int64                          `json:"edit_date,omitempty"`
 	EffectID                      string                         `json:"effect_id,omitempty"`
 	Entities                      []MessageEntity                `json:"entities,omitempty"`
+	EphemeralMessageID            int64                          `json:"ephemeral_message_id"`
 	ExternalReply                 *ExternalReplyInfo             `json:"external_reply,omitempty"`
 	ForumTopicClosed              *ForumTopicClosed              `json:"forum_topic_closed,omitempty"`
 	ForumTopicCreated             *ForumTopicCreated             `json:"forum_topic_created,omitempty"`
@@ -83,6 +86,7 @@ type Message struct {
 	PollOptionDeleted             *PollOptionDeleted             `json:"poll_option_deleted,omitempty"`
 	ProximityAlertTriggered       *ProximityAlertTriggered       `json:"proximity_alert_triggered,omitempty"`
 	Quote                         *TextQuote                     `json:"quote,omitempty"`
+	ReceiverUser                  *User                          `json:"receiver_user,omitempty"`
 	RefundedPayment               *RefundedPayment               `json:"refunded_payment,omitempty"`
 	ReplyMarkup                   *InlineKeyboardMarkup          `json:"reply_markup,omitempty"`
 	ReplyToChecklistTaskID        int64                          `json:"reply_to_checklist_task_id,omitempty"`

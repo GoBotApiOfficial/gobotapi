@@ -13,7 +13,8 @@ type ReplyParameters struct {
 	AllowSendingWithoutReply bool            `json:"allow_sending_without_reply,omitempty"`
 	ChatID                   any             `json:"chat_id,omitempty"`
 	ChecklistTaskID          int64           `json:"checklist_task_id,omitempty"`
-	MessageID                int64           `json:"message_id"`
+	EphemeralMessageID       int64           `json:"ephemeral_message_id,omitempty"`
+	MessageID                int64           `json:"message_id,omitempty"`
 	PollOptionID             string          `json:"poll_option_id,omitempty"`
 	Quote                    string          `json:"quote,omitempty"`
 	QuoteEntities            []MessageEntity `json:"quote_entities,omitempty"`

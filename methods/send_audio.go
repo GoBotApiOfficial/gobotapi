@@ -19,6 +19,7 @@ type SendAudio struct {
 	AllowPaidBroadcast      bool                           `json:"allow_paid_broadcast,omitempty"`
 	Audio                   rawTypes.InputFile             `json:"audio,omitempty"`
 	BusinessConnectionID    string                         `json:"business_connection_id,omitempty"`
+	CallbackQueryID         string                         `json:"callback_query_id,omitempty"`
 	Caption                 string                         `json:"caption,omitempty"`
 	CaptionEntities         []types.MessageEntity          `json:"caption_entities,omitempty"`
 	ChatID                  any                            `json:"chat_id"`
@@ -30,6 +31,7 @@ type SendAudio struct {
 	ParseMode               string                         `json:"parse_mode,omitempty"`
 	Performer               string                         `json:"performer,omitempty"`
 	ProtectContent          bool                           `json:"protect_content,omitempty"`
+	ReceiverUserID          int64                          `json:"receiver_user_id,omitempty"`
 	ReplyMarkup             any                            `json:"reply_markup,omitempty"`
 	ReplyParameters         *types.ReplyParameters         `json:"reply_parameters,omitempty"`
 	SuggestedPostParameters *types.SuggestedPostParameters `json:"suggested_post_parameters,omitempty"`

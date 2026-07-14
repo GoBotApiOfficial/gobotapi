@@ -29,5 +29,6 @@ type Update struct {
 	PurchasedPaidMedia      *PaidMediaPurchased          `json:"purchased_paid_media,omitempty"`
 	RemovedChatBoost        *ChatBoostRemoved            `json:"removed_chat_boost,omitempty"`
 	ShippingQuery           *ShippingQuery               `json:"shipping_query,omitempty"`
+	Subscription            *BotSubscriptionUpdated      `json:"subscription,omitempty"`
 	UpdateID                int64                        `json:"update_id"`
 }
