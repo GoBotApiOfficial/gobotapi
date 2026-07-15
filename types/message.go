@@ -33,7 +33,7 @@ type Message struct {
 	EditDate                      int64                          `json:"edit_date,omitempty"`
 	EffectID                      string                         `json:"effect_id,omitempty"`
 	Entities                      []MessageEntity                `json:"entities,omitempty"`
-	EphemeralMessageID            int64                          `json:"ephemeral_message_id"`
+	EphemeralMessageID            int64                          `json:"ephemeral_message_id,omitempty"`
 	ExternalReply                 *ExternalReplyInfo             `json:"external_reply,omitempty"`
 	ForumTopicClosed              *ForumTopicClosed              `json:"forum_topic_closed,omitempty"`
 	ForumTopicCreated             *ForumTopicCreated             `json:"forum_topic_created,omitempty"`

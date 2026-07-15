@@ -13,10 +13,6 @@ type InputRichMessageMedia struct {
 	ID    string `json:"id"`
 	Media any    `json:"media"`
 }
-type InputRichMessageMedia interface {
-	SetAttachment(string)
-	SetAttachmentThumb(string)
-}
 
 func (entity InputRichMessageMedia) MarshalJSON() ([]byte, error) {
 	nilCheck := func(val any) bool {
