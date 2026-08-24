@@ -31,6 +31,7 @@ type PromoteChatMember struct {
 	CanPostStories          bool  `json:"can_post_stories,omitempty"`
 	CanPromoteMembers       bool  `json:"can_promote_members,omitempty"`
 	CanRestrictMembers      bool  `json:"can_restrict_members,omitempty"`
+	CanSendWelcomeMessages  bool  `json:"can_send_welcome_messages,omitempty"`
 	ChatID                  any   `json:"chat_id"`
 	IsAnonymous             bool  `json:"is_anonymous,omitempty"`
 	UserID                  int64 `json:"user_id"`

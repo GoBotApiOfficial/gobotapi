@@ -7,9 +7,9 @@ package types
 // The width and height ratio must be at most 20.
 type InputRichBlockMap struct {
 	Caption  *RichBlockCaption `json:"caption,omitempty"`
-	Height   int               `json:"height"`
+	Height   int               `json:"height,omitempty"`
 	Location Location          `json:"location"`
 	Type     string            `json:"type"`
-	Width    int64             `json:"width"`
-	Zoom     int               `json:"zoom"`
+	Width    int64             `json:"width,omitempty"`
+	Zoom     int               `json:"zoom,omitempty"`
 }

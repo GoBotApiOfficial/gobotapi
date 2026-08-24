@@ -197,4 +197,11 @@ func (ctx *BasicClient) handleUpdate(user *types.User, token string, update type
 			}, x0)
 		}
 	}
+	if update.StoppedMessageGeneration != nil {
+		for _, x0 := range ctx.handlers["stopped_message_generation"] {
+			ctx.concurrencyManager.Enqueue(func(x ...any) {
+				x[0].(func(*Client, types.MessageGenerationStopped))(client, *update.StoppedMessageGeneration)
+			}, x0)
+		}
+	}
 }

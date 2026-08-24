@@ -15,29 +15,36 @@ import "encoding/json"
 //   - RichBlockAnchor
 //   - RichBlockList
 //   - RichBlockBlockQuotation
+//   - RichBlockExpandableBlockQuotation
 //   - RichBlockPullQuotation
 //   - RichBlockCollage
 //   - RichBlockSlideshow
 //   - RichBlockTable
 //   - RichBlockDetails
 //   - RichBlockMap
+//   - RichBlockButtons
 //   - RichBlockAnimation
 //   - RichBlockAudio
+//   - RichBlockDocument
 //   - RichBlockPhoto
 //   - RichBlockVideo
 //   - RichBlockVoiceNote
 //   - RichBlockThinking
 type RichBlock struct {
+	Align      string                 `json:"align"`
 	Animation  Animation              `json:"animation"`
 	Audio      Audio                  `json:"audio"`
 	Blocks     []RichBlock            `json:"blocks"`
+	Buttons    []RichMessageButton    `json:"buttons"`
 	Caption    *RichBlockCaption      `json:"caption"`
 	Cells      [][]RichBlockTableCell `json:"cells"`
 	Credit     RichTextValue          `json:"credit"`
+	Document   Document               `json:"document"`
 	Expression string                 `json:"expression"`
 	HasSpoiler bool                   `json:"has_spoiler"`
 	Height     int                    `json:"height"`
 	IsBordered bool                   `json:"is_bordered"`
+	IsCompact  bool                   `json:"is_compact"`
 	IsOpen     bool                   `json:"is_open"`
 	IsStriped  bool                   `json:"is_striped"`
 	Items      []RichBlockListItem    `json:"items"`
@@ -75,6 +82,8 @@ func (x RichBlock) Kind() int {
 		return TypeRichBlockList
 	case "blockquote":
 		return TypeRichBlockBlockQuotation
+	case "expandable_blockquote":
+		return TypeRichBlockExpandableBlockQuotation
 	case "pullquote":
 		return TypeRichBlockPullQuotation
 	case "collage":
@@ -87,10 +96,14 @@ func (x RichBlock) Kind() int {
 		return TypeRichBlockDetails
 	case "map":
 		return TypeRichBlockMap
+	case "buttons":
+		return TypeRichBlockButtons
 	case "animation":
 		return TypeRichBlockAnimation
 	case "audio":
 		return TypeRichBlockAudio
+	case "document":
+		return TypeRichBlockDocument
 	case "photo":
 		return TypeRichBlockPhoto
 	case "video":
@@ -106,16 +119,20 @@ func (x RichBlock) Kind() int {
 
 func (entity *RichBlock) UnmarshalJSON(data []byte) error {
 	var alias struct {
+		Align      string                 `json:"align"`
 		Animation  Animation              `json:"animation"`
 		Audio      Audio                  `json:"audio"`
 		Blocks     []RichBlock            `json:"blocks"`
+		Buttons    []RichMessageButton    `json:"buttons"`
 		Caption    *RichBlockCaption      `json:"caption"`
 		Cells      [][]RichBlockTableCell `json:"cells"`
 		Credit     json.RawMessage        `json:"credit"`
+		Document   Document               `json:"document"`
 		Expression string                 `json:"expression"`
 		HasSpoiler bool                   `json:"has_spoiler"`
 		Height     int                    `json:"height"`
 		IsBordered bool                   `json:"is_bordered"`
+		IsCompact  bool                   `json:"is_compact"`
 		IsOpen     bool                   `json:"is_open"`
 		IsStriped  bool                   `json:"is_striped"`
 		Items      []RichBlockListItem    `json:"items"`
@@ -136,18 +153,22 @@ func (entity *RichBlock) UnmarshalJSON(data []byte) error {
 		return err
 	}
 	var err error
+	entity.Align = alias.Align
 	entity.Animation = alias.Animation
 	entity.Audio = alias.Audio
 	entity.Blocks = alias.Blocks
+	entity.Buttons = alias.Buttons
 	entity.Caption = alias.Caption
 	entity.Cells = alias.Cells
 	if entity.Credit, err = ParseRichTextValue(alias.Credit); err != nil {
 		return err
 	}
+	entity.Document = alias.Document
 	entity.Expression = alias.Expression
 	entity.HasSpoiler = alias.HasSpoiler
 	entity.Height = alias.Height
 	entity.IsBordered = alias.IsBordered
+	entity.IsCompact = alias.IsCompact
 	entity.IsOpen = alias.IsOpen
 	entity.IsStriped = alias.IsStriped
 	entity.Items = alias.Items

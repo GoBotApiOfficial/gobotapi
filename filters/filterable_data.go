@@ -47,6 +47,9 @@ func filterableData(client *gobotapi.Client, filterable any) *DataFilter {
 		dataResult.From = x.From
 		dataResult.Date = &x.Date
 		dataResult.Chat = &x.Chat
+	case types.MessageGenerationStopped:
+		x := filterable.(types.MessageGenerationStopped)
+		dataResult.Chat = &x.Chat
 	case types.MessageReactionCountUpdated:
 		x := filterable.(types.MessageReactionCountUpdated)
 		dataResult.Chat = &x.Chat

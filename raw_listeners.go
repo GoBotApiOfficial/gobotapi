@@ -192,3 +192,10 @@ func (ctx *BasicClient) OnSubscription(handler func(client *Client, update types
 	}
 	ctx.handlers["subscription"] = append(ctx.handlers["subscription"], handler)
 }
+
+func (ctx *BasicClient) OnStoppedMessageGeneration(handler func(client *Client, update types.MessageGenerationStopped)) {
+	if ctx.handlers == nil {
+		ctx.handlers = make(map[string][]any)
+	}
+	ctx.handlers["stopped_message_generation"] = append(ctx.handlers["stopped_message_generation"], handler)
+}

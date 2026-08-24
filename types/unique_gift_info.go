@@ -4,11 +4,14 @@ package types
 
 // UniqueGiftInfo Describes a service message about a unique gift that was sent or received.
 type UniqueGiftInfo struct {
-	Gift               UniqueGift `json:"gift"`
-	LastResaleAmount   int        `json:"last_resale_amount,omitempty"`
-	LastResaleCurrency string     `json:"last_resale_currency,omitempty"`
-	NextTransferDate   int64      `json:"next_transfer_date,omitempty"`
-	Origin             string     `json:"origin"`
-	OwnedGiftID        string     `json:"owned_gift_id,omitempty"`
-	TransferStarCount  int        `json:"transfer_star_count,omitempty"`
+	Entities           []MessageEntity `json:"entities,omitempty"`
+	Gift               UniqueGift      `json:"gift"`
+	IsPrivate          bool            `json:"is_private,omitempty"`
+	LastResaleAmount   int             `json:"last_resale_amount,omitempty"`
+	LastResaleCurrency string          `json:"last_resale_currency,omitempty"`
+	NextTransferDate   int64           `json:"next_transfer_date,omitempty"`
+	Origin             string          `json:"origin"`
+	OwnedGiftID        string          `json:"owned_gift_id,omitempty"`
+	Text               string          `json:"text,omitempty"`
+	TransferStarCount  int             `json:"transfer_star_count,omitempty"`
 }

@@ -30,30 +30,32 @@ import (
 //   - RichTextHashtag
 //   - RichTextCashtag
 //   - RichTextBotCommand
+//   - RichTextButton
 //   - RichTextAnchor
 //   - RichTextAnchorLink
 //   - RichTextReference
 //   - RichTextReferenceLink
 type RichText struct {
-	AlternativeText string        `json:"alternative_text"`
-	AnchorName      string        `json:"anchor_name"`
-	BankCardNumber  string        `json:"bank_card_number"`
-	BotCommand      string        `json:"bot_command"`
-	Cashtag         string        `json:"cashtag"`
-	CustomEmojiID   string        `json:"custom_emoji_id"`
-	DateTimeFormat  string        `json:"date_time_format"`
-	EmailAddress    string        `json:"email_address"`
-	Expression      string        `json:"expression"`
-	Hashtag         string        `json:"hashtag"`
-	Name            string        `json:"name"`
-	PhoneNumber     string        `json:"phone_number"`
-	ReferenceName   string        `json:"reference_name"`
-	Text            RichTextValue `json:"text"`
-	Type            string        `json:"type"`
-	UnixTime        int           `json:"unix_time"`
-	URL             string        `json:"url"`
-	User            User          `json:"user"`
-	Username        string        `json:"username"`
+	AlternativeText string            `json:"alternative_text"`
+	AnchorName      string            `json:"anchor_name"`
+	BankCardNumber  string            `json:"bank_card_number"`
+	BotCommand      string            `json:"bot_command"`
+	Button          RichMessageButton `json:"button"`
+	Cashtag         string            `json:"cashtag"`
+	CustomEmojiID   string            `json:"custom_emoji_id"`
+	DateTimeFormat  string            `json:"date_time_format"`
+	EmailAddress    string            `json:"email_address"`
+	Expression      string            `json:"expression"`
+	Hashtag         string            `json:"hashtag"`
+	Name            string            `json:"name"`
+	PhoneNumber     string            `json:"phone_number"`
+	ReferenceName   string            `json:"reference_name"`
+	Text            RichTextValue     `json:"text"`
+	Type            string            `json:"type"`
+	UnixTime        int               `json:"unix_time"`
+	URL             string            `json:"url"`
+	User            User              `json:"user"`
+	Username        string            `json:"username"`
 }
 
 func (x RichText) Kind() int {
@@ -100,6 +102,8 @@ func (x RichText) Kind() int {
 		return TypeRichTextCashtag
 	case "bot_command":
 		return TypeRichTextBotCommand
+	case "button":
+		return TypeRichTextButton
 	case "anchor":
 		return TypeRichTextAnchor
 	case "anchor_link":
@@ -166,25 +170,26 @@ func ParseRichTextValue(data []byte) (RichTextValue, error) {
 
 func (entity *RichText) UnmarshalJSON(data []byte) error {
 	var alias struct {
-		AlternativeText string          `json:"alternative_text"`
-		AnchorName      string          `json:"anchor_name"`
-		BankCardNumber  string          `json:"bank_card_number"`
-		BotCommand      string          `json:"bot_command"`
-		Cashtag         string          `json:"cashtag"`
-		CustomEmojiID   string          `json:"custom_emoji_id"`
-		DateTimeFormat  string          `json:"date_time_format"`
-		EmailAddress    string          `json:"email_address"`
-		Expression      string          `json:"expression"`
-		Hashtag         string          `json:"hashtag"`
-		Name            string          `json:"name"`
-		PhoneNumber     string          `json:"phone_number"`
-		ReferenceName   string          `json:"reference_name"`
-		Text            json.RawMessage `json:"text"`
-		Type            string          `json:"type"`
-		UnixTime        int             `json:"unix_time"`
-		URL             string          `json:"url"`
-		User            User            `json:"user"`
-		Username        string          `json:"username"`
+		AlternativeText string            `json:"alternative_text"`
+		AnchorName      string            `json:"anchor_name"`
+		BankCardNumber  string            `json:"bank_card_number"`
+		BotCommand      string            `json:"bot_command"`
+		Button          RichMessageButton `json:"button"`
+		Cashtag         string            `json:"cashtag"`
+		CustomEmojiID   string            `json:"custom_emoji_id"`
+		DateTimeFormat  string            `json:"date_time_format"`
+		EmailAddress    string            `json:"email_address"`
+		Expression      string            `json:"expression"`
+		Hashtag         string            `json:"hashtag"`
+		Name            string            `json:"name"`
+		PhoneNumber     string            `json:"phone_number"`
+		ReferenceName   string            `json:"reference_name"`
+		Text            json.RawMessage   `json:"text"`
+		Type            string            `json:"type"`
+		UnixTime        int               `json:"unix_time"`
+		URL             string            `json:"url"`
+		User            User              `json:"user"`
+		Username        string            `json:"username"`
 	}
 	if err := json.Unmarshal(data, &alias); err != nil {
 		return err
@@ -194,6 +199,7 @@ func (entity *RichText) UnmarshalJSON(data []byte) error {
 	entity.AnchorName = alias.AnchorName
 	entity.BankCardNumber = alias.BankCardNumber
 	entity.BotCommand = alias.BotCommand
+	entity.Button = alias.Button
 	entity.Cashtag = alias.Cashtag
 	entity.CustomEmojiID = alias.CustomEmojiID
 	entity.DateTimeFormat = alias.DateTimeFormat

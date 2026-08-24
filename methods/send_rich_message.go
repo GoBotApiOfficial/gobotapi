@@ -14,18 +14,19 @@ import (
 // If the message contains a block with a media element, then the bot must have the right to send the media to the chat
 // On success, the sent Message is returned.
 type SendRichMessage struct {
-	AllowPaidBroadcast      bool                           `json:"allow_paid_broadcast,omitempty"`
-	BusinessConnectionID    string                         `json:"business_connection_id,omitempty"`
-	ChatID                  any                            `json:"chat_id"`
-	DirectMessagesTopicID   int64                          `json:"direct_messages_topic_id,omitempty"`
-	DisableNotification     bool                           `json:"disable_notification,omitempty"`
-	MessageEffectID         string                         `json:"message_effect_id,omitempty"`
-	MessageThreadID         int64                          `json:"message_thread_id,omitempty"`
-	ProtectContent          bool                           `json:"protect_content,omitempty"`
-	ReplyMarkup             any                            `json:"reply_markup,omitempty"`
-	ReplyParameters         *types.ReplyParameters         `json:"reply_parameters,omitempty"`
-	RichMessage             types.InputRichMessage         `json:"rich_message"`
-	SuggestedPostParameters *types.SuggestedPostParameters `json:"suggested_post_parameters,omitempty"`
+	AllowPaidBroadcast         bool                              `json:"allow_paid_broadcast,omitempty"`
+	BusinessConnectionID       string                            `json:"business_connection_id,omitempty"`
+	ChatID                     any                               `json:"chat_id"`
+	DirectMessagesTopicID      int64                             `json:"direct_messages_topic_id,omitempty"`
+	DisableNotification        bool                              `json:"disable_notification,omitempty"`
+	EphemeralMessageParameters *types.EphemeralMessageParameters `json:"ephemeral_message_parameters,omitempty"`
+	MessageEffectID            string                            `json:"message_effect_id,omitempty"`
+	MessageThreadID            int64                             `json:"message_thread_id,omitempty"`
+	ProtectContent             bool                              `json:"protect_content,omitempty"`
+	ReplyMarkup                any                               `json:"reply_markup,omitempty"`
+	ReplyParameters            *types.ReplyParameters            `json:"reply_parameters,omitempty"`
+	RichMessage                types.InputRichMessage            `json:"rich_message"`
+	SuggestedPostParameters    *types.SuggestedPostParameters    `json:"suggested_post_parameters,omitempty"`
 }
 
 func (entity *SendRichMessage) ProgressCallable() rawTypes.ProgressCallable {
@@ -51,6 +52,9 @@ func (entity SendRichMessage) MarshalJSON() ([]byte, error) {
 		}
 	}
 	_ = nilCheck
+	if nilCheck(entity.EphemeralMessageParameters) {
+		entity.EphemeralMessageParameters = nil
+	}
 	if nilCheck(entity.SuggestedPostParameters) {
 		entity.SuggestedPostParameters = nil
 	}

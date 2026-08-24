@@ -12,9 +12,11 @@ import (
 // Note that the streamed draft is ephemeral and acts as a temporary 30-second preview - once the output is finalized, you must call sendMessage with the complete message to persist it in the user's chat
 // Returns True on success.
 type SendMessageDraft struct {
+	CanStop         bool                  `json:"can_stop,omitempty"`
 	ChatID          int64                 `json:"chat_id"`
 	DraftID         int64                 `json:"draft_id"`
 	Entities        []types.MessageEntity `json:"entities,omitempty"`
+	KeepOnStop      bool                  `json:"keep_on_stop,omitempty"`
 	MessageThreadID int64                 `json:"message_thread_id,omitempty"`
 	ParseMode       string                `json:"parse_mode,omitempty"`
 	Text            string                `json:"text,omitempty"`

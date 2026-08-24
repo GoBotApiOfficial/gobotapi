@@ -15,6 +15,7 @@ type Filterable interface {
 		types.ChosenInlineResult |
 		types.InlineQuery |
 		types.Message |
+		types.MessageGenerationStopped |
 		types.MessageReactionCountUpdated |
 		types.MessageReactionUpdated |
 		types.PaidMediaPurchased |

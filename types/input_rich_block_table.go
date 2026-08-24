@@ -9,6 +9,7 @@ type InputRichBlockTable struct {
 	Caption    RichTextValue          `json:"caption,omitempty"`
 	Cells      [][]RichBlockTableCell `json:"cells,omitempty"`
 	IsBordered bool                   `json:"is_bordered,omitempty"`
+	IsCompact  bool                   `json:"is_compact,omitempty"`
 	IsStriped  bool                   `json:"is_striped,omitempty"`
 	Type       string                 `json:"type"`
 }
@@ -18,6 +19,7 @@ func (entity *InputRichBlockTable) UnmarshalJSON(data []byte) error {
 		Caption    json.RawMessage        `json:"caption,omitempty"`
 		Cells      [][]RichBlockTableCell `json:"cells,omitempty"`
 		IsBordered bool                   `json:"is_bordered,omitempty"`
+		IsCompact  bool                   `json:"is_compact,omitempty"`
 		IsStriped  bool                   `json:"is_striped,omitempty"`
 		Type       string                 `json:"type"`
 	}
@@ -30,6 +32,7 @@ func (entity *InputRichBlockTable) UnmarshalJSON(data []byte) error {
 	}
 	entity.Cells = alias.Cells
 	entity.IsBordered = alias.IsBordered
+	entity.IsCompact = alias.IsCompact
 	entity.IsStriped = alias.IsStriped
 	entity.Type = alias.Type
 	return nil

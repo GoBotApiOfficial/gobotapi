@@ -2,7 +2,7 @@
 
 package types
 
-// CommunityChatAdded Describes a service message about a chat being added to a community.
+// CommunityChatAdded Describes a service message about a chat or a bot being added to a community.
 type CommunityChatAdded struct {
 	Community Community `json:"community"`
 }

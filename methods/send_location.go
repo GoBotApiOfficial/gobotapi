@@ -13,25 +13,24 @@ import (
 // SendLocation Use this method to send point on the map
 // On success, the sent Message is returned.
 type SendLocation struct {
-	AllowPaidBroadcast      bool                           `json:"allow_paid_broadcast,omitempty"`
-	BusinessConnectionID    string                         `json:"business_connection_id,omitempty"`
-	CallbackQueryID         string                         `json:"callback_query_id,omitempty"`
-	ChatID                  any                            `json:"chat_id"`
-	DirectMessagesTopicID   int64                          `json:"direct_messages_topic_id,omitempty"`
-	DisableNotification     bool                           `json:"disable_notification,omitempty"`
-	Heading                 int                            `json:"heading,omitempty"`
-	HorizontalAccuracy      float64                        `json:"horizontal_accuracy,omitempty"`
-	Latitude                float64                        `json:"latitude"`
-	LivePeriod              int                            `json:"live_period,omitempty"`
-	Longitude               float64                        `json:"longitude"`
-	MessageEffectID         string                         `json:"message_effect_id,omitempty"`
-	MessageThreadID         int64                          `json:"message_thread_id,omitempty"`
-	ProtectContent          bool                           `json:"protect_content,omitempty"`
-	ProximityAlertRadius    int                            `json:"proximity_alert_radius,omitempty"`
-	ReceiverUserID          int64                          `json:"receiver_user_id,omitempty"`
-	ReplyMarkup             any                            `json:"reply_markup,omitempty"`
-	ReplyParameters         *types.ReplyParameters         `json:"reply_parameters,omitempty"`
-	SuggestedPostParameters *types.SuggestedPostParameters `json:"suggested_post_parameters,omitempty"`
+	AllowPaidBroadcast         bool                              `json:"allow_paid_broadcast,omitempty"`
+	BusinessConnectionID       string                            `json:"business_connection_id,omitempty"`
+	ChatID                     any                               `json:"chat_id"`
+	DirectMessagesTopicID      int64                             `json:"direct_messages_topic_id,omitempty"`
+	DisableNotification        bool                              `json:"disable_notification,omitempty"`
+	EphemeralMessageParameters *types.EphemeralMessageParameters `json:"ephemeral_message_parameters,omitempty"`
+	Heading                    int                               `json:"heading,omitempty"`
+	HorizontalAccuracy         float64                           `json:"horizontal_accuracy,omitempty"`
+	Latitude                   float64                           `json:"latitude"`
+	LivePeriod                 int                               `json:"live_period,omitempty"`
+	Longitude                  float64                           `json:"longitude"`
+	MessageEffectID            string                            `json:"message_effect_id,omitempty"`
+	MessageThreadID            int64                             `json:"message_thread_id,omitempty"`
+	ProtectContent             bool                              `json:"protect_content,omitempty"`
+	ProximityAlertRadius       int                               `json:"proximity_alert_radius,omitempty"`
+	ReplyMarkup                any                               `json:"reply_markup,omitempty"`
+	ReplyParameters            *types.ReplyParameters            `json:"reply_parameters,omitempty"`
+	SuggestedPostParameters    *types.SuggestedPostParameters    `json:"suggested_post_parameters,omitempty"`
 }
 
 func (entity *SendLocation) ProgressCallable() rawTypes.ProgressCallable {
@@ -57,6 +56,9 @@ func (entity SendLocation) MarshalJSON() ([]byte, error) {
 		}
 	}
 	_ = nilCheck
+	if nilCheck(entity.EphemeralMessageParameters) {
+		entity.EphemeralMessageParameters = nil
+	}
 	if nilCheck(entity.SuggestedPostParameters) {
 		entity.SuggestedPostParameters = nil
 	}

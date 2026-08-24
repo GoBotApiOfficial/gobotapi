@@ -20,5 +20,6 @@ type ChatAdministratorRights struct {
 	CanPostStories          bool `json:"can_post_stories"`
 	CanPromoteMembers       bool `json:"can_promote_members"`
 	CanRestrictMembers      bool `json:"can_restrict_members"`
+	CanSendWelcomeMessages  bool `json:"can_send_welcome_messages"`
 	IsAnonymous             bool `json:"is_anonymous"`
 }

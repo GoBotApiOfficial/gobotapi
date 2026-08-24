@@ -10,7 +10,7 @@ import (
 	"reflect"
 )
 
-// EditEphemeralMessageText Use this method to edit an ephemeral text message
+// EditEphemeralMessageText Use this method to edit an ephemeral text or rich message
 // Note that it is not guaranteed that the user will receive the message edit event, especially if they are offline
 // On success, True is returned.
 type EditEphemeralMessageText struct {
@@ -21,7 +21,8 @@ type EditEphemeralMessageText struct {
 	ParseMode          string                      `json:"parse_mode,omitempty"`
 	ReceiverUserID     int64                       `json:"receiver_user_id"`
 	ReplyMarkup        *types.InlineKeyboardMarkup `json:"reply_markup,omitempty"`
-	Text               string                      `json:"text"`
+	RichMessage        *types.InputRichMessage     `json:"rich_message,omitempty"`
+	Text               string                      `json:"text,omitempty"`
 }
 
 func (entity *EditEphemeralMessageText) ProgressCallable() rawTypes.ProgressCallable {
@@ -47,6 +48,9 @@ func (entity EditEphemeralMessageText) MarshalJSON() ([]byte, error) {
 		}
 	}
 	_ = nilCheck
+	if nilCheck(entity.RichMessage) {
+		entity.RichMessage = nil
+	}
 	if nilCheck(entity.LinkPreviewOptions) {
 		entity.LinkPreviewOptions = nil
 	}

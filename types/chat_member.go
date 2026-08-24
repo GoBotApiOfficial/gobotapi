@@ -40,6 +40,7 @@ type ChatMember struct {
 	CanSendVideoNotes       bool   `json:"can_send_video_notes"`
 	CanSendVideos           bool   `json:"can_send_videos"`
 	CanSendVoiceNotes       bool   `json:"can_send_voice_notes"`
+	CanSendWelcomeMessages  bool   `json:"can_send_welcome_messages"`
 	CustomTitle             string `json:"custom_title"`
 	IsAnonymous             bool   `json:"is_anonymous"`
 	IsMember                bool   `json:"is_member"`

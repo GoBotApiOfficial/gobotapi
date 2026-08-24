@@ -14,13 +14,14 @@ import (
 // Note that it is not guaranteed that the user will receive the message edit event, especially if they are offline
 // On success, True is returned.
 type EditEphemeralMessageCaption struct {
-	Caption            string                      `json:"caption,omitempty"`
-	CaptionEntities    []types.MessageEntity       `json:"caption_entities,omitempty"`
-	ChatID             any                         `json:"chat_id"`
-	EphemeralMessageID int64                       `json:"ephemeral_message_id"`
-	ParseMode          string                      `json:"parse_mode,omitempty"`
-	ReceiverUserID     int64                       `json:"receiver_user_id"`
-	ReplyMarkup        *types.InlineKeyboardMarkup `json:"reply_markup,omitempty"`
+	Caption               string                      `json:"caption,omitempty"`
+	CaptionEntities       []types.MessageEntity       `json:"caption_entities,omitempty"`
+	ChatID                any                         `json:"chat_id"`
+	EphemeralMessageID    int64                       `json:"ephemeral_message_id"`
+	ParseMode             string                      `json:"parse_mode,omitempty"`
+	ReceiverUserID        int64                       `json:"receiver_user_id"`
+	ReplyMarkup           *types.InlineKeyboardMarkup `json:"reply_markup,omitempty"`
+	ShowCaptionAboveMedia bool                        `json:"show_caption_above_media,omitempty"`
 }
 
 func (entity *EditEphemeralMessageCaption) ProgressCallable() rawTypes.ProgressCallable {

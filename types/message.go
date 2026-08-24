@@ -21,6 +21,7 @@ type Message struct {
 	ChecklistTasksAdded           *ChecklistTasksAdded           `json:"checklist_tasks_added,omitempty"`
 	ChecklistTasksDone            *ChecklistTasksDone            `json:"checklist_tasks_done,omitempty"`
 	CommunityChatAdded            *CommunityChatAdded            `json:"community_chat_added,omitempty"`
+	CommunityChatJoined           *CommunityChatJoined           `json:"community_chat_joined,omitempty"`
 	CommunityChatRemoved          *CommunityChatRemoved          `json:"community_chat_removed,omitempty"`
 	ConnectedWebsite              string                         `json:"connected_website,omitempty"`
 	Contact                       *Contact                       `json:"contact,omitempty"`

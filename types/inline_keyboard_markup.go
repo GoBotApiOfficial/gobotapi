@@ -4,5 +4,6 @@ package types
 
 // InlineKeyboardMarkup Represents an inline keyboard that appears right next to the message it belongs to.
 type InlineKeyboardMarkup struct {
+	ForceReply     bool                     `json:"force_reply,omitempty"`
 	InlineKeyboard [][]InlineKeyboardButton `json:"inline_keyboard,omitempty"`
 }

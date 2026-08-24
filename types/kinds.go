@@ -80,14 +80,17 @@ const (
 	TypeRichBlockAnchor
 	TypeRichBlockList
 	TypeRichBlockBlockQuotation
+	TypeRichBlockExpandableBlockQuotation
 	TypeRichBlockPullQuotation
 	TypeRichBlockCollage
 	TypeRichBlockSlideshow
 	TypeRichBlockTable
 	TypeRichBlockDetails
 	TypeRichBlockMap
+	TypeRichBlockButtons
 	TypeRichBlockAnimation
 	TypeRichBlockAudio
+	TypeRichBlockDocument
 	TypeRichBlockPhoto
 	TypeRichBlockVideo
 	TypeRichBlockVoiceNote
@@ -117,6 +120,7 @@ const (
 	TypeRichTextHashtag
 	TypeRichTextCashtag
 	TypeRichTextBotCommand
+	TypeRichTextButton
 	TypeRichTextAnchor
 	TypeRichTextAnchorLink
 	TypeRichTextReference
