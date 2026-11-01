@@ -20,8 +20,6 @@ type BasicClient struct {
 	SleepThreshold      int
 	MaxGoRoutines       int
 	LoggingLevel        logger.LogLevel
-	LoggerColorful      bool
-	LoggerWriter        Writer
 	AntiFloodData       map[int64]*rawTypes.AntiFloodData
 	logging             Logger
 	apiURL              string

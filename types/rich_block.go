@@ -2,7 +2,10 @@
 
 package types
 
-import "encoding/json"
+import (
+	"bytes"
+	"encoding/json"
+)
 
 // RichBlock Represents a block in a rich formatted message
 // Currently, it can be any of the following types:
@@ -124,7 +127,7 @@ func (entity *RichBlock) UnmarshalJSON(data []byte) error {
 		Audio      Audio                  `json:"audio"`
 		Blocks     []RichBlock            `json:"blocks"`
 		Buttons    []RichMessageButton    `json:"buttons"`
-		Caption    *RichBlockCaption      `json:"caption"`
+		Caption    json.RawMessage        `json:"caption"`
 		Cells      [][]RichBlockTableCell `json:"cells"`
 		Credit     json.RawMessage        `json:"credit"`
 		Document   Document               `json:"document"`
@@ -158,7 +161,9 @@ func (entity *RichBlock) UnmarshalJSON(data []byte) error {
 	entity.Audio = alias.Audio
 	entity.Blocks = alias.Blocks
 	entity.Buttons = alias.Buttons
-	entity.Caption = alias.Caption
+	if entity.Caption, err = parseRichBlockCaption(alias.Caption); err != nil {
+		return err
+	}
 	entity.Cells = alias.Cells
 	if entity.Credit, err = ParseRichTextValue(alias.Credit); err != nil {
 		return err
@@ -189,4 +194,23 @@ func (entity *RichBlock) UnmarshalJSON(data []byte) error {
 	entity.Width = alias.Width
 	entity.Zoom = alias.Zoom
 	return nil
+}
+
+func parseRichBlockCaption(data []byte) (*RichBlockCaption, error) {
+	data = bytes.TrimSpace(data)
+	if len(data) == 0 || string(data) == "null" {
+		return nil, nil
+	}
+	if data[0] == '{' {
+		var item RichBlockCaption
+		if err := json.Unmarshal(data, &item); err != nil {
+			return nil, err
+		}
+		return &item, nil
+	}
+	value, err := ParseRichTextValue(data)
+	if err != nil {
+		return nil, err
+	}
+	return &RichBlockCaption{Text: value}, nil
 }

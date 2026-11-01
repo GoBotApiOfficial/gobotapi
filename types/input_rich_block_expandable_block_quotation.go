@@ -4,7 +4,7 @@ package types
 
 import "encoding/json"
 
-// InputRichBlockExpandableBlockQuotation A block quotation, corresponding to the HTML tag <blockquote> with custom attribute "collapsed".
+// InputRichBlockExpandableBlockQuotation A block quotation, corresponding to the HTML tag <blockquote> with custom attribute "expandable".
 type InputRichBlockExpandableBlockQuotation struct {
 	Credit RichTextValue `json:"credit,omitempty"`
 	Text   RichTextValue `json:"text"`

@@ -30,7 +30,7 @@ func (entity InputRichMessageMedia) MarshalJSON() ([]byte, error) {
 	}
 	_ = nilCheck
 	switch entity.Media.(type) {
-	case InputMediaAnimation, InputMediaAudio, InputMediaPhoto, InputMediaVideo, InputMediaVoiceNote:
+	case InputMediaAnimation, InputMediaAudio, InputMediaDocument, InputMediaPhoto, InputMediaVideo, InputMediaVoiceNote:
 		break
 	default:
 		return nil, fmt.Errorf("media: unknown type: %T", entity.Media)

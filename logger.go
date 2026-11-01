@@ -3,73 +3,57 @@ package gobotapi
 import (
 	"fmt"
 	"github.com/GoBotApiOfficial/gobotapi/logger"
+	"github.com/Laky-64/gologging"
 	"reflect"
+	"regexp"
 	"strings"
 )
 
-func NewLogger(writer Writer, config logger.Config) Logger {
-	colorfulPrint := "%s[%s]%s %%s %%s"
-	closeColor, debugColor, infoColor, warnColor, errorColor := "\033[0m", "\033[1;34m", "\033[1;32m", "\033[1;33m", "\033[1;31m"
-	if !config.Colorful {
-		closeColor, debugColor, infoColor, warnColor, errorColor = "", "", "", "", ""
-	}
-	debugStr := fmt.Sprintf(colorfulPrint, debugColor, "DEBUG", closeColor)
-	infoStr := fmt.Sprintf(colorfulPrint, infoColor, "INFO", closeColor)
-	warnStr := fmt.Sprintf(colorfulPrint, warnColor, "WARN", closeColor)
-	errStr := fmt.Sprintf(colorfulPrint, errorColor, "ERROR", closeColor)
+const LoggerName = "gobotapi"
 
+var tagRgx = regexp.MustCompile(`^([a-z_]{2,10}): `)
+
+func NewLogger(level logger.LogLevel) Logger {
+	l := gologging.GetLogger(LoggerName)
+	l.SetLevel(gologging.DebugLevel)
 	return &logging{
-		Writer:   writer,
-		Config:   config,
-		infoStr:  infoStr,
-		warnStr:  warnStr,
-		errStr:   errStr,
-		debugStr: debugStr,
+		level:  level,
+		logger: l,
 	}
 }
 
-func (l logging) Debug(client *Client, msg string, data ...any) {
-	if l.LogLevel >= logger.Debug {
-		msg, data = censorSensitiveInfo(client, msg, data...)
-		if client != nil && client.me != nil {
-			l.Printf(l.debugStr, fmt.Sprintf("[%d] %s", client.me.ID, msg), sprint(data...))
-		} else {
-			l.Printf(l.debugStr, msg, sprint(data...))
-		}
-	}
+func (l *logging) Debug(client *Client, msg string, data ...any) {
+	l.log(logger.Debug, l.logger.Debug, client, msg, data...)
 }
 
-func (l logging) Info(client *Client, msg string, data ...any) {
-	if l.LogLevel >= logger.Info {
-		msg, data = censorSensitiveInfo(client, msg, data...)
-		if client != nil && client.me != nil {
-			l.Printf(l.infoStr, fmt.Sprintf("[%d] %s", client.me.ID, msg), sprint(data...))
-		} else {
-			l.Printf(l.infoStr, msg, sprint(data...))
-		}
-	}
+func (l *logging) Info(client *Client, msg string, data ...any) {
+	l.log(logger.Info, l.logger.Info, client, msg, data...)
 }
 
-func (l logging) Warn(client *Client, msg string, data ...any) {
-	if l.LogLevel >= logger.Warn {
-		msg, data = censorSensitiveInfo(client, msg, data...)
-		if client != nil && client.me != nil {
-			l.Printf(l.warnStr, fmt.Sprintf("[%d] %s", client.me.ID, msg), sprint(data...))
-		} else {
-			l.Printf(l.warnStr, msg, sprint(data...))
-		}
-	}
+func (l *logging) Warn(client *Client, msg string, data ...any) {
+	l.log(logger.Warn, l.logger.Warn, client, msg, data...)
 }
 
-func (l logging) Error(client *Client, msg string, data ...any) {
-	if l.LogLevel >= logger.Error {
-		msg, data = censorSensitiveInfo(client, msg, data...)
-		if client != nil && client.me != nil {
-			l.Printf(l.errStr, fmt.Sprintf("[%d] %s", client.me.ID, msg), sprint(data...))
+func (l *logging) Error(client *Client, msg string, data ...any) {
+	l.log(logger.Error, l.logger.Error, client, msg, data...)
+}
+
+func (l *logging) log(level logger.LogLevel, print func(...any), client *Client, msg string, data ...any) {
+	if l.level < level {
+		return
+	}
+	msg, data = censorSensitiveInfo(client, msg, data...)
+	if len(data) > 0 {
+		msg = fmt.Sprintf("%s %s", msg, sprint(data...))
+	}
+	if client != nil && client.me != nil {
+		if tag := tagRgx.FindString(msg); len(tag) > 0 {
+			msg = fmt.Sprintf("%s[%d] %s", tag, client.me.ID, strings.TrimPrefix(msg, tag))
 		} else {
-			l.Printf(l.errStr, msg, sprint(data...))
+			msg = fmt.Sprintf("[%d] %s", client.me.ID, msg)
 		}
 	}
+	print(msg)
 }
 
 type Logger interface {
@@ -79,14 +63,9 @@ type Logger interface {
 	Error(*Client, string, ...any)
 }
 
-type Writer interface {
-	Printf(string, ...any)
-}
-
 type logging struct {
-	Writer
-	logger.Config
-	debugStr, infoStr, warnStr, errStr string
+	level  logger.LogLevel
+	logger *gologging.Logger
 }
 
 func censorSensitiveInfo(client *Client, a string, b ...any) (string, []any) {

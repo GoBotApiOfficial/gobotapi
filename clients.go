@@ -14,7 +14,6 @@ func NewClient(token string) *PollingClient {
 				AntiFloodData:  make(map[int64]*rawTypes.AntiFloodData),
 				SleepThreshold: 10,
 				MaxGoRoutines:  -1,
-				LoggerColorful: true,
 				LoggingLevel:   logger.Warn,
 			},
 			Token: token,
@@ -28,7 +27,6 @@ func NewWebhook(hostname string, port int, isLocalWebhookServer bool) *WebhookCl
 			AntiFloodData:  make(map[int64]*rawTypes.AntiFloodData),
 			SleepThreshold: 10,
 			MaxGoRoutines:  -1,
-			LoggerColorful: true,
 			LoggingLevel:   logger.Warn,
 		},
 		WebhookConfig: &WebhookConfig{
@@ -53,7 +51,6 @@ func NewWebhookWithCert(hostname string, port int, certFile, keyFile string) (*W
 			AntiFloodData:  make(map[int64]*rawTypes.AntiFloodData),
 			SleepThreshold: 10,
 			MaxGoRoutines:  -1,
-			LoggerColorful: true,
 			LoggingLevel:   logger.Warn,
 		},
 		WebhookConfig: &WebhookConfig{
