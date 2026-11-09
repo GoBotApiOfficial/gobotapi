@@ -4,6 +4,6 @@ package types
 
 type EphemeralMessageParameters struct {
 	CallbackQueryID             string `json:"callback_query_id,omitempty"`
-	ReceiverUserID              int64  `json:"receiver_user_id"`
+	ReceiverUserID              int64  `json:"receiver_user_id,omitempty"`
 	ReplaceCallbackQueryMessage bool   `json:"replace_callback_query_message,omitempty"`
 }

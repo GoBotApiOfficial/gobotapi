@@ -10,4 +10,6 @@ package types
 //   - InputVenueMessageContent
 //   - InputContactMessageContent
 //   - InputInvoiceMessageContent
+//   - InputWidgetMessageContent
+//   - InputSharedWidgetMessageContent
 type InputMessageContent any

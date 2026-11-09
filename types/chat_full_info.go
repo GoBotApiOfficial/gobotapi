@@ -56,9 +56,11 @@ type ChatFullInfo struct {
 	ProfileAccentColorID               int64                 `json:"profile_accent_color_id,omitempty"`
 	ProfileBackgroundCustomEmojiID     string                `json:"profile_background_custom_emoji_id,omitempty"`
 	Rating                             *UserRating           `json:"rating,omitempty"`
+	ShareTheme                         *ChatShareTheme       `json:"share_theme,omitempty"`
 	SlowModeDelay                      int                   `json:"slow_mode_delay,omitempty"`
 	StickerSetName                     string                `json:"sticker_set_name,omitempty"`
 	Title                              string                `json:"title,omitempty"`
+	TonWalletCard                      *TonWalletCard        `json:"ton_wallet_card,omitempty"`
 	Type                               string                `json:"type"`
 	UniqueGiftColors                   *UniqueGiftColors     `json:"unique_gift_colors,omitempty"`
 	UnrestrictBoostCount               int                   `json:"unrestrict_boost_count,omitempty"`
@@ -124,6 +126,12 @@ func (entity ChatFullInfo) MarshalJSON() ([]byte, error) {
 	}
 	if nilCheck(entity.Community) {
 		entity.Community = nil
+	}
+	if nilCheck(entity.TonWalletCard) {
+		entity.TonWalletCard = nil
+	}
+	if nilCheck(entity.ShareTheme) {
+		entity.ShareTheme = nil
 	}
 	for _, x0 := range entity.AvailableReactions {
 		if x0 != nil {

@@ -64,9 +64,16 @@ func filterableData(client *gobotapi.Client, filterable any) *DataFilter {
 	case types.PreCheckoutQuery:
 		x := filterable.(types.PreCheckoutQuery)
 		dataResult.From = &x.From
+	case types.SharedWidgetQuery:
+		x := filterable.(types.SharedWidgetQuery)
+		dataResult.From = &x.From
 	case types.ShippingQuery:
 		x := filterable.(types.ShippingQuery)
 		dataResult.From = &x.From
+	case types.WidgetQuery:
+		x := filterable.(types.WidgetQuery)
+		dataResult.From = &x.From
+		dataResult.Chat = x.Chat
 	}
 	dataResult.Client = client
 	dataResult.RawUpdate = filterable

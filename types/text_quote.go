@@ -2,10 +2,35 @@
 
 package types
 
+import "encoding/json"
+
 // TextQuote This object contains information about the quoted part of a message that is replied to by the given message.
 type TextQuote struct {
-	Entities []MessageEntity `json:"entities,omitempty"`
-	IsManual bool            `json:"is_manual,omitempty"`
-	Position int             `json:"position"`
-	Text     string          `json:"text"`
+	Entities  []MessageEntity `json:"entities,omitempty"`
+	IsManual  bool            `json:"is_manual,omitempty"`
+	Position  int             `json:"position"`
+	RichTexts []RichTextValue `json:"rich_texts,omitempty"`
+	Text      string          `json:"text"`
+}
+
+func (entity *TextQuote) UnmarshalJSON(data []byte) error {
+	var alias struct {
+		Entities  []MessageEntity `json:"entities,omitempty"`
+		IsManual  bool            `json:"is_manual,omitempty"`
+		Position  int             `json:"position"`
+		RichTexts json.RawMessage `json:"rich_texts,omitempty"`
+		Text      string          `json:"text"`
+	}
+	if err := json.Unmarshal(data, &alias); err != nil {
+		return err
+	}
+	var err error
+	entity.Entities = alias.Entities
+	entity.IsManual = alias.IsManual
+	entity.Position = alias.Position
+	if entity.RichTexts, err = ParseRichTextValue(alias.RichTexts); err != nil {
+		return err
+	}
+	entity.Text = alias.Text
+	return nil
 }

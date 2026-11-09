@@ -13,8 +13,10 @@ import (
 // VerifyChat Verifies a chat on behalf of the organization which is represented by the bot
 // Returns True on success.
 type VerifyChat struct {
-	ChatID            any    `json:"chat_id"`
-	CustomDescription string `json:"custom_description,omitempty"`
+	ChatID                     any                   `json:"chat_id"`
+	CustomDescription          string                `json:"custom_description,omitempty"`
+	CustomDescriptionEntities  []types.MessageEntity `json:"custom_description_entities,omitempty"`
+	CustomDescriptionParseMode string                `json:"custom_description_parse_mode,omitempty"`
 }
 
 func (entity *VerifyChat) ProgressCallable() rawTypes.ProgressCallable {

@@ -109,6 +109,20 @@ func (ctx *BasicClient) OnCallbackQuery(handler func(client *Client, update type
 	ctx.handlers["callback_query"] = append(ctx.handlers["callback_query"], handler)
 }
 
+func (ctx *BasicClient) OnWidgetQuery(handler func(client *Client, update types.WidgetQuery)) {
+	if ctx.handlers == nil {
+		ctx.handlers = make(map[string][]any)
+	}
+	ctx.handlers["widget_query"] = append(ctx.handlers["widget_query"], handler)
+}
+
+func (ctx *BasicClient) OnSharedWidgetQuery(handler func(client *Client, update types.SharedWidgetQuery)) {
+	if ctx.handlers == nil {
+		ctx.handlers = make(map[string][]any)
+	}
+	ctx.handlers["shared_widget_query"] = append(ctx.handlers["shared_widget_query"], handler)
+}
+
 func (ctx *BasicClient) OnShippingQuery(handler func(client *Client, update types.ShippingQuery)) {
 	if ctx.handlers == nil {
 		ctx.handlers = make(map[string][]any)

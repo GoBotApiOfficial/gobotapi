@@ -113,6 +113,20 @@ func (ctx *BasicClient) handleUpdate(user *types.User, token string, update type
 			}, x0)
 		}
 	}
+	if update.WidgetQuery != nil {
+		for _, x0 := range ctx.handlers["widget_query"] {
+			ctx.concurrencyManager.Enqueue(func(x ...any) {
+				x[0].(func(*Client, types.WidgetQuery))(client, *update.WidgetQuery)
+			}, x0)
+		}
+	}
+	if update.SharedWidgetQuery != nil {
+		for _, x0 := range ctx.handlers["shared_widget_query"] {
+			ctx.concurrencyManager.Enqueue(func(x ...any) {
+				x[0].(func(*Client, types.SharedWidgetQuery))(client, *update.SharedWidgetQuery)
+			}, x0)
+		}
+	}
 	if update.ShippingQuery != nil {
 		for _, x0 := range ctx.handlers["shipping_query"] {
 			ctx.concurrencyManager.Enqueue(func(x ...any) {

@@ -17,7 +17,7 @@ type SendPhoto struct {
 	BusinessConnectionID       string                            `json:"business_connection_id,omitempty"`
 	Caption                    string                            `json:"caption,omitempty"`
 	CaptionEntities            []types.MessageEntity             `json:"caption_entities,omitempty"`
-	ChatID                     any                               `json:"chat_id"`
+	ChatID                     any                               `json:"chat_id,omitempty"`
 	DirectMessagesTopicID      int64                             `json:"direct_messages_topic_id,omitempty"`
 	DisableNotification        bool                              `json:"disable_notification,omitempty"`
 	EphemeralMessageParameters *types.EphemeralMessageParameters `json:"ephemeral_message_parameters,omitempty"`
@@ -63,6 +63,9 @@ func (entity SendPhoto) MarshalJSON() ([]byte, error) {
 		}
 	}
 	_ = nilCheck
+	if nilCheck(entity.ChatID) {
+		entity.ChatID = nil
+	}
 	if nilCheck(entity.EphemeralMessageParameters) {
 		entity.EphemeralMessageParameters = nil
 	}

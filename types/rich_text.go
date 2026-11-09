@@ -26,6 +26,7 @@ import (
 //   - RichTextEmailAddress
 //   - RichTextPhoneNumber
 //   - RichTextBankCardNumber
+//   - RichTextTonAddress
 //   - RichTextMention
 //   - RichTextHashtag
 //   - RichTextCashtag
@@ -36,6 +37,7 @@ import (
 //   - RichTextReference
 //   - RichTextReferenceLink
 type RichText struct {
+	Address         string            `json:"address"`
 	AlternativeText string            `json:"alternative_text"`
 	AnchorName      string            `json:"anchor_name"`
 	BankCardNumber  string            `json:"bank_card_number"`
@@ -94,6 +96,8 @@ func (x RichText) Kind() int {
 		return TypeRichTextPhoneNumber
 	case "bank_card_number":
 		return TypeRichTextBankCardNumber
+	case "ton_address":
+		return TypeRichTextTonAddress
 	case "mention":
 		return TypeRichTextMention
 	case "hashtag":
@@ -170,6 +174,7 @@ func ParseRichTextValue(data []byte) (RichTextValue, error) {
 
 func (entity *RichText) UnmarshalJSON(data []byte) error {
 	var alias struct {
+		Address         string            `json:"address"`
 		AlternativeText string            `json:"alternative_text"`
 		AnchorName      string            `json:"anchor_name"`
 		BankCardNumber  string            `json:"bank_card_number"`
@@ -195,6 +200,7 @@ func (entity *RichText) UnmarshalJSON(data []byte) error {
 		return err
 	}
 	var err error
+	entity.Address = alias.Address
 	entity.AlternativeText = alias.AlternativeText
 	entity.AnchorName = alias.AnchorName
 	entity.BankCardNumber = alias.BankCardNumber

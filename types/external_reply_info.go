@@ -30,4 +30,5 @@ type ExternalReplyInfo struct {
 	Video              *Video              `json:"video,omitempty"`
 	VideoNote          *VideoNote          `json:"video_note,omitempty"`
 	Voice              *Voice              `json:"voice,omitempty"`
+	Widget             *Widget             `json:"widget,omitempty"`
 }

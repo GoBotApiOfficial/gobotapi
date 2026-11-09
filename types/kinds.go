@@ -34,6 +34,18 @@ const (
 	TypeChatMemberBanned
 )
 
+// CHAT_SHARE_THEME
+const (
+	TypeChatShareThemeEmoji = iota
+	TypeChatShareThemeUniqueGift
+)
+
+// EMOJI_TYPE
+const (
+	TypeEmojiTypeEmoji = iota
+	TypeEmojiTypeCustomEmoji
+)
+
 // MAYBE_INACCESSIBLE_MESSAGE
 const (
 	TypeMessage = iota
@@ -116,6 +128,7 @@ const (
 	TypeRichTextEmailAddress
 	TypeRichTextPhoneNumber
 	TypeRichTextBankCardNumber
+	TypeRichTextTonAddress
 	TypeRichTextMention
 	TypeRichTextHashtag
 	TypeRichTextCashtag
@@ -149,6 +162,13 @@ const (
 	TypeTransactionPartnerOther
 )
 
+// WIDGET_QUERY_TYPE
+const (
+	TypeWidgetQueryTypeData = iota
+	TypeWidgetQueryTypeSignData
+	TypeWidgetQueryTypeSentTransaction
+)
+
 // RETURN_TYPES
 const (
 	TypeArrayOfBotCommand = iota
@@ -168,6 +188,7 @@ const (
 	TypeChatFullInfo
 	TypeChatInviteLink
 	TypeChatMember
+	TypeChatShareThemeBackdrops
 	TypeErrorMessage
 	TypeFile
 	TypeForumTopic
@@ -186,6 +207,7 @@ const (
 	TypeStickerSet
 	TypeStory
 	TypeString
+	TypeUniqueGift
 	TypeUser
 	TypeUserChatBoosts
 	TypeUserProfileAudios

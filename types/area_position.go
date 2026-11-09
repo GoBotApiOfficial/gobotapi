@@ -2,8 +2,8 @@
 
 package types
 
-// StoryAreaPosition Describes the position of a clickable area within a story.
-type StoryAreaPosition struct {
+// AreaPosition Describes the position of a rectangle area on a story media or a TON wallet card.
+type AreaPosition struct {
 	CornerRadiusPercentage float64 `json:"corner_radius_percentage"`
 	HeightPercentage       float64 `json:"height_percentage"`
 	RotationAngle          float64 `json:"rotation_angle"`

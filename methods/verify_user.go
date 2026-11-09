@@ -11,8 +11,10 @@ import (
 // VerifyUser Verifies a user on behalf of the organization which is represented by the bot
 // Returns True on success.
 type VerifyUser struct {
-	CustomDescription string `json:"custom_description,omitempty"`
-	UserID            int64  `json:"user_id"`
+	CustomDescription          string                `json:"custom_description,omitempty"`
+	CustomDescriptionEntities  []types.MessageEntity `json:"custom_description_entities,omitempty"`
+	CustomDescriptionParseMode string                `json:"custom_description_parse_mode,omitempty"`
+	UserID                     int64                 `json:"user_id"`
 }
 
 func (entity *VerifyUser) ProgressCallable() rawTypes.ProgressCallable {

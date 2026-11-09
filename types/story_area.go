@@ -4,6 +4,6 @@ package types
 
 // StoryArea Describes a clickable area on a story media.
 type StoryArea struct {
-	Position StoryAreaPosition `json:"position"`
-	Type     StoryAreaType     `json:"type"`
+	Position AreaPosition  `json:"position"`
+	Type     StoryAreaType `json:"type"`
 }

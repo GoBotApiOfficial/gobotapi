@@ -16,7 +16,7 @@ type SendVenue struct {
 	Address                    string                            `json:"address"`
 	AllowPaidBroadcast         bool                              `json:"allow_paid_broadcast,omitempty"`
 	BusinessConnectionID       string                            `json:"business_connection_id,omitempty"`
-	ChatID                     any                               `json:"chat_id"`
+	ChatID                     any                               `json:"chat_id,omitempty"`
 	DirectMessagesTopicID      int64                             `json:"direct_messages_topic_id,omitempty"`
 	DisableNotification        bool                              `json:"disable_notification,omitempty"`
 	EphemeralMessageParameters *types.EphemeralMessageParameters `json:"ephemeral_message_parameters,omitempty"`
@@ -58,6 +58,9 @@ func (entity SendVenue) MarshalJSON() ([]byte, error) {
 		}
 	}
 	_ = nilCheck
+	if nilCheck(entity.ChatID) {
+		entity.ChatID = nil
+	}
 	if nilCheck(entity.EphemeralMessageParameters) {
 		entity.EphemeralMessageParameters = nil
 	}

@@ -20,6 +20,41 @@ type ReplyParameters struct {
 	QuoteEntities            []MessageEntity `json:"quote_entities,omitempty"`
 	QuoteParseMode           string          `json:"quote_parse_mode,omitempty"`
 	QuotePosition            int             `json:"quote_position,omitempty"`
+	QuoteRichTexts           []RichTextValue `json:"quote_rich_texts,omitempty"`
+}
+
+func (entity *ReplyParameters) UnmarshalJSON(data []byte) error {
+	var alias struct {
+		AllowSendingWithoutReply bool            `json:"allow_sending_without_reply,omitempty"`
+		ChatID                   any             `json:"chat_id,omitempty"`
+		ChecklistTaskID          int64           `json:"checklist_task_id,omitempty"`
+		EphemeralMessageID       int64           `json:"ephemeral_message_id,omitempty"`
+		MessageID                int64           `json:"message_id,omitempty"`
+		PollOptionID             string          `json:"poll_option_id,omitempty"`
+		Quote                    string          `json:"quote,omitempty"`
+		QuoteEntities            []MessageEntity `json:"quote_entities,omitempty"`
+		QuoteParseMode           string          `json:"quote_parse_mode,omitempty"`
+		QuotePosition            int             `json:"quote_position,omitempty"`
+		QuoteRichTexts           json.RawMessage `json:"quote_rich_texts,omitempty"`
+	}
+	if err := json.Unmarshal(data, &alias); err != nil {
+		return err
+	}
+	var err error
+	entity.AllowSendingWithoutReply = alias.AllowSendingWithoutReply
+	entity.ChatID = alias.ChatID
+	entity.ChecklistTaskID = alias.ChecklistTaskID
+	entity.EphemeralMessageID = alias.EphemeralMessageID
+	entity.MessageID = alias.MessageID
+	entity.PollOptionID = alias.PollOptionID
+	entity.Quote = alias.Quote
+	entity.QuoteEntities = alias.QuoteEntities
+	entity.QuoteParseMode = alias.QuoteParseMode
+	entity.QuotePosition = alias.QuotePosition
+	if entity.QuoteRichTexts, err = ParseRichTextValue(alias.QuoteRichTexts); err != nil {
+		return err
+	}
+	return nil
 }
 
 func (entity ReplyParameters) MarshalJSON() ([]byte, error) {

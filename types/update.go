@@ -28,8 +28,10 @@ type Update struct {
 	PreCheckoutQuery         *PreCheckoutQuery            `json:"pre_checkout_query,omitempty"`
 	PurchasedPaidMedia       *PaidMediaPurchased          `json:"purchased_paid_media,omitempty"`
 	RemovedChatBoost         *ChatBoostRemoved            `json:"removed_chat_boost,omitempty"`
+	SharedWidgetQuery        *SharedWidgetQuery           `json:"shared_widget_query,omitempty"`
 	ShippingQuery            *ShippingQuery               `json:"shipping_query,omitempty"`
 	StoppedMessageGeneration *MessageGenerationStopped    `json:"stopped_message_generation,omitempty"`
 	Subscription             *BotSubscriptionUpdated      `json:"subscription,omitempty"`
 	UpdateID                 int64                        `json:"update_id"`
+	WidgetQuery              *WidgetQuery                 `json:"widget_query,omitempty"`
 }

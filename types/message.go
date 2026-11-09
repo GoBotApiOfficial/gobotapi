@@ -78,6 +78,7 @@ type Message struct {
 	NewChatTitle                  string                         `json:"new_chat_title,omitempty"`
 	PaidMedia                     *PaidMediaInfo                 `json:"paid_media,omitempty"`
 	PaidMessagePriceChanged       *PaidMessagePriceChanged       `json:"paid_message_price_changed,omitempty"`
+	PaidMessagesWaived            *PaidMessagesWaived            `json:"paid_messages_waived,omitempty"`
 	PaidStarCount                 int64                          `json:"paid_star_count,omitempty"`
 	PassportData                  *PassportData                  `json:"passport_data,omitempty"`
 	Photo                         []PhotoSize                    `json:"photo,omitempty"`
@@ -111,6 +112,7 @@ type Message struct {
 	SuggestedPostRefunded         *SuggestedPostRefunded         `json:"suggested_post_refunded,omitempty"`
 	SupergroupChatCreated         bool                           `json:"supergroup_chat_created,omitempty"`
 	Text                          string                         `json:"text,omitempty"`
+	TonWalletTransfer             *TonWalletTransfer             `json:"ton_wallet_transfer,omitempty"`
 	UniqueGift                    *UniqueGiftInfo                `json:"unique_gift,omitempty"`
 	UsersShared                   *UsersShared                   `json:"users_shared,omitempty"`
 	Venue                         *Venue                         `json:"venue,omitempty"`
@@ -123,6 +125,7 @@ type Message struct {
 	VideoNote                     *VideoNote                     `json:"video_note,omitempty"`
 	Voice                         *Voice                         `json:"voice,omitempty"`
 	WebAppData                    *WebAppData                    `json:"web_app_data,omitempty"`
+	Widget                        *Widget                        `json:"widget,omitempty"`
 	WriteAccessAllowed            *WriteAccessAllowed            `json:"write_access_allowed,omitempty"`
 }
 
